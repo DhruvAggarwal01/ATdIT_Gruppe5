@@ -3,18 +3,24 @@ import java.util.Set;
 import javax.swing.*;
 
 /**
+ * Je nach dem welche Rechte der eingeloggte User innehat, sind Tabs nutzbar
+ * bzw. nicht nutzbar.
  * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
 
     /**
-     * Der Konstruktor
+     * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
+     * wirft, wenn aus unerklärlichen Gründen die Rechte unbekannt sind.
      * 
-     * @param tabPlacement    //JavaDoc der Oberklasse für diesen Parameter
-     * @param tabLayoutPolicy
-     * @param permGroup
+     * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
+     * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn
+     *                        alle Tabs nicht in eine einzelne Ausführung passen
+     * @param permGroup       die Rechte, die ein Nutzer innehat
      */
     NavigationPane(int tabPlacement, int tabLayoutPolicy, Set<String> permGroup) {
         super(tabPlacement, tabLayoutPolicy);
