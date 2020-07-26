@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
@@ -19,7 +21,7 @@ public class Styles {
      */
     public final static Font APPHEADING() {
         try {
-            Font appheading = Font.createFont(Font.TRUETYPE_FONT, new File("Library/Calligraphy-D4pm.ttf"));
+            Font appheading = Font.createFont(Font.TRUETYPE_FONT, new File("Library/SfEspressoShackBold-P3L7.ttf"));
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(appheading);
             return appheading;
@@ -35,4 +37,6 @@ public class Styles {
      * Einsatzmöglichkeit: Font für Navigationsleisten-Elemente
      */
     public final static Font NAVPANE_FONT = new Font("Serif", Font.BOLD, 24);
+
+    public final static Font TAB_BORDERTITLE_FONT = new Font("Serif", Font.BOLD, 16);
 }

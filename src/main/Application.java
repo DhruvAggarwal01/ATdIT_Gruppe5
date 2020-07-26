@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 

@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
@@ -9,28 +11,29 @@ import java.util.HashSet;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-class MainPanel extends JFrame {
+public class MainPanel extends JFrame {
 
     private static final long serialVersionUID = -8417942669407317542L;
 
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
-    private static HeaderLine headerLine;
+    private static HeaderPane headerPane;
 
     private Container c;
 
     /**
      * tbd after User config is done
      */
-    MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
-                  // nach Recht andere NavPane) als Parameter
+    public MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
+        // je nach Recht andere NavPane) als Parameter
         c = getContentPane();
         c.setLayout(new BorderLayout());
 
-        headerLine = new HeaderLine(appTitle);
-        c.add(headerLine, BorderLayout.NORTH);
+        headerPane = new HeaderPane(appTitle);
+        c.add(headerPane, BorderLayout.NORTH);
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
-                new HashSet<String>(Arrays.asList("VIEWER", "VIEWER", "VIEWER"))); // keine Duplikate
+                new HashSet<String>(Arrays.asList("VIEWER", "LOGISTIC_WORKER", "VIEWER"))); // keine Duplikate; werden
+                                                                                            // so aus DB übernommen
         c.add(navPane, BorderLayout.CENTER);
     }
 
@@ -53,12 +56,12 @@ class MainPanel extends JFrame {
     }
 
     /**
-     * Getter-Methode für <code>headerLine</code>
+     * Getter-Methode für <code>headerPane</code>
      * 
-     * @return <code>headerLine</code>
+     * @return <code>headerPane</code>
      */
-    public static HeaderLine getHeaderLine() {
-        return headerLine;
+    public static HeaderPane getHeaderPane() {
+        return headerPane;
     }
 
 }
