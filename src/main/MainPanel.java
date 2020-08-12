@@ -17,7 +17,7 @@ public class MainPanel extends JFrame {
 
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
-    private static HeaderPane headerPane;
+    private static HeaderPanel headerPanel;
 
     private Container c;
 
@@ -29,8 +29,8 @@ public class MainPanel extends JFrame {
         c = getContentPane();
         c.setLayout(new BorderLayout());
 
-        headerPane = new HeaderPane(appTitle);
-        c.add(headerPane, BorderLayout.NORTH);
+        headerPanel = new HeaderPanel(appTitle);
+        c.add(headerPanel, BorderLayout.NORTH);
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
                 new HashSet<String>(Arrays.asList("VIEWER", "LOGISTIC_WORKER", "VIEWER"))); // keine Duplikate; werden
                                                                                             // so aus DB übernommen
@@ -56,12 +56,12 @@ public class MainPanel extends JFrame {
     }
 
     /**
-     * Getter-Methode für <code>headerPane</code>
+     * Getter-Methode für <code>headerPanel</code>
      * 
-     * @return <code>headerPane</code>
+     * @return <code>headerPanel</code>
      */
-    public static HeaderPane getHeaderPane() {
-        return headerPane;
+    public static HeaderPanel getHeaderPanel() {
+        return headerPanel;
     }
 
 }

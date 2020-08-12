@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class HeaderPane extends JPanel {
+public class HeaderPanel extends JPanel {
 
     private static final long serialVersionUID = 5730113640200437491L;
 
@@ -31,7 +31,7 @@ public class HeaderPane extends JPanel {
      * 
      * @param headerTitle der Anwendungsname
      */
-    public HeaderPane(String headerTitle) { // Nutzer nutzer als parameter
+    public HeaderPanel(String headerTitle) { // Nutzer nutzer als parameter
         this.setLayout(new GridLayout(1, 3, 0, 0));
         ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png"); // --> andere Option mit Bild
         this.setBorder(BorderFactory.createMatteBorder(-1, -1, -1, -1, borderLine));

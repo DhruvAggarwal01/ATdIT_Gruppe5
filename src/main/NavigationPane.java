@@ -31,7 +31,7 @@ public class NavigationPane extends JTabbedPane {
     public NavigationPane(int tabPlacement, int tabLayoutPolicy, Set<String> permGroup) {
         super(tabPlacement, tabLayoutPolicy);
         this.setFont(Styles.NAVPANE_FONT);
-        int i = 0;
+        // int i = 0;
         for (String s : permGroup) {
             switch (s) {
                 case "VIEWER":
@@ -67,12 +67,6 @@ public class NavigationPane extends JTabbedPane {
                     break;
                 case "LOGISTIC_WORKER":
                     this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
-                    break;
-                case "ADMIN":
-                    this.addTab("Admin-Settings", new NavItemPanelChooser("Admin-Settings", null, null));
                     // mTL = new MouseTabListener(this, i);
                     // this.getTabComponentAt(i++).addMouseListener(mTL);
 

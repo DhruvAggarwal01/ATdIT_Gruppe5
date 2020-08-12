@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.Cursor;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,19 +25,22 @@ public class ReadRSSPanel extends JPanel {
 
     JTextArea newsFeedTextField;
 
-    public ReadRSSPanel(String newsTitle, String urlAddress) {
+    public ReadRSSPanel(String newsTitle, String rssUrl) {
         this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
         newsTitleLabel.setForeground(Color.BLUE.darker());
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        newsTitleLabel.setToolTipText("To: " + urlAddress.substring(0, urlAddress.length() - 4));               //entferne das '/rss'
+        newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
+        newsTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
         newsTitleLabel.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI(urlAddress.substring(0, urlAddress.length() - 4)));     //entferne das '/rss'
+                    Desktop.getDesktop().browse(new URI(rssUrl.substring(0, rssUrl.length() - 4))); // entferne
+                                                                                                    // das
+                                                                                                    // '/rss'
                 } catch (IOException | URISyntaxException e1) {
                     e1.printStackTrace();
                 }
@@ -43,22 +48,37 @@ public class ReadRSSPanel extends JPanel {
 
         });
 
-        newsFeedTextField = new JTextArea(readRSSFeed(urlAddress));
+        newsFeedTextField = new JTextArea(readRSSFeed(rssUrl)) {
+            private static final long serialVersionUID = 1L;
+
+            Image weatherStatusImage = new ImageIcon("Library/images/emptyTransparent.png").getImage();
+            {
+                setOpaque(false);
+            }
+
+            public void paint(Graphics g) {
+                g.drawImage(weatherStatusImage, 0, 0, this);
+                super.paint(g);
+            }
+        };
         newsFeedTextField.setFont(new Font("Consolas", Font.PLAIN, 10));
-        newsFeedTextField.setLineWrap(true);
         newsFeedTextField.setWrapStyleWord(true);
         newsFeedTextField.setEditable(false);
 
         JScrollPane sp = new JScrollPane(newsFeedTextField);
+        sp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         this.add(newsTitleLabel, BorderLayout.NORTH);
         this.add(sp, BorderLayout.CENTER);
+
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
+                BorderFactory.createRaisedBevelBorder()));
     }
 
-    public static String readRSSFeed(String urlAddress) {
+    public static String readRSSFeed(String rssUrl) {
         try {
-            URL rssUrl = new URL(urlAddress);
-            BufferedReader in = new BufferedReader(new InputStreamReader(rssUrl.openStream()));
+            URL rssUrlAddress = new URL(rssUrl);
+            BufferedReader in = new BufferedReader(new InputStreamReader(rssUrlAddress.openStream()));
             String sourceCode = "";
             String line;
             while ((line = in.readLine()) != null) {
