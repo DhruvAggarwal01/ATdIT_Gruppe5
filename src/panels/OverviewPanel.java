@@ -37,11 +37,6 @@ public class OverviewPanel extends JPanel {
         this.add(smallPanels, BorderLayout.NORTH);
         this.add(diashow, BorderLayout.CENTER);
 
-        // this.setLayout(new GridLayout(2, 2, 30, 30));
-        // this.setBorder(
-        // BorderFactory.createCompoundBorder(this.getBorder(),
-        // BorderFactory.createEmptyBorder(10, 5, 5, 5)));
-
         // // 3. Panel:
         // JPanel jp3 = new JPanel();
         // JLabel jl3 = new JLabel("---zum Reporting < klick mich! >---",
