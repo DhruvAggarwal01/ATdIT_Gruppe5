@@ -13,7 +13,7 @@ public class ApplicationTest {
 
     @Test
     public void testGetAppWindowNull() {
-        Assert.assertNull(Application.getAppWindow());
+        Assert.assertNull("AppWindow should not be initialized yet", Application.getAppWindow());
     }
 
     @After

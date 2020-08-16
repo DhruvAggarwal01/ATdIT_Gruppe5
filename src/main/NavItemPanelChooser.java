@@ -6,6 +6,7 @@ import javax.swing.border.TitledBorder;
 import panels.OverviewPanel;
 
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Je nach ausgewaehltem Tab wird ein anderer Panel (hier: JPanel) als Tab
@@ -18,6 +19,8 @@ public class NavItemPanelChooser extends JPanel {
 
     private static final long serialVersionUID = 2503046166751075554L;
 
+    private String navItemName01, navItemName02, navItemName03;
+
     /**
      * Konstruktor, der zum zugehörigen NavigationItem einen passenden JPanel
      * einsetzt
@@ -25,6 +28,11 @@ public class NavItemPanelChooser extends JPanel {
      * @param navItemName Name des ausgewaehlten Tabs (NavigationItem)
      */
     public NavItemPanelChooser(String navItemName01, String navItemName02, String navItemName03) {
+
+        this.navItemName01 = navItemName01;
+        this.navItemName02 = navItemName02;
+        this.navItemName03 = navItemName03;
+
         String isNext1 = " > ";
         String isNext2 = " > ";
         if (navItemName03 == null) {
@@ -64,5 +72,21 @@ public class NavItemPanelChooser extends JPanel {
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
+        return Objects.equals(navItemName01, navIPC.navItemName01) && Objects.equals(navItemName02, navIPC.navItemName02)
+                && Objects.equals(navItemName03, navIPC.navItemName03);
     }
 }

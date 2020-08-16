@@ -21,9 +21,10 @@ public class HeaderPanel extends JPanel {
 
     private static final long serialVersionUID = 5730113640200437491L;
 
-    JMenuBar mb;
-    JPanel logoAndHeaderTitle;
-    JPanel userIconWithMenuInJPanel;
+    public JMenuBar mb;
+    public JPanel logoAndHeaderTitle;
+    public JLabel logoIconInJLabel;
+    public JPanel userIconWithMenuInJPanel;
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
@@ -39,7 +40,7 @@ public class HeaderPanel extends JPanel {
         userIconWithMenuInJPanel = new JPanel(new BorderLayout()); // Listener soll sich nur auf diesen JPanel beziehen
 
         // 1a. Anwendungslogo
-        JLabel logoIconInJLabel = resizeToJLabel("Library/images/dashboardlogo.png", 44, 44, JLabel.CENTER);
+        logoIconInJLabel = resizeToJLabel("Library/images/dashboardlogo.png", 44, 44, JLabel.CENTER);
         logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         MouseLogoIconListener mLIL = new MouseLogoIconListener();
         logoIconInJLabel.addMouseListener(mLIL);
@@ -80,9 +81,6 @@ public class HeaderPanel extends JPanel {
     }
 
     class MouseLogoIconListener extends MouseAdapter {
-
-        MouseLogoIconListener() {
-        }
 
         @Override
         public void mouseClicked(MouseEvent e) {

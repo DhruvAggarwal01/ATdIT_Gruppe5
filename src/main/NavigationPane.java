@@ -3,8 +3,6 @@ package main;
 import java.util.Set;
 
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
 
 /**
  * Je nach dem welche Rechte der eingeloggte User innehat, sind Tabs nutzbar
@@ -17,11 +15,11 @@ public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
 
-    MouseTabListener mTL;
-
     /**
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
      * wirft, wenn aus unerklärlichen Gründen die Rechte unbekannt sind.
+     * 
+     * permGroup ist inzwischen obsolet und wird aus dem Coding genommen tbd
      * 
      * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
      * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn
@@ -36,40 +34,17 @@ public class NavigationPane extends JTabbedPane {
             switch (s) {
                 case "VIEWER":
                     this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
-                    mTL = new MouseTabListener(0);
-
                     this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Reporting", new NavItemPanelChooser("Reporting", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 case "GENERIC_WORKER":
                     this.addTab("HR", new NavItemPanelChooser("HR", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 case "LOGISTIC_WORKER":
                     this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 default:
                     break;
@@ -79,18 +54,4 @@ public class NavigationPane extends JTabbedPane {
         }
     }
 
-    class MouseTabListener extends MouseAdapter {
-
-        int i;
-
-        MouseTabListener(int i) {
-            this.i = i;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(i,
-                    new NavItemPanelChooser(MainPanel.getNavPane().getTitleAt(i), null, null));
-        }
-    }
 }
