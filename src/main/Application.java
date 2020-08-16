@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 public class Application {
 
     private static JFrame appWindow;
-
+    
     public static JFrame getAppWindow() {
         return appWindow;
     }

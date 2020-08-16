@@ -22,7 +22,7 @@ public class MainPanel extends JFrame {
     private Container c;
 
     /**
-     * tbd after User config is done
+     * tbd
      */
     public MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
         // je nach Recht andere NavPane) als Parameter
@@ -64,4 +64,28 @@ public class MainPanel extends JFrame {
         return headerPanel;
     }
 
+    /**
+     * Setter-Methode für <code>appTitle</code>
+     * 
+     * @return <code>appTitle</code>
+     */
+    public static void setAppTitle(String appTitleSet) {
+        appTitle = appTitleSet;
+    }
+
+    /**
+     * Setter-Methode für <code>navPane</code>
+     * 
+     */
+    public static void setNavPane(NavigationPane navPaneSet) {
+        navPane = navPaneSet;
+    }
+
+    /**
+     * Setter-Methode für <code>headerPanel</code>
+     * 
+     */
+    public static void setHeaderPanel(HeaderPanel headerPanelSet) {
+        headerPanel = headerPanelSet;
+    }
 }
