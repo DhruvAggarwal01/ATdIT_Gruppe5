@@ -1,5 +1,13 @@
 # ATdIT_Gruppe5
-GitHub Repository für unsere Gruppe 5 (Aktuelle Themen der IT)
+GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 
-MS Office - Dateien können nach Upload nicht mehr in andere Ordner verschoben werden!
---> bitte zuerst Ordner erstellen und direkt darin uploaden (oder: per VS Code u.ä.)
+## Ordnerstruktur
+**01April_Aufgabe1** beinhaltet die Prototypen der Gruppenmitglieder (bzgl. Aufgabe der 1. Vorlesung)  
+**01April_Aufgabe2** beinhaltet den gemeinsamen Prototypen der Gruppe (bzgl. Aufgabe der 1. Vorlesung)  
+**databases** beinhaltet die Datenbanken  
+**Library** beinhaltet  
++ **diagrams**  
++ **images**  
+
+## Erklärungen
+<code>.gitignore</code> wie der Name schon sagt, werden die in diesem Dokument gelisteten Files von GitHub ignoriert
