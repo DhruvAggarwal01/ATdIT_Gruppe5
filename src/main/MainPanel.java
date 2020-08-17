@@ -18,7 +18,6 @@ public class MainPanel extends JFrame {
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
-
     private Container c;
 
     /**
@@ -30,10 +29,9 @@ public class MainPanel extends JFrame {
         c.setLayout(new BorderLayout());
 
         headerPanel = new HeaderPanel(appTitle);
-        c.add(headerPanel, BorderLayout.NORTH);
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
-                new HashSet<String>(Arrays.asList("VIEWER", "LOGISTIC_WORKER", "VIEWER"))); // keine Duplikate; werden
-                                                                                            // so aus DB übernommen
+                new HashSet<String>(Arrays.asList("VIEWER", "LOGISTIC_WORKER", "VIEWER"))); // tbd wird entfernt; Duplikate sind programmatish möglich, aber nicht clean code -> werden aus DB übernommen
+        c.add(headerPanel, BorderLayout.NORTH);
         c.add(navPane, BorderLayout.CENTER);
     }
 
