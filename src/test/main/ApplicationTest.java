@@ -7,7 +7,7 @@ import org.junit.*;
 public class ApplicationTest {
     
     @Before
-    public void setUp() {
+    public void init() {
         System.out.println("Test wird gestartet.");
     }
 
@@ -16,8 +16,8 @@ public class ApplicationTest {
         Assert.assertNull("AppWindow should not be initialized yet", Application.getAppWindow());
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         System.out.println("Test wird beendet.");
     }
 
