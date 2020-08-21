@@ -1,9 +1,12 @@
 package main;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.util.Arrays;
 import java.util.HashSet;
+
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  * Diese Klasse leitet den Aufbau der Anwendung ein.
@@ -21,7 +24,9 @@ public class MainPanel extends JFrame {
     private Container c;
 
     /**
-     * tbd
+     * Konstruktor, der zuständig für den Aufbau des Hauptframe-Fensters ist. Das
+     * Fenster setzt sich aus Header, Navigationsleiste und dem dazugehörigen
+     * Panel-Feld zusammen.
      */
     public MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
         // je nach Recht andere NavPane) als Parameter
@@ -30,7 +35,12 @@ public class MainPanel extends JFrame {
 
         headerPanel = new HeaderPanel(appTitle);
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
-                new HashSet<String>(Arrays.asList("VIEWER", "LOGISTIC_WORKER", "VIEWER"))); // tbd wird entfernt; Duplikate sind programmatish möglich, aber nicht clean code -> werden aus DB übernommen
+                new HashSet<String>(Arrays.asList("VIEWER"))); // tbd: wird entfernt;
+                                                              // Duplikate sind
+                                                              // programmatisch möglich,
+                                                              // aber nicht clean code ->
+                                                              // werden aus DB übernommen
+
         c.add(headerPanel, BorderLayout.NORTH);
         c.add(navPane, BorderLayout.CENTER);
     }

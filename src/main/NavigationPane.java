@@ -2,9 +2,8 @@ package main;
 
 import java.util.Set;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
+import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 
 /**
  * Je nach dem welche Rechte der eingeloggte User innehat, sind Tabs nutzbar
@@ -16,8 +15,6 @@ import java.awt.event.MouseAdapter;
 public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
-
-    MouseTabListener mTL;
 
     /**
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
@@ -31,66 +28,33 @@ public class NavigationPane extends JTabbedPane {
     public NavigationPane(int tabPlacement, int tabLayoutPolicy, Set<String> permGroup) {
         super(tabPlacement, tabLayoutPolicy);
         this.setFont(Styles.NAVPANE_FONT);
-        // int i = 0;
         for (String s : permGroup) {
             switch (s) {
                 case "VIEWER":
                     this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
-                    mTL = new MouseTabListener(0);
-
                     this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Reporting", new NavItemPanelChooser("Reporting", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 case "GENERIC_WORKER":
                     this.addTab("HR", new NavItemPanelChooser("HR", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 case "LOGISTIC_WORKER":
                     this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
-                    // mTL = new MouseTabListener(this, i);
-                    // this.getTabComponentAt(i++).addMouseListener(mTL);
-
                     break;
                 default:
+                    showError(
+                            "Keine gültige Genehmigung für Ihren Nutzer. Kontaktieren Sie Ihren Administrator für weitere Hilfe.",
+                            "Problem.");
                     break;
-                // throw new Exception("Keine gültige Permission für Ihren Nutzer. Kontaktieren
-                // Sie Ihren Administrator für weitere Hilfe.");
             }
         }
     }
 
-    class MouseTabListener extends MouseAdapter {
-
-        int i;
-
-        MouseTabListener(int i) {
-            this.i = i;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(i,
-                    new NavItemPanelChooser(MainPanel.getNavPane().getTitleAt(i), null, null));
-        }
+    public static void showError(String errorMessage, String title) {
+        JOptionPane.showMessageDialog(Application.getAppWindow(), errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
     }
+
 }

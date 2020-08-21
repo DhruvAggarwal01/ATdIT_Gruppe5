@@ -7,13 +7,15 @@ package main;
 
 /**
  * Diese Klasse überprüft die Eingabe im Welcome-Screen
- * {@link src.WelcomeScreen} und extrahiert bei erfolgreicher Eingabe die
- * zugehörigen User-Daten aus der Excel-Datenbank.
+ * {@link src.WelcomeScreen} und extrahiert bei erfolgreichen LogIn-Eingaben die
+ * zugehörigen User-Daten aus der Excel-Datenbank. +Ausloggen
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class SessionUser {
+
+    boolean isLoggedIn;         //immer syncen mit Excel-DB (im Hinblick auf ausloggen)
 
     /**
      * Konstruktor,

@@ -1,14 +1,23 @@
 package main;
 
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
+import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -30,7 +39,7 @@ public class HeaderPanel extends JPanel {
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
-     * Header setzt sich aus Anwenungsicon, -titel und Usericon zusammen.
+     * Header setzt sich aus Anwendungsicon, -titel und User-Icon zusammen.
      * 
      * @param headerTitle der Anwendungsname
      */
@@ -78,7 +87,7 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode nimmt einen geünschten Titel entgegen, welcher mit einem Font
+     * Diese Methode nimmt einen gewünschten Titel entgegen, welcher mit einem Font
      * versehen und schließlich, gewrappt durch ein JLabel, wieder zurückgegeben
      * wird.
      * 
@@ -93,25 +102,37 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
+     * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
+     * "Menüheader" ein User-Icon.
      * 
-     * 
-     * @param filename
-     * @return
+     * @param userIconFile
+     * @return User-Icon-Menü innerhalb einer JMenuBar
      */
-    public JMenuBar userSymbolAdder(String filename) {
+    public JMenuBar userSymbolAdder(String userIconFile) {
         userIconButton = new JMenu();
 
-        ImageIcon userImage = new ImageIcon(filename);
+        ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
         JMenuItem welcomeItem = new JMenuItem("<HTML><U>Willkommen (tbd)UserName!</U></HTML>");
         welcomeItem.setEnabled(false);
-        JMenuItem normItem1 = new JMenuItem("Ihr Profil");
-        JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen");
+
+        ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
+                .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon settingsIcon = new ImageIcon(new ImageIcon("Library/images/settingsIcon.png").getImage()
+                .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon helpIcon = new ImageIcon(new ImageIcon("Library/images/helpIcon.png").getImage().getScaledInstance(20,
+                20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon aboutIcon = new ImageIcon(new ImageIcon("Library/images/aboutIcon.png").getImage()
+                .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+
+        JMenuItem normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
-        JMenuItem normItem3 = new JMenuItem("Hilfe");
-        JMenuItem normItem4 = new JMenuItem("Über...");
+        JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
+        JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
+        JMenuItem logOffItem = new JMenuItem("Ausloggen...");
 
         userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
@@ -119,6 +140,7 @@ public class HeaderPanel extends JPanel {
         userIconButton.add(separatorItem);
         userIconButton.add(normItem3);
         userIconButton.add(normItem4);
+        userIconButton.add(logOffItem);
 
         mb = new JMenuBar();
         mb.add(userIconButton);
@@ -147,7 +169,7 @@ public class HeaderPanel extends JPanel {
      * @param filename
      * @param width
      * @param height
-     * @return fit-resized Applogo-Icon
+     * @return Größe-angepasstes Applogo-Icon
      */
     private static JLabel resizeToJLabel(String filename, int width, int height, int horizontalAlignment) {
         ImageIcon logoIIcon = new ImageIcon(filename);
