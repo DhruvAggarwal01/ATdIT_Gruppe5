@@ -15,16 +15,25 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import main.MainPanel;
+import main.NavItemPanelChooser;
+
 import java.awt.*;
 
 import java.io.*;
 
+/**
+ * 
+ */
 public class ReadRSSPanel extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
 
     JTextArea newsFeedTextField;
 
+    /**
+     * 
+     */
     public ReadRSSPanel(String newsTitle, String rssUrl) {
         this.setLayout(new BorderLayout());
 
@@ -68,13 +77,37 @@ public class ReadRSSPanel extends JPanel {
         JScrollPane sp = new JScrollPane(newsFeedTextField);
         sp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        // Reporting-Weiterleitung
+        JPanel reportingPanel = new JPanel();
+        reportingPanel.setBorder(BorderFactory.createRaisedBevelBorder());
+        JLabel jl3 = new JLabel("zum Reporting", JLabel.CENTER);
+        reportingPanel.add(jl3, BorderLayout.CENTER);
+        MouseClickListener mCL = new MouseClickListener();
+        reportingPanel.addMouseListener(mCL);
+
         this.add(newsTitleLabel, BorderLayout.NORTH);
         this.add(sp, BorderLayout.CENTER);
+        this.add(reportingPanel, BorderLayout.SOUTH);
 
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
+    /**
+     * 
+     */
+    class MouseClickListener extends MouseAdapter {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
+        }
+
+    }
+
+    /**
+     * 
+     */
     public static String readRSSFeed(String rssUrl) {
         try {
             URL rssUrlAddress = new URL(rssUrl);

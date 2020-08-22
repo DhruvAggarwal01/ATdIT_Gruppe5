@@ -2,8 +2,6 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.util.Arrays;
-import java.util.HashSet;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -34,12 +32,7 @@ public class MainPanel extends JFrame {
         c.setLayout(new BorderLayout());
 
         headerPanel = new HeaderPanel(appTitle);
-        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
-                new HashSet<String>(Arrays.asList("VIEWER"))); // tbd: wird entfernt;
-                                                              // Duplikate sind
-                                                              // programmatisch möglich,
-                                                              // aber nicht clean code ->
-                                                              // werden aus DB übernommen
+        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT); 
 
         c.add(headerPanel, BorderLayout.NORTH);
         c.add(navPane, BorderLayout.CENTER);

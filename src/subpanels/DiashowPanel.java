@@ -9,6 +9,9 @@ import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * 
+ */
 public class DiashowPanel extends JPanel {
 
     private static final long serialVersionUID = 5722480908754773180L;
@@ -17,6 +20,9 @@ public class DiashowPanel extends JPanel {
     private ImageIcon[] image = new ImageIcon[4];
     private JLabel diashowLabel;
 
+    /**
+     * 
+     */
     public DiashowPanel(String diashowTitle) {
         this.setLayout(new BorderLayout());
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
@@ -41,6 +47,9 @@ public class DiashowPanel extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
     }
 
+    /**
+     * 
+     */
     class TimerListener implements ActionListener {
 
         @Override
