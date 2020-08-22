@@ -26,7 +26,7 @@ public class Application {
      * @param args obligatorischer Eingabeparameter (hier: ungenutzt, d.h.
      *             entspricht <code>null</code>)
      */
-    public static void main(String[] args) {
+    public static void startApp() {
         try {
             // tbd: theme setting in JDialog, possible to set by user
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
