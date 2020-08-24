@@ -2,6 +2,7 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Objects;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -100,5 +101,21 @@ public class NavItemPanelChooser extends JPanel {
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
+        return Objects.equals(navItemName01, navIPC.navItemName01) && Objects.equals(navItemName02, navIPC.navItemName02)
+                && Objects.equals(navItemName03, navIPC.navItemName03);
     }
 }

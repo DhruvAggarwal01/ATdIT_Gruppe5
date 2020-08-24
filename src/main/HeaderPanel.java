@@ -188,5 +188,4 @@ public class HeaderPanel extends JPanel {
 
         return new JLabel(logoIIcon, horizontalAlignment);
     }
-
 }
