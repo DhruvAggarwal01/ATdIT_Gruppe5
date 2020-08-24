@@ -7,7 +7,8 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 **databases** beinhaltet die Datenbanken  
 **Library** beinhaltet  
 + **diagrams**  
-+ **images**  
++ **images**
+**src** beinhaltet den Quellcode  
 
 ## Erklärungen
 <code>.gitignore</code> wie der Name schon sagt, werden die in diesem Dokument gelisteten Files von GitHub ignoriert
