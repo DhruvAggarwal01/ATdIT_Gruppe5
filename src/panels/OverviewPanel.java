@@ -1,18 +1,10 @@
 package panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.MainPanel;
-import main.NavItemPanelChooser;
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
@@ -39,55 +31,6 @@ public class OverviewPanel extends JPanel {
 
         this.add(smallPanels, BorderLayout.NORTH);
         this.add(diashow, BorderLayout.CENTER);
-
-        // this.setLayout(new GridLayout(2, 2, 30, 30));
-        // this.setBorder(
-        // BorderFactory.createCompoundBorder(this.getBorder(),
-        // BorderFactory.createEmptyBorder(10, 5, 5, 5)));
-
-        // // 1. Panel: News
-        // JPanel newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf
-        // Wochenblatt Reporter",
-        // "https://www.wochenblatt-reporter.de/albersweiler/rss");
-
-        // // 2. Panel: Wetter
-        // JPanel weatherPanel = new WeatherPanel();
-
-        // // 3. Panel:
-        // JPanel jp3 = new JPanel();
-        // JLabel jl3 = new JLabel("---zum Reporting < klick mich! >---",
-        // JLabel.CENTER);
-        // jp3.add(jl3, BorderLayout.CENTER);
-        // MouseClickListener mCL = new MouseClickListener(this);
-        // jp3.addMouseListener(mCL);
-
-        // // 4. Panel:
-        // JPanel diashow = new DiashowPanel();
-
-        // this.add(newsPanel);
-        // this.add(weatherPanel);
-        // this.add(jp3);
-        // this.add(diashow);
-    }
-
-    class MouseClickListener extends MouseAdapter {
-
-        OverviewPanel oP;
-
-        MouseClickListener(OverviewPanel oP) {
-            this.oP = oP;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            oP.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        }
     }
 
 }

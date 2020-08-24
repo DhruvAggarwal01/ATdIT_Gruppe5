@@ -18,12 +18,19 @@ import javax.swing.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * 
+ */
 public class WeatherPanel extends JPanel {
 
     private static final long serialVersionUID = 4813738149309511564L;
 
     JTextArea weatherForecastArea;
 
+    /**
+     * 
+     * @param weatherForecastTitle
+     */
     public WeatherPanel(String weatherForecastTitle) {
         this.setLayout(new BorderLayout());
         String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
@@ -103,6 +110,11 @@ public class WeatherPanel extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
     }
 
+    /**
+     * 
+     * @param str
+     * @return
+     */
     public static Map<String, Object> jsonToMap(String str) {
         Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {
         }.getType());

@@ -1,7 +1,10 @@
 package main;
 
 import java.awt.Toolkit;
+
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * Diese Klasse dient zur Ausführung der Anwendungsapplikation.
@@ -24,6 +27,21 @@ public class Application {
      *             entspricht <code>null</code>)
      */
     public static void main(String[] args) {
+        // try {
+        //     // tbd: theme setting in JDialog, possible to set by user
+        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
+        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.mac.MacLookAndFeel");
+        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        // } catch (UnsupportedLookAndFeelException e) {
+        //     // handle exception
+        // } catch (ClassNotFoundException e) {
+        //     // handle exception
+        // } catch (InstantiationException e) {
+        //     // handle exception
+        // } catch (IllegalAccessException e) {
+        //     // handle exception
+        // }
         appWindow = new MainPanel();
         appWindow.setTitle("App: " + MainPanel.getAppTitle());
         appWindow.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());

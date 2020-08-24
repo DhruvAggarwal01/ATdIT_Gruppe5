@@ -1,13 +1,14 @@
 package main;
 
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
 
 /**
- * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren Style-Komponenten (z.B. Fonts, Farben, ...).
+ * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
+ * Style-Komponenten (z.B. Fonts, Farben, ...).
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -38,5 +39,8 @@ public class Styles {
      */
     public final static Font NAVPANE_FONT = new Font("Serif", Font.BOLD, 24);
 
-    public final static Font TAB_BORDERTITLE_FONT = new Font("Serif", Font.BOLD, 16);
+    /**
+     * 
+     */
+    public final static Font TAB_BORDERTITLE_FONT = new Font("Serif", Font.BOLD, 18);
 }
