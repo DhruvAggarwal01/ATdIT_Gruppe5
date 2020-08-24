@@ -20,6 +20,8 @@ public class NavigationPane extends JTabbedPane {
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
      * wirft, wenn aus unerklärlichen Gründen die Rechte unbekannt sind.
      * 
+     * permGroup ist inzwischen obsolet und wird aus dem Coding genommen tbd
+     * 
      * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
      * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn
      *                        alle Tabs nicht in eine einzelne Ausführung passen
@@ -27,6 +29,7 @@ public class NavigationPane extends JTabbedPane {
     public NavigationPane(int tabPlacement, int tabLayoutPolicy) {
         super(tabPlacement, tabLayoutPolicy);
         this.setFont(Styles.NAVPANE_FONT);
+
         isAllowedToView = true; // noch hartkodiert --> aus User-DB
         if (isAllowedToView) {
             this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
@@ -46,5 +49,4 @@ public class NavigationPane extends JTabbedPane {
     public static void showError(String errorMessage, String title) {
         JOptionPane.showMessageDialog(Application.getAppWindow(), errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
     }
-
 }
