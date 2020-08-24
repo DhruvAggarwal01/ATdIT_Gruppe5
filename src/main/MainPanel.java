@@ -1,10 +1,10 @@
 package main;
-
+ 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.HashSet;
-
+ 
 /**
  * Diese Klasse leitet den Aufbau der Anwendung ein.
  * 
@@ -12,15 +12,15 @@ import java.util.HashSet;
  *         Lahr
  */
 public class MainPanel extends JFrame {
-
+ 
     private static final long serialVersionUID = -8417942669407317542L;
-
+ 
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
-
+ 
     private Container c;
-
+ 
     /**
      * tbd after User config is done
      */
@@ -28,7 +28,7 @@ public class MainPanel extends JFrame {
         // je nach Recht andere NavPane) als Parameter
         c = getContentPane();
         c.setLayout(new BorderLayout());
-
+ 
         headerPanel = new HeaderPanel(appTitle);
         c.add(headerPanel, BorderLayout.NORTH);
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT,
@@ -36,7 +36,7 @@ public class MainPanel extends JFrame {
                                                                                             // so aus DB übernommen
         c.add(navPane, BorderLayout.CENTER);
     }
-
+ 
     /**
      * Getter-Methode für <code>appTitle</code>
      * 
@@ -45,7 +45,7 @@ public class MainPanel extends JFrame {
     public static String getAppTitle() {
         return appTitle;
     }
-
+ 
     /**
      * Getter-Methode für <code>navPane</code>
      * 
@@ -54,7 +54,7 @@ public class MainPanel extends JFrame {
     public static NavigationPane getNavPane() {
         return navPane;
     }
-
+ 
     /**
      * Getter-Methode für <code>headerPanel</code>
      * 
@@ -63,5 +63,5 @@ public class MainPanel extends JFrame {
     public static HeaderPanel getHeaderPanel() {
         return headerPanel;
     }
-
+ 
 }

@@ -28,7 +28,7 @@ public class HeaderPanel extends JPanel {
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
-     * Header setzt sich aus Anwenungsicon, -titel und Usericon zusammen.
+     * Header setzt sich aus Anwendungsicon, -titel und Usericon zusammen.
      * 
      * @param headerTitle der Anwendungsname
      */
