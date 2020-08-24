@@ -2,6 +2,7 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Objects;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
