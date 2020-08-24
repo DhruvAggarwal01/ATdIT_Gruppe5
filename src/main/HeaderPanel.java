@@ -5,17 +5,22 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
+import dialogs.ProfileDialog;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -125,6 +130,12 @@ public class HeaderPanel extends JPanel {
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
         JMenuItem normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        normItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog profileDialog = new ProfileDialog(Application.getAppWindow());
+            }
+        });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
