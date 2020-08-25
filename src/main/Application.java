@@ -1,10 +1,11 @@
 package main;
 
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.Timer;
+
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Diese Klasse dient zur Ausführung der Anwendungsapplikation.
@@ -15,9 +16,29 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Application {
 
     private static JFrame appWindow;
+    private static int timeoutDelay = 50000;
 
+    /**
+     * 
+     * @return
+     */
     public static JFrame getAppWindow() {
         return appWindow;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public static int getTimeoutDelay() {
+        return timeoutDelay;
+    }
+
+    /**
+     * 
+     */
+    public static void setTimeoutDelay(int timeoutDelaySet) {
+        timeoutDelay = timeoutDelaySet;
     }
 
     /**
@@ -27,21 +48,6 @@ public class Application {
      *             entspricht <code>null</code>)
      */
     public static void main(String[] args) {
-        // try {
-        //     // tbd: theme setting in JDialog, possible to set by user
-        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
-        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.mac.MacLookAndFeel");
-        //     // UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-        // } catch (UnsupportedLookAndFeelException e) {
-        //     // handle exception
-        // } catch (ClassNotFoundException e) {
-        //     // handle exception
-        // } catch (InstantiationException e) {
-        //     // handle exception
-        // } catch (IllegalAccessException e) {
-        //     // handle exception
-        // }
         appWindow = new MainPanel();
         appWindow.setTitle("App: " + MainPanel.getAppTitle());
         appWindow.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -49,5 +55,11 @@ public class Application {
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);
         appWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        new Timer(timeoutDelay, new ActionListener() { // delay time should be settable by user in SettingsDialog
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                appWindow.dispose();
+            }
+        }).start();
     }
 }

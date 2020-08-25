@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -19,6 +20,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import dialogs.ProfileDialog;
 
@@ -133,7 +135,17 @@ public class HeaderPanel extends JPanel {
         normItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog profileDialog = new ProfileDialog(Application.getAppWindow());
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), "Ihr Profil", true);
+                        profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+                        profileDialog.setUndecorated(true);
+                        // profileDialog.setOpacity(0.9f);//dim background before opening jdialog
+                        profileDialog.setVisible(true);
+                    }
+                });
+
             }
         });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
