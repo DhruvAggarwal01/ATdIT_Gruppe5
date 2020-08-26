@@ -1,5 +1,8 @@
 package dialogs;
 
+import javax.swing.JSpinner;
+import javax.swing.JToggleButton;
+
 // import javax.swing.UIManager;
 // import javax.swing.UnsupportedLookAndFeelException;
 
@@ -7,6 +10,10 @@ package dialogs;
  * 
  */
 public class SettingsDialog {
+
+    JToggleButton themeToggle;
+    JSpinner timeoutDelay;      //SpinnerModel sm = new SpinnerNumberModel(0, 0, 100, 1); //default value,lower bound,upper bound,increment by
+    
     public SettingsDialog(){
         //let user set the theme, user inactivity dispose after time
         

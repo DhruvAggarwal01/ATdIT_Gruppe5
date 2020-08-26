@@ -32,7 +32,7 @@ public class MainPanel extends JFrame {
         c.setLayout(new BorderLayout());
 
         headerPanel = new HeaderPanel(appTitle);
-        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT); 
+        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
 
         c.add(headerPanel, BorderLayout.NORTH);
         c.add(navPane, BorderLayout.CENTER);

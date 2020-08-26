@@ -18,6 +18,8 @@ import javax.swing.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import main.Styles;
+
 /**
  * 
  */
@@ -95,6 +97,7 @@ public class WeatherPanel extends JPanel {
             weatherForecastArea.setText(
                     "Current Temperature: " + mainMap.get("temp") + "\nCurrent Humidity: " + mainMap.get("humidity")
                             + "\nWind Speeds: " + windMap.get("speed") + "\nWind Angle: " + windMap.get("deg"));
+            weatherForecastArea.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
             weatherForecastArea.setWrapStyleWord(true);
             weatherForecastArea.setEditable(false);
             weatherForecastArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

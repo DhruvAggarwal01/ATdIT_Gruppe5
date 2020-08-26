@@ -2,7 +2,6 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Dialog.ModalityType;
@@ -101,7 +100,7 @@ public class HeaderPanel extends JPanel {
      */
     public JLabel headerTitleAdder(String headerTitle) {
         headerTitleJLabel = new JLabel(headerTitle, JLabel.CENTER);
-        headerTitleJLabel.setFont(new Font("Serif", Font.BOLD, 36));
+        headerTitleJLabel.setFont(Styles.APPHEADING);
 
         return headerTitleJLabel;
     }

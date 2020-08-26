@@ -1,10 +1,6 @@
 package main;
 
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
@@ -18,29 +14,21 @@ public class Styles {
     /**
      * Einsatzmöglichkeit: Font für Anwendungstitel
      * 
-     * @return <code>appheading</code> oder <code>null</code>
      */
-    public final static Font APPHEADING() {
-        try {
-            Font appheading = Font.createFont(Font.TRUETYPE_FONT, new File("Library/SfEspressoShackBold-P3L7.ttf"));
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(appheading);
-            return appheading;
-        } catch (IOException ioe) {
-            ioe.getStackTrace();
-        } catch (FontFormatException ffe) {
-            ffe.getStackTrace();
-        }
-        return null;
-    }
+    public final static Font APPHEADING = new Font("Arial", Font.BOLD, 36);
 
     /**
      * Einsatzmöglichkeit: Font für Navigationsleisten-Elemente
      */
-    public final static Font NAVPANE_FONT = new Font("Serif", Font.BOLD, 24);
+    public final static Font NAVPANE_FONT = new Font("Arial", Font.BOLD, 24);
 
     /**
-     * 
+     * Einsatzmöglichkeit: Font für 
      */
-    public final static Font TAB_BORDERTITLE_FONT = new Font("Serif", Font.BOLD, 18);
+    public final static Font TAB_BORDERTITLE_FONT = new Font("Arial", Font.BOLD, 18);
+
+    /**
+     * Einsatzmöglichkeit: Font für 
+     */
+    public final static Font SUBPANEL_TEXTCOMPONENT_FONT = new Font("Arial", Font.PLAIN, 12);
 }

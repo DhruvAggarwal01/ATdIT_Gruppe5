@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 
 import main.MainPanel;
 import main.NavItemPanelChooser;
+import main.Styles;
 
 import java.awt.*;
 
@@ -70,7 +71,8 @@ public class ReadRSSPanel extends JPanel {
                 super.paint(g);
             }
         };
-        newsFeedTextField.setFont(new Font("Consolas", Font.PLAIN, 10));
+        newsFeedTextField.replaceRange("", 0, newsTitle.length());
+        newsFeedTextField.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
         newsFeedTextField.setWrapStyleWord(true);
         newsFeedTextField.setEditable(false);
 
