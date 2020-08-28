@@ -88,7 +88,7 @@ public class HeaderPanel extends JPanel {
      * @return angepasstes Applogo-Icon
      */
     public JLabel logoAdder(String filename) {
-        logoIconInJLabel = resizeToJLabel(filename, 44, 44, JLabel.CENTER);
+        logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
         logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         logoIconInJLabel.addMouseListener(new MouseLogoIconListener());
 

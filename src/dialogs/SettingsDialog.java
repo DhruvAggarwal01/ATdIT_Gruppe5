@@ -59,6 +59,7 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
 
     private JPanel cPanel;
     private JButton closeButton;
+    private JButton applyAndCloseButton;
 
     public SettingsDialog(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -103,24 +104,30 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
 
         timeoutTimeLabel = new JLabel("Zeit bis zum Timeout (in min):");
         timeoutTimeLabel.setFont(Styles.PROFILE_LVL3_FONT);
-        timeoutSpinnerModel = new SpinnerNumberModel(Application.getTimeoutDelay() / 60000, 60000 / 60000,
+        timeoutSpinnerModel = new SpinnerNumberModel(Application.timeoutTimer.getInitialDelay() / 60000, 60000 / 60000,
                 7200000 / 60000, 1);
         timeoutTimeSpinner = new JSpinner(timeoutSpinnerModel);
 
-        //tbd: functionality --> timeout set reader textfield, setTimeout
+        // tbd: functionality --> timeout set reader textfield, setTimeout
 
         functionalitySettingsPanel.add(timeoutTimeLabel);
         functionalitySettingsPanel.add(timeoutTimeSpinner);
 
         ImageIcon closeIcon = new ImageIcon(new ImageIcon("Library/images/closeIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon applyAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
+                .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
         cPanel = new JPanel(new GridLayout(1, 3, 140, 140));
-        closeButton = new JButton("Apply & Close", closeIcon);
+        closeButton = new JButton("Close", closeIcon);
         closeButton.setFont(Styles.RSSC_BUTTON_FONT);
         closeButton.addActionListener(this);
+        applyAndCloseButton = new JButton("Apply Timeout & Close", applyAndCloseIcon);
+        applyAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
+        applyAndCloseButton.addActionListener(this);
 
         cPanel.add(closeButton);
+        cPanel.add(applyAndCloseButton);
 
         contentPanel.add(settingsTitleLabel);
         contentPanel.add(titleStyleSettingsLabel);
@@ -135,6 +142,10 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == closeButton) {
+            this.dispose();
+        }
+        if (e.getSource() == applyAndCloseButton) {
+            Application.restartTimeoutTimerWithNewDelay(((Integer) timeoutTimeSpinner.getValue()) * 60000);
             this.dispose();
         }
     }

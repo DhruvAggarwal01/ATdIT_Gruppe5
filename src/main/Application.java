@@ -14,7 +14,7 @@ public class Application {
 
     public static TimeoutTimer timeoutTimer;
     private static JFrame appWindow;
-    private static int timeoutDelay = 100000;
+    private static int timeoutDelay = 3600000;
 
     /**
      * 
@@ -32,11 +32,14 @@ public class Application {
         return timeoutDelay;
     }
 
-    /**
-     * 
-     */
-    public static void setTimeoutDelay(int timeoutDelaySet) {
-        timeoutDelay = timeoutDelaySet;
+    public static void startTimeoutTimer(int delay) {
+        timeoutTimer = new TimeoutTimer(delay);
+        timeoutTimer.start();
+    }
+
+    public static void restartTimeoutTimerWithNewDelay(int delay) {
+        timeoutTimer.setInitialDelay(delay);
+        timeoutTimer.restart();
     }
 
     /**
@@ -53,7 +56,6 @@ public class Application {
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);
         appWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        timeoutTimer = new TimeoutTimer(timeoutDelay);
-        timeoutTimer.start();
+        startTimeoutTimer(timeoutDelay);
     }
 }

@@ -30,7 +30,7 @@ public class Styles {
     /**
      * Einsatzmöglichkeit: Font für Navigationsleisten-Elemente
      */
-    public final static Font NAVPANE_FONT = new Font("Rockwell", Font.BOLD, 22);
+    public final static Font NAVPANE_FONT = new Font("Rockwell", Font.BOLD, 20);
 
     /**
      * Einsatzmöglichkeit: Font für
