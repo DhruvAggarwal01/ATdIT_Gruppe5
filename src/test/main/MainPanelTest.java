@@ -1,7 +1,8 @@
 package test.main;
- 
+
 import org.junit.*;
- 
+
+import main.HeaderPanel;
 import main.MainPanel;
 import main.NavItemPanelChooser;
  
@@ -24,6 +25,13 @@ public class MainPanelTest {
     @Test
     public void testAppTitle() {
         Assert.assertEquals("Steinbruch ALBERSWEILER", MainPanel.getAppTitle());
+    }
+
+    @Test
+    public void testSetHeaderPanel(){
+        HeaderPanel panelTesten = new HeaderPanel(null);
+        MainPanel.setHeaderPanel(panelTesten);
+        Assert.assertFalse(MainPanel.getHeaderpanel().equals(null));
     }
  
 }

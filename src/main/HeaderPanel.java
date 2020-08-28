@@ -99,6 +99,10 @@ public class HeaderPanel extends JPanel {
         return headerTitleJLabel;
     }
 
+    public JLabel getHeaderTitleJLabel(){
+        return headerTitleJLabel;
+    }
+
     /**
      * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
      * "Menüheader" ein User-Icon.

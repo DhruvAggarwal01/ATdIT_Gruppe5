@@ -30,7 +30,7 @@ public class NavigationPane extends JTabbedPane {
         super(tabPlacement, tabLayoutPolicy);
         this.setFont(Styles.NAVPANE_FONT);
 
-        isAllowedToView = true; // noch hartkodiert --> aus User-DB
+        isAllowedToView = true; // tbd entfernen
         if (isAllowedToView) {
             this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
             this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
@@ -48,5 +48,9 @@ public class NavigationPane extends JTabbedPane {
 
     public static void showError(String errorMessage, String title) {
         JOptionPane.showMessageDialog(Application.getAppWindow(), errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void setisAllowedToView(boolean isAllowedToView){
+        this.isAllowedToView = isAllowedToView;
     }
 }

@@ -3,8 +3,6 @@ package main;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * Diese Klasse dient zur Ausführung der Anwendungsapplikation.

@@ -8,6 +8,7 @@ import javax.swing.JMenuBar;
 
 import org.junit.*;
 
+import main.HeaderPanel;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 
@@ -64,6 +65,14 @@ public class HeaderPanelTest {
     @Test
     public void testProfileMenuNotSelected() {
         Assert.assertFalse("Profile Menu is not selected initially", testMenu.isSelected());
+    }
+
+    
+    @Test
+    public void testHeaderTitleAdder() {
+        HeaderPanel panelTest = new HeaderPanel("Test");
+        panelTest.headerTitleAdder("Test");
+        Assert.assertEquals("Test",panelTest.getHeaderTitleJLabel().getText());
     }
 
     @AfterClass
