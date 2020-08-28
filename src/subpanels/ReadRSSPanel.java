@@ -39,6 +39,7 @@ public class ReadRSSPanel extends JPanel {
         this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
+        newsTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         newsTitleLabel.setForeground(Color.BLUE.darker());
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'

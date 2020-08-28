@@ -1,11 +1,8 @@
 package main;
 
 import javax.swing.JFrame;
-import javax.swing.Timer;
 
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * Diese Klasse dient zur Ausführung der Anwendungsapplikation.
@@ -15,8 +12,9 @@ import java.awt.event.ActionEvent;
  */
 public class Application {
 
+    public static TimeoutTimer timeoutTimer;
     private static JFrame appWindow;
-    private static int timeoutDelay = 50000;
+    private static int timeoutDelay = 100000;
 
     /**
      * 
@@ -55,11 +53,7 @@ public class Application {
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);
         appWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        new Timer(timeoutDelay, new ActionListener() { // delay time should be settable by user in SettingsDialog
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appWindow.dispose();
-            }
-        }).start();
+        timeoutTimer = new TimeoutTimer(timeoutDelay);
+        timeoutTimer.start();
     }
 }

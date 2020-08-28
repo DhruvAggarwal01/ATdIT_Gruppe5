@@ -38,6 +38,7 @@ public class WeatherPanel extends JPanel {
         String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
 
         JLabel weatherForecastTitleLabel = new JLabel();
+        weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         weatherForecastTitleLabel.setText(weatherForecastTitle);
         weatherForecastTitleLabel.setForeground(Color.BLUE.darker());

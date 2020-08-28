@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import main.Styles;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -25,7 +27,9 @@ public class DiashowPanel extends JPanel {
      */
     public DiashowPanel(String diashowTitle) {
         this.setLayout(new BorderLayout());
+
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
+        diashowTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         diashowTitleLabel.setHorizontalAlignment(JLabel.CENTER);
         diashowTitleLabel.setForeground(Color.BLUE.darker());
         diashowTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));

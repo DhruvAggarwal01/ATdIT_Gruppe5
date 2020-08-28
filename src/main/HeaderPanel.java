@@ -19,9 +19,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import dialogs.ProfileDialog;
+import dialogs.SettingsDialog;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -68,11 +70,14 @@ public class HeaderPanel extends JPanel {
      */
     public void initSetUp() {
         this.setLayout(new GridLayout(1, 3, 0, 0));
-        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png"); // --> andere Option mit Bild
+        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png");
         this.setBorder(BorderFactory.createMatteBorder(-1, -1, -1, -1, borderLine));
+        this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
         logoAndHeaderTitle = new JPanel(new GridLayout(2, 1));
-        userIconWithMenuInJPanel = new JPanel(new BorderLayout()); // Listener soll sich nur auf diesen JPanel beziehen
+        logoAndHeaderTitle.setBackground(Styles.SURROUNDING_PANEL_COLOR);
+        userIconWithMenuInJPanel = new JPanel(new BorderLayout());
+        userIconWithMenuInJPanel.setBackground(Styles.SURROUNDING_PANEL_COLOR);
     }
 
     /**
@@ -99,7 +104,7 @@ public class HeaderPanel extends JPanel {
      * @return Label für Titel
      */
     public JLabel headerTitleAdder(String headerTitle) {
-        headerTitleJLabel = new JLabel(headerTitle, JLabel.CENTER);
+        headerTitleJLabel = new JLabel(headerTitle, SwingConstants.CENTER);
         headerTitleJLabel.setFont(Styles.APPHEADING);
 
         return headerTitleJLabel;
@@ -137,10 +142,10 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), "Ihr Profil", true);
+                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), normItem1.getText(),
+                                true);
                         profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         profileDialog.setUndecorated(true);
-                        // profileDialog.setOpacity(0.9f);//dim background before opening jdialog
                         profileDialog.setVisible(true);
                     }
                 });
@@ -148,6 +153,22 @@ public class HeaderPanel extends JPanel {
             }
         });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        normItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        JDialog settingsDialog = new SettingsDialog(Application.getAppWindow(), normItem2.getText(),
+                                true);
+                        settingsDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+                        settingsDialog.setUndecorated(true);
+                        settingsDialog.setVisible(true);
+                    }
+                });
+
+            }
+        });
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
         JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
@@ -163,6 +184,7 @@ public class HeaderPanel extends JPanel {
         userIconButton.add(logOffItem);
 
         mb = new JMenuBar();
+        mb.setBackground(Styles.SURROUNDING_PANEL_COLOR);
         mb.add(userIconButton);
 
         return mb;

@@ -29,6 +29,7 @@ public class NavigationPane extends JTabbedPane {
     public NavigationPane(int tabPlacement, int tabLayoutPolicy) {
         super(tabPlacement, tabLayoutPolicy);
         this.setFont(Styles.NAVPANE_FONT);
+        this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
         isAllowedToView = true; // noch hartkodiert --> aus User-DB
         if (isAllowedToView) {
