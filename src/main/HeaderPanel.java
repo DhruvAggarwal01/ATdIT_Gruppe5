@@ -2,20 +2,28 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Dialog.ModalityType;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
+import dialogs.ProfileDialog;
+import dialogs.SettingsDialog;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -62,11 +70,14 @@ public class HeaderPanel extends JPanel {
      */
     public void initSetUp() {
         this.setLayout(new GridLayout(1, 3, 0, 0));
-        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png"); // --> andere Option mit Bild
+        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png");
         this.setBorder(BorderFactory.createMatteBorder(-1, -1, -1, -1, borderLine));
+        this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
         logoAndHeaderTitle = new JPanel(new GridLayout(2, 1));
-        userIconWithMenuInJPanel = new JPanel(new BorderLayout()); // Listener soll sich nur auf diesen JPanel beziehen
+        logoAndHeaderTitle.setBackground(Styles.SURROUNDING_PANEL_COLOR);
+        userIconWithMenuInJPanel = new JPanel(new BorderLayout());
+        userIconWithMenuInJPanel.setBackground(Styles.SURROUNDING_PANEL_COLOR);
     }
 
     /**
@@ -77,7 +88,7 @@ public class HeaderPanel extends JPanel {
      * @return angepasstes Applogo-Icon
      */
     public JLabel logoAdder(String filename) {
-        logoIconInJLabel = resizeToJLabel(filename, 44, 44, JLabel.CENTER);
+        logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
         logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         logoIconInJLabel.addMouseListener(new MouseLogoIconListener());
 
@@ -93,8 +104,8 @@ public class HeaderPanel extends JPanel {
      * @return Label für Titel
      */
     public JLabel headerTitleAdder(String headerTitle) {
-        headerTitleJLabel = new JLabel(headerTitle, JLabel.CENTER);
-        headerTitleJLabel.setFont(new Font("Serif", Font.BOLD, 36));
+        headerTitleJLabel = new JLabel(headerTitle, SwingConstants.CENTER);
+        headerTitleJLabel.setFont(Styles.APPHEADING);
 
         return headerTitleJLabel;
     }
@@ -125,7 +136,39 @@ public class HeaderPanel extends JPanel {
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
         JMenuItem normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        normItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), normItem1.getText(),
+                                true);
+                        profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+                        profileDialog.setUndecorated(true);
+                        profileDialog.setVisible(true);
+                    }
+                });
+
+            }
+        });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        normItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        JDialog settingsDialog = new SettingsDialog(Application.getAppWindow(), normItem2.getText(),
+                                true);
+                        settingsDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+                        settingsDialog.setUndecorated(true);
+                        settingsDialog.setVisible(true);
+                    }
+                });
+
+            }
+        });
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
         JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
@@ -141,6 +184,7 @@ public class HeaderPanel extends JPanel {
         userIconButton.add(logOffItem);
 
         mb = new JMenuBar();
+        mb.setBackground(Styles.SURROUNDING_PANEL_COLOR);
         mb.add(userIconButton);
 
         return mb;

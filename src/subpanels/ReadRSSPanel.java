@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 
 import main.MainPanel;
 import main.NavItemPanelChooser;
+import main.Styles;
 
 import java.awt.*;
 
@@ -38,6 +39,7 @@ public class ReadRSSPanel extends JPanel {
         this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
+        newsTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         newsTitleLabel.setForeground(Color.BLUE.darker());
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
@@ -70,7 +72,8 @@ public class ReadRSSPanel extends JPanel {
                 super.paint(g);
             }
         };
-        newsFeedTextField.setFont(new Font("Consolas", Font.PLAIN, 10));
+        newsFeedTextField.replaceRange("", 0, newsTitle.length());
+        newsFeedTextField.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
         newsFeedTextField.setWrapStyleWord(true);
         newsFeedTextField.setEditable(false);
 
