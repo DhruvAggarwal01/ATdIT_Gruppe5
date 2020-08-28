@@ -110,7 +110,7 @@ public class HeaderPanel extends JPanel {
         return headerTitleJLabel;
     }
 
-    public JLabel getHeaderTitleJLabel(){
+    public JLabel getHeaderTitleJLabel() {
         return headerTitleJLabel;
     }
 

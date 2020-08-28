@@ -20,7 +20,7 @@ public class NavigationPaneTest {
     @Before
     public void init() {
         testFrame = new JFrame();
-        testFrame.setVisible(true); 
+        testFrame.setVisible(true);
     }
 
     @Test
@@ -31,25 +31,17 @@ public class NavigationPaneTest {
     }
 
     @Test
-    public void testIsTabExisting(){
+    public void testIsTabExisting() {
         testNavPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
         testFrame.add(testNavPane);
         Assert.assertTrue((testNavPane.getTabComponentAt(0)).equals(new NavItemPanelChooser("Overview", null, null)));
     }
 
     @Test
-    public void testTabTitle(){
+    public void testTabTitle() {
         testNavPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
         testFrame.add(testNavPane);
         Assert.assertEquals("Overview", testNavPane.getTitleAt(0));
     }
 
-  /*  @Test
-    public void testShowError(){
-        testNavPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
-        testFrame.add(testNavPane);
-        testNavPane.setisAllowedToView(false);
-        Assert.assertEquals(0, testNavPane.getTabCount());
-    }
-*/
 }
