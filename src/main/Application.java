@@ -45,8 +45,7 @@ public class Application {
     /**
      * Ausgabe der Anwendung in einem Fenster
      * 
-     * @param args obligatorischer Eingabeparameter (hier: ungenutzt, d.h.
-     *             entspricht <code>null</code>)
+     * @param args obligatorischer Eingabeparameter der main-Methode
      */
     public static void main(String[] args) {
         appWindow = new MainPanel();
