@@ -7,6 +7,7 @@ import java.util.Objects;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
 import panels.OverviewPanel;
@@ -89,7 +90,7 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                     case "Reporting":
                         this.setLayout(new BorderLayout());
-                        this.add(new JLabel("REPORTING tbd"), BorderLayout.CENTER); // tbd
+                        this.add(new JLabel("REPORTING-Panel", SwingUtilities.CENTER), BorderLayout.CENTER); // tbd
                     default:
                         break;
                 }

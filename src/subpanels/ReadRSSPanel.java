@@ -99,18 +99,6 @@ public class ReadRSSPanel extends JPanel {
     /**
      * 
      */
-    class MouseClickListener extends MouseAdapter {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
-        }
-
-    }
-
-    /**
-     * 
-     */
     public static String readRSSFeed(String rssUrl) {
         try {
             URL rssUrlAddress = new URL(rssUrl);
@@ -136,5 +124,17 @@ public class ReadRSSPanel extends JPanel {
             System.out.println("Something went wrong reading the contents");
         }
         return null;
+    }
+
+     /**
+     * 
+     */
+    class MouseClickListener extends MouseAdapter {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
+        }
+
     }
 }
