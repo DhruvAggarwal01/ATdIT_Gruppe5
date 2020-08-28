@@ -89,4 +89,8 @@ public class MainPanel extends JFrame {
     public static void setHeaderPanel(HeaderPanel headerPanelSet) {
         headerPanel = headerPanelSet;
     }
+
+    public static HeaderPanel getHeaderpanel(){
+        return headerPanel;
+    }
 }

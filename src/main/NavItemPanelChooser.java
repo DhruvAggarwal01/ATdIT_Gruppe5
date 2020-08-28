@@ -116,7 +116,8 @@ public class NavItemPanelChooser extends JPanel {
             return false;
         }
         NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
-        return Objects.equals(navItemName01, navIPC.navItemName01) && Objects.equals(navItemName02, navIPC.navItemName02)
+        return Objects.equals(navItemName01, navIPC.navItemName01)
+                && Objects.equals(navItemName02, navIPC.navItemName02)
                 && Objects.equals(navItemName03, navIPC.navItemName03);
     }
 }
