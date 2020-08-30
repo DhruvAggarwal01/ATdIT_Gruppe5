@@ -5,7 +5,7 @@ import org.junit.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import main.ToDoElement;
+import panels.ToDoElement;
 
 public class ToDoElementTest {
 
