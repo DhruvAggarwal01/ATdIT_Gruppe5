@@ -104,6 +104,9 @@ public class NavItemPanelChooser extends JPanel {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {
@@ -119,5 +122,13 @@ public class NavItemPanelChooser extends JPanel {
         return Objects.equals(navItemName01, navIPC.navItemName01)
                 && Objects.equals(navItemName02, navIPC.navItemName02)
                 && Objects.equals(navItemName03, navIPC.navItemName03);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() { // wird
+        return Objects.hash(navItemName01, navItemName02, navItemName03);
     }
 }
