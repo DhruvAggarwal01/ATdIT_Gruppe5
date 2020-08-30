@@ -1,8 +1,9 @@
 package db_interaction;
 
 public class User {
-    
+
     private int personnel_id;
+    private String username;
     private String forename;
     private String surname;
     private String street_nr;
@@ -17,6 +18,7 @@ public class User {
      * Konstruktor, zum Erstellen einer User-Instanz
      *
      * @param personnel_id
+     * @param username
      * @param forename
      * @param surname
      * @param street_nr
@@ -27,7 +29,7 @@ public class User {
      * @param role_id
      * @param isLoggedIn
      */
-    User(int personnel_id, String forename, String surname, String street_nr, String zip, String city,
+    User(int personnel_id, String username, String forename, String surname, String street_nr, String zip, String city,
             String email, String password, int role_id, boolean isLoggedIn) {
 
     }
@@ -38,6 +40,14 @@ public class User {
 
     public void setPersonnel_id(int personnel_id) {
         this.personnel_id = personnel_id;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getForename() {

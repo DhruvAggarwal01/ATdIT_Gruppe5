@@ -1,5 +1,7 @@
 package db_interaction;
 
+import org.apache.poi.*;
+
 /**
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der Daten aus der Users-Datenbank nach
  * bestimmten Kriterien (nach Nutzername, Passwort, etc.) ermöglichen.
