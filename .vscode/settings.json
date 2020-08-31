@@ -1,15 +1,15 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "Library/gson-2.8.6.jar",
-        "Library/hamcrest-core-1.3.jar",
-        "Library/junit-4.13.jar",
-        "Library/poi-ooxml-4.1.2.jar",
-        "Library/xmlbeans-3.1.0.jar",
-        "Library/poi-ooxml-schemas-4.1.2.jar",
-        "Library/poi-4.1.2.jar",
-        "Library/stax-api-1.0.1.jar",
-        "Library/commons-collections4-4.4.jar",
-        "Library/commons-compress-1.9.jar"
-    ]
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "Library/gson-2.8.6.jar",
+    "Library/hamcrest-core-1.3.jar",
+    "Library/junit-4.13.jar",
+    "Library/xmlbeans-3.1.0.jar",
+    "Library/poi-4.1.2.jar",
+    "Library/poi-ooxml-4.1.2.jar",
+    "Library/poi-ooxml-schemas-4.1.2.jar",
+    "Library/commons-collections4-4.4.jar",
+    "Library/commons-compress-1.18.jar",
+    "Library/stax-api-1.0.1.jar"
+  ]
 }

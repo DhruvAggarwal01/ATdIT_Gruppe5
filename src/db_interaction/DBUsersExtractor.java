@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class DBUsersExtractor {
 
+    private Workbook usersWorkbook;
+
     // Filter-Algorithmus:
     // 1. In Zeile 1 iterieren bis Spalte personnel_id gefunden (nihct einfach
     // Spalte angeben, weil sich in der DB theoretisch die Spaltenanordnung ändern
@@ -26,64 +28,83 @@ public class DBUsersExtractor {
     // 4. Mit diesen beiden Werten Passwort-Zelle von betroffenem personnel (mit
     // personnel_id) mit Passwort abgleichen
 
+    public DBUsersExtractor(String excelFileName) {
+        FileInputStream usersFile;
+        try {
+            usersFile = new FileInputStream(new File(excelFileName));
+            usersWorkbook = new XSSFWorkbook(usersFile);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+
+    }
+
     /**
      * Diese Methode filtert die Tupel heraus, für die das Kriterium zutrifft
      * 
      * @param columnName
      * @param filterValue
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
      */
-    public Map<Integer, User> getFilteredDBRowsToMap(String columnName, Object filterValue) throws IOException {
-        FileInputStream usersFile = new FileInputStream(new File("test.xlsx"));
-        try (Workbook usersWorkbook = new XSSFWorkbook(usersFile);) { // AutoClosable
-            Sheet usersSheet = usersWorkbook.getSheetAt(0);
+    public Map<Integer, User> getFilteredDBRowsToMap(String columnName, Object filterValue)
+            throws IOException, IllegalArgumentException, IllegalAccessException {
 
-            Map<Integer, User> filteredUsers = new HashMap<Integer, User>(); // key: row index of filtered user ; User:
-                                                                             // filtered user
+        Sheet usersSheet = usersWorkbook.getSheetAt(0);
 
-            Iterator<Row> rowIterator = usersSheet.iterator();
+        Map<Integer, User> filteredUsers = new HashMap<Integer, User>(); // key: row index of filtered user ; User:
+                                                                         // filtered user
 
-            int columnIndex = 0; // getColumnIndex(columnName)
+        Iterator<Row> rowIterator = usersSheet.iterator();
 
-            while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
-                Row row = rowIterator.next();
-                if (row.getRowNum() == 0) { // check on header row for param columnName and get its column index
-                    Iterator<Cell> cellIterator = row.cellIterator();
-                    while (cellIterator.hasNext()) {
-                        Cell headerCell = cellIterator.next();
-                        String cellValue = "";
-                        switch (headerCell.getCellType()) {
-                            case STRING:
-                                cellValue = headerCell.getStringCellValue();
-                                break;
-                            default:
-                                break;
-                        }
-                        if (cellValue == columnName) {
-                            columnIndex = headerCell.getColumnIndex();
-                        }
-                    }
-                } else {
-                    Cell cellWithColumnIndex = row.getCell(columnIndex);
-                    Object cellValue = null;
-                    switch (cellWithColumnIndex.getCellType()) {
-                        case NUMERIC:
-                            cellValue = (int) cellWithColumnIndex.getNumericCellValue();
-                            break;
+        int columnIndex = 0; // getColumnIndex(columnName)
+
+        while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
+            Row row = rowIterator.next();
+            if (row.getRowNum() == 0) { // check on header row for param columnName and get its column index
+                Iterator<Cell> cellIterator = row.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell headerCell = cellIterator.next();
+                    String cellValue = "";
+                    switch (headerCell.getCellType()) {
                         case STRING:
-                            cellValue = cellWithColumnIndex.getStringCellValue();
+                            cellValue = headerCell.getStringCellValue();
                             break;
                         default:
                             break;
                     }
-                    if (cellValue == filterValue) {
-                        // User filteredUser = getRowConvertedToUser(row);
-                        // filteredUsers.put(cellWithColumnIndex.getRowIndex(), filteredUser);
-                        // return filteredUsers;
+                    if (cellValue == columnName) {
+                        columnIndex = headerCell.getColumnIndex();
                     }
                 }
+            } else {
+                Cell cellWithColumnIndex = row.getCell(columnIndex);
+                Object cellValue = null;
+                switch (cellWithColumnIndex.getCellType()) {
+                    case NUMERIC:
+                        cellValue = (int) cellWithColumnIndex.getNumericCellValue();
+                        break;
+                    case STRING:
+                        cellValue = cellWithColumnIndex.getStringCellValue();
+                        break;
+                    case BOOLEAN:
+                        cellValue = cellWithColumnIndex.getBooleanCellValue();
+                        break;
+                    default:
+                        break;
+                }
+                if (cellValue == filterValue) {
+                    User filteredUser = getRowConvertedToUser(row);
+                    filteredUsers.put(cellWithColumnIndex.getRowIndex(), filteredUser);
+                    return filteredUsers;
+                }
             }
-            return null;
         }
+        usersWorkbook.close();
+        return null;
+
     }
 
     public boolean isValueInSpecificRow(int rowIndex, String columnName, Object filterValue) { // nutzbar wenn
@@ -93,7 +114,24 @@ public class DBUsersExtractor {
                                                                                                // der hashmap in der/den
                                                                                                // Zeilen nach dem
                                                                                                // Passwort suchen will
-        return false;
+        Sheet usersSheet = usersWorkbook.getSheetAt(0);
+        Row row = usersSheet.getRow(rowIndex);
+        Cell specificCell = row.getCell(getColumnIndex(columnName));
+        Object cellValue = null;
+        switch (specificCell.getCellType()) {
+            case NUMERIC:
+                cellValue = (int) specificCell.getNumericCellValue();
+                break;
+            case STRING:
+                cellValue = specificCell.getStringCellValue();
+                break;
+            case BOOLEAN:
+                cellValue = specificCell.getBooleanCellValue();
+                break;
+            default:
+                break;
+        }
+        return filterValue == cellValue;
     }
 
     public int getColumnIndex(String columnName) { // if-Schleife aus erster Methode angepasst übernehmen
@@ -101,7 +139,7 @@ public class DBUsersExtractor {
     }
 
     public User getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException {
-        User user = new User(0, null, null, null, null, null, null, null, null, 0, false);
+        User user = new User(0, null, null, null, null, null, 0, null, null, 0, false);
         Field[] declaredFields = user.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
 
@@ -126,16 +164,20 @@ public class DBUsersExtractor {
     }
 
     public static void main(String[] args) {
-        // DBUsersExtractor dbUsersExtractor = new DBUsersExtractor();
-        try  {
-            XSSFWorkbook usersWorkbook = new XSSFWorkbook("databases/Users.xlsx");
-        //     // Sheet usersSheet = usersWorkbook.getSheetAt(0);
-        //     // Row row = usersSheet.getRow(1);
+        DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+        try {
+            Sheet usersSheet = dbUsersExtractor.usersWorkbook.getSheetAt(0);
+            Row row = usersSheet.getRow(1);
 
-        //     // System.out.println(dbUsersExtractor.getRowConvertedToUser(row).toString());
-        }  catch (IOException e) {
+            System.out.println(dbUsersExtractor.getRowConvertedToUser(row));
+
+            dbUsersExtractor.usersWorkbook.close();
+        } catch (IOException e) {
             e.printStackTrace();
-
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 }

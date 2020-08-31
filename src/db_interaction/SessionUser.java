@@ -26,7 +26,7 @@ public class SessionUser extends User {
      * @param isLoggedIn
      */
     SessionUser(int personnel_id, String username, String forename, String surname, String street_nr, String zip,
-            String city, String email, String password, int role_id, boolean isLoggedIn) {
+            int city, String email, String password, int role_id, boolean isLoggedIn) {
         super(personnel_id, username, forename, surname, street_nr, zip, city, email, password, role_id, isLoggedIn);
     }
 }
