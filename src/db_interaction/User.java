@@ -29,7 +29,7 @@ public class User {
      * @param role_id
      * @param isLoggedIn
      */
-    User(int personnel_id, String username, String forename, String surname, String street_nr, String zip, String city,
+    public User(int personnel_id, String username, String forename, String surname, String street_nr, String zip, String city,
             String email, String password, int role_id, boolean isLoggedIn) {
 
     }

@@ -28,12 +28,14 @@ public class WeatherPanel extends JPanel {
     private static final long serialVersionUID = 4813738149309511564L;
 
     JTextArea weatherForecastArea;
+    String weatherForecastTitle;
 
     /**
      * 
      * @param weatherForecastTitle
      */
     public WeatherPanel(String weatherForecastTitle) {
+        this.weatherForecastTitle = weatherForecastTitle;
         this.setLayout(new BorderLayout());
         String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
 
@@ -123,6 +125,10 @@ public class WeatherPanel extends JPanel {
         Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {
         }.getType());
         return map;
+    }
+
+    public String getTitlePanel(){
+        return weatherForecastTitle;
     }
 
 }

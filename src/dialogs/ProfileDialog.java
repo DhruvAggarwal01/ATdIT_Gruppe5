@@ -177,4 +177,20 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
             this.dispose();
         }
     }
+
+    public JPanel getPersonalInfoPanel(){
+        return personalInfoPanel;
+    }
+
+    public JPanel getContentPanel(){
+        return contentPanel;
+    }
+
+    public JPanel getRsscPanel(){
+        return rsscPanel;
+    }
+
+    public JPanel getChangePswdPanel(){
+        return rsscPanel;
+    }
 }

@@ -13,18 +13,21 @@ public class OverviewPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    private JPanel smallPanels, newsPanel, weatherPanel, diashow;
+
+
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
 
-        JPanel smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
+        smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
 
         // 1. Panel: News
-        JPanel newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
+        newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
                 "https://www.wochenblatt-reporter.de/albersweiler/rss");
         // 2. Panel: Wetter
-        JPanel weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+        weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
         // 3. Panel:
-        JPanel diashow = new DiashowPanel("Impressionen vom Steinbruch");
+        diashow = new DiashowPanel("Impressionen vom Steinbruch");
 
         smallPanels.add(newsPanel);
         smallPanels.add(weatherPanel);
@@ -33,4 +36,18 @@ public class OverviewPanel extends JPanel {
         this.add(diashow, BorderLayout.CENTER);
     }
 
+    public JPanel getweatherPanel(){
+        return weatherPanel;
+    }
+
+    public JPanel getDiashowPanel(){
+        return diashow;
+    }
+
+    public JPanel getNewsPanel(){
+        return newsPanel;
+    }
+    public JPanel getSmallPanels(){
+        return smallPanels;
+    }
 }

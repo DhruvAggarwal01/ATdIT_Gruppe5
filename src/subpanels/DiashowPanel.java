@@ -21,11 +21,13 @@ public class DiashowPanel extends JPanel {
     private int counter = 1;
     private ImageIcon[] image = new ImageIcon[4];
     private JLabel diashowLabel;
+    private String diashowTitle;
 
     /**
      * 
      */
     public DiashowPanel(String diashowTitle) {
+        this.diashowTitle = diashowTitle;
         this.setLayout(new BorderLayout());
 
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
@@ -61,6 +63,9 @@ public class DiashowPanel extends JPanel {
             counter %= image.length;
             diashowLabel.setIcon(image[counter++]);
         }
+    }
+    public String getTitlePanel(){
+        return diashowTitle;
     }
 
 }
