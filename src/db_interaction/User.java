@@ -124,9 +124,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "personnel_id: " + personnel_id + " ; username: " + username + " ; forename: " + forename
+        return "{" + "personnel_id: " + personnel_id + " ; username: " + username + " ; forename: " + forename
                 + " ; surname: " + surname + " ; street_nr: " + street_nr + " ; zip: " + zip + " ; city: " + city
                 + " ; email: " + email + " ; password: " + password + " ; role_id: " + role_id + " ; isLoggedIn: "
-                + isLoggedIn;
+                + isLoggedIn + "}";
     }
 }
