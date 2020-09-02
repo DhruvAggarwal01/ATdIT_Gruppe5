@@ -83,8 +83,9 @@ public class ReadRSSPanel extends JPanel {
         // Reporting-Weiterleitung
         JPanel reportingPanel = new JPanel();
         reportingPanel.setBorder(BorderFactory.createRaisedBevelBorder());
-        JLabel jl3 = new JLabel("zum Reporting", JLabel.CENTER);
-        reportingPanel.add(jl3, BorderLayout.CENTER);
+        JLabel reportingLabel = new JLabel("<HTML><U>zum Reporting</U></HTML>", JLabel.CENTER);
+        reportingLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        reportingPanel.add(reportingLabel, BorderLayout.CENTER);
         MouseClickListener mCL = new MouseClickListener();
         reportingPanel.addMouseListener(mCL);
 
@@ -126,9 +127,9 @@ public class ReadRSSPanel extends JPanel {
         return null;
     }
 
-     /**
-     * 
-     */
+    /**
+    * 
+    */
     class MouseClickListener extends MouseAdapter {
 
         @Override

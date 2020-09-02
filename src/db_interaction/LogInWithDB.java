@@ -7,4 +7,7 @@ package db_interaction;
  */
 public class LogInWithDB {
     //filter-Methode aus DBUsersExtrctor nutzen
+    public LogInWithDB(String username, String password) {
+        
+    }
 }
