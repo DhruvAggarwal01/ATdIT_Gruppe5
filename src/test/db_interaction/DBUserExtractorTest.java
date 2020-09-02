@@ -2,6 +2,7 @@ package test.db_interaction;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -15,8 +16,9 @@ public class DBUserExtractorTest {
 
     @Test
     public void testGetColumnIndexToName() {
+        DBUsersExtractor dbUsersExtractor;
         try {
-            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+            dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
             Assert.assertEquals(1, dbUsersExtractor.getColumnIndexToName("personnel_id"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,6 +62,22 @@ public class DBUserExtractorTest {
     }
 
     @Test
+    public void testGetFilteredDBRowsIndexes() {
+        try {
+            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+            Set<Integer> filteredUserSet = dbUsersExtractor.getFilteredDBRowsIndexes("username", "max_mustermann");
+            Iterator<Integer> setOfRowsIterator = filteredUserSet.iterator();
+            while (setOfRowsIterator.hasNext()) {
+                // System.out.println(setOfRowsIterator.next().intValue());
+                System.out.println("hiiiiiiiiiii");
+            }
+        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
     public void testGetRowConvertedToUser() {
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
@@ -73,4 +91,5 @@ public class DBUserExtractorTest {
         }
 
     }
+
 }

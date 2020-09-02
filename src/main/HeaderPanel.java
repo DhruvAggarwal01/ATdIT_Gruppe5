@@ -22,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import db_interaction.LogInCredentialsChecker;
+import db_interaction.SessionUser;
+import db_interaction.User;
 import dialogs.ProfileDialog;
 import dialogs.SettingsDialog;
 
@@ -127,7 +130,11 @@ public class HeaderPanel extends JPanel {
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
-        JMenuItem welcomeItem = new JMenuItem("<HTML><U>Willkommen (tbd)UserName!</U></HTML>");
+        // an dieser Stelle wird davon ausgegangen, dass SessionUser initialisert ist
+        // LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
+        // User sessionUser = log.getLoggedInUser();
+        JMenuItem welcomeItem = new JMenuItem(
+                "<HTML><U>Hallo " + SessionUser.forename + " " + SessionUser.surname + "!</U></HTML>");
         welcomeItem.setEnabled(false);
 
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()

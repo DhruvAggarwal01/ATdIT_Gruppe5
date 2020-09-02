@@ -2,6 +2,7 @@ package db_interaction;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class DBUsersExtractor {
 
+    public FileInputStream usersFile;
     public Workbook usersWorkbook;
 
     // Filter-Algorithmus:
@@ -38,7 +40,7 @@ public class DBUsersExtractor {
      * @throws IOException
      */
     public DBUsersExtractor(String excelFileName) throws IOException {
-        FileInputStream usersFile = new FileInputStream(new File(excelFileName));
+        usersFile = new FileInputStream(new File(excelFileName));
         usersWorkbook = new XSSFWorkbook(usersFile);
     }
 
@@ -67,6 +69,33 @@ public class DBUsersExtractor {
             }
         }
         return filteredUsers;
+    }
+
+    /**
+     * Diese Methode filtert die Indizes der Tupel heraus, für die das
+     * Filterkriterium zutrifft
+     * 
+     * @param columnName
+     * @param filterValue
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     */
+    public Set<Integer> getFilteredDBRowsIndexes(String columnName, Object filterValue)
+            throws IOException, IllegalArgumentException, IllegalAccessException {
+        Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
+
+        Sheet usersSheet = usersWorkbook.getSheetAt(0);
+        Iterator<Row> rowIterator = usersSheet.iterator();
+
+        while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
+            Row row = rowIterator.next();
+            if (row.getRowNum() == 0) { // header
+                continue;
+            } else if (isValueInSpecificCell(row.getRowNum(), columnName, filterValue)) {
+                filteredRowsIndexes.add(row.getRowNum());
+            }
+        }
+        return filteredRowsIndexes;
     }
 
     /**
@@ -99,6 +128,38 @@ public class DBUsersExtractor {
 
     /**
      * 
+     * @param toBeConvertedRow
+     * @return
+     * @throws IllegalArgumentException
+     * @throws IllegalAccessException
+     */
+    public User getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException {
+        User user = new User();
+        Field[] declaredFields = user.getClass().getDeclaredFields();
+        Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
+
+        int i = 0;
+        while (cellIterator.hasNext() && i < declaredFields.length) {
+            Cell cell = cellIterator.next();
+            switch (cell.getCellType()) {
+                case NUMERIC:
+                    declaredFields[i].set(user, (int) cell.getNumericCellValue());
+                    break;
+                case STRING:
+                    declaredFields[i].set(user, cell.getStringCellValue());
+                    break;
+                case BOOLEAN:
+                    declaredFields[i].set(user, cell.getBooleanCellValue());
+                default:
+                    break;
+            }
+            i++;
+        }
+        return user;
+    }
+
+    /**
+     * 
      * @param columnName
      * @return
      */
@@ -126,36 +187,31 @@ public class DBUsersExtractor {
         return columnIndex;
     }
 
-    /**
-     * 
-     * @param toBeConvertedRow
-     * @return
-     * @throws IllegalArgumentException
-     * @throws IllegalAccessException
-     */
-    public User getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException {
-        User user = new User(0, null, null, null, null, null, 0, null, null, 0, false);
-        Field[] declaredFields = user.getClass().getDeclaredFields();
-        Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
+    public void methode() {
+        try {
+            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+            // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
+            Set<User> filteredUserSet = dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
 
-        int i = 0;
-        while (cellIterator.hasNext() && i < declaredFields.length) {
-            Cell cell = cellIterator.next();
-            switch (cell.getCellType()) {
-                case NUMERIC:
-                    declaredFields[i].set(user, (int) cell.getNumericCellValue());
-                    break;
-                case STRING:
-                    declaredFields[i].set(user, cell.getStringCellValue());
-                    break;
-                case BOOLEAN:
-                    declaredFields[i].set(user, cell.getBooleanCellValue());
-                default:
-                    break;
-            }
-            i++;
+            System.out.println(Arrays.toString(filteredUserSet.toArray()));
+            System.out.println(User.username);
+
+        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+            e.printStackTrace();
         }
-        return user;
     }
+    // public static void main(String[] args) {
+    //     try {
+    //         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+    //         // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
+    //         Set<User> filteredUserSet = dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
+
+    //         System.out.println(Arrays.toString(filteredUserSet.toArray()));
+    //         System.out.println(User.username);
+
+    //     } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
 }

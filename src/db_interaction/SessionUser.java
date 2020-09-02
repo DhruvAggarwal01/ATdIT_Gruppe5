@@ -10,23 +10,30 @@ package db_interaction;
  */
 public class SessionUser extends User {
 
+    public static int personnel_id = 0;
+    public static String username = "";
+    public static String forename = "";
+    public static String surname = "";
+    public static String street_nr = "";
+    public static int zip = 00000;
+    public static String city = "";
+    public static String email = "..._...@....";
+    public static String password = "**********";
+    public static int role_id = 1;
+    public static boolean isLoggedIn = false;
+
     /**
      * Konstruktor, zum Erstellen einer Instanz des eingeloggten Users
      *
-     * @param personnel_id
-     * @param username
-     * @param forename
-     * @param surname
-     * @param street_nr
-     * @param zip
-     * @param city
-     * @param email
-     * @param password
-     * @param role_id
-     * @param isLoggedIn
      */
-    SessionUser(int personnel_id, String username, String forename, String surname, String street_nr, String zip,
-            int city, String email, String password, int role_id, boolean isLoggedIn) {
-        super(personnel_id, username, forename, surname, street_nr, zip, city, email, password, role_id, isLoggedIn);
+    SessionUser() {
     }
+    // SessionUser(int p_personnel_id, String p_username, String p_forename, String
+    // p_surname, String p_street_nr,
+    // int p_zip, String p_city, String p_email, String p_password, int p_role_id,
+    // boolean p_isLoggedIn) {
+    // super(p_personnel_id, p_username, p_forename, p_surname, p_street_nr, p_zip,
+    // p_city, p_email, p_password,
+    // p_role_id, p_isLoggedIn);
+
 }
