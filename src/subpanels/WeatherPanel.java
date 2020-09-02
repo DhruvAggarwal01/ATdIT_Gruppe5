@@ -29,6 +29,7 @@ public class WeatherPanel extends JPanel {
 
     JTextArea weatherForecastArea;
     String weatherForecastTitle;
+    private JLabel weatherForecastTitleLabel;
 
     /**
      * 
@@ -39,7 +40,7 @@ public class WeatherPanel extends JPanel {
         this.setLayout(new BorderLayout());
         String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
 
-        JLabel weatherForecastTitleLabel = new JLabel();
+        weatherForecastTitleLabel = new JLabel();
         weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         weatherForecastTitleLabel.setText(weatherForecastTitle);
@@ -129,6 +130,10 @@ public class WeatherPanel extends JPanel {
 
     public String getTitlePanel(){
         return weatherForecastTitle;
+    }
+
+    public JLabel getWeatherForecastTitleLabel(){
+        return weatherForecastTitleLabel;
     }
 
 }

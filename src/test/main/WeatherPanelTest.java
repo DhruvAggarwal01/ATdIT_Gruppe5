@@ -14,5 +14,15 @@ public class WeatherPanelTest {
         Assert.assertEquals("weatherForecastTitle",weatherPanelTest.getTitlePanel());
     }
 
+    @Test
+    public void testGetComponentCount(){
+        Assert.assertEquals(2, weatherPanelTest.getComponentCount());
+    }
+
+    @Test
+    public void testWeatherForecastTitlelLabel(){
+        Assert.assertEquals("To: https://openweathermap.org/", weatherPanelTest.getWeatherForecastTitleLabel().getToolTipText());
+        Assert.assertEquals("weatherForecastTitle", weatherPanelTest.getWeatherForecastTitleLabel().getText());
+    }
    
 }

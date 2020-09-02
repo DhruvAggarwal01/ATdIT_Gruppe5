@@ -37,6 +37,9 @@ public class Application {
         timeoutTimer.start();
     }
 
+    public static TimeoutTimer getTimeoutTimer(){
+        return timeoutTimer;
+    }
     public static void restartTimeoutTimerWithNewDelay(int delay) {
         timeoutTimer.setInitialDelay(delay);
         timeoutTimer.restart();
