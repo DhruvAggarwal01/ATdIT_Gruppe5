@@ -9,7 +9,6 @@
     "Library/poi-ooxml-4.1.2.jar",
     "Library/poi-ooxml-schemas-4.1.2.jar",
     "Library/commons-collections4-4.4.jar",
-    "Library/commons-compress-1.18.jar",
-    "Library/stax-api-1.0.1.jar"
+    "Library/commons-compress-1.18.jar"
   ]
 }
