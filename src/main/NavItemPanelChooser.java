@@ -90,7 +90,8 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                     case "Reporting":
                         this.setLayout(new BorderLayout());
-                        this.add(new JLabel("REPORTING-Panel", SwingUtilities.CENTER), BorderLayout.CENTER); // tbd
+                        this.add(new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER),
+                                BorderLayout.CENTER);
                     default:
                         break;
                 }
@@ -98,7 +99,6 @@ public class NavItemPanelChooser extends JPanel {
                 break;
             case "Produktion":
                 break;
-            // tbd
             default:
                 break;
         }

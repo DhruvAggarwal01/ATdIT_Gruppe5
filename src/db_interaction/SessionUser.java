@@ -8,7 +8,7 @@ package db_interaction;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class SessionUser extends User {
+public class SessionUser extends User {     //OBSOLETE KLASSE WIRD GELÖSCHT
 
     public static int personnel_id = 0;
     public static String username = "";
@@ -26,8 +26,8 @@ public class SessionUser extends User {
      * Konstruktor, zum Erstellen einer Instanz des eingeloggten Users
      *
      */
-    SessionUser() {
-    }
+    // SessionUser() {
+    // }
     // SessionUser(int p_personnel_id, String p_username, String p_forename, String
     // p_surname, String p_street_nr,
     // int p_zip, String p_city, String p_email, String p_password, int p_role_id,

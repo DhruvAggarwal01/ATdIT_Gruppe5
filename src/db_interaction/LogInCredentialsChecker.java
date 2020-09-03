@@ -23,6 +23,9 @@ public class LogInCredentialsChecker {
                                 // ist ungültig" : ""); jlabel.setText(possibleErrorString);
     Set<Integer> rowIndexesContainingUsername;
     Set<Integer> rowIndexesContainingPassword;
+    Set<Integer> rowIndexesMatchingCredentials;
+
+    User sessionUser;
 
     public LogInCredentialsChecker(String username, String password) {
         this.username = username;
@@ -36,7 +39,6 @@ public class LogInCredentialsChecker {
 
     public User getLoggedInUser() {
         try {
-            Set<Integer> rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
             if (isCredentialsMatching()) { // nur ein User besitzt die geprüften Credentials
                                            // (Normalfall)
                 Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
@@ -53,21 +55,26 @@ public class LogInCredentialsChecker {
         return null;
     }
 
+    public void setSessionUser() {
+        sessionUser = getLoggedInUser();
+    }
+
     public boolean isCredentialsMatching() {
         try {
-            rowIndexesContainingUsername = dbUsersExtractor.getFilteredDBRowsIndexes("username", username);
-            rowIndexesContainingPassword = dbUsersExtractor.getFilteredDBRowsIndexes("password", password);
+            rowIndexesContainingUsername = dbUsersExtractor.getFilteredRowsIndexes("username", username);
+            rowIndexesContainingPassword = dbUsersExtractor.getFilteredRowsIndexes("password", password);
         } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
-        return (rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword)
-                && rowIndexesContainingUsername.size() == 1);
+        rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword);
+        rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
+        return rowIndexesMatchingCredentials.size() == 1; // Da username einzigartig ist (keine Duplikate), sollten
+        // in diesem Set nur 1 row index enthalten sein
     }
 
-    public static void main(String[] args) {
-        LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
-        System.out.println(log.getLoggedInUser());
-
-        // System.out.println(User.username);
-    }
+    // public static void main(String[] args) {
+    //     LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
+    //     log.setSessionUser();
+    //     System.out.println(User.email);
+    // }
 }

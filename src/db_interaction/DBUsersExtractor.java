@@ -2,7 +2,6 @@ package db_interaction;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -80,7 +79,7 @@ public class DBUsersExtractor {
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
      */
-    public Set<Integer> getFilteredDBRowsIndexes(String columnName, Object filterValue)
+    public Set<Integer> getFilteredRowsIndexes(String columnName, Object filterValue)
             throws IOException, IllegalArgumentException, IllegalAccessException {
         Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
 
@@ -109,6 +108,7 @@ public class DBUsersExtractor {
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
         Row row = usersSheet.getRow(rowIndex);
         Cell specificCell = row.getCell(getColumnIndexToName(columnName));
+
         Object cellValue = null;
         switch (specificCell.getCellType()) {
             case NUMERIC:
@@ -187,31 +187,20 @@ public class DBUsersExtractor {
         return columnIndex;
     }
 
-    public void methode() {
-        try {
-            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
-            // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
-            Set<User> filteredUserSet = dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
-
-            System.out.println(Arrays.toString(filteredUserSet.toArray()));
-            System.out.println(User.username);
-
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
     // public static void main(String[] args) {
-    //     try {
-    //         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
-    //         // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
-    //         Set<User> filteredUserSet = dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
+    // try {
+    // DBUsersExtractor dbUsersExtractor = new
+    // DBUsersExtractor("databases/Users.xlsx");
+    // // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
+    // Set<User> filteredUserSet =
+    // dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
 
-    //         System.out.println(Arrays.toString(filteredUserSet.toArray()));
-    //         System.out.println(User.username);
+    // System.out.println(Arrays.toString(filteredUserSet.toArray()));
+    // System.out.println(User.username);
 
-    //     } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-    //         e.printStackTrace();
-    //     }
+    // } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+    // e.printStackTrace();
+    // }
     // }
 
 }

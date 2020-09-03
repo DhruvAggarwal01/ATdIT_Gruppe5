@@ -62,10 +62,10 @@ public class DBUserExtractorTest {
     }
 
     @Test
-    public void testGetFilteredDBRowsIndexes() {
+    public void testgetFilteredRowsIndexes() {
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
-            Set<Integer> filteredUserSet = dbUsersExtractor.getFilteredDBRowsIndexes("username", "max_mustermann");
+            Set<Integer> filteredUserSet = dbUsersExtractor.getFilteredRowsIndexes("username", "max_mustermann");
             Iterator<Integer> setOfRowsIterator = filteredUserSet.iterator();
             while (setOfRowsIterator.hasNext()) {
                 // System.out.println(setOfRowsIterator.next().intValue());
