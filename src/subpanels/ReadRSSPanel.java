@@ -1,6 +1,5 @@
 package subpanels;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -119,10 +118,8 @@ public class ReadRSSPanel extends JPanel {
             }
             in.close();
             return sourceCode;
-        } catch (MalformedURLException ue) {
-            System.out.println("Malformed URL");
-        } catch (IOException ioe) {
-            System.out.println("Something went wrong reading the contents");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

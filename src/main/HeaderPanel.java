@@ -132,8 +132,10 @@ public class HeaderPanel extends JPanel {
         // an dieser Stelle wird davon ausgegangen, dass SessionUser initialisert ist
         LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123"); // tbd: wird ins
                                                                                                     // WelcomeScreen-UI
-                                                                                                    // verschoben
-        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben
+                                                                                                    // verschoben, wo
+                                                                                                    // der SessionUser
+                                                                                                    // gesettet wird
+        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
         JMenuItem welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
         welcomeItem.setEnabled(false);
 

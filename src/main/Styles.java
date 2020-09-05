@@ -75,4 +75,9 @@ public class Styles {
      */
     public final static Font RSSC_BUTTON_FONT = new Font("Calibri", Font.BOLD, 14);
 
+    /**
+     * Einsatzmöglichkeit: Font für Fehlermdelungen
+     */
+    public final static Font ERROR_MSG_FONT = new Font("Calibri", Font.BOLD, 12);
+
 }

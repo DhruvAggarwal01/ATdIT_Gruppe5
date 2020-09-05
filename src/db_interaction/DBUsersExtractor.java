@@ -39,7 +39,7 @@ public class DBUsersExtractor {
      * @throws IOException
      */
     public DBUsersExtractor(String excelFileName) throws IOException {
-        usersFile = new FileInputStream(new File(excelFileName));
+        usersFile = new FileInputStream(excelFileName);
         usersWorkbook = new XSSFWorkbook(usersFile);
     }
 

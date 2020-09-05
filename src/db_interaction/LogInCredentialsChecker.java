@@ -68,13 +68,15 @@ public class LogInCredentialsChecker {
         }
         rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword);
         rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
+        System.out.println(rowIndexesMatchingCredentials.size());
         return rowIndexesMatchingCredentials.size() == 1; // Da username einzigartig ist (keine Duplikate), sollten
         // in diesem Set nur 1 row index enthalten sein
     }
 
     // public static void main(String[] args) {
-    //     LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
-    //     log.setSessionUser();
-    //     System.out.println(User.email);
+    // LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann",
+    // "passwort123");
+    // log.setSessionUser();
+    // System.out.println(User.email);
     // }
 }

@@ -5,8 +5,13 @@ import main.Styles;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
+
+import db_interaction.DBUsersInserter;
+import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 
 /**
  * 
@@ -45,6 +50,9 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
     private JLabel confirmPswdLabel;
     private JPasswordField confirmPswdField;
 
+    private JLabel possibleErrorMessageLabel;
+    private String errorMessage;
+
     private JPanel rsscPanel;
     private JButton resetEntriesButton;
     private JButton saveButton;
@@ -52,12 +60,16 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
 
     /**
      * 
+     * @param owner
+     * @param title
+     * @param modal
      */
     public ProfileDialog(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         profileDialogTitle = title;
 
         contentSettingsSet();
+        setInitDBUsersData();
     }
 
     /**
@@ -65,7 +77,7 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
      */
     @Override
     public void contentSettingsSet() {
-        contentPanel = new JPanel(new GridLayout(6, 1));
+        contentPanel = new JPanel(new GridLayout(7, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(profileDialogTitle)));
         contentPanel.setBackground(new Color(220, 220, 220));
@@ -140,6 +152,11 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         changePswdPanel.add(confirmPswdLabel);
         changePswdPanel.add(confirmPswdField);
 
+        possibleErrorMessageLabel = new JLabel(errorMessage, SwingConstants.CENTER);
+        possibleErrorMessageLabel.setFont(Styles.ERROR_MSG_FONT);
+        possibleErrorMessageLabel.setForeground(Color.RED);
+
+        rsscPanel = new JPanel(new GridLayout(1, 3, 140, 140));
         // Action buttons
         ImageIcon resetEntriesIcon = new ImageIcon(new ImageIcon("Library/images/resetEntriesIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
@@ -148,11 +165,12 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         ImageIcon saveAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
-        rsscPanel = new JPanel(new GridLayout(1, 3, 140, 140));
         resetEntriesButton = new JButton("Reset Entries", resetEntriesIcon);
         resetEntriesButton.setFont(Styles.RSSC_BUTTON_FONT);
+        resetEntriesButton.addActionListener(this);
         saveButton = new JButton("Save", saveIcon);
         saveButton.setFont(Styles.RSSC_BUTTON_FONT);
+        saveButton.addActionListener(this);
         saveAndCloseButton = new JButton("Save & Close", saveAndCloseIcon);
         saveAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
         saveAndCloseButton.addActionListener(this);
@@ -166,13 +184,73 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         contentPanel.add(personalInfoPanel);
         contentPanel.add(titleChangePswdLabel);
         contentPanel.add(changePswdPanel);
+        contentPanel.add(possibleErrorMessageLabel);
         contentPanel.add(rsscPanel);
 
         this.add(contentPanel);
     }
 
+    public void setInitDBUsersData() {
+        LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123"); // tbd: wird ins
+                                                                                                    // WelcomeScreen-UI
+                                                                                                    // verschoben, wo
+                                                                                                    // der SessionUser
+                                                                                                    // gesettet wird
+        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
+        forenameTextField.setText(User.forename);
+        surnameTextField.setText(User.surname);
+        streetAndIdTextField.setText(User.street_nr);
+        zipTextField.setText(String.valueOf(User.zip));
+        cityTextField.setText(User.city);
+        emailTextField.setText(User.email);
+    }
+
+    public void saveEntriesOfTextFields() {
+        if (isPswdChangeValid()) {
+            User.forename = forenameTextField.getText();
+            User.surname = surnameTextField.getText();
+            User.street_nr = streetAndIdTextField.getText();
+            User.zip = Integer.parseInt(zipTextField.getText());
+            User.city = cityTextField.getText();
+            User.email = emailTextField.getText();
+            User.password = new String(newPswdField.getPassword());
+
+            errorMessage = "";
+            possibleErrorMessageLabel.setIcon(null);
+            possibleErrorMessageLabel.setText(errorMessage);
+        } else {
+            errorMessage = "Ihre Eingaben sind fehlerhaft. Bitte überprüfen Sie diese und versuchen Sie es erneut";
+            ImageIcon errorMsgIcon = new ImageIcon(new ImageIcon("Library/images/errorIcon.png").getImage()
+                    .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+            possibleErrorMessageLabel.setIcon(errorMsgIcon);
+            possibleErrorMessageLabel.setText(errorMessage);
+        }
+    }
+
+    public boolean isPswdChangeValid() {
+        String currentPswd = new String(currentPswdField.getPassword());
+        String newPswd = new String(newPswdField.getPassword());
+        String confirmPswd = new String(confirmPswdField.getPassword());
+        if (currentPswd.equals("") || newPswd.equals("") || confirmPswd.equals("")) {
+            return true;
+        }
+        return currentPswd.equals(User.password) && newPswd.equals(confirmPswd);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == resetEntriesButton) {
+            setInitDBUsersData();
+        }
+        if (e.getSource() == saveButton) {
+            saveEntriesOfTextFields();
+            try {
+                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/Users.xlsx");
+                dbUsersInserter.applyChangedSessionUserToRow();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
         if (e.getSource() == saveAndCloseButton) {
             this.dispose();
         }
