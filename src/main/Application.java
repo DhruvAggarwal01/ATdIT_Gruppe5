@@ -17,33 +17,46 @@ public class Application {
     private static int timeoutDelay = 3600000;
 
     /**
+     * Getter-Methode für <code>appWindow</code>
      * 
-     * @return
+     * @return Hauptframe-Instanz der Applikation
      */
     public static JFrame getAppWindow() {
         return appWindow;
     }
 
     /**
+     * Getter-Methode für <code>timeoutDelay</code>
      * 
-     * @return
+     * @return Zeit bis zum Timeout der Applikation
      */
     public static int getTimeoutDelay() {
         return timeoutDelay;
     }
 
+    /**
+     * Diese Methode startet den Timer für den Timeout der Applikation.
+     * 
+     * @param delay zu wartende Zeit bis Timeout
+     */
     public static void startTimeoutTimer(int delay) {
         timeoutTimer = new TimeoutTimer(delay);
         timeoutTimer.start();
     }
 
+    /**
+     * Diese Methode startet den Timer für den Timeout der Applikation erneut mit
+     * seinem eingestellten initialen Delay.
+     * 
+     * @param delay zu wartende Zeit bis Timeout
+     */
     public static void restartTimeoutTimerWithNewDelay(int delay) {
         timeoutTimer.setInitialDelay(delay);
         timeoutTimer.restart();
     }
 
     /**
-     * Ausgabe der Anwendung in einem Fenster
+     * Diese Methode führt die Applikation aus. Dabei wird ein Hauptframe erzeugt.
      * 
      * @param args obligatorischer Eingabeparameter der main-Methode
      */

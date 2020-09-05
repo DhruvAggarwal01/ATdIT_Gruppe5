@@ -1,7 +1,6 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 
 /**
  * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
@@ -33,7 +32,7 @@ public class Styles {
     public final static Font NAVPANE_FONT = new Font("Rockwell", Font.BOLD, 20);
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für TitledBorder-Titel
      */
     public final static Font TAB_BORDERTITLE_FONT = new Font("Rockwell", Font.BOLD, 18);
 
@@ -42,12 +41,12 @@ public class Styles {
      */
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Subpanel-Titel
      */
     public final static Font SUBPANEL_TITLE_FONT = new Font("Calibri Light", Font.BOLD, 14);
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Subpanel-Textinhalt
      */
     public final static Font SUBPANEL_TEXTCOMPONENT_FONT = new Font("Calibri", Font.PLAIN, 12);
 
@@ -56,22 +55,22 @@ public class Styles {
      */
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Profildialog-Haupttitel (Lvl. 1)
      */
     public final static Font PROFILE_LVL1_FONT = new Font("Calibri Light", Font.BOLD, 18);
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Profildialog-Subtitel (Lvl. 2)
      */
     public final static Font PROFILE_LVL2_FONT = new Font("Calibri Light", Font.BOLD, 16);
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Profildialog-Labeltext (Lvl. 3)
      */
     public final static Font PROFILE_LVL3_FONT = new Font("Calibri", Font.PLAIN, 12);
 
     /**
-     * Einsatzmöglichkeit: Font für
+     * Einsatzmöglichkeit: Font für Bestätigungsbuttons
      */
     public final static Font RSSC_BUTTON_FONT = new Font("Calibri", Font.BOLD, 14);
 

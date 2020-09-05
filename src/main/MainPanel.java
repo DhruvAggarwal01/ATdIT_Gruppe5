@@ -1,10 +1,8 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 /**
  * Diese Klasse leitet den Aufbau der Anwendung ein.
@@ -26,8 +24,7 @@ public class MainPanel extends JFrame {
      * Fenster setzt sich aus Header, Navigationsleiste und dem dazugehörigen
      * Panel-Feld zusammen.
      */
-    public MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
-        // je nach Recht andere NavPane) als Parameter
+    public MainPanel() {
         c = getContentPane();
         c.setLayout(new BorderLayout());
 
@@ -41,7 +38,7 @@ public class MainPanel extends JFrame {
     /**
      * Getter-Methode für <code>appTitle</code>
      * 
-     * @return <code>appTitle</code>
+     * @return Applikation-Titel
      */
     public static String getAppTitle() {
         return appTitle;
@@ -50,7 +47,7 @@ public class MainPanel extends JFrame {
     /**
      * Getter-Methode für <code>navPane</code>
      * 
-     * @return <code>navPane</code>
+     * @return Navigation-Pane
      */
     public static NavigationPane getNavPane() {
         return navPane;
@@ -59,7 +56,7 @@ public class MainPanel extends JFrame {
     /**
      * Getter-Methode für <code>headerPanel</code>
      * 
-     * @return <code>headerPanel</code>
+     * @return Header-Panel
      */
     public static HeaderPanel getHeaderPanel() {
         return headerPanel;
@@ -67,8 +64,6 @@ public class MainPanel extends JFrame {
 
     /**
      * Setter-Methode für <code>appTitle</code>
-     * 
-     * @return <code>appTitle</code>
      */
     public static void setAppTitle(String appTitleSet) {
         appTitle = appTitleSet;
@@ -76,7 +71,6 @@ public class MainPanel extends JFrame {
 
     /**
      * Setter-Methode für <code>navPane</code>
-     * 
      */
     public static void setNavPane(NavigationPane navPaneSet) {
         navPane = navPaneSet;
@@ -84,13 +78,8 @@ public class MainPanel extends JFrame {
 
     /**
      * Setter-Methode für <code>headerPanel</code>
-     * 
      */
     public static void setHeaderPanel(HeaderPanel headerPanelSet) {
         headerPanel = headerPanelSet;
-    }
-
-    public static HeaderPanel getHeaderpanel(){
-        return headerPanel;
     }
 }

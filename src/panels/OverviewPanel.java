@@ -1,18 +1,28 @@
 package panels;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
 
+/**
+ * Diese Klasse baut ein Panel auf, das, im Sinne eines Dashboards, mehrere
+ * Subpanels anzeigt und damit einen visuellen Überblick über generelle Themen
+ * verschafft.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class OverviewPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Konstruktor, der tbd
+     */
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
 

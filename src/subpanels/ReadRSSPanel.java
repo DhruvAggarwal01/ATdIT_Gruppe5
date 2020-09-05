@@ -1,30 +1,21 @@
 package subpanels;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.Cursor;
+import java.net.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import java.io.*;
 
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 
-import java.awt.*;
-
-import java.io.*;
-
 /**
- * 
+ * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigen
+ * kann.
  */
 public class ReadRSSPanel extends JPanel {
 
@@ -33,7 +24,10 @@ public class ReadRSSPanel extends JPanel {
     JTextArea newsFeedTextField;
 
     /**
+     * Konstruktor, der tbd
      * 
+     * @param newsTitle Nachrichten-Panel-Titel
+     * @param rssUrl    URL zum RSS-Nachrichtenfeed
      */
     public ReadRSSPanel(String newsTitle, String rssUrl) {
         this.setLayout(new BorderLayout());
@@ -97,7 +91,10 @@ public class ReadRSSPanel extends JPanel {
     }
 
     /**
+     * Diese Methode tbd
      * 
+     * @param rssUrl
+     * @return
      */
     public static String readRSSFeed(String rssUrl) {
         try {
@@ -126,11 +123,14 @@ public class ReadRSSPanel extends JPanel {
         return null;
     }
 
-     /**
-     * 
+    /**
+     * Innere Klasse tbd
      */
     class MouseClickListener extends MouseAdapter {
 
+        /**
+         * Diese Methode tbd
+         */
         @Override
         public void mouseClicked(MouseEvent e) {
             MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));

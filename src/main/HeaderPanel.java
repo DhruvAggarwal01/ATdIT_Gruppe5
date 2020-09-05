@@ -1,26 +1,10 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Dialog.ModalityType;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Dialog.*;
 
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import dialogs.ProfileDialog;
 import dialogs.SettingsDialog;
@@ -47,7 +31,7 @@ public class HeaderPanel extends JPanel {
      * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
      * Header setzt sich aus Anwendungsicon, -titel und User-Icon zusammen.
      * 
-     * @param headerTitle der Anwendungsname
+     * @param headerTitle Applikationstitel
      */
     public HeaderPanel(String headerTitle) { // Nutzer nutzer als parameter
         initSetUp();
@@ -66,7 +50,6 @@ public class HeaderPanel extends JPanel {
      * Diese Methode nimmt die initialen Voreinstellungen, wie
      * <code>setLayout</code>, <code>setBorder</code>, vor und stellt die benötigten
      * Subpanels bereit.
-     * 
      */
     public void initSetUp() {
         this.setLayout(new GridLayout(1, 3, 0, 0));
@@ -81,11 +64,12 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode passt das Icon an, verbessert die UX und Interaktion mit einem
-     * Benutzer und gibt das Icon, gewrappt durch ein JLabel, wieder zurück.
+     * Diese Methode passt das Icon an, verbessert die UX mittels Cursor-Anpassung
+     * und Interaktion mit einem Benutzer und gibt das Icon, gewrappt durch ein
+     * JLabel, wieder zurück.
      * 
-     * @param filename
-     * @return angepasstes Applogo-Icon
+     * @param filename Pfad zum Logo-Icon
+     * @return angepasstes Logo-Icon
      */
     public JLabel logoAdder(String filename) {
         logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
@@ -100,7 +84,7 @@ public class HeaderPanel extends JPanel {
      * versehen und schließlich, gewrappt durch ein JLabel, wieder zurückgegeben
      * wird.
      * 
-     * @param headerTitle
+     * @param headerTitle Header-Titel
      * @return Label für Titel
      */
     public JLabel headerTitleAdder(String headerTitle) {
@@ -110,6 +94,11 @@ public class HeaderPanel extends JPanel {
         return headerTitleJLabel;
     }
 
+    /**
+     * Getter-Methode für <code>headerTitleJLabel</code>
+     * 
+     * @return Header-Titel als Label
+     */
     public JLabel getHeaderTitleJLabel() {
         return headerTitleJLabel;
     }
@@ -118,7 +107,7 @@ public class HeaderPanel extends JPanel {
      * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
      * "Menüheader" ein User-Icon.
      * 
-     * @param userIconFile
+     * @param userIconFile Pfad zum User-Icon
      * @return User-Icon-Menü innerhalb einer JMenuBar
      */
     public JMenuBar userSymbolAdder(String userIconFile) {
@@ -212,9 +201,9 @@ public class HeaderPanel extends JPanel {
      * <code>width</code> x <code>height</code>. Danach wird das Bild in ein JLabel
      * gegeben, um dieses wiederum z.B. zur Ausgabe nutzen zu können.
      * 
-     * @param filename
-     * @param width
-     * @param height
+     * @param filename Pfad zum Bild
+     * @param width    einzustellende Breite des Bildes
+     * @param height   einzustellende Höhe des Bildes
      * @return Größe-angepasstes Applogo-Icon
      */
     private static JLabel resizeToJLabel(String filename, int width, int height, int horizontalAlignment) {
