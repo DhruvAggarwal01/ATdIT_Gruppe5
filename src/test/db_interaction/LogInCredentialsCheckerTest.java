@@ -15,7 +15,7 @@ public class LogInCredentialsCheckerTest {
     // }
 
     @Test
-    public static void testSetSessionUser() {
+    public void testSetSessionUser() {
         LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
         logInChecker.setSessionUser();
         Assert.assertEquals("max_mustermann", User.username);

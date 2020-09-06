@@ -45,6 +45,7 @@ public class HeaderPanel extends JPanel {
     public JLabel headerTitleJLabel;
     public AbstractButton userIconButton;
     public JMenuBar mb;
+    public JMenuItem welcomeItem;
     public JPanel userIconWithMenuInJPanel;
 
     /**
@@ -138,8 +139,6 @@ public class HeaderPanel extends JPanel {
                                                                                                     // der SessionUser
                                                                                                     // gesettet wird
         log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
-        JMenuItem welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
-        welcomeItem.setEnabled(false);
 
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
@@ -201,7 +200,22 @@ public class HeaderPanel extends JPanel {
             }
         });
 
-        userIconButton.add(welcomeItem);
+        userIconButton.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
+                welcomeItem.setEnabled(false);
+                userIconButton.add(welcomeItem, 0);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                userIconButton.remove(welcomeItem);
+            }
+
+        });
+        // userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
         userIconButton.add(normItem2);
         userIconButton.add(separatorItem);
