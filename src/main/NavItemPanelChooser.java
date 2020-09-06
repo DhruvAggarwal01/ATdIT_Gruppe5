@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
 import panels.OverviewPanel;
+import panels.ReportingPanel;
 
 /**
  * Je nach ausgewaehltem Tab wird ein anderer Panel (hier: JPanel) als Tab
@@ -90,8 +91,7 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                     case "Reporting":
                         this.setLayout(new BorderLayout());
-                        this.add(new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER),
-                                BorderLayout.CENTER);
+                        this.add(new ReportingPanel(), BorderLayout.CENTER);
                     default:
                         break;
                 }
