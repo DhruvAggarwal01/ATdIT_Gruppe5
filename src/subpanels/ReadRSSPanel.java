@@ -86,7 +86,7 @@ public class ReadRSSPanel extends JPanel {
         this.add(sp, BorderLayout.CENTER);
         this.add(reportingPanel, BorderLayout.SOUTH);
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
     }
 

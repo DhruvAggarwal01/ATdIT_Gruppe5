@@ -31,8 +31,10 @@ public class OverviewPanel extends JPanel {
         // 1. Panel: News
         JPanel newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
                 "https://www.wochenblatt-reporter.de/albersweiler/rss");
+
         // 2. Panel: Wetter
         JPanel weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+        
         // 3. Panel:
         JPanel diashow = new DiashowPanel("Impressionen vom Steinbruch");
 

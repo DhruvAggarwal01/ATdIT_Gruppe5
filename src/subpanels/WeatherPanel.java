@@ -108,7 +108,7 @@ public class WeatherPanel extends JPanel {
             ioe.printStackTrace();
         }
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 0, 0, 20),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 5, 5, 20),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
