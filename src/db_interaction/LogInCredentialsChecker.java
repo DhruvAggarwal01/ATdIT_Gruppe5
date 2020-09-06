@@ -73,9 +73,8 @@ public class LogInCredentialsChecker {
     }
 
     // public static void main(String[] args) {
-    // LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann",
-    // "passwort123");
-    // log.setSessionUser();
-    // System.out.println(User.email);
+    //     LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
+    //     log.setSessionUser();
+    //     System.out.println(User.username);
     // }
 }
