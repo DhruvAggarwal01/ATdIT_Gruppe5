@@ -190,7 +190,7 @@ public class DBUsersExtractor {
     // public static void main(String[] args) {
     // try {
     // DBUsersExtractor dbUsersExtractor = new
-    // DBUsersExtractor("databases/Users.xlsx");
+    // DBUsersExtractor("databases/USERS.xlsx");
     // // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
     // Set<User> filteredUserSet =
     // dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");

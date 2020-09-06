@@ -213,8 +213,9 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
             User.zip = Integer.parseInt(zipTextField.getText());
             User.city = cityTextField.getText();
             User.email = emailTextField.getText();
-            User.password = new String(newPswdField.getPassword());
-
+            if (!new String(newPswdField.getPassword()).equals("")) {
+                User.password = new String(newPswdField.getPassword());
+            }
             errorMessage = "";
             possibleErrorMessageLabel.setIcon(null);
             possibleErrorMessageLabel.setText(errorMessage);
@@ -245,7 +246,7 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         if (e.getSource() == saveButton) {
             saveEntriesOfTextFields();
             try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/Users.xlsx");
+                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                 dbUsersInserter.applyChangedSessionUserToRow();
             } catch (IOException ioe) {
                 ioe.printStackTrace();

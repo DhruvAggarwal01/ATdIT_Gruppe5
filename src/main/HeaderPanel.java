@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -22,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import db_interaction.DBUsersInserter;
 import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 import dialogs.ProfileDialog;
@@ -162,7 +164,6 @@ public class HeaderPanel extends JPanel {
                         profileDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
@@ -179,14 +180,26 @@ public class HeaderPanel extends JPanel {
                         settingsDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
         JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
         JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
-        JMenuItem logOffItem = new JMenuItem("Ausloggen...");
+        JMenuItem logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        logOffItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User.isLoggedIn = false;
+                try {
+                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                    dbUsersInserter.applyChangedSessionUserToRow();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+                Application.getAppWindow().dispose();
+            }
+        });
 
         userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);

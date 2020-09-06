@@ -31,7 +31,7 @@ public class LogInCredentialsChecker {
         this.username = username;
         this.password = password;
         try {
-            dbUsersExtractor = new DBUsersExtractor("databases/Users.xlsx");
+            dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,7 +68,6 @@ public class LogInCredentialsChecker {
         }
         rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword);
         rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
-        System.out.println(rowIndexesMatchingCredentials.size());
         return rowIndexesMatchingCredentials.size() == 1; // Da username einzigartig ist (keine Duplikate), sollten
         // in diesem Set nur 1 row index enthalten sein
     }
