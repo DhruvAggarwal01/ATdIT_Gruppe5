@@ -9,6 +9,8 @@ import java.util.Objects;
 
 import panels.OverviewPanel;
 
+import panels.LogistikPanel;
+
 /**
  * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
  * 
@@ -29,7 +31,7 @@ public class NavItemPanelChooser extends JPanel {
      * @param navItemName02 Navigationsitem auf Ebene 2
      * @param navItemName03 Navigationsitem auf Ebene 3
      */
-    public NavItemPanelChooser(String navItemName01, String navItemName02, String navItemName03) {
+    public NavItemPanelChooser(final String navItemName01, final String navItemName02, final String navItemName03) {
         this.navItemName01 = navItemName01;
         this.navItemName02 = navItemName02;
         this.navItemName03 = navItemName03;
@@ -89,13 +91,20 @@ public class NavItemPanelChooser extends JPanel {
                     case "Reporting":
                         this.setLayout(new BorderLayout());
                         this.add(new JLabel("REPORTING-Panel", SwingUtilities.CENTER), BorderLayout.CENTER); // tbd
+                        break;
                     default:
                         break;
                 }
+                break;
             case "ToDo's":
                 break;
             case "Produktion":
                 break;
+            case "Logistik":
+                this.setLayout(new BorderLayout());
+                this.add(new LogistikPanel(), BorderLayout.CENTER);
+                break;
+
             // tbd
             default:
                 break;
@@ -106,7 +115,7 @@ public class NavItemPanelChooser extends JPanel {
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == this) {
             return true;
         }
@@ -116,7 +125,7 @@ public class NavItemPanelChooser extends JPanel {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
+        final NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
         return Objects.equals(navItemName01, navIPC.navItemName01)
                 && Objects.equals(navItemName02, navIPC.navItemName02)
                 && Objects.equals(navItemName03, navIPC.navItemName03);
