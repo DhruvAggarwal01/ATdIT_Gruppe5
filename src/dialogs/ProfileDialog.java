@@ -253,6 +253,13 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
             }
         }
         if (e.getSource() == saveAndCloseButton) {
+            saveEntriesOfTextFields();
+            try {
+                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                dbUsersInserter.applyChangedSessionUserToRow();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
             this.dispose();
         }
     }
