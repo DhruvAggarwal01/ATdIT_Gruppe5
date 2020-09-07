@@ -18,7 +18,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
 
         userLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
-        usernameText = new JTextField();
+        usernameText = new JTextField();        //tbd: whitespace löschen lassen (automatisch)
         passwordText = new JPasswordField();
         login = new JButton("Login");
         cancel = new JButton("Cancel");

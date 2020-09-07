@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class LoginScreen {
+public class AppRunner {
 
     private static Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 
