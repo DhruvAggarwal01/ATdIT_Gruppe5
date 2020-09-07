@@ -6,7 +6,7 @@ import javax.swing.*;
 /**
  * Klasse, die einen LoginScreen startet und wenn der User einen richtigen
  * Benutzernamen und Passwort eingibt, den LoginScreen schließt und die
- * eigentliche Applikation startet:
+ * eigentliche Applikation <code>ActualApp</code> startet:
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

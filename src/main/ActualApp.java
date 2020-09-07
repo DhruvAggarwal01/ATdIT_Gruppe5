@@ -5,12 +5,12 @@ import javax.swing.JFrame;
 import java.awt.Toolkit;
 
 /**
- * Diese Klasse dient zur Ausführung der Anwendungsapplikation.
+ * Diese Klasse dient zum Aufbau der eigentlichen Anwendungsapplikation.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class Application {
+public class ActualApp {
 
     public static TimeoutTimer timeoutTimer;
     private static JFrame appWindow;

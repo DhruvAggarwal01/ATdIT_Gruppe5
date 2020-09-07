@@ -44,7 +44,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
             if (authenticate()) {
-                Application.startApp();
+                ActualApp.startApp();
             } else {
                 antwort.setText("Falscher Benutzername oder Passwort! Bitte erneut eingeben.");
             }

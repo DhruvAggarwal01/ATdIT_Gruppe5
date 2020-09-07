@@ -1,6 +1,6 @@
 package test.main;
 
-import main.Application;
+import main.ActualApp;
 
 import org.junit.*;
 
@@ -13,7 +13,7 @@ public class ApplicationTest {
 
     @Test
     public void testGetAppWindowNull() {
-        Assert.assertNull("AppWindow should not be initialized yet", Application.getAppWindow());
+        Assert.assertNull("AppWindow should not be initialized yet", ActualApp.getAppWindow());
     }
 
     @AfterClass

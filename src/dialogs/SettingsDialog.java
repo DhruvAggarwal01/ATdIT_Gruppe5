@@ -1,6 +1,6 @@
 package dialogs;
 
-import main.Application;
+import main.ActualApp;
 import main.Styles;
 
 import java.awt.Color;
@@ -104,7 +104,7 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
 
         timeoutTimeLabel = new JLabel("Zeit bis zum Timeout (in min):");
         timeoutTimeLabel.setFont(Styles.PROFILE_LVL3_FONT);
-        timeoutSpinnerModel = new SpinnerNumberModel(Application.timeoutTimer.getInitialDelay() / 60000, 60000 / 60000,
+        timeoutSpinnerModel = new SpinnerNumberModel(ActualApp.timeoutTimer.getInitialDelay() / 60000, 60000 / 60000,
                 7200000 / 60000, 1);
         timeoutTimeSpinner = new JSpinner(timeoutSpinnerModel);
 
@@ -145,7 +145,7 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
             this.dispose();
         }
         if (e.getSource() == applyAndCloseButton) {
-            Application.restartTimeoutTimerWithNewDelay(((Integer) timeoutTimeSpinner.getValue()) * 60000);
+            ActualApp.restartTimeoutTimerWithNewDelay(((Integer) timeoutTimeSpinner.getValue()) * 60000);
             this.dispose();
         }
     }
@@ -159,7 +159,7 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
 
                 try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-                    SwingUtilities.updateComponentTreeUI(Application.getAppWindow());
+                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
                         | UnsupportedLookAndFeelException e1) {
                     e1.printStackTrace();
@@ -171,7 +171,7 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
 
                 try {
                     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                    SwingUtilities.updateComponentTreeUI(Application.getAppWindow());
+                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
                 } catch (UnsupportedLookAndFeelException e1) {
                 } catch (ClassNotFoundException e2) {
                 } catch (InstantiationException e3) {

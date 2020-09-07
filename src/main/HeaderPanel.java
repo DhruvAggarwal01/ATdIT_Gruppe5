@@ -161,7 +161,7 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), normItem1.getText(),
+                        JDialog profileDialog = new ProfileDialog(ActualApp.getAppWindow(), normItem1.getText(),
                                 true);
                         profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         profileDialog.setUndecorated(true);
@@ -177,7 +177,7 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog settingsDialog = new SettingsDialog(Application.getAppWindow(), normItem2.getText(),
+                        JDialog settingsDialog = new SettingsDialog(ActualApp.getAppWindow(), normItem2.getText(),
                                 true);
                         settingsDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         settingsDialog.setUndecorated(true);
@@ -201,7 +201,7 @@ public class HeaderPanel extends JPanel {
                 } catch (IOException ioe) {
                     ioe.printStackTrace();
                 }
-                Application.getAppWindow().dispose();
+                ActualApp.getAppWindow().dispose();
             }
         });
 
