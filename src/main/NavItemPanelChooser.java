@@ -5,9 +5,7 @@ import java.awt.Color;
 import java.util.Objects;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
 import panels.OverviewPanel;

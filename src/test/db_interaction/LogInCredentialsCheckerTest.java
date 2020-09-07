@@ -15,15 +15,16 @@ public class LogInCredentialsCheckerTest {
     // }
 
     @Test
-    public void testSetSessionUser() {
+    public void testSetSessionUser() {// tbd
         LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
         logInChecker.setSessionUser();
         Assert.assertEquals("max_mustermann", User.username);
     }
 
-    public static void main(String[] args) {
-        LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
-        logInChecker.setSessionUser();
-        System.out.println(User.username);
-    }
+    // public static void main(String[] args) {
+    // LogInCredentialsChecker logInChecker = new
+    // LogInCredentialsChecker("max_mustermann", "passwort123");
+    // logInChecker.setSessionUser();
+    // System.out.println(User.username);
+    // }
 }
