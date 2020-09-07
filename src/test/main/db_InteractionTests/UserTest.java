@@ -1,4 +1,4 @@
-package test.main;
+package test.main.db_InteractionTests;
 
 import org.junit.Before;
 

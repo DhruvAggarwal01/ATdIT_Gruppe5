@@ -1,4 +1,4 @@
-package test.main;
+package test.main.panelsTest;
 
 import org.junit.*;
 
@@ -20,15 +20,15 @@ public class ToDoElementTest {
 
     @Test
     public void testGetName() {
-        Assert.assertEquals("Name", probe.getName());
+        Assert.assertEquals("Should provide the Name of the to do element","Name", probe.getName());
     }
 
     @Test
     public void testGetBeschreibung() {
-        Assert.assertEquals("Beschreibung", probe.getBeschreibung());
+        Assert.assertEquals("provides the explaination of the element","Beschreibung", probe.getBeschreibung());
     }
 
-    @Test
+    @Test //tbd
     public void testGetDatum() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
         Calendar calendar = new GregorianCalendar(2013, 0, 31);
@@ -41,6 +41,6 @@ public class ToDoElementTest {
 
     @Test
     public void testGetPriorität() {
-        Assert.assertEquals(1, probe.getPriorität());
+        Assert.assertEquals("gives the given priority",1, probe.getPriorität());
     }
 }

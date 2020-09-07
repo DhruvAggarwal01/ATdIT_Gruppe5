@@ -1,10 +1,8 @@
-package test.main;
+package test.main.dialogsTest;
 
 import javax.swing.JFrame;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import dialogs.SettingsDialog;
 import main.Application;
 
@@ -16,6 +14,6 @@ public class SettingsDialogTest {
     
     @Test //tbd
     public void testCountComponentStyleSettingPanek(){
-        Assert.assertEquals(2,settingsDialogTest.getStyleSettingsPanel().getComponentCount());
+        Assert.assertEquals("Looks how many components where added",2,settingsDialogTest.getStyleSettingsPanel().getComponentCount());
     }
 }

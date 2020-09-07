@@ -1,4 +1,4 @@
-package test.main;
+package test.main.subpanelsTest;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -28,15 +28,15 @@ public class HeaderPanelTest {
 
     @Test
     public void testShowingLogoAndTitle() {
-        Assert.assertTrue(MainPanel.getHeaderPanel().logoAndHeaderTitle.isShowing());
+        Assert.assertTrue("True if logo and title are being shown",MainPanel.getHeaderPanel().logoAndHeaderTitle.isShowing());
     }
 
     @Test
     public void testShowingUserIconMenu() {
-        Assert.assertTrue(MainPanel.getHeaderPanel().userIconWithMenuInJPanel.isShowing());
+        Assert.assertTrue("true if user icon is being shown",MainPanel.getHeaderPanel().userIconWithMenuInJPanel.isShowing());
     }
 
-    @Test
+    @Test //tbd
     public void testGoToOverviewOnClick() throws AWTException {
         MainPanel.getNavPane().setSelectedIndex(2); // (int) (Math.random() *
         // MainPanel.getNavPane().getComponentCount()));
@@ -52,7 +52,7 @@ public class HeaderPanelTest {
                 MainPanel.getNavPane().getSelectedComponent().equals(new NavItemPanelChooser("Overview", null, null)));
     }
 
-    @Test
+    @Test //tbd
     public void testProfileMenuDeselected() throws AWTException {
         testMenu.setSelected(true);
         Robot testingBot = new Robot();
@@ -72,7 +72,7 @@ public class HeaderPanelTest {
     public void testHeaderTitleAdder() {
         HeaderPanel panelTest = new HeaderPanel("Test");
         panelTest.headerTitleAdder("Test");
-        Assert.assertEquals("Test",panelTest.getHeaderTitleJLabel().getText());
+        Assert.assertEquals("gives the title of the header panel","Test",panelTest.getHeaderTitleJLabel().getText());
     }
 
     @AfterClass

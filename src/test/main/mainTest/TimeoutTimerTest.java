@@ -1,8 +1,6 @@
-package test.main;
+package test.main.mainTest;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import main.TimeoutTimer;
 
@@ -18,12 +16,12 @@ public class TimeoutTimerTest {
     @Test
     public void testSetTimeoutDelay(){
         timeoutimerTest.setTimeoutDelay(40);
-        Assert.assertEquals(40, timeoutimerTest.getTimeoutDelay());
+        Assert.assertEquals("After changing the delay it should equals to 40",40, timeoutimerTest.getTimeoutDelay());
     }
 
     @Test
     public void testGetDelay(){
-        Assert.assertEquals(30, timeoutimerTest.getDelay());
+        Assert.assertEquals("The initialized delay should be 30",30, timeoutimerTest.getDelay());
     }
 
 }
