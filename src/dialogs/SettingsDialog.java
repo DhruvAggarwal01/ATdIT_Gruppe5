@@ -160,10 +160,9 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
                 try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
                     SwingUtilities.updateComponentTreeUI(Application.getAppWindow());
-                } catch (UnsupportedLookAndFeelException e1) {
-                } catch (ClassNotFoundException e2) {
-                } catch (InstantiationException e3) {
-                } catch (IllegalAccessException e4) {
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                        | UnsupportedLookAndFeelException e1) {
+                    e1.printStackTrace();
                 }
 
             } else {

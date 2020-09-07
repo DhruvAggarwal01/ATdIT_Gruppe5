@@ -1,11 +1,31 @@
 package main;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.Dialog.*;
+import java.awt.BorderLayout;
+import java.awt.Cursor;
+import java.awt.Dialog.ModalityType;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
+import db_interaction.DBUsersInserter;
+import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 import dialogs.ProfileDialog;
 import dialogs.SettingsDialog;
 
@@ -25,6 +45,7 @@ public class HeaderPanel extends JPanel {
     public JLabel headerTitleJLabel;
     public AbstractButton userIconButton;
     public JMenuBar mb;
+    public JMenuItem welcomeItem;
     public JPanel userIconWithMenuInJPanel;
 
     /**
@@ -116,8 +137,13 @@ public class HeaderPanel extends JPanel {
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
-        JMenuItem welcomeItem = new JMenuItem("<HTML><U>Willkommen (tbd)UserName!</U></HTML>");
-        welcomeItem.setEnabled(false);
+        // an dieser Stelle wird davon ausgegangen, dass SessionUser initialisert ist
+        LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123"); // tbd: wird ins
+                                                                                                    // WelcomeScreen-UI
+                                                                                                    // verschoben, wo
+                                                                                                    // der SessionUser
+                                                                                                    // gesettet wird
+        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
 
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
@@ -142,7 +168,6 @@ public class HeaderPanel extends JPanel {
                         profileDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
@@ -159,16 +184,43 @@ public class HeaderPanel extends JPanel {
                         settingsDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
         JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
         JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
-        JMenuItem logOffItem = new JMenuItem("Ausloggen...");
+        JMenuItem logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        logOffItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User.isLoggedIn = false;
+                try {
+                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                    dbUsersInserter.applyChangedSessionUserToRow();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+                Application.getAppWindow().dispose();
+            }
+        });
 
-        userIconButton.add(welcomeItem);
+        userIconButton.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
+                welcomeItem.setEnabled(false);
+                userIconButton.add(welcomeItem, 0);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                userIconButton.remove(welcomeItem);
+            }
+
+        });
+        // userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
         userIconButton.add(normItem2);
         userIconButton.add(separatorItem);
