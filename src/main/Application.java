@@ -60,7 +60,21 @@ public class Application {
      * 
      * @param args obligatorischer Eingabeparameter der main-Methode
      */
-    public static void main(String[] args) {
+    public static void startApp() {
+        try {
+            // tbd: theme setting in JDialog, possible to set by user
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); 
+            // UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            // UIManager.setLookAndFeel("com.sun.java.swing.plaf.mac.MacLookAndFeel");
+        } catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        } catch (ClassNotFoundException e) {
+            // handle exception
+        } catch (InstantiationException e) {
+            // handle exception
+        } catch (IllegalAccessException e) {
+            // handle exception
+        }
         appWindow = new MainPanel();
         appWindow.setTitle("App: " + MainPanel.getAppTitle());
         appWindow.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());
