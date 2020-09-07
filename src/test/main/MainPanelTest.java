@@ -31,7 +31,7 @@ public class MainPanelTest {
     public void testSetHeaderPanel(){
         HeaderPanel panelTesten = new HeaderPanel(null);
         MainPanel.setHeaderPanel(panelTesten);
-        Assert.assertFalse(MainPanel.getHeaderpanel().equals(null));
+        Assert.assertFalse(MainPanel.getHeaderPanel().equals(null));
     }
  
 }

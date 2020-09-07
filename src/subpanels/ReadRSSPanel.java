@@ -1,11 +1,19 @@
 package subpanels;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.Cursor;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -18,12 +26,9 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 
-import java.awt.*;
-
-import java.io.*;
-
 /**
- * 
+ * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigen
+ * kann.
  */
 public class ReadRSSPanel extends JPanel {
 
@@ -32,7 +37,10 @@ public class ReadRSSPanel extends JPanel {
     JTextArea newsFeedTextField;
 
     /**
+     * Konstruktor, der tbd
      * 
+     * @param newsTitle Nachrichten-Panel-Titel
+     * @param rssUrl    URL zum RSS-Nachrichtenfeed
      */
     public ReadRSSPanel(String newsTitle, String rssUrl) {
         this.setLayout(new BorderLayout());
@@ -92,12 +100,15 @@ public class ReadRSSPanel extends JPanel {
         this.add(sp, BorderLayout.CENTER);
         this.add(reportingPanel, BorderLayout.SOUTH);
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
     /**
+     * Diese Methode tbd
      * 
+     * @param rssUrl
+     * @return
      */
     public static String readRSSFeed(String rssUrl) {
         try {
@@ -125,10 +136,13 @@ public class ReadRSSPanel extends JPanel {
     }
 
     /**
-    * 
-    */
+     * Innere Klasse tbd
+     */
     class MouseClickListener extends MouseAdapter {
 
+        /**
+         * Diese Methode tbd
+         */
         @Override
         public void mouseClicked(MouseEvent e) {
             MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));

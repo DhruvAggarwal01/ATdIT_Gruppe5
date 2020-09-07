@@ -1,27 +1,27 @@
 package subpanels;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Map;
-
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import java.io.*;
+
+import java.net.*;
+
+import java.util.*;
+
+import com.google.gson.*;
+import com.google.gson.reflect.*;
 
 import main.Styles;
 
 /**
+ * Diese Klasse richtet ein Panel ein, das die aktuellen Wetterdaten aus der
+ * OpenWeatherMap-API extrahiert und anzeigt.
  * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class WeatherPanel extends JPanel {
 
@@ -30,8 +30,9 @@ public class WeatherPanel extends JPanel {
     JTextArea weatherForecastArea;
 
     /**
+     * Konstruktor, der tbd
      * 
-     * @param weatherForecastTitle
+     * @param weatherForecastTitle Wettervorhersage-Panel-Titel
      */
     public WeatherPanel(String weatherForecastTitle) {
         this.setLayout(new BorderLayout());
@@ -58,11 +59,8 @@ public class WeatherPanel extends JPanel {
 
         });
 
-        String API_KEY = "9890476df64794ee702e35336d27f69e"; // korrekt, API Key nur noch nicht aktiviert
-        // String CITY_ID = "2958696";
+        String API_KEY = "9890476df64794ee702e35336d27f69e";
         String LOCATION = "Albersweiler,DE";
-        // String urlString = "pro.openweathermap.org/data/2.5/forecast/hourly?id=" +
-        // CITY_ID + "&appid=" + API_KEY;
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY
                 + "&units=metric";
 
@@ -110,19 +108,19 @@ public class WeatherPanel extends JPanel {
             ioe.printStackTrace();
         }
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 0, 0, 20),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 5, 5, 20),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
     /**
+     * Diese Methode tbd
      * 
-     * @param str
-     * @return
+     * @param jsonKey tbd
+     * @return tbd
      */
-    public static Map<String, Object> jsonToMap(String str) {
-        Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {
+    public static Map<String, Object> jsonToMap(String jsonKey) {
+        Map<String, Object> map = new Gson().fromJson(jsonKey, new TypeToken<HashMap<String, Object>>() {
         }.getType());
         return map;
     }
-
 }

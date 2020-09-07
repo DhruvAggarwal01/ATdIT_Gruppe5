@@ -12,8 +12,7 @@ import panels.OverviewPanel;
 import panels.ReportingPanel;
 
 /**
- * Je nach ausgewaehltem Tab wird ein anderer Panel (hier: JPanel) als Tab
- * gesetzt.
+ * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -28,7 +27,9 @@ public class NavItemPanelChooser extends JPanel {
      * Konstruktor, der zum zugehörigen NavigationItem einen passenden JPanel
      * einsetzt
      * 
-     * @param navItemName Name des ausgewaehlten Tabs (NavigationItem)
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      */
     public NavItemPanelChooser(String navItemName01, String navItemName02, String navItemName03) {
         this.navItemName01 = navItemName01;
@@ -47,9 +48,9 @@ public class NavItemPanelChooser extends JPanel {
      * null-Referenz an eines der Explorer-Teile zugewiesen, so wird diese mit einem
      * leeren String ausgetauscht.
      * 
-     * @param navItemName01
-     * @param navItemName02
-     * @param navItemName03
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      * 
      * @return Panel-Explorer-Text
      */
@@ -75,9 +76,9 @@ public class NavItemPanelChooser extends JPanel {
      * Diese Methode ist dafür zuständig aus den verschiedenen Panels je nach
      * Nutzerwunsch den Richtigen auszuwählen und selbst anzunehmen.
      * 
-     * @param navItemName01
-     * @param navItemName02
-     * @param navItemName03
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      */
     public void chooserFunctionality() {
         switch (navItemName01) {

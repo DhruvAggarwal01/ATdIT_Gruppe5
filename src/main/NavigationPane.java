@@ -1,10 +1,11 @@
 package main;
 
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 /**
- * Je nach dem welche Rechte der eingeloggte User innehat, sind Tabs nutzbar
- * bzw. nicht nutzbar.
+ * Diese Klasse enthält die Tabs der Applikation. Dabei werden über die Klasse
+ * <code>NavItemPanelChooser</code> die jeweilig anzuzeigenden Panels
+ * aufgerufen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
