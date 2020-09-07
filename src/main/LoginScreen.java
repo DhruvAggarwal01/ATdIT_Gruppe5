@@ -13,19 +13,9 @@ import javax.swing.*;
  */
 public class LoginScreen {
 
-    Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+    private static Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 
-    public LoginScreen() {
-        JFrame frame = new JFrame("BackgroundImage-Test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("App: " + MainPanel.getAppTitle());
-        frame.add(createMainPanel());
-        frame.setSize(size.width, size.height);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
-    private JPanel createMainPanel() {
+    private static JPanel createMainPanel() {
         BackgroundImagePanel mainPanel = new BackgroundImagePanel(new BorderLayout());
 
         JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -38,7 +28,13 @@ public class LoginScreen {
     }
 
     public static void main(String[] args) {
-        new LoginScreen();
+        JFrame frame = new JFrame("BackgroundImage-Test");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("App: " + MainPanel.getAppTitle());
+        frame.add(createMainPanel());
+        frame.setSize(size.width, size.height);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
 }

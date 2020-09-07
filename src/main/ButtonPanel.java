@@ -63,7 +63,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
         String username = usernameText.getText();
         String password = String.valueOf(passwordText.getPassword());
         // hardcoded username and password: hier Datenbankanbindung
-        return (username.equals("bob") && password.equals("secret")); // tbd: hardcoded
+        return (username.equals("bob") && password.equals("secret")); // tbd
 
     }
 }
