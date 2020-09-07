@@ -2,68 +2,86 @@ package main;
 
 import java.awt.*;
 import javax.swing.*;
+
+import db_interaction.LogInCredentialsChecker;
+
 import java.awt.event.*;
 
 public class ButtonPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 40424705904401071L;
 
-    private JLabel userLabel, passwordLabel, antwort;
-    private JButton login, cancel, vergessen;
-    private JTextField usernameText;
-    private JPasswordField passwordText;
+    private JLabel usernameLabel;
+    private JTextField usernameField;
+    private JLabel passwordLabel;
+    private JPasswordField passwordField;
+    private JLabel possibleErrorMessageLabel;
+    private JButton loginButton, cancelButton, pswdForgottenButton;
 
     public ButtonPanel(boolean opaque, LayoutManager layout) {
         super(layout);
-
-        userLabel = new JLabel("Username:");
-        passwordLabel = new JLabel("Password:");
-        usernameText = new JTextField();        //tbd: whitespace löschen lassen (automatisch)
-        passwordText = new JPasswordField();
-        login = new JButton("Login");
-        cancel = new JButton("Cancel");
-        vergessen = new JButton("Password forgotten");
-        antwort = new JLabel("");
-
         setOpaque(opaque);
-        add(userLabel);
-        add(usernameText);
-        add(passwordLabel);
-        add(passwordText);
-        add(login);
-        add(cancel);
-        add(vergessen);
-        add(antwort);
 
-        login.addActionListener(this);
-        cancel.addActionListener(this);
-        vergessen.addActionListener(this);
+        usernameLabel = new JLabel("Username:");
+        usernameField = new JTextField();
+        passwordLabel = new JLabel("Password:");
+        passwordField = new JPasswordField();
+
+        loginButton = new JButton("Login");
+        loginButton.addActionListener(this);
+        cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(this);
+        pswdForgottenButton = new JButton("Forgot your password?");
+        pswdForgottenButton.addActionListener(this);
+
+        possibleErrorMessageLabel = new JLabel(
+                "                                                                                              ");
+        possibleErrorMessageLabel.setFont(Styles.ERROR_MSG_FONT);
+
+        add(new JLabel(""));
+        add(new JLabel(""));
+        add(new JLabel(""));
+        add(new JLabel(""));
+
+        add(usernameLabel);
+        add(usernameField);
+        add(passwordLabel);
+        add(passwordField);
+        add(loginButton);
+        add(cancelButton);
+        add(pswdForgottenButton);
+        add(possibleErrorMessageLabel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == login) {
+        if (e.getSource() == loginButton) {
+            usernameField.setText(usernameField.getText().replace(" ", "")); // delete whitespaces
             if (authenticate()) {
+                AppRunner.loginFrame.dispose();
                 ActualApp.startApp();
             } else {
-                antwort.setText("Falscher Benutzername oder Passwort! Bitte erneut eingeben.");
+                usernameField.setText("");
+                passwordField.setText("");
             }
         }
-        if (e.getSource() == cancel) {
-            usernameText.setText("");
-            passwordText.setText("");
+        if (e.getSource() == cancelButton) {
+            usernameField.setText("");
+            passwordField.setText("");
         }
-        if (e.getSource() == cancel) {
-            // Dankenbankanbindung?
+        if (e.getSource() == pswdForgottenButton) {
+            possibleErrorMessageLabel.setText("Bitte wenden Sie sich an Ihren Administrator.");
         }
     }
 
     public boolean authenticate() {
-        // read in
-        String username = usernameText.getText();
-        String password = String.valueOf(passwordText.getPassword());
-        // hardcoded username and password: hier Datenbankanbindung
-        return (username.equals("bob") && password.equals("secret")); // tbd
+        String username = usernameField.getText();
+        String password = String.valueOf(passwordField.getPassword());
 
+        LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
+        log.setSessionUser();
+        possibleErrorMessageLabel.setText(log.possibleErrorString);
+
+        return log.isCredentialsMatching();
     }
 }

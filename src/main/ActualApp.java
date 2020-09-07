@@ -57,8 +57,6 @@ public class ActualApp {
 
     /**
      * Diese Methode führt die Applikation aus. Dabei wird ein Hauptframe erzeugt.
-     * 
-     * @param args obligatorischer Eingabeparameter der main-Methode
      */
     public static void startApp() {
         appWindow = new MainPanel();

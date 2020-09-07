@@ -14,18 +14,15 @@ import org.apache.poi.ss.usermodel.Row;
  */
 public class LogInCredentialsChecker {
 
-    private String username, password;
+    public String possibleErrorString;
 
     DBUsersExtractor dbUsersExtractor;
-    String possibleErrorString; // eventuell im Ui slebst wie: String possibleErrorString =
-                                // (logInCredentialsChecker.isCredentialsMatching() ? "Der Benutzername und/oder
-                                // das Kennwort
-                                // ist ungültig" : ""); jlabel.setText(possibleErrorString);
     Set<Integer> rowIndexesContainingUsername;
     Set<Integer> rowIndexesContainingPassword;
     Set<Integer> rowIndexesMatchingCredentials;
-
     User sessionUser;
+
+    private String username, password;
 
     public LogInCredentialsChecker(String username, String password) {
         this.username = username;
@@ -39,17 +36,20 @@ public class LogInCredentialsChecker {
 
     public User getLoggedInUser() {
         try {
-            if (isCredentialsMatching()) { // nur ein User besitzt die geprüften Credentials
-                                           // (Normalfall)
+            if (isCredentialsMatching()) {
                 Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
                 Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
+
+                User.isLoggedIn = true;
+                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                dbUsersInserter.applyChangedSessionUserToRow();
+
                 return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
             } else {
-                possibleErrorString = "Der Benutzername und/oder das Kennwort ist ungültig"; // siehe Kommentar oben
-                // eventuell zu löschen
+                possibleErrorString = "Der Benutzername und/oder das Kennwort ist ungültig";
                 return null;
             }
-        } catch (IllegalArgumentException | IllegalAccessException e) {
+        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
         return null;
@@ -71,10 +71,4 @@ public class LogInCredentialsChecker {
         return rowIndexesMatchingCredentials.size() == 1; // Da username einzigartig ist (keine Duplikate), sollten
         // in diesem Set nur 1 row index enthalten sein
     }
-
-    // public static void main(String[] args) {
-    //     LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123");
-    //     log.setSessionUser();
-    //     System.out.println(User.username);
-    // }
 }

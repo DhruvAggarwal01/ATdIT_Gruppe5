@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class BackgroundImagePanel extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 6187241176653993435L;
 
     public BackgroundImagePanel(LayoutManager layout) {
         super(layout);

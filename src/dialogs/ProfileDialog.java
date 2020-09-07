@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.swing.*;
 
 import db_interaction.DBUsersInserter;
-import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 
 /**
@@ -191,12 +190,6 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
     }
 
     public void setInitDBUsersData() {
-        LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123"); // tbd: wird ins
-                                                                                                    // WelcomeScreen-UI
-                                                                                                    // verschoben, wo
-                                                                                                    // der SessionUser
-                                                                                                    // gesettet wird
-        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
         forenameTextField.setText(User.forename);
         surnameTextField.setText(User.surname);
         streetAndIdTextField.setText(User.street_nr);

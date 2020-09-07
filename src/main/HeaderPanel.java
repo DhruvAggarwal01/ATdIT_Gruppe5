@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import db_interaction.DBUsersInserter;
-import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 import dialogs.ProfileDialog;
 import dialogs.SettingsDialog;
@@ -137,14 +136,6 @@ public class HeaderPanel extends JPanel {
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
-        // an dieser Stelle wird davon ausgegangen, dass SessionUser initialisert ist
-        LogInCredentialsChecker log = new LogInCredentialsChecker("max_mustermann", "passwort123"); // tbd: wird ins
-                                                                                                    // WelcomeScreen-UI
-                                                                                                    // verschoben, wo
-                                                                                                    // der SessionUser
-                                                                                                    // gesettet wird
-        log.setSessionUser();// tbd: wird ins WelcomeScreen-UI verschoben, wo der SessionUser gesettet wird
-
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
         ImageIcon settingsIcon = new ImageIcon(new ImageIcon("Library/images/settingsIcon.png").getImage()
@@ -161,8 +152,7 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog profileDialog = new ProfileDialog(ActualApp.getAppWindow(), normItem1.getText(),
-                                true);
+                        JDialog profileDialog = new ProfileDialog(ActualApp.getAppWindow(), normItem1.getText(), true);
                         profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         profileDialog.setUndecorated(true);
                         profileDialog.setVisible(true);

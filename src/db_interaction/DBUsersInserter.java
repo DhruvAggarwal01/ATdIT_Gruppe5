@@ -58,10 +58,9 @@ public class DBUsersInserter {
                     }
                     i++;
                 }
-            } else {
-                // fehler: primärschlüssel keine Dupliakte, einzigartig
             }
-            FileOutputStream outFile = new FileOutputStream(excelFileName);
+            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // keine Änderungen an der
+                                                                                          // Basis-Datenbank
             dbUsersExtractor.usersWorkbook.write(outFile);
             outFile.close();
             dbUsersExtractor.usersWorkbook.close();

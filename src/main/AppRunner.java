@@ -13,14 +13,17 @@ import javax.swing.*;
  */
 public class AppRunner {
 
-    private static Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+    public static JFrame loginFrame;
 
     private static JPanel createMainPanel() {
         BackgroundImagePanel mainPanel = new BackgroundImagePanel(new BorderLayout());
 
         JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         southPanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
-        southPanel.add(new ButtonPanel(southPanel.isOpaque(), new GridLayout(4, 2, 5, 5)));
+
+        ButtonPanel buttonOnTopPanel = new ButtonPanel(southPanel.isOpaque(), new GridLayout(6, 2, 5, 5));
+
+        southPanel.add(buttonOnTopPanel);
 
         mainPanel.add(southPanel, BorderLayout.CENTER);
 
@@ -28,13 +31,14 @@ public class AppRunner {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("BackgroundImage-Test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("App: " + MainPanel.getAppTitle());
-        frame.add(createMainPanel());
-        frame.setSize(size.width, size.height);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        loginFrame = new JFrame();
+        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginFrame.setTitle("App: " + MainPanel.getAppTitle());
+        loginFrame.add(createMainPanel());
+        loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        loginFrame.setResizable(false);
+        loginFrame.setLocationRelativeTo(null);
+        loginFrame.setVisible(true);
     }
 
 }
