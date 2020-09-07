@@ -1,23 +1,28 @@
 package panels;
 
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
-import main.MainPanel;
-import main.NavItemPanelChooser;
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
 
+/**
+ * Diese Klasse baut ein Panel auf, das, im Sinne eines Dashboards, mehrere
+ * Subpanels anzeigt und damit einen visuellen Überblick über generelle Themen
+ * verschafft.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class OverviewPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Konstruktor, der tbd
+     */
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
 
@@ -26,8 +31,10 @@ public class OverviewPanel extends JPanel {
         // 1. Panel: News
         JPanel newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
                 "https://www.wochenblatt-reporter.de/albersweiler/rss");
+
         // 2. Panel: Wetter
         JPanel weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+        
         // 3. Panel:
         JPanel diashow = new DiashowPanel("Impressionen vom Steinbruch");
 
@@ -36,33 +43,6 @@ public class OverviewPanel extends JPanel {
 
         this.add(smallPanels, BorderLayout.NORTH);
         this.add(diashow, BorderLayout.CENTER);
-
-        // // 3. Panel:
-        // JPanel jp3 = new JPanel();
-        // JLabel jl3 = new JLabel("---zum Reporting < klick mich! >---",
-        // JLabel.CENTER);
-        // jp3.add(jl3, BorderLayout.CENTER);
-        // MouseClickListener mCL = new MouseClickListener(this);
-        // jp3.addMouseListener(mCL);
-    }
-
-    class MouseClickListener extends MouseAdapter {
-
-        OverviewPanel oP;
-
-        MouseClickListener(OverviewPanel oP) {
-            this.oP = oP;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            oP.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        }
     }
 
 }

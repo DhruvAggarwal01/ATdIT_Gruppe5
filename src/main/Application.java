@@ -1,10 +1,8 @@
 package main;
 
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
+import java.awt.Toolkit;
 
 /**
  * Diese Klasse dient zur Ausführung der Anwendungsapplikation.
@@ -14,17 +12,53 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class Application {
 
+    public static TimeoutTimer timeoutTimer;
     private static JFrame appWindow;
+    private static int timeoutDelay = 3600000;
 
+    /**
+     * Getter-Methode für <code>appWindow</code>
+     * 
+     * @return Hauptframe-Instanz der Applikation
+     */
     public static JFrame getAppWindow() {
         return appWindow;
     }
 
     /**
-     * Ausgabe der Anwendung in einem Fenster
+     * Getter-Methode für <code>timeoutDelay</code>
      * 
-     * @param args obligatorischer Eingabeparameter (hier: ungenutzt, d.h.
-     *             entspricht <code>null</code>)
+     * @return Zeit bis zum Timeout der Applikation
+     */
+    public static int getTimeoutDelay() {
+        return timeoutDelay;
+    }
+
+    /**
+     * Diese Methode startet den Timer für den Timeout der Applikation.
+     * 
+     * @param delay zu wartende Zeit bis Timeout
+     */
+    public static void startTimeoutTimer(int delay) {
+        timeoutTimer = new TimeoutTimer(delay);
+        timeoutTimer.start();
+    }
+
+    /**
+     * Diese Methode startet den Timer für den Timeout der Applikation erneut mit
+     * seinem eingestellten initialen Delay.
+     * 
+     * @param delay zu wartende Zeit bis Timeout
+     */
+    public static void restartTimeoutTimerWithNewDelay(int delay) {
+        timeoutTimer.setInitialDelay(delay);
+        timeoutTimer.restart();
+    }
+
+    /**
+     * Diese Methode führt die Applikation aus. Dabei wird ein Hauptframe erzeugt.
+     * 
+     * @param args obligatorischer Eingabeparameter der main-Methode
      */
     public static void startApp() {
         try {
@@ -48,5 +82,6 @@ public class Application {
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);
         appWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        startTimeoutTimer(timeoutDelay);
     }
 }

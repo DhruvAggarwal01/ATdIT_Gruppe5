@@ -1,34 +1,39 @@
 package subpanels;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.Cursor;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import java.net.*;
 
 import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
 
 import java.io.*;
 
+import main.MainPanel;
+import main.NavItemPanelChooser;
+import main.Styles;
+
+/**
+ * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigen
+ * kann.
+ */
 public class ReadRSSPanel extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
 
     JTextArea newsFeedTextField;
 
+    /**
+     * Konstruktor, der tbd
+     * 
+     * @param newsTitle Nachrichten-Panel-Titel
+     * @param rssUrl    URL zum RSS-Nachrichtenfeed
+     */
     public ReadRSSPanel(String newsTitle, String rssUrl) {
         this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
+        newsTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         newsTitleLabel.setForeground(Color.BLUE.darker());
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
@@ -61,20 +66,36 @@ public class ReadRSSPanel extends JPanel {
                 super.paint(g);
             }
         };
-        newsFeedTextField.setFont(new Font("Consolas", Font.PLAIN, 10));
+        newsFeedTextField.replaceRange("", 0, newsTitle.length());
+        newsFeedTextField.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
         newsFeedTextField.setWrapStyleWord(true);
         newsFeedTextField.setEditable(false);
 
         JScrollPane sp = new JScrollPane(newsFeedTextField);
         sp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        // Reporting-Weiterleitung
+        JPanel reportingPanel = new JPanel();
+        reportingPanel.setBorder(BorderFactory.createRaisedBevelBorder());
+        JLabel jl3 = new JLabel("zum Reporting", JLabel.CENTER);
+        reportingPanel.add(jl3, BorderLayout.CENTER);
+        MouseClickListener mCL = new MouseClickListener();
+        reportingPanel.addMouseListener(mCL);
+
         this.add(newsTitleLabel, BorderLayout.NORTH);
         this.add(sp, BorderLayout.CENTER);
+        this.add(reportingPanel, BorderLayout.SOUTH);
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
+    /**
+     * Diese Methode tbd
+     * 
+     * @param rssUrl
+     * @return
+     */
     public static String readRSSFeed(String rssUrl) {
         try {
             URL rssUrlAddress = new URL(rssUrl);
@@ -100,5 +121,20 @@ public class ReadRSSPanel extends JPanel {
             System.out.println("Something went wrong reading the contents");
         }
         return null;
+    }
+
+    /**
+     * Innere Klasse tbd
+     */
+    class MouseClickListener extends MouseAdapter {
+
+        /**
+         * Diese Methode tbd
+         */
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", "Reporting", null));
+        }
+
     }
 }

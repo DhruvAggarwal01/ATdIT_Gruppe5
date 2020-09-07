@@ -1,10 +1,6 @@
 package main;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
-import java.io.IOException;
+import java.awt.*;
 
 /**
  * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
@@ -15,32 +11,67 @@ import java.io.IOException;
  */
 public class Styles {
 
+    /*
+     * // ------ Styles for main surrounding panels ------\\
+     */
+
+    /**
+     * 
+     */
+    public final static Color SURROUNDING_PANEL_COLOR = new Color(110, 187, 255);
+
     /**
      * Einsatzmöglichkeit: Font für Anwendungstitel
      * 
-     * @return <code>appheading</code> oder <code>null</code>
      */
-    public final static Font APPHEADING() {
-        try {
-            Font appheading = Font.createFont(Font.TRUETYPE_FONT, new File("Library/SfEspressoShackBold-P3L7.ttf"));
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(appheading);
-            return appheading;
-        } catch (IOException ioe) {
-            ioe.getStackTrace();
-        } catch (FontFormatException ffe) {
-            ffe.getStackTrace();
-        }
-        return null;
-    }
+    public final static Font APPHEADING = new Font("Rockwell Extra Bold", Font.BOLD, 26);
 
     /**
      * Einsatzmöglichkeit: Font für Navigationsleisten-Elemente
      */
-    public final static Font NAVPANE_FONT = new Font("Serif", Font.BOLD, 24);
+    public final static Font NAVPANE_FONT = new Font("Rockwell", Font.BOLD, 20);
 
     /**
-     * 
+     * Einsatzmöglichkeit: Font für TitledBorder-Titel
      */
-    public final static Font TAB_BORDERTITLE_FONT = new Font("Serif", Font.BOLD, 18);
+    public final static Font TAB_BORDERTITLE_FONT = new Font("Rockwell", Font.BOLD, 18);
+
+    /*
+     * ------ Styles for center panels ------\\
+     */
+
+    /**
+     * Einsatzmöglichkeit: Font für Subpanel-Titel
+     */
+    public final static Font SUBPANEL_TITLE_FONT = new Font("Calibri Light", Font.BOLD, 14);
+
+    /**
+     * Einsatzmöglichkeit: Font für Subpanel-Textinhalt
+     */
+    public final static Font SUBPANEL_TEXTCOMPONENT_FONT = new Font("Calibri", Font.PLAIN, 12);
+
+    /*
+     * // ------ Styles for user menu-dialogs ------\\
+     */
+
+    /**
+     * Einsatzmöglichkeit: Font für Profildialog-Haupttitel (Lvl. 1)
+     */
+    public final static Font PROFILE_LVL1_FONT = new Font("Calibri Light", Font.BOLD, 18);
+
+    /**
+     * Einsatzmöglichkeit: Font für Profildialog-Subtitel (Lvl. 2)
+     */
+    public final static Font PROFILE_LVL2_FONT = new Font("Calibri Light", Font.BOLD, 16);
+
+    /**
+     * Einsatzmöglichkeit: Font für Profildialog-Labeltext (Lvl. 3)
+     */
+    public final static Font PROFILE_LVL3_FONT = new Font("Calibri", Font.PLAIN, 12);
+
+    /**
+     * Einsatzmöglichkeit: Font für Bestätigungsbuttons
+     */
+    public final static Font RSSC_BUTTON_FONT = new Font("Calibri", Font.BOLD, 14);
+
 }
