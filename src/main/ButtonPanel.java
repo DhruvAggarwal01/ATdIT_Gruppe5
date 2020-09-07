@@ -3,9 +3,11 @@ package main;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.Graphics;
 
 public class ButtonPanel extends JPanel implements ActionListener {
+
+    private static final long serialVersionUID = 40424705904401071L;
+
     private JLabel userLabel, passwordLabel, antwort;
     private JButton login, cancel, vergessen;
     private JTextField usernameText;
@@ -41,18 +43,18 @@ public class ButtonPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
-            if (authenticate()){
+            if (authenticate()) {
                 Application.startApp();
-            }
-            else {
+            } else {
                 antwort.setText("Falscher Benutzername oder Passwort! Bitte erneut eingeben.");
             }
-        }if (e.getSource() == cancel) {
+        }
+        if (e.getSource() == cancel) {
             usernameText.setText("");
             passwordText.setText("");
         }
         if (e.getSource() == cancel) {
-            //Dankenbankanbindung?
+            // Dankenbankanbindung?
         }
     }
 
@@ -61,7 +63,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
         String username = usernameText.getText();
         String password = String.valueOf(passwordText.getPassword());
         // hardcoded username and password: hier Datenbankanbindung
-        return (username.equals("bob") && password.equals("secret"));
+        return (username.equals("bob") && password.equals("secret")); // tbd: hardcoded
 
     }
 }

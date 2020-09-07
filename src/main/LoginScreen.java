@@ -2,8 +2,6 @@ package main;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Graphics;
 
 /**
  * Klasse, die einen LoginScreen startet und wenn der User einen richtigen
@@ -15,14 +13,9 @@ import java.awt.Graphics;
  */
 public class LoginScreen {
 
-    private static final long serialVersionUID = -7948772298520160976L;
     Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 
-    /**
-     * 
-     */
     public LoginScreen() {
-
         JFrame frame = new JFrame("BackgroundImage-Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("App: " + MainPanel.getAppTitle());
@@ -47,8 +40,5 @@ public class LoginScreen {
     public static void main(String[] args) {
         new LoginScreen();
     }
-
-    
-
 
 }

@@ -2,23 +2,15 @@ package main;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.Graphics;
 
 public class BackgroundImagePanel extends JPanel {
-   
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     public BackgroundImagePanel(LayoutManager layout) {
         super(layout);
     }
-
-    
-
-    
 
     @Override
     protected void paintComponent(Graphics g) {
