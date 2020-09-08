@@ -3,11 +3,14 @@ package main;
 import java.awt.*;
 import javax.swing.*;
 
+import db_interaction.DBUsersInserter;
 import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 
 import java.awt.event.*;
+import java.io.IOException;
 
-public class ButtonPanel extends JPanel implements ActionListener {
+public class LoginButtonPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 40424705904401071L;
 
@@ -18,7 +21,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
     private JLabel possibleErrorMessageLabel;
     private JButton loginButton, cancelButton, pswdForgottenButton;
 
-    public ButtonPanel(boolean opaque, LayoutManager layout) {
+    public LoginButtonPanel(boolean opaque, LayoutManager layout) {
         super(layout);
         setOpaque(opaque);
 
@@ -70,6 +73,13 @@ public class ButtonPanel extends JPanel implements ActionListener {
             usernameField.setText(usernameField.getText().replace(" ", "")); // delete whitespaces
             if (authenticate()) {
                 AppRunner.loginFrame.dispose();
+                User.isLoggedIn = true;
+                try {
+                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                    dbUsersInserter.applyChangedSessionUserToRow();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
                 ActualApp.startApp();
             } else {
                 usernameField.setText("");

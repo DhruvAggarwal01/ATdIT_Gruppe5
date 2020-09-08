@@ -40,16 +40,12 @@ public class LogInCredentialsChecker {
                 Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
                 Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
 
-                User.isLoggedIn = true;
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-
                 return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
             } else {
                 possibleErrorString = "Der Benutzername und/oder das Kennwort ist ungültig";
                 return null;
             }
-        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
+        } catch (IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;

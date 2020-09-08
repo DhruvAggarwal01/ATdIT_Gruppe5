@@ -21,7 +21,7 @@ public class AppRunner {
         JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         southPanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
 
-        ButtonPanel buttonOnTopPanel = new ButtonPanel(southPanel.isOpaque(), new GridLayout(6, 2, 5, 5));
+        LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(southPanel.isOpaque(), new GridLayout(6, 2, 5, 5));
 
         southPanel.add(buttonOnTopPanel);
 
