@@ -1,9 +1,8 @@
 package panels;
 import java.awt.*;
 import javax.swing.*;
-import subpanels.AtRiskPanel;
-import subpanels.OnTimePanel;
-import subpanels.OverduePanel;
+import subpanels.OrderPanels;
+
 
 
 
@@ -24,11 +23,11 @@ public class LogistikPanel extends JPanel {
 
 
         // 1. Panel: onTime
-        JPanel onTimePanel = new OnTimePanel("Order on Time");
+        JPanel onTimePanel = new OrderPanels("Order on Time", "These Ordes are on Time!", 188, 234, 174);
         // 2. Panel: atRisk
-        JPanel atRiskPanel = new AtRiskPanel("Order at Risk");
+        JPanel atRiskPanel = new OrderPanels("Order at Risk", "These Ordes are at Risk of delivering on Time!", 245, 220, 163);
         // 3. Panel: overdue
-        JPanel overduePanel = new OverduePanel("Order Overdue");
+        JPanel overduePanel = new OrderPanels("Order Overdue", "These Ordes are overdue!", 252, 130, 136);
 
 
         buttonPanel.add(new JButton("search"));

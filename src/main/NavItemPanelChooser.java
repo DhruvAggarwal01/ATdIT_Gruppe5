@@ -8,7 +8,7 @@ import javax.swing.border.*;
 import java.util.Objects;
 
 import panels.OverviewPanel;
-
+import panels.EditOrder;
 import panels.LogistikPanel;
 
 /**
@@ -101,8 +101,17 @@ public class NavItemPanelChooser extends JPanel {
             case "Produktion":
                 break;
             case "Logistik":
-                this.setLayout(new BorderLayout());
-                this.add(new LogistikPanel(), BorderLayout.CENTER);
+                switch (navItemName02) {
+                    case "":
+                    this.setLayout(new BorderLayout());
+                    this.add(new LogistikPanel(), BorderLayout.CENTER);
+                    break;
+                    case "EditOrder":
+                        this.setLayout(new BorderLayout());
+                        this.add(new EditOrder(), BorderLayout.CENTER); // tbd
+                        break;
+                    default:
+                        break;}
                 break;
 
             // tbd

@@ -44,6 +44,10 @@ public class Styles {
      * Einsatzmöglichkeit: Font für Subpanel-Titel
      */
     public final static Font SUBPANEL_TITLE_FONT = new Font("Calibri Light", Font.BOLD, 14);
+  /**
+     * Einsatzmöglichkeit2: Font für Subpanel-Titel
+     */
+    public final static Font SUBPANEL_TITLE_FONT2 = new Font("Calibri Light", Font.BOLD, 22);
 
     /**
      * Einsatzmöglichkeit: Font für Subpanel-Textinhalt
