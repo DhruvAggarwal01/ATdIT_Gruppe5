@@ -59,7 +59,7 @@ public class DBUsersInserter {
                     i++;
                 }
             }
-            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // keine Änderungen an der
+            FileOutputStream outFile = new FileOutputStream("databases/USERS.xlsx"); // keine Änderungen an der
                                                                                           // Basis-Datenbank
             dbUsersExtractor.usersWorkbook.write(outFile);
             outFile.close();

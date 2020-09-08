@@ -53,6 +53,17 @@ public class ButtonPanel extends JPanel implements ActionListener {
         add(possibleErrorMessageLabel);
     }
 
+    public boolean authenticate() {
+        String username = usernameField.getText();
+        String password = String.valueOf(passwordField.getPassword());
+
+        LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
+        log.setSessionUser();
+        possibleErrorMessageLabel.setText(log.possibleErrorString);
+
+        return log.isCredentialsMatching();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
@@ -74,14 +85,4 @@ public class ButtonPanel extends JPanel implements ActionListener {
         }
     }
 
-    public boolean authenticate() {
-        String username = usernameField.getText();
-        String password = String.valueOf(passwordField.getPassword());
-
-        LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
-        log.setSessionUser();
-        possibleErrorMessageLabel.setText(log.possibleErrorString);
-
-        return log.isCredentialsMatching();
-    }
 }

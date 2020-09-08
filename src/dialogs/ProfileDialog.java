@@ -253,7 +253,9 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
-            this.dispose();
+            if (possibleErrorMessageLabel.getText().equals("")) {
+                this.dispose();
+            }
         }
     }
 }
