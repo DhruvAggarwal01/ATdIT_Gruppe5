@@ -90,7 +90,7 @@ public class WeatherPanel extends JPanel {
                 public void paint(Graphics g) {
                     g.drawImage(weatherStatusImage, 0, 0, this);
                     super.paint(g);
-                }
+                } 
             };
             weatherForecastArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             weatherForecastArea.setText(
