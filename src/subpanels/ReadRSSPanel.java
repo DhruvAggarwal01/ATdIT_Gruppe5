@@ -1,13 +1,26 @@
 package subpanels;
 
-import java.net.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-
-import java.io.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import main.MainPanel;
 import main.NavItemPanelChooser;
@@ -77,8 +90,9 @@ public class ReadRSSPanel extends JPanel {
         // Reporting-Weiterleitung
         JPanel reportingPanel = new JPanel();
         reportingPanel.setBorder(BorderFactory.createRaisedBevelBorder());
-        JLabel jl3 = new JLabel("zum Reporting", JLabel.CENTER);
-        reportingPanel.add(jl3, BorderLayout.CENTER);
+        JLabel reportingLabel = new JLabel("<HTML><U>zum Reporting</U></HTML>", JLabel.CENTER);
+        reportingLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        reportingPanel.add(reportingLabel, BorderLayout.CENTER);
         MouseClickListener mCL = new MouseClickListener();
         reportingPanel.addMouseListener(mCL);
 
@@ -86,7 +100,7 @@ public class ReadRSSPanel extends JPanel {
         this.add(sp, BorderLayout.CENTER);
         this.add(reportingPanel, BorderLayout.SOUTH);
 
-        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0),
+        this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
     }
 
@@ -115,10 +129,8 @@ public class ReadRSSPanel extends JPanel {
             }
             in.close();
             return sourceCode;
-        } catch (MalformedURLException ue) {
-            System.out.println("Malformed URL");
-        } catch (IOException ioe) {
-            System.out.println("Something went wrong reading the contents");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

@@ -24,7 +24,7 @@ public class TimeoutTimer extends Timer {
         super(delay, new ActionListener() { // delay time should be settable by user in SettingsDialog
             @Override
             public void actionPerformed(ActionEvent e) {
-                Application.getAppWindow().dispose();
+                ActualApp.getAppWindow().dispose();
             }
         });
         timeoutDelay = delay;

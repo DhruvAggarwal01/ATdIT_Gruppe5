@@ -1,11 +1,30 @@
 package main;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.Dialog.*;
+import java.awt.BorderLayout;
+import java.awt.Cursor;
+import java.awt.Dialog.ModalityType;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
+import db_interaction.DBUsersInserter;
+import db_interaction.User;
 import dialogs.ProfileDialog;
 import dialogs.SettingsDialog;
 
@@ -25,6 +44,7 @@ public class HeaderPanel extends JPanel {
     public JLabel headerTitleJLabel;
     public AbstractButton userIconButton;
     public JMenuBar mb;
+    public JMenuItem welcomeItem;
     public JPanel userIconWithMenuInJPanel;
 
     /**
@@ -116,9 +136,6 @@ public class HeaderPanel extends JPanel {
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
-        JMenuItem welcomeItem = new JMenuItem("<HTML><U>Willkommen (tbd)UserName!</U></HTML>");
-        welcomeItem.setEnabled(false);
-
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
         ImageIcon settingsIcon = new ImageIcon(new ImageIcon("Library/images/settingsIcon.png").getImage()
@@ -135,14 +152,12 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog profileDialog = new ProfileDialog(Application.getAppWindow(), normItem1.getText(),
-                                true);
+                        JDialog profileDialog = new ProfileDialog(ActualApp.getAppWindow(), normItem1.getText(), true);
                         profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         profileDialog.setUndecorated(true);
                         profileDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
@@ -152,23 +167,50 @@ public class HeaderPanel extends JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        JDialog settingsDialog = new SettingsDialog(Application.getAppWindow(), normItem2.getText(),
+                        JDialog settingsDialog = new SettingsDialog(ActualApp.getAppWindow(), normItem2.getText(),
                                 true);
                         settingsDialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         settingsDialog.setUndecorated(true);
                         settingsDialog.setVisible(true);
                     }
                 });
-
             }
         });
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
         JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
         JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
-        JMenuItem logOffItem = new JMenuItem("Ausloggen...");
+        JMenuItem logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        logOffItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User.isLoggedIn = false;
+                try {
+                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                    dbUsersInserter.applyChangedSessionUserToRow();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+                ActualApp.getAppWindow().dispose();
+            }
+        });
 
-        userIconButton.add(welcomeItem);
+        userIconButton.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
+                welcomeItem.setEnabled(false);
+                userIconButton.add(welcomeItem, 0);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                userIconButton.remove(welcomeItem);
+            }
+
+        });
+        // userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
         userIconButton.add(normItem2);
         userIconButton.add(separatorItem);
