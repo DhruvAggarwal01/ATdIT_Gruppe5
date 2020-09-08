@@ -34,10 +34,11 @@ public class AppRunner {
         loginFrame = new JFrame();
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setTitle("App: " + MainPanel.getAppTitle());
-        loginFrame.add(createMainPanel());
         loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         loginFrame.setResizable(false);
         loginFrame.setLocationRelativeTo(null);
+
+        loginFrame.add(createMainPanel());
         loginFrame.setVisible(true);
     }
 
