@@ -4,11 +4,11 @@ import java.awt.*;
 import javax.swing.*;
 import subpanels.OrderPanels;
 
-public class EditOrder extends JPanel {
+public class ShowOrder extends JPanel {
     
     private static final long serialVersionUID = 1L;
     
-    public EditOrder() {
+    public ShowOrder() {
 
         this.setLayout(new BorderLayout());
         JPanel orderPanel = new JPanel(new GridLayout(6, 2, 10, 10));
@@ -17,21 +17,21 @@ public class EditOrder extends JPanel {
         orderPanel.add(new JLabel("overdue"));
 
         orderPanel.add(new JLabel("Steinart"));
-        orderPanel.add(new JComboBox<>());
+        orderPanel.add(new JLabel("Steinart"));
        
 
         orderPanel.add(new JLabel("Menge"));
-        orderPanel.add(new JTextField());
+        orderPanel.add(new JLabel("Steinart"));
 
         orderPanel.add(new JLabel("Lieferdatum"));
-        orderPanel.add(new JTextField());
+        orderPanel.add(new JLabel("Steinart"));
 
 
         orderPanel.add(new JLabel("Status"));
-        orderPanel.add(new JComboBox<>());
+        orderPanel.add(new JLabel("Steinart"));
 
         orderPanel.add(new JLabel("Auftragsstatus"));
-        orderPanel.add(new JButton("Barbeiten beenden"));
+        orderPanel.add(new JButton("Auftrag bearbeiten"));
     
 
  
