@@ -19,7 +19,7 @@ public class MainPanel extends JFrame {
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
-    private Container c;
+    private static Container c;
  
     /**
      * Konstruktor, der zuständig für den Aufbau des Hauptframe-Fensters ist. Das
@@ -57,7 +57,15 @@ public class MainPanel extends JFrame {
     public static NavigationPane getNavPane() {
         return navPane;
     }
- 
+
+    /**
+     * Getter-Methode für <code>c</code>
+     * 
+     * @return Container c
+     */
+    public static Container getc(){
+        return c;
+    }
     /**
      * Getter-Methode für <code>headerPanel</code>
      * 

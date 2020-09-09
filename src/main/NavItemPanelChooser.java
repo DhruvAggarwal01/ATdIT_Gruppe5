@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import panels.OverviewPanel;
+import panels.ProduktionPanel;
 import panels.ReportingPanel;
+import subpanels.IdleIntervalls;
+import subpanels.Karte;
+import subpanels.RouteOptimization;
 
 /**
  * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
@@ -91,13 +95,18 @@ public class NavItemPanelChooser extends JPanel {
                     case "Reporting":
                         this.setLayout(new BorderLayout());
                         this.add(new ReportingPanel(), BorderLayout.CENTER);
+                        break;
                     default:
                         break;
                 }
+                break;
             case "ToDo's":
                 break;
             case "Produktion":
+                this.setLayout(new BorderLayout());
+                this.add(new ProduktionPanel(), BorderLayout.CENTER);
                 break;
+
             default:
                 break;
         }
