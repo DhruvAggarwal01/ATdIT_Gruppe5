@@ -7,6 +7,9 @@ import main.Styles;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 
+import db_interaction.DBOrdersExtractor;
+
+import db_interaction.Order;
 /**
 
  */

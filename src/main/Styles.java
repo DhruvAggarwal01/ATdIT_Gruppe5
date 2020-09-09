@@ -84,3 +84,4 @@ public class Styles {
     public final static Font ERROR_MSG_FONT = new Font("Calibri", Font.BOLD, 12);
 
 }
+
