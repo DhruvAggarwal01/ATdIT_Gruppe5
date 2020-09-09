@@ -2,14 +2,16 @@ package test.db_interaction;
 
 import java.io.IOException;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.junit.*;
 
+import db_interaction.DBUsersExtractor;
 import db_interaction.DBUsersInserter;
+import db_interaction.User;
 
 public class DBUsersInserterTest {
 
-    @Before
-    public void init() {
+    public void executeDBUsersInserter() {
         try {
             DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
             dbUsersInserter.applyChangedSessionUserToRow();
@@ -19,6 +21,17 @@ public class DBUsersInserterTest {
     }
 
     @Test
-    public void testDidItHappen() {
+    public void testUserChangesAppliedToDatabase() {    //tbd
+        User.personnel_id = 1;
+        User.role_id = 2;
+        executeDBUsersInserter();
+        try {
+            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/temp_USERS.xlsx");
+            Row row = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(1);
+            int actualRole_id = (int) row.getCell(5).getNumericCellValue();
+            Assert.assertEquals("New role_id should be set in database", 2, actualRole_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

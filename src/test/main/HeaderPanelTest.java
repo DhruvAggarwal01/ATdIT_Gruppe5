@@ -3,8 +3,7 @@ package test.main;
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
+import javax.swing.*;
 
 import org.junit.*;
 
@@ -67,12 +66,11 @@ public class HeaderPanelTest {
         Assert.assertFalse("Profile Menu is not selected initially", testMenu.isSelected());
     }
 
-    
     @Test
     public void testHeaderTitleAdder() {
         HeaderPanel panelTest = new HeaderPanel("Test");
         panelTest.headerTitleAdder("Test");
-        Assert.assertEquals("Test",panelTest.getHeaderTitleJLabel().getText());
+        Assert.assertEquals("Test", panelTest.getHeaderTitleJLabel().getText());
     }
 
     @AfterClass
