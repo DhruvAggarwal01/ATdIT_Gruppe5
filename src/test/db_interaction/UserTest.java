@@ -8,14 +8,16 @@ public class UserTest {
 
     @Test
     public void testGetInitPublicStaticVariable() {
-        Assert.assertEquals("", User.username);
+        User user = new User();
+        Assert.assertEquals("", user.getUsername());
     }
 
     @Test
     public void testSetAndGetPublicStaticVariable() {
-        User.username = "test_testtest";
-        Assert.assertEquals("test_testtest", User.username);
-        User.username = ""; // zurückgesetzt zu initialem Wert
+        User user = new User();
+        user.setUsername("test_testtest");
+        Assert.assertEquals("test_testtest", user.getUsername());
+        user.setUsername(""); // zurückgesetzt zu initialem Wert
     }
 
     @Test

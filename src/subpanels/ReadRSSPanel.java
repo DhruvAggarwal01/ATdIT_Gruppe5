@@ -37,7 +37,7 @@ public class ReadRSSPanel extends JPanel {
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
         newsTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
-        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(this, rssUrl.substring(0, rssUrl.length() - 4));
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(rssUrl.substring(0, rssUrl.length() - 4));
         newsTitleLabel.addMouseListener(hMouseAdapter);
 
         newsFeedTextField = new JTextArea(readRSSFeed(rssUrl)) {

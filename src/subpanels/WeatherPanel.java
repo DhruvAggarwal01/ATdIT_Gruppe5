@@ -46,7 +46,7 @@ public class WeatherPanel extends JPanel {
         weatherForecastTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         weatherForecastTitleLabel.setToolTipText("To: " + urlAddress);
         weatherForecastTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
-        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(this, urlAddress);
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(urlAddress);
         weatherForecastTitleLabel.addMouseListener(hMouseAdapter);
 
         String API_KEY = "9890476df64794ee702e35336d27f69e";
@@ -114,11 +114,11 @@ public class WeatherPanel extends JPanel {
         return map;
     }
 
-    public String getTitlePanel(){
+    public String getTitlePanel() {
         return weatherForecastTitle;
     }
 
-    public JLabel getWeatherForecastTitleLabel(){
+    public JLabel getWeatherForecastTitleLabel() {
         return weatherForecastTitleLabel;
     }
 

@@ -7,7 +7,7 @@ import org.junit.*;
 
 import db_interaction.DBUsersExtractor;
 import db_interaction.DBUsersInserter;
-import db_interaction.User;
+import db_interaction.LogInCredentialsChecker;
 
 public class DBUsersInserterTest {
 
@@ -21,9 +21,9 @@ public class DBUsersInserterTest {
     }
 
     @Test
-    public void testUserChangesAppliedToDatabase() {    //tbd
-        User.personnel_id = 1;
-        User.role_id = 2;
+    public void testUserChangesAppliedToDatabase() { // tbd
+        LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
+        LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/temp_USERS.xlsx");

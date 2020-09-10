@@ -63,7 +63,7 @@ public class LoginButtonPanel extends JPanel {
         String password = String.valueOf(passwordField.getPassword());
 
         LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
-        log.setSessionUser(); // static User anlegen
+        log.setSessionUser();
         possibleErrorMessageLabel.setText(log.possibleErrorString);
 
         return log.isCredentialsMatching();

@@ -127,6 +127,7 @@ public class DBUsersExtractor {
         int i = 0;
         while (cellIterator.hasNext() && i < declaredFields.length) {
             Cell cell = cellIterator.next();
+            declaredFields[i].setAccessible(true);
             switch (cell.getCellType()) {
                 case NUMERIC:
                     declaredFields[i].set(user, (int) cell.getNumericCellValue());

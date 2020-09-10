@@ -3,7 +3,6 @@ package test.db_interaction;
 import org.junit.*;
 
 import db_interaction.LogInCredentialsChecker;
-import db_interaction.User;
 
 public class LogInCredentialsCheckerTest {
 
@@ -18,7 +17,7 @@ public class LogInCredentialsCheckerTest {
     public void testSetSessionUser() {// tbd
         LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
         logInChecker.setSessionUser();
-        Assert.assertEquals("max_mustermann", User.username);
+        Assert.assertEquals("max_mustermann", LogInCredentialsChecker.sessionUser.getUsername());
     }
 
     // public static void main(String[] args) {

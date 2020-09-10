@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.IOException;
 
 import db_interaction.DBUsersInserter;
-import db_interaction.User;
+import db_interaction.LogInCredentialsChecker;
 import main.ActualApp;
 import main.AppRunner;
 import main.LoginButtonPanel;
@@ -36,7 +36,7 @@ public class LoginCancelForgottenListener implements ActionListener {
                     .setText(loginButtonPanelView.getUsernameField().getText().replace(" ", "")); // delete whitespaces
             if (loginButtonPanelView.authenticate()) {
                 AppRunner.loginFrame.dispose();
-                User.isLoggedIn = true;
+                LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
                 try {
                     DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                     dbUsersInserter.applyChangedSessionUserToRow();

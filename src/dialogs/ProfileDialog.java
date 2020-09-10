@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import main.Styles;
-import db_interaction.User;
+import db_interaction.LogInCredentialsChecker;
 import listener.ResetSaveCloseListener;
 
 /**
@@ -188,24 +188,24 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     }
 
     public void setInitDBUsersData() {
-        forenameTextField.setText(User.forename);
-        surnameTextField.setText(User.surname);
-        streetAndIdTextField.setText(User.street_nr);
-        zipTextField.setText(String.valueOf(User.zip));
-        cityTextField.setText(User.city);
-        emailTextField.setText(User.email);
+        forenameTextField.setText(LogInCredentialsChecker.sessionUser.getForename());
+        surnameTextField.setText(LogInCredentialsChecker.sessionUser.getSurname());
+        streetAndIdTextField.setText(LogInCredentialsChecker.sessionUser.getStreet_nr());
+        zipTextField.setText(String.valueOf(LogInCredentialsChecker.sessionUser.getZip()));
+        cityTextField.setText(LogInCredentialsChecker.sessionUser.getCity());
+        emailTextField.setText(LogInCredentialsChecker.sessionUser.getEmail());
     }
 
     public void saveEntriesOfTextFields() {
         if (isPswdChangeValid()) {
-            User.forename = forenameTextField.getText();
-            User.surname = surnameTextField.getText();
-            User.street_nr = streetAndIdTextField.getText();
-            User.zip = Integer.parseInt(zipTextField.getText());
-            User.city = cityTextField.getText();
-            User.email = emailTextField.getText();
+            LogInCredentialsChecker.sessionUser.setForename(forenameTextField.getText());
+            LogInCredentialsChecker.sessionUser.setSurname(surnameTextField.getText());
+            LogInCredentialsChecker.sessionUser.setStreet_nr(streetAndIdTextField.getText());
+            LogInCredentialsChecker.sessionUser.setZip(Integer.parseInt(zipTextField.getText()));
+            LogInCredentialsChecker.sessionUser.setCity(cityTextField.getText());
+            LogInCredentialsChecker.sessionUser.setEmail(emailTextField.getText());
             if (!new String(newPswdField.getPassword()).equals("")) {
-                User.password = new String(newPswdField.getPassword());
+                LogInCredentialsChecker.sessionUser.setPassword(new String(newPswdField.getPassword()));
             }
             errorMessage = "";
             possibleErrorMessageLabel.setIcon(null);
@@ -226,7 +226,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         if (currentPswd.equals("") || newPswd.equals("") || confirmPswd.equals("")) {
             return true;
         }
-        return currentPswd.equals(User.password) && newPswd.equals(confirmPswd);
+        return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
 
     public JButton getResetEntriesButton() {
@@ -245,19 +245,19 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         return possibleErrorMessageLabel;
     }
 
-    public JPanel getPersonalInfoPanel(){
+    public JPanel getPersonalInfoPanel() {
         return personalInfoPanel;
     }
 
-    public JPanel getContentPanel(){
+    public JPanel getContentPanel() {
         return contentPanel;
     }
 
-    public JPanel getRsscPanel(){
+    public JPanel getRsscPanel() {
         return rsscPanel;
     }
 
-    public JPanel getChangePswdPanel(){
+    public JPanel getChangePswdPanel() {
         return rsscPanel;
     }
 }

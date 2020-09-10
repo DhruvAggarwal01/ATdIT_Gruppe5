@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 import db_interaction.DBUsersInserter;
-import db_interaction.User;
+import db_interaction.LogInCredentialsChecker;
 import dialogs.SettingsDialog;
 import dialogs.ProfileDialog;
 import main.ActualApp;
@@ -66,7 +66,7 @@ public class ProfileMenuItemListener implements ActionListener {
             });
         }
         if (e.getSource() == headerPanelView.getLogOffItem()) {
-            User.isLoggedIn = false;
+            LogInCredentialsChecker.sessionUser.setIsLoggedIn(false);
             try {
                 DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                 dbUsersInserter.applyChangedSessionUserToRow();

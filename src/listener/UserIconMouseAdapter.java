@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import db_interaction.User;
+import db_interaction.LogInCredentialsChecker;
 import main.HeaderPanel;
 
 /**
@@ -36,7 +36,8 @@ public class UserIconMouseAdapter extends MouseAdapter {
     @Override
     public void mouseEntered(MouseEvent e) {
         headerPanelView
-                .setWelcomeItem(new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>"));
+                .setWelcomeItem(new JMenuItem("<HTML><U>Hallo " + LogInCredentialsChecker.sessionUser.getForename()
+                        + " " + LogInCredentialsChecker.sessionUser.getSurname() + "!</U></HTML>"));
         headerPanelView.getWelcomeItem().setEnabled(false);
         headerPanelView.getUserIconButton().add(headerPanelView.getWelcomeItem(), 0);
     }
