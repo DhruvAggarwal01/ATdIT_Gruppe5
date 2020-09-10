@@ -50,7 +50,7 @@ public class DBUsersExtractor {
                 continue;
             } else if (isValueInSpecificCell(row.getRowNum(), columnName, filterValue)) {
                 User filteredUser = getRowConvertedToUser(row);
-                filteredUsers.add(filteredUser); // row.getRowNum() = filteredUser.getPersonnel_id()
+                filteredUsers.add(filteredUser);
             }
         }
         return filteredUsers;
@@ -172,21 +172,5 @@ public class DBUsersExtractor {
         }
         return columnIndex;
     }
-
-    // public static void main(String[] args) {
-    // try {
-    // DBUsersExtractor dbUsersExtractor = new
-    // DBUsersExtractor("databases/USERS.xlsx");
-    // // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
-    // Set<User> filteredUserSet =
-    // dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
-
-    // System.out.println(Arrays.toString(filteredUserSet.toArray()));
-    // System.out.println(User.username);
-
-    // } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-    // e.printStackTrace();
-    // }
-    // }
 
 }

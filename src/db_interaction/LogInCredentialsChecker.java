@@ -64,7 +64,6 @@ public class LogInCredentialsChecker {
         }
         rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword);
         rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
-        return rowIndexesMatchingCredentials.size() == 1; // Da username einzigartig ist (keine Duplikate), sollten
-        // in diesem Set nur 1 row index enthalten sein
+        return rowIndexesMatchingCredentials.size() == 1;
     }
 }

@@ -7,6 +7,7 @@ import java.net.*;
 
 import javax.swing.*;
 
+import listener.HyperlinkMouseAdapter;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
@@ -36,20 +37,8 @@ public class ReadRSSPanel extends JPanel {
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
         newsTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
-        newsTitleLabel.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    Desktop.getDesktop().browse(new URI(rssUrl.substring(0, rssUrl.length() - 4))); // entferne
-                                                                                                    // das
-                                                                                                    // '/rss'
-                } catch (IOException | URISyntaxException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-        });
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(this, rssUrl.substring(0, rssUrl.length() - 4));
+        newsTitleLabel.addMouseListener(hMouseAdapter);
 
         newsFeedTextField = new JTextArea(readRSSFeed(rssUrl)) {
             private static final long serialVersionUID = 1L;
@@ -78,7 +67,7 @@ public class ReadRSSPanel extends JPanel {
         JLabel reportingLabel = new JLabel("<HTML><U>zum Reporting</U></HTML>", JLabel.CENTER);
         reportingLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         reportingPanel.add(reportingLabel, BorderLayout.CENTER);
-        MouseClickListener mCL = new MouseClickListener();
+        MouseAdapter mCL = new MouseClickListener();
         reportingPanel.addMouseListener(mCL);
 
         this.add(newsTitleLabel, BorderLayout.NORTH);

@@ -9,10 +9,19 @@ import javax.swing.*;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 
+/**
+ * Diese Klasse tbd
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class ReportingPanel extends JPanel {
 
     private static final long serialVersionUID = -8379965032225222069L;
 
+    /**
+     * Konstruktor
+     */
     public ReportingPanel() {
         this.setLayout(new BorderLayout());
 

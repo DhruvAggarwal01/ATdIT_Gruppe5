@@ -59,15 +59,13 @@ public class DBUsersInserter {
                     i++;
                 }
             }
-            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // keine Änderungen an der
-                                                                                          // Basis-Datenbank
+            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // Änderungen nur temporär
             dbUsersExtractor.usersWorkbook.write(outFile);
             outFile.close();
             dbUsersExtractor.usersWorkbook.close();
         } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

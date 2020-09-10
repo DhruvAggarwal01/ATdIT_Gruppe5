@@ -1,16 +1,14 @@
 package main;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
 import db_interaction.LogInCredentialsChecker;
-import db_interaction.User;
+import listener.LoginCancelForgottenListener;
+import listener.LoginKeyListener;
 
-import java.awt.event.*;
-import java.io.IOException;
-
-public class LoginButtonPanel extends JPanel implements ActionListener {
+public class LoginButtonPanel extends JPanel {
 
     private static final long serialVersionUID = 40424705904401071L;
 
@@ -25,17 +23,21 @@ public class LoginButtonPanel extends JPanel implements ActionListener {
         super(layout);
         setOpaque(opaque);
 
+        KeyListener lKeyListener = new LoginKeyListener(this);
         usernameLabel = new JLabel("Username:");
         usernameField = new JTextField();
+        usernameField.addKeyListener(lKeyListener);
         passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField();
+        passwordField.addKeyListener(lKeyListener);
 
+        ActionListener lcfListener = new LoginCancelForgottenListener(this);
         loginButton = new JButton("Login");
-        loginButton.addActionListener(this);
+        loginButton.addActionListener(lcfListener);
         cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(this);
+        cancelButton.addActionListener(lcfListener);
         pswdForgottenButton = new JButton("Forgot your password?");
-        pswdForgottenButton.addActionListener(this);
+        pswdForgottenButton.addActionListener(lcfListener);
 
         possibleErrorMessageLabel = new JLabel(
                 "                                                                                              ");
@@ -67,32 +69,28 @@ public class LoginButtonPanel extends JPanel implements ActionListener {
         return log.isCredentialsMatching();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == loginButton) {
-            usernameField.setText(usernameField.getText().replace(" ", "")); // delete whitespaces
-            if (authenticate()) {
-                AppRunner.loginFrame.dispose();
-                User.isLoggedIn = true;
-                try {
-                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                    dbUsersInserter.applyChangedSessionUserToRow();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-                ActualApp.startApp();
-            } else {
-                usernameField.setText("");
-                passwordField.setText("");
-            }
-        }
-        if (e.getSource() == cancelButton) {
-            usernameField.setText("");
-            passwordField.setText("");
-        }
-        if (e.getSource() == pswdForgottenButton) {
-            possibleErrorMessageLabel.setText("Bitte wenden Sie sich an Ihren Administrator.");
-        }
+    public JTextField getUsernameField() {
+        return usernameField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JLabel getPossibleErrorMessageLabel() {
+        return possibleErrorMessageLabel;
+    }
+
+    public JButton getLoginButton() {
+        return this.loginButton;
+    }
+
+    public JButton getCancelButton() {
+        return this.cancelButton;
+    }
+
+    public JButton getPswdForgottenButton() {
+        return this.pswdForgottenButton;
     }
 
 }

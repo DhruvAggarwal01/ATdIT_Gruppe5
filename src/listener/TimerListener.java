@@ -2,6 +2,10 @@ package listener;
 
 import java.awt.event.*;
 
+import javax.swing.ImageIcon;
+
+import subpanels.DiashowPanel;
+
 /**
  * Diese Klasse tbd
  * 
@@ -10,6 +14,18 @@ import java.awt.event.*;
  */
 public class TimerListener implements ActionListener {
 
+    private final DiashowPanel diashowPanelView;
+
+    /**
+     * Konstruktor, der eine Referenz auf die Instanz des <code>DiashowPanel</code>
+     * mithilfe des Parameters herstellt, um damit weiterzuarbeiten.
+     * 
+     * @param diashowPanelView Instanz von <code>DiashowPanel</code>
+     */
+    public TimerListener(DiashowPanel diashowPanelView) {
+        this.diashowPanelView = diashowPanelView;
+    }
+
     /**
      * Diese Methode tbd
      * 
@@ -17,7 +33,9 @@ public class TimerListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        counter %= images.length;
-        diashowLabel.setIcon(images[counter++]);
+        diashowPanelView.setCounter(diashowPanelView.getCounter() % (diashowPanelView.getImages().length));
+        ImageIcon[] tempDiashowImages = diashowPanelView.getImages();
+        diashowPanelView.getDiashowLabel().setIcon(tempDiashowImages[diashowPanelView.getCounter()]);
+        diashowPanelView.setCounter(diashowPanelView.getCounter() + 1);
     }
 }
