@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -54,13 +54,13 @@ public class DBOrdersExtractor {
      */
     public Set<Order> getFilteredDBRowsToSet(String columnName, Object filterValue)
             throws IOException, IllegalArgumentException, IllegalAccessException {
-                Set<Order> filteredUsers = new HashSet<Order>();
+        Set<Order> filteredUsers = new HashSet<Order>();
 
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
         Iterator<Row> rowIterator = usersSheet.iterator();
 
         while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
-            Row row = rowIterator.next(); 
+            Row row = rowIterator.next();
             if (row.getRowNum() == 0) { // header
                 continue;
             } else if (isValueInSpecificCell(row.getRowNum(), columnName, filterValue)) {
