@@ -41,5 +41,4 @@ public class AppRunner {
         loginFrame.add(createMainPanel());
         loginFrame.setVisible(true);
     }
-
 }

@@ -51,29 +51,14 @@ public class ActualApp {
         startTimeoutTimer(timeoutDelay);
     }
 
-    /**
-     * Getter-Methode für <code>timeoutTimer</code>
-     * 
-     * @return tbd
-     */
     public static TimeoutTimer getTimeoutTimer() {
         return timeoutTimer;
     }
 
-    /**
-     * Getter-Methode für <code>appWindow</code>
-     * 
-     * @return Hauptframe-Instanz der Applikation
-     */
     public static JFrame getAppWindow() {
         return appWindow;
     }
 
-    /**
-     * Getter-Methode für <code>timeoutDelay</code>
-     * 
-     * @return Zeit bis zum Timeout der Applikation
-     */
     public static int getTimeoutDelay() {
         return timeoutDelay;
     }

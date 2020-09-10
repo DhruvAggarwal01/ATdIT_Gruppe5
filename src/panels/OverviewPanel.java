@@ -22,8 +22,8 @@ public class OverviewPanel extends JPanel {
 
     private JPanel smallPanels, newsPanel, weatherPanel, diashow;
 
- /**
-     * Konstruktor, der tbd
+    /**
+     * Konstruktor, der die Subpanels erzeugt und hinzufügt.
      */
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
@@ -46,18 +46,19 @@ public class OverviewPanel extends JPanel {
         this.add(diashow, BorderLayout.CENTER);
     }
 
-    public JPanel getweatherPanel(){
+    public JPanel getweatherPanel() {
         return weatherPanel;
     }
 
-    public JPanel getDiashowPanel(){
+    public JPanel getDiashowPanel() {
         return diashow;
     }
 
-    public JPanel getNewsPanel(){
+    public JPanel getNewsPanel() {
         return newsPanel;
     }
-    public JPanel getSmallPanels(){
+
+    public JPanel getSmallPanels() {
         return smallPanels;
     }
 }

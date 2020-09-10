@@ -172,11 +172,6 @@ public class HeaderPanel extends JPanel {
         return new JLabel(logoIIcon, horizontalAlignment);
     }
 
-    /**
-     * Getter-Methode für <code>headerTitleJLabel</code>
-     * 
-     * @return Header-Titel als Label
-     */
     public JLabel getHeaderTitleJLabel() {
         return headerTitleJLabel;
     }

@@ -7,8 +7,11 @@ import db_interaction.DBUsersInserter;
 import dialogs.ProfileDialog;
 
 /**
- * Diese Klasse implementiert einen ActionListener für die in
- * <code>ProfileDialog</code> angezeigten Buttons.
+ * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ein
+ * Reset Entries-/Save- oder Close-Button.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class ResetSaveCloseListener implements ActionListener {
 

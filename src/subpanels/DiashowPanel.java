@@ -10,7 +10,7 @@ import java.awt.event.*;
 
 /**
  * Diese Klasse baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern
- * (Ausschnitten) als Sneak-Peek durchlaufen zu lassen.
+ * (Ausschnitten) als "Sneak-Peeks" durchlaufen zu lassen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -25,7 +25,8 @@ public class DiashowPanel extends JPanel {
     private String diashowTitle;
 
     /**
-     * Konstruktor, der tbd
+     * Konstruktor, der die Einstellungen des UI und eigentlichen
+     * Diashow-Funktionalität aufbaut.
      * 
      * @param diashowTitle Diashow-Titel
      */
@@ -69,7 +70,8 @@ public class DiashowPanel extends JPanel {
     public ImageIcon[] getImages() {
         return this.images;
     }
-    public String getTitlePanel(){
+
+    public String getTitlePanel() {
         return diashowTitle;
     }
 

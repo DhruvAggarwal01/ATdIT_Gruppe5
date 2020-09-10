@@ -1,14 +1,14 @@
 package listener;
 
 import java.awt.event.*;
-
 import javax.swing.*;
 
 import db_interaction.LogInCredentialsChecker;
 import main.HeaderPanel;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse dient dem Anzeigen eines Welcome-Elements als Menüpunkt, während
+ * der Benutzer die Maus auf dem User-Icon platziert hat.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

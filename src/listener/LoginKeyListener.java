@@ -19,11 +19,17 @@ public class LoginKeyListener implements KeyListener {
         this.loginButtonPanelView = loginButtonPanelView;
     }
 
+    /**
+     * 
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
+    /**
+     * 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {

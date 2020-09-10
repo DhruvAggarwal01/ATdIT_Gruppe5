@@ -7,7 +7,8 @@ import dialogs.SettingsDialog;
 import main.ActualApp;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse setzt den Nachtmodus-Theme, wenn der Benutzer dies z.B. per
+ * JToggleButton einstellt.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

@@ -2,9 +2,7 @@ package listener;
 
 import java.awt.Dialog.ModalityType;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import java.io.IOException;
 
 import db_interaction.DBUsersInserter;
@@ -15,7 +13,8 @@ import main.ActualApp;
 import main.HeaderPanel;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf eines
+ * der Menüpunkte.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -35,7 +34,7 @@ public class ProfileMenuItemListener implements ActionListener {
     }
 
     /**
-     * Je nach gewähltem Menüpunkt wird eine zugehörige Aktion ausgeführt.
+     * Diese Methode führt je nach gewähltem Menüpunkt eine zugehörige Aktion aus.
      * 
      * @param e eingetretenes Event
      */

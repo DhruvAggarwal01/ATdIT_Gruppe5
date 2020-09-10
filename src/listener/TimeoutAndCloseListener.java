@@ -6,7 +6,8 @@ import dialogs.SettingsDialog;
 import main.ActualApp;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse setzt die Zeit bis es zum Timeout der App kommt und ob diese
+ * Einstellung gespeichert werden soll oder nicht.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -42,5 +43,4 @@ public class TimeoutAndCloseListener implements ActionListener {
             settingsDialogView.dispose();
         }
     }
-
 }

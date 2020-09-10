@@ -5,13 +5,19 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.net.*;
 
+/**
+ * Diese Klasse dient der Weiterleitung zu einer bestimmten URL beim Klicken auf
+ * eine Swing/AWT-Komponente.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class HyperlinkMouseAdapter extends MouseAdapter {
 
     private final String urlString;
 
     /**
-     * Konstruktor, der eine Referenz auf die Instanz des <code></code> mithilfe des
-     * Parameters herstellt, um damit weiterzuarbeiten.
+     * Konstruktor, der die URL zur weiterzuleitenden Webseite verarbeitet.
      * 
      * @param urlString
      */
@@ -20,9 +26,10 @@ public class HyperlinkMouseAdapter extends MouseAdapter {
     }
 
     /**
-     * tbd
+     * Diese Methode öffnet beim Klicken auf eine Swing/AWT-Komponente im Browser
+     * die URL.
      * 
-     * @param e
+     * @param e eingetretenes Event
      */
     @Override
     public void mouseClicked(MouseEvent e) {

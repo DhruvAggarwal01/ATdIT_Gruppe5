@@ -6,7 +6,7 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse dient dem Handling von Klicks auf das Applogo.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -14,9 +14,9 @@ import main.NavItemPanelChooser;
 public class LogoIconMouseAdapter extends MouseAdapter {
 
     /**
-     * tbd
+     * Diese Methode setzt das geöffnete Panel auf OverviewPanel.
      * 
-     * @param e
+     * @param e eingetretenes Event
      */
     @Override
     public void mouseClicked(MouseEvent e) {

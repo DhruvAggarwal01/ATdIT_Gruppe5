@@ -9,6 +9,13 @@ import main.ActualApp;
 import main.AppRunner;
 import main.LoginButtonPanel;
 
+/**
+ * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ei
+ * Login-/Cancel- oder Password-Forgotten-Button.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class LoginCancelForgottenListener implements ActionListener {
 
     private final LoginButtonPanel loginButtonPanelView;
@@ -25,9 +32,9 @@ public class LoginCancelForgottenListener implements ActionListener {
     }
 
     /**
-     * tbd
+     * Diese Methode führt je nach geklicktem Button eine zugehörige Funktion aus.
      * 
-     * @param e
+     * @param e eingetretenes Event
      */
     @Override
     public void actionPerformed(ActionEvent e) {

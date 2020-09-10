@@ -1,13 +1,13 @@
 package listener;
 
 import java.awt.event.*;
-
 import javax.swing.ImageIcon;
 
 import subpanels.DiashowPanel;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse dient der Implementierung einer Diashow, indem mehrere Bilder
+ * durchlaufen werden.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -27,9 +27,10 @@ public class TimerListener implements ActionListener {
     }
 
     /**
-     * Diese Methode tbd
+     * Diese Methode springt bei jedem Aufruf zum nächsten Bild-Array-Element und
+     * bei Erreichen des Endes wieder mit dem ersten Bild fortfährt.
      * 
-     * @param e
+     * @param e eingetretenes Event
      */
     @Override
     public void actionPerformed(ActionEvent e) {

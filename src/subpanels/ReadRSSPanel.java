@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
-
 import javax.swing.*;
 
 import listener.HyperlinkMouseAdapter;
@@ -13,8 +12,10 @@ import main.NavItemPanelChooser;
 import main.Styles;
 
 /**
- * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigen
- * kann.
+ * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigt.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class ReadRSSPanel extends JPanel {
 
@@ -23,7 +24,8 @@ public class ReadRSSPanel extends JPanel {
     JTextArea newsFeedTextField;
 
     /**
-     * Konstruktor, der tbd
+     * Konstruktor, der das Panel UI-seitig einstellt und den ausgelesenen RSS Feed
+     * anzeigt.
      * 
      * @param newsTitle Nachrichten-Panel-Titel
      * @param rssUrl    URL zum RSS-Nachrichtenfeed
@@ -41,7 +43,8 @@ public class ReadRSSPanel extends JPanel {
         newsTitleLabel.addMouseListener(hMouseAdapter);
 
         newsFeedTextField = new JTextArea(readRSSFeed(rssUrl)) {
-            private static final long serialVersionUID = 1L;
+
+            private static final long serialVersionUID = -1968962839234170862L;
 
             Image weatherStatusImage = new ImageIcon("Library/images/emptyTransparent.png").getImage();
             {
@@ -79,12 +82,13 @@ public class ReadRSSPanel extends JPanel {
     }
 
     /**
-     * Diese Methode tbd
+     * Diese Methode liest einen RSS Feed aus der URL <code>rssUrl</code> aus und
+     * gibt diesen als String zurück.
      * 
-     * @param rssUrl
-     * @return
+     * @param rssUrl URL des RSS Feed
+     * @return gelesener RSS Feed als String
      */
-    public static String readRSSFeed(String rssUrl) {
+    public String readRSSFeed(String rssUrl) {
         try {
             URL rssUrlAddress = new URL(rssUrl);
             BufferedReader in = new BufferedReader(new InputStreamReader(rssUrlAddress.openStream()));
@@ -110,12 +114,15 @@ public class ReadRSSPanel extends JPanel {
     }
 
     /**
-     * Innere Klasse tbd
+     * Innere Klasse für die Demo-Weiterleitung auf die nächste Ebene "Reporting"
      */
     class MouseClickListener extends MouseAdapter {
 
         /**
-         * Diese Methode tbd
+         * Diese Methode setzt das angezeigte Panel auf ReportingPanel beim Klicken auf
+         * eine Swing/AWT-Komponente.
+         * 
+         * @param e eingetretenes Event
          */
         @Override
         public void mouseClicked(MouseEvent e) {

@@ -35,50 +35,26 @@ public class MainPanel extends JFrame {
         c.add(navPane, BorderLayout.CENTER);
     }
 
-    /**
-     * Getter-Methode für <code>appTitle</code>
-     * 
-     * @return Applikation-Titel
-     */
     public static String getAppTitle() {
         return appTitle;
     }
 
-    /**
-     * Getter-Methode für <code>navPane</code>
-     * 
-     * @return Navigation-Pane
-     */
     public static NavigationPane getNavPane() {
         return navPane;
     }
 
-    /**
-     * Getter-Methode für <code>headerPanel</code>
-     * 
-     * @return Header-Panel
-     */
     public static HeaderPanel getHeaderPanel() {
         return headerPanel;
     }
 
-    /**
-     * Setter-Methode für <code>appTitle</code>
-     */
     public static void setAppTitle(String appTitleSet) {
         appTitle = appTitleSet;
     }
 
-    /**
-     * Setter-Methode für <code>navPane</code>
-     */
     public static void setNavPane(NavigationPane navPaneSet) {
         navPane = navPaneSet;
     }
 
-    /**
-     * Setter-Methode für <code>headerPanel</code>
-     */
     public static void setHeaderPanel(HeaderPanel headerPanelSet) {
         headerPanel = headerPanelSet;
     }

@@ -29,7 +29,8 @@ public class WeatherPanel extends JPanel {
     private JLabel weatherForecastTitleLabel;
 
     /**
-     * Konstruktor, der tbd
+     * Konstruktor, der das Panel UI-seitig einstellt und die relevanten,
+     * ausgewählten Wettervorhersagedaten über einem Hintergrundbild anzeigt.
      * 
      * @param weatherForecastTitle Wettervorhersage-Panel-Titel
      */
@@ -103,10 +104,11 @@ public class WeatherPanel extends JPanel {
     }
 
     /**
-     * Diese Methode tbd
+     * Diese Methode liest eine JSON-File aus und wandelt sie zur weiteren Nutzung
+     * in eine Map um.
      * 
-     * @param jsonKey tbd
-     * @return tbd
+     * @param jsonKey Key, nach dem die JSON gefiltert werden soll
+     * @return umgewandelte JSON als Map
      */
     public static Map<String, Object> jsonToMap(String jsonKey) {
         Map<String, Object> map = new Gson().fromJson(jsonKey, new TypeToken<HashMap<String, Object>>() {
