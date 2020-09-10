@@ -44,7 +44,10 @@ public class ActualApp {
         timeoutTimer.start();
     }
 
-    /**
+    public static TimeoutTimer getTimeoutTimer(){
+        return timeoutTimer;
+    }
+     /**
      * Diese Methode startet den Timer für den Timeout der Applikation erneut mit
      * seinem eingestellten initialen Delay.
      * 

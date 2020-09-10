@@ -1,4 +1,4 @@
-package test.main;
+package test.main.subpanelsTest;
 
 import org.junit.*;
 
@@ -24,14 +24,14 @@ public class MainPanelTest {
  
     @Test
     public void testAppTitle() {
-        Assert.assertEquals("Steinbruch ALBERSWEILER", MainPanel.getAppTitle());
+        Assert.assertEquals("provides the title of the app","Steinbruch ALBERSWEILER", MainPanel.getAppTitle());
     }
 
     @Test
     public void testSetHeaderPanel(){
         HeaderPanel panelTesten = new HeaderPanel(null);
         MainPanel.setHeaderPanel(panelTesten);
-        Assert.assertFalse(MainPanel.getHeaderPanel().equals(null));
+        Assert.assertFalse("false because a panel exists",MainPanel.getHeaderpanel().equals(null));
     }
  
 }

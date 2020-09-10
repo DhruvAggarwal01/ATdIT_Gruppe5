@@ -28,6 +28,8 @@ public class WeatherPanel extends JPanel {
     private static final long serialVersionUID = 4813738149309511564L;
 
     JTextArea weatherForecastArea;
+    String weatherForecastTitle;
+    private JLabel weatherForecastTitleLabel;
 
     /**
      * Konstruktor, der tbd
@@ -35,10 +37,11 @@ public class WeatherPanel extends JPanel {
      * @param weatherForecastTitle Wettervorhersage-Panel-Titel
      */
     public WeatherPanel(String weatherForecastTitle) {
+        this.weatherForecastTitle = weatherForecastTitle;
         this.setLayout(new BorderLayout());
         String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
 
-        JLabel weatherForecastTitleLabel = new JLabel();
+        weatherForecastTitleLabel = new JLabel();
         weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         weatherForecastTitleLabel.setText(weatherForecastTitle);
@@ -123,4 +126,13 @@ public class WeatherPanel extends JPanel {
         }.getType());
         return map;
     }
+
+    public String getTitlePanel(){
+        return weatherForecastTitle;
+    }
+
+    public JLabel getWeatherForecastTitleLabel(){
+        return weatherForecastTitleLabel;
+    }
+
 }

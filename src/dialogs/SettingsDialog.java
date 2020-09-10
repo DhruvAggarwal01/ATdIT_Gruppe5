@@ -181,4 +181,11 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
         }
     }
 
+    public JPanel getStyleSettingsPanel(){
+        return styleSettingsPanel;
+    }
+    public JPanel getFunctionalitySettingsPanel(){
+        return functionalitySettingsPanel;
+    }
+
 }
