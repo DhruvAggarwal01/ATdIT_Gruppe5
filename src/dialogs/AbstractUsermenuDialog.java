@@ -1,7 +1,6 @@
 package dialogs;
 
-import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 abstract class AbstractUsermenuDialog extends JDialog {
 

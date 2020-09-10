@@ -1,21 +1,18 @@
 package dialogs;
 
-import main.Styles;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
+import main.Styles;
 import db_interaction.User;
+import listener.ResetSaveCloseListener;
 
 /**
  * 
  */
-public class ProfileDialog extends AbstractUsermenuDialog implements ActionListener {
+public class ProfileDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = 1L;
 
@@ -164,15 +161,16 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         ImageIcon saveAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
+        ActionListener rsscListener = new ResetSaveCloseListener(this);
         resetEntriesButton = new JButton("Reset Entries", resetEntriesIcon);
         resetEntriesButton.setFont(Styles.RSSC_BUTTON_FONT);
-        resetEntriesButton.addActionListener(this);
+        resetEntriesButton.addActionListener(rsscListener);
         saveButton = new JButton("Save", saveIcon);
         saveButton.setFont(Styles.RSSC_BUTTON_FONT);
-        saveButton.addActionListener(this);
+        saveButton.addActionListener(rsscListener);
         saveAndCloseButton = new JButton("Save & Close", saveAndCloseIcon);
         saveAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
-        saveAndCloseButton.addActionListener(this);
+        saveAndCloseButton.addActionListener(rsscListener);
 
         rsscPanel.add(resetEntriesButton);
         rsscPanel.add(saveButton);
@@ -231,31 +229,20 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         return currentPswd.equals(User.password) && newPswd.equals(confirmPswd);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == resetEntriesButton) {
-            setInitDBUsersData();
-        }
-        if (e.getSource() == saveButton) {
-            saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-        if (e.getSource() == saveAndCloseButton) {
-            saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            if (possibleErrorMessageLabel.getText().equals("")) {
-                this.dispose();
-            }
-        }
+    public JButton getResetEntriesButton() {
+        return resetEntriesButton;
     }
+
+    public JButton getSaveButton() {
+        return saveButton;
+    }
+
+    public JButton getSaveAndCloseButton() {
+        return saveAndCloseButton;
+    }
+
+    public JLabel getPossibleErrorMessageLabel() {
+        return possibleErrorMessageLabel;
+    }
+
 }

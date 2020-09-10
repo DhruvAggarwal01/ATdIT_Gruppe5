@@ -1,11 +1,8 @@
 package subpanels;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 
+import listener.TimerListener;
 import main.Styles;
 
 import java.awt.*;
@@ -22,7 +19,7 @@ public class DiashowPanel extends JPanel {
 
     private static final long serialVersionUID = 5722480908754773180L;
 
-    private int counter = 1;
+    private int counter = 0;
     private ImageIcon[] images = new ImageIcon[4];
     private JLabel diashowLabel;
 
@@ -48,7 +45,8 @@ public class DiashowPanel extends JPanel {
         diashowLabel = new JLabel(images[0]);
         diashowLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        Timer timer = new Timer(4000, new TimerListener());
+        ActionListener tListener = new TimerListener(this);
+        Timer timer = new Timer(4000, tListener);
         timer.start();
 
         this.add(diashowTitleLabel, BorderLayout.NORTH);
@@ -58,19 +56,19 @@ public class DiashowPanel extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
     }
 
-    /**
-     * Innere Klasse, die tbd
-     */
-    class TimerListener implements ActionListener {
-
-        /**
-         * Diese Methode tbd
-         */
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            counter %= images.length;
-            diashowLabel.setIcon(images[counter++]);
-        }
+    public int getCounter() {
+        return this.counter;
     }
 
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public ImageIcon[] getImages() {
+        return this.images;
+    }
+
+    public JLabel getDiashowLabel() {
+        return this.diashowLabel;
+    }
 }

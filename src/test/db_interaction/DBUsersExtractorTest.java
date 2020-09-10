@@ -12,13 +12,12 @@ import org.junit.*;
 import db_interaction.DBUsersExtractor;
 import db_interaction.User;
 
-public class DBUserExtractorTest {
+public class DBUsersExtractorTest {
 
     @Test
     public void testGetColumnIndexToName() {
-        DBUsersExtractor dbUsersExtractor;
         try {
-            dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
+            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
             Assert.assertEquals(1, dbUsersExtractor.getColumnIndexToName("personnel_id"));
         } catch (IOException e) {
             e.printStackTrace();

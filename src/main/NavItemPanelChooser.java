@@ -1,21 +1,16 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.util.Objects;
+import java.awt.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+import java.util.Objects;
+
 import panels.OverviewPanel;
-
 import panels.ReportingPanel;
-
-  
 import panels.EditOrder;
 import panels.LogistikPanel;
-
 
 /**
  * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
@@ -100,7 +95,7 @@ public class NavItemPanelChooser extends JPanel {
                         this.add(new ReportingPanel(), BorderLayout.CENTER);
 
                         break;
-               default:
+                    default:
                         break;
                 }
                 break;
@@ -112,15 +107,16 @@ public class NavItemPanelChooser extends JPanel {
             case "Logistik":
                 switch (navItemName02) {
                     case "":
-                    this.setLayout(new BorderLayout());
-                    this.add(new LogistikPanel(), BorderLayout.CENTER);
-                    break;
+                        this.setLayout(new BorderLayout());
+                        this.add(new LogistikPanel(), BorderLayout.CENTER);
+                        break;
                     case "EditOrder":
                         this.setLayout(new BorderLayout());
                         this.add(new EditOrder(), BorderLayout.CENTER); // tbd
                         break;
                     default:
-                        break;}
+                        break;
+                }
                 break;
 
             // tbd
