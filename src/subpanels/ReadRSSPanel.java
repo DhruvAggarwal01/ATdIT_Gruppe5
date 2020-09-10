@@ -1,27 +1,13 @@
 package subpanels;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Desktop;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
+import listener.HyperlinkMouseAdapter;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
@@ -51,20 +37,8 @@ public class ReadRSSPanel extends JPanel {
         newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
         newsTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
-        newsTitleLabel.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    Desktop.getDesktop().browse(new URI(rssUrl.substring(0, rssUrl.length() - 4))); // entferne
-                                                                                                    // das
-                                                                                                    // '/rss'
-                } catch (IOException | URISyntaxException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-        });
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(this, rssUrl.substring(0, rssUrl.length() - 4));
+        newsTitleLabel.addMouseListener(hMouseAdapter);
 
         newsFeedTextField = new JTextArea(readRSSFeed(rssUrl)) {
             private static final long serialVersionUID = 1L;
@@ -93,7 +67,7 @@ public class ReadRSSPanel extends JPanel {
         JLabel reportingLabel = new JLabel("<HTML><U>zum Reporting</U></HTML>", JLabel.CENTER);
         reportingLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         reportingPanel.add(reportingLabel, BorderLayout.CENTER);
-        MouseClickListener mCL = new MouseClickListener();
+        MouseAdapter mCL = new MouseClickListener();
         reportingPanel.addMouseListener(mCL);
 
         this.add(newsTitleLabel, BorderLayout.NORTH);

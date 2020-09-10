@@ -1,32 +1,13 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.Dialog.ModalityType;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
-import db_interaction.User;
-import dialogs.ProfileDialog;
-import dialogs.SettingsDialog;
+import listener.LogoIconMouseAdapter;
+import listener.ProfileMenuItemListener;
+import listener.UserIconMouseAdapter;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -42,9 +23,16 @@ public class HeaderPanel extends JPanel {
     public JPanel logoAndHeaderTitle;
     public JLabel logoIconInJLabel;
     public JLabel headerTitleJLabel;
-    public AbstractButton userIconButton;
-    public JMenuBar mb;
-    public JMenuItem welcomeItem;
+
+    private AbstractButton userIconButton;
+    private JMenuBar mb;
+    private JMenuItem normItem1;
+    private JMenuItem normItem2;
+    private JMenuItem normItem3;
+    private JMenuItem normItem4;
+    private JMenuItem logOffItem;
+    private JMenuItem welcomeItem;
+
     public JPanel userIconWithMenuInJPanel;
 
     /**
@@ -94,7 +82,8 @@ public class HeaderPanel extends JPanel {
     public JLabel logoAdder(String filename) {
         logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
         logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        logoIconInJLabel.addMouseListener(new MouseLogoIconListener());
+        MouseAdapter liMouseAdapter = new LogoIconMouseAdapter();
+        logoIconInJLabel.addMouseListener(liMouseAdapter);
 
         return logoIconInJLabel;
     }
@@ -115,15 +104,6 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Getter-Methode für <code>headerTitleJLabel</code>
-     * 
-     * @return Header-Titel als Label
-     */
-    public JLabel getHeaderTitleJLabel() {
-        return headerTitleJLabel;
-    }
-
-    /**
      * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
      * "Menüheader" ein User-Icon.
      * 
@@ -132,9 +112,11 @@ public class HeaderPanel extends JPanel {
      */
     public JMenuBar userSymbolAdder(String userIconFile) {
         userIconButton = new JMenu();
-
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
+
+        MouseAdapter uiMouseAdapter = new UserIconMouseAdapter(this);
+        userIconButton.addMouseListener(uiMouseAdapter);
 
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
@@ -145,72 +127,18 @@ public class HeaderPanel extends JPanel {
         ImageIcon aboutIcon = new ImageIcon(new ImageIcon("Library/images/aboutIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
-        JMenuItem normItem1 = new JMenuItem("Ihr Profil", profileIcon);
-        normItem1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        JDialog profileDialog = new ProfileDialog(ActualApp.getAppWindow(), normItem1.getText(), true);
-                        profileDialog.setModalityType(ModalityType.APPLICATION_MODAL);
-                        profileDialog.setUndecorated(true);
-                        profileDialog.setVisible(true);
-                    }
-                });
-            }
-        });
-        JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
-        normItem2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        JDialog settingsDialog = new SettingsDialog(ActualApp.getAppWindow(), normItem2.getText(),
-                                true);
-                        settingsDialog.setModalityType(ModalityType.APPLICATION_MODAL);
-                        settingsDialog.setUndecorated(true);
-                        settingsDialog.setVisible(true);
-                    }
-                });
-            }
-        });
+        ActionListener pmiListener = new ProfileMenuItemListener(this);
+        normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        normItem1.addActionListener(pmiListener);
+        normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        normItem2.addActionListener(pmiListener);
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
-        JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
-        JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
-        JMenuItem logOffItem = new JMenuItem("Ausloggen und Beenden...");
-        logOffItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                User.isLoggedIn = false;
-                try {
-                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                    dbUsersInserter.applyChangedSessionUserToRow();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-                ActualApp.getAppWindow().dispose();
-            }
-        });
+        normItem3 = new JMenuItem("Hilfe", helpIcon);
+        normItem4 = new JMenuItem("Über...", aboutIcon);
+        logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        logOffItem.addActionListener(pmiListener);
 
-        userIconButton.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                welcomeItem = new JMenuItem("<HTML><U>Hallo " + User.forename + " " + User.surname + "!</U></HTML>");
-                welcomeItem.setEnabled(false);
-                userIconButton.add(welcomeItem, 0);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                userIconButton.remove(welcomeItem);
-            }
-
-        });
-        // userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
         userIconButton.add(normItem2);
         userIconButton.add(separatorItem);
@@ -223,19 +151,6 @@ public class HeaderPanel extends JPanel {
         mb.add(userIconButton);
 
         return mb;
-    }
-
-    /**
-     * Innere Klasse für den MouseListener speziell für das Applogo-Icon
-     */
-    class MouseLogoIconListener extends MouseAdapter {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", null, null));
-            MainPanel.getNavPane().setSelectedIndex(0);
-        }
-
     }
 
     /**
@@ -255,5 +170,46 @@ public class HeaderPanel extends JPanel {
         logoIIcon = new ImageIcon(logoImage);
 
         return new JLabel(logoIIcon, horizontalAlignment);
+    }
+
+    /**
+     * Getter-Methode für <code>headerTitleJLabel</code>
+     * 
+     * @return Header-Titel als Label
+     */
+    public JLabel getHeaderTitleJLabel() {
+        return headerTitleJLabel;
+    }
+
+    public AbstractButton getUserIconButton() {
+        return this.userIconButton;
+    }
+
+    public JMenuItem getWelcomeItem() {
+        return this.welcomeItem;
+    }
+
+    public void setWelcomeItem(JMenuItem welcomeItem) {
+        this.welcomeItem = welcomeItem;
+    }
+
+    public JMenuItem getNormItem1() {
+        return normItem1;
+    }
+
+    public JMenuItem getNormItem2() {
+        return normItem2;
+    }
+
+    public JMenuItem getNormItem3() {
+        return normItem3;
+    }
+
+    public JMenuItem getNormItem4() {
+        return normItem4;
+    }
+
+    public JMenuItem getLogOffItem() {
+        return logOffItem;
     }
 }

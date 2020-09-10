@@ -2,18 +2,15 @@ package subpanels;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import java.io.*;
-
 import java.net.*;
-
 import java.util.*;
 
 import com.google.gson.*;
 import com.google.gson.reflect.*;
 
+import listener.HyperlinkMouseAdapter;
 import main.Styles;
 
 /**
@@ -49,18 +46,8 @@ public class WeatherPanel extends JPanel {
         weatherForecastTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         weatherForecastTitleLabel.setToolTipText("To: " + urlAddress);
         weatherForecastTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
-        weatherForecastTitleLabel.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    Desktop.getDesktop().browse(new URI(urlAddress));
-                } catch (IOException | URISyntaxException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-        });
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(this, urlAddress);
+        weatherForecastTitleLabel.addMouseListener(hMouseAdapter);
 
         String API_KEY = "9890476df64794ee702e35336d27f69e";
         String LOCATION = "Albersweiler,DE";
@@ -93,7 +80,7 @@ public class WeatherPanel extends JPanel {
                 public void paint(Graphics g) {
                     g.drawImage(weatherStatusImage, 0, 0, this);
                     super.paint(g);
-                } 
+                }
             };
             weatherForecastArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             weatherForecastArea.setText(

@@ -1,35 +1,24 @@
 package dialogs;
 
-import main.ActualApp;
-import main.Styles;
-
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JToggleButton;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.event.ChangeEvent;
+import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
-// import javax.swing.UIManager;
-// import javax.swing.UnsupportedLookAndFeelException;
+import main.ActualApp;
+import main.Styles;
+import listener.ThemeChangeListener;
+import listener.TimeoutAndCloseListener;
 
 /**
+ * Diese Klasse baut ein Dialog-Fenster auf, das dem Benutzer die Möglichkeit
+ * bietet, verschiedene App-Einstellungen vorzunehmen.
  * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
-public class SettingsDialog extends AbstractUsermenuDialog implements ActionListener, ChangeListener {
+public class SettingsDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = 5756321453884339110L;
 
@@ -44,18 +33,17 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
     private JLabel titleStyleSettingsLabel;
 
     private JLabel themeToggleSettingLabel;
-    private static ImageIcon nightModeOFFIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOff.png")
-            .getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
-    private static ImageIcon nightModeONIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOn.png").getImage()
+    public final ImageIcon nightModeOFFIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOff.png").getImage()
             .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
-    private static JToggleButton themeToggleButton = new JToggleButton("Off", nightModeOFFIcon, false);
+    public final ImageIcon nightModeONIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOn.png").getImage()
+            .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+    private static JToggleButton themeToggleButton;
 
     private JLabel titleFunctionalitySettingsLabel;
 
     private JLabel timeoutTimeLabel;
     private SpinnerNumberModel timeoutSpinnerModel;
-    private JSpinner timeoutTimeSpinner; // SpinnerModel sm = new SpinnerNumberModel(0, 0, 100, 1); //default
-                                         // value,lower // bound,upper bound,increment by
+    private JSpinner timeoutTimeSpinner;
 
     private JPanel cPanel;
     private JButton closeButton;
@@ -64,15 +52,15 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
     public SettingsDialog(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         settingsDialogTitle = title;
-        // let user set the theme, user inactivity dispose after time
         contentSettingsSet();
     }
 
     /**
-     * 
+     * Diese Methode setzt aus verschiedenen Swing/AWT-Komponenten ein passendes UI
+     * zusammen.
      */
     @Override
-    void contentSettingsSet() {
+    public void contentSettingsSet() {
         contentPanel = new JPanel(new GridLayout(6, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(settingsDialogTitle)));
@@ -92,8 +80,10 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
         themeToggleSettingLabel = new JLabel("Nachtmodus");
         themeToggleSettingLabel.setFont(Styles.PROFILE_LVL3_FONT);
 
+        ChangeListener tcListener = new ThemeChangeListener(this);
+        themeToggleButton = new JToggleButton("Off", nightModeOFFIcon, false);
         themeToggleButton.setFont(Styles.PROFILE_LVL3_FONT);
-        themeToggleButton.addChangeListener(this);
+        themeToggleButton.addChangeListener(tcListener);
 
         styleSettingsPanel.add(themeToggleSettingLabel);
         styleSettingsPanel.add(themeToggleButton);
@@ -108,8 +98,6 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
                 7200000 / 60000, 1);
         timeoutTimeSpinner = new JSpinner(timeoutSpinnerModel);
 
-        // tbd: functionality --> timeout set reader textfield, setTimeout
-
         functionalitySettingsPanel.add(timeoutTimeLabel);
         functionalitySettingsPanel.add(timeoutTimeSpinner);
 
@@ -119,12 +107,13 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
         cPanel = new JPanel(new GridLayout(1, 3, 140, 140));
+        ActionListener tacListener = new TimeoutAndCloseListener(this);
         closeButton = new JButton("Close", closeIcon);
         closeButton.setFont(Styles.RSSC_BUTTON_FONT);
-        closeButton.addActionListener(this);
+        closeButton.addActionListener(tacListener);
         applyAndCloseButton = new JButton("Apply Timeout & Close", applyAndCloseIcon);
         applyAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
-        applyAndCloseButton.addActionListener(this);
+        applyAndCloseButton.addActionListener(tacListener);
 
         cPanel.add(closeButton);
         cPanel.add(applyAndCloseButton);
@@ -139,46 +128,12 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
         this.add(contentPanel);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == closeButton) {
-            this.dispose();
-        }
-        if (e.getSource() == applyAndCloseButton) {
-            ActualApp.restartTimeoutTimerWithNewDelay(((Integer) timeoutTimeSpinner.getValue()) * 60000);
-            this.dispose();
-        }
+    public JToggleButton getThemeToggleButton() {
+        return themeToggleButton;
     }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        if (e.getSource() == themeToggleButton) {
-            if (themeToggleButton.isSelected()) {
-                themeToggleButton.setText("On");
-                themeToggleButton.setIcon(nightModeONIcon);
-
-                try {
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                        | UnsupportedLookAndFeelException e1) {
-                    e1.printStackTrace();
-                }
-
-            } else {
-                themeToggleButton.setText("Off");
-                themeToggleButton.setIcon(nightModeOFFIcon);
-
-                try {
-                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
-                } catch (UnsupportedLookAndFeelException e1) {
-                } catch (ClassNotFoundException e2) {
-                } catch (InstantiationException e3) {
-                } catch (IllegalAccessException e4) {
-                }
-            }
-        }
+    public JButton getCloseButton() {
+        return closeButton;
     }
 
     public JPanel getStyleSettingsPanel(){
@@ -188,4 +143,11 @@ public class SettingsDialog extends AbstractUsermenuDialog implements ActionList
         return functionalitySettingsPanel;
     }
 
+    public JButton getApplyAndCloseButton() {
+        return applyAndCloseButton;
+    }
+
+    public JSpinner getTimeoutTimeSpinner() {
+        return timeoutTimeSpinner;
+    }
 }

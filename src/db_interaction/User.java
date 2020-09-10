@@ -101,4 +101,5 @@ public class User {
     public void setIsLoggedIn(boolean isLoggedIn) {
         this.isLoggedIn = isLoggedIn;
     }
+
 }
