@@ -12,6 +12,13 @@ public class User {
     public static String email = "..._...@....";
     public static String password = "**********";
     public static int role_id = 1;
-    public static boolean isLoggedIn = false; // immer syncen mit Excel-DB (im Hinblick auf ausloggen)
+    public static boolean isLoggedIn = false;
 
+    @Override
+    public String toString() {
+        return "{" + "personnel_id: " + personnel_id + " ; username: " + username + " ; forename: " + forename
+                + " ; surname: " + surname + " ; street_nr: " + street_nr + " ; zip: " + zip + " ; city: " + city
+                + " ; email: " + email + " ; password: " + password + " ; role_id: " + role_id + " ; isLoggedIn: "
+                + isLoggedIn + "}";
+    }
 }
