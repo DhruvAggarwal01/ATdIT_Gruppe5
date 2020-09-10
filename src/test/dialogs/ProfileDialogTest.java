@@ -1,4 +1,4 @@
-package test.main.dialogsTest;
+package test.dialogs;
 
 import javax.swing.JFrame;
 

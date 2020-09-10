@@ -1,11 +1,11 @@
-package test.main.mainTest;
+package test.main;
 
 import main.ActualApp;
 
 import org.junit.*;
 
-public class ApplicationTest {
-    
+public class ActualAppTest {
+
     @Before
     public void init() {
         System.out.println("Test wird gestartet.");
@@ -17,14 +17,16 @@ public class ApplicationTest {
     }
 
     @Test
-    public void testTimeoutDelay(){
-        Assert.assertEquals("Timeout delay should be initialized with int 3600000",3600000, Application.getTimeoutDelay());
+    public void testTimeoutDelay() {
+        Assert.assertEquals("Timeout delay should be initialized with int 3600000", 3600000,
+                ActualApp.getTimeoutDelay());
     }
 
     @Test
-    public void testTimeoutTimerIsRunning(){
-       Application.startTimeoutTimer(1000);
-        Assert.assertTrue("Set should change the delay to 1000",Application.getTimeoutTimer().isRunning());;
+    public void testTimeoutTimerIsRunning() {
+        ActualApp.startTimeoutTimer(1000);
+        Assert.assertTrue("Set should change the delay to 1000", ActualApp.getTimeoutTimer().isRunning());
+        ;
     }
 
     @AfterClass

@@ -1,4 +1,4 @@
-package test.main.panelsTest;
+package test.panels;
 
 import org.junit.*;
 

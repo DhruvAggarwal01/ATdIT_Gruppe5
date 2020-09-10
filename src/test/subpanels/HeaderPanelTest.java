@@ -1,4 +1,4 @@
-package test.main.subpanelsTest;
+package test.subpanels;
 
 import java.awt.*;
 import java.awt.event.*;

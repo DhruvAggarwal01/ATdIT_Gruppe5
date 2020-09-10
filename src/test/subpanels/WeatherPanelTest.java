@@ -1,4 +1,4 @@
-package test.main.subpanelsTest;
+package test.subpanels;
 
 import org.junit.Assert;
 import org.junit.Test;
