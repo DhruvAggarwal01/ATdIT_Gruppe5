@@ -20,7 +20,7 @@ public class LogInCredentialsChecker {
     Set<Integer> rowIndexesContainingUsername;
     Set<Integer> rowIndexesContainingPassword;
     Set<Integer> rowIndexesMatchingCredentials;
-    User sessionUser;
+    User sessionUser; // evtl. hier static setzen, um über all gleiche User-Daten zu ziehen
 
     private String username, password;
 
