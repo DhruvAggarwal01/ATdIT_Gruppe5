@@ -46,6 +46,7 @@ public class OverviewPanel extends JPanel {
         this.add(diashow, BorderLayout.CENTER);
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public JPanel getweatherPanel() {
         return weatherPanel;
     }

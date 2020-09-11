@@ -1,16 +1,14 @@
 package panels;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-import main.MainPanel;
-import main.NavItemPanelChooser;
+import listener.LogoIconMouseAdapter;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse dient der Demo eines Panels 2. Ebene (s.
+ * <code>NavItemPanelChooser</code>) anhand des Reporting-Panels.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -20,22 +18,16 @@ public class ReportingPanel extends JPanel {
     private static final long serialVersionUID = -8379965032225222069L;
 
     /**
-     * Konstruktor
+     * Konstruktor, der ein einfaches Label zentral im Panel platziert und ein
+     * Button, welches eine Zurück-Taste darstellt.
      */
     public ReportingPanel() {
         this.setLayout(new BorderLayout());
 
         JPanel reportingHeaderRowPanel = new JPanel(new GridLayout(1, 7, 30, 30));
         JButton backButton = new JButton("Zurück");
-        backButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", null, null));
-                MainPanel.getNavPane().setSelectedIndex(0);
-            }
-
-        });
+        ActionListener limaListener = new LogoIconMouseAdapter();
+        backButton.addActionListener(limaListener);
 
         JLabel mockLabel = new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER);
 

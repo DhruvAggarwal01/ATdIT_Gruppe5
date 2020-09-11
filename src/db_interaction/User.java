@@ -24,6 +24,7 @@ public class User {
                 + isLoggedIn + "}";
     }
 
+    /* -------------- Overriding zum möglichen Vergleich zweier User ------------ */
     /**
      * {@inheritDoc}
      */
@@ -56,6 +57,7 @@ public class User {
                 isLoggedIn);
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public int getPersonnel_id() {
         return this.personnel_id;
     }

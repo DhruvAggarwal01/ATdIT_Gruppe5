@@ -35,6 +35,7 @@ public class MainPanel extends JFrame {
         c.add(navPane, BorderLayout.CENTER);
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public static String getAppTitle() {
         return appTitle;
     }

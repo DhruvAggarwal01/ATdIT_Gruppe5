@@ -69,6 +69,7 @@ public class LoginButtonPanel extends JPanel {
         return log.isCredentialsMatching();
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public JTextField getUsernameField() {
         return usernameField;
     }

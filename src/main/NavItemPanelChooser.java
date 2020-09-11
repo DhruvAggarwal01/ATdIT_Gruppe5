@@ -126,6 +126,7 @@ public class NavItemPanelChooser extends JPanel {
         }
     }
 
+    /* ----- Overriding zum möglichen Vergleich zweier NavItemPanelChooser ------ */
     /**
      * {@inheritDoc}
      */

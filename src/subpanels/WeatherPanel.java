@@ -37,18 +37,9 @@ public class WeatherPanel extends JPanel {
     public WeatherPanel(String weatherForecastTitle) {
         this.weatherForecastTitle = weatherForecastTitle;
         this.setLayout(new BorderLayout());
-        String urlAddress = "https://openweathermap.org/"; // hier hartkodiert, da fixe Addresse angesteuert werden soll
 
         weatherForecastTitleLabel = new JLabel();
-        weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
-        weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        weatherForecastTitleLabel.setText(weatherForecastTitle);
-        weatherForecastTitleLabel.setForeground(Color.BLUE.darker());
-        weatherForecastTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        weatherForecastTitleLabel.setToolTipText("To: " + urlAddress);
-        weatherForecastTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
-        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(urlAddress);
-        weatherForecastTitleLabel.addMouseListener(hMouseAdapter);
+        settingsForPanelTitle("https://openweathermap.org/");
 
         String API_KEY = "9890476df64794ee702e35336d27f69e";
         String LOCATION = "Albersweiler,DE";
@@ -60,37 +51,16 @@ public class WeatherPanel extends JPanel {
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
             String line;
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
+
             rd.close();
 
-            Map<String, Object> respMap = jsonToMap(result.toString());
-            Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
-            Map<String, Object> windMap = jsonToMap(respMap.get("wind").toString());
-
-            weatherForecastArea = new JTextArea() {
-                private static final long serialVersionUID = 1L;
-
-                Image weatherStatusImage = new ImageIcon("Library/images/OpenWeatherMapLogo.png").getImage();
-                {
-                    setOpaque(false);
-                }
-
-                public void paint(Graphics g) {
-                    g.drawImage(weatherStatusImage, 0, 0, this);
-                    super.paint(g);
-                }
-            };
-            weatherForecastArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            weatherForecastArea.setText(
-                    "Current Temperature: " + mainMap.get("temp") + "\nCurrent Humidity: " + mainMap.get("humidity")
-                            + "\nWind Speeds: " + windMap.get("speed") + "\nWind Angle: " + windMap.get("deg"));
-            weatherForecastArea.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
-            weatherForecastArea.setWrapStyleWord(true);
-            weatherForecastArea.setEditable(false);
-            weatherForecastArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            Map<String, Object> wholeMap = jsonToMap(result.toString());
+            contentAndSettingsForWeatherForecastArea(wholeMap);
 
             this.add(weatherForecastTitleLabel, BorderLayout.NORTH);
             this.add(weatherForecastArea, BorderLayout.CENTER);
@@ -101,6 +71,56 @@ public class WeatherPanel extends JPanel {
 
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 5, 5, 20),
                 BorderFactory.createRaisedBevelBorder()));
+    }
+
+    /**
+     * Diese Methode stellt Design und Listener für den Panel-Titel ein.
+     * 
+     * @param urlAddress URL der Homepage der Wettervorhersage
+     */
+    public void settingsForPanelTitle(String urlAddress) {
+        weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
+        weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        weatherForecastTitleLabel.setText(weatherForecastTitle);
+        weatherForecastTitleLabel.setForeground(Color.BLUE.darker());
+        weatherForecastTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        weatherForecastTitleLabel.setToolTipText("To: " + urlAddress);
+        weatherForecastTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
+        MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(urlAddress);
+        weatherForecastTitleLabel.addMouseListener(hMouseAdapter);
+    }
+
+    /**
+     * Diese Methode zeigt die Wettervorhersage strukturiert im erzeugten TextArea
+     * an.
+     * 
+     * @param wholeMap gemappte JSON-Wettervorhersage
+     */
+    public void contentAndSettingsForWeatherForecastArea(Map<String, Object> wholeMap) {
+        Map<String, Object> mainMap = jsonToMap(wholeMap.get("main").toString());
+        Map<String, Object> windMap = jsonToMap(wholeMap.get("wind").toString());
+
+        weatherForecastArea = new JTextArea() {
+            private static final long serialVersionUID = 1L;
+
+            Image weatherStatusImage = new ImageIcon("Library/images/OpenWeatherMapLogo.png").getImage();
+            {
+                setOpaque(false);
+            }
+
+            public void paint(Graphics g) {
+                g.drawImage(weatherStatusImage, 0, 0, this);
+                super.paint(g);
+            }
+        };
+        weatherForecastArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        weatherForecastArea.setText(
+                "Current Temperature: " + mainMap.get("temp") + "\nCurrent Humidity: " + mainMap.get("humidity")
+                        + "\nWind Speeds: " + windMap.get("speed") + "\nWind Angle: " + windMap.get("deg"));
+        weatherForecastArea.setFont(Styles.SUBPANEL_TEXTCOMPONENT_FONT);
+        weatherForecastArea.setWrapStyleWord(true);
+        weatherForecastArea.setEditable(false);
+        weatherForecastArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
     /**
@@ -116,6 +136,7 @@ public class WeatherPanel extends JPanel {
         return map;
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public String getTitlePanel() {
         return weatherForecastTitle;
     }

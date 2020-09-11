@@ -15,6 +15,12 @@ public class AppRunner {
 
     public static JFrame loginFrame;
 
+    /**
+     * Diese Methode erzeugt im Frame ein Login-Panel mit den nötigen
+     * Swing/AWT-Komponenten.
+     * 
+     * @return Panel, das das Login-UI enthält
+     */
     private static JPanel createMainPanel() {
         BackgroundImagePanel mainPanel = new BackgroundImagePanel(new BorderLayout());
 
@@ -30,6 +36,11 @@ public class AppRunner {
         return mainPanel;
     }
 
+    /**
+     * Diese main-Methode ist die ausführende Methode für die gesamte Anwendung.
+     * 
+     * @param args obligatorischer Eingabeparameter
+     */
     public static void main(String[] args) {
         loginFrame = new JFrame();
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

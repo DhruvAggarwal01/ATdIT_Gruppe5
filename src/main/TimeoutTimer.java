@@ -30,6 +30,7 @@ public class TimeoutTimer extends Timer {
         timeoutDelay = delay;
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public static int getTimeoutDelay() {
         return timeoutDelay;
     }

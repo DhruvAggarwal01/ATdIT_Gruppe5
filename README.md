@@ -2,24 +2,24 @@
 GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 
 ## Ordnerstruktur
-**01April_Aufgabe1** beinhaltet die Prototypen der Gruppenmitglieder (bzgl. Aufgabe der 1. Vorlesung)  
+&#x1F4D8; **01April_Aufgabe1** beinhaltet die Prototypen der Gruppenmitglieder (bzgl. Aufgabe der 1. Vorlesung)  
 
-**01April_Aufgabe2** beinhaltet den gemeinsamen Prototypen der Gruppe (bzgl. Aufgabe der 1. Vorlesung)
+&#x1F4D8; **01April_Aufgabe2** beinhaltet den gemeinsamen Prototypen der Gruppe (bzgl. Aufgabe der 1. Vorlesung)
 
-**databases** beinhaltet folgende Datenbanken:
+&#x1F4D8; **databases** beinhaltet folgende Datenbanken:
 + "DefaultXYZ.xlsx" sind die originalen Datenbanken, die im Coding selbst nicht genutzt werden und damit nur als Backup dienen.
 + "XYZ.xlsx" sind die Datenbanken, die der reinen Datenextraktion dienen.
 + "temp_XYZ.xlsx" sind die Datenbanken, in die veränderte Daten geschrieben werden. 
     Hinweis: Sollen die Daten auch wieder in die Extraktions-Datenbank geschrieben werden, kann dies einfach in den jewiligen DBXYZInserter.java verändert werden.
 
-**Library** beinhaltet folgendende Ordner und Dateien:
+&#x1F4D8; **Library** beinhaltet folgendende Ordner und Dateien:
 + **diagrams** &rarr; ER-Diagramm, Klassendiagramm, Codeablaufplan (PAP)
 + **documentation**  &rarr; Wissenschaftliche Ausarbeitung, Storyline-Dokument, javadoc 
 + **images** &rarr; genutzte Bilder
 + **prototype** &rarr; Prototyp der Anwendung
 + genutzte, externe Bibliotheken als .jar-Files &rarr; müssen dem Klassenpfad hinzugefügt werden
 
-**src** beinhaltet den Quellcode gegliedert in folgende Subordner:
+&#x1F4D8; **src** beinhaltet den Quellcode gegliedert in folgende Subordner:
 + **main** (enthält: Ausführungsklasse und erste UI-aufbauende Klassen; "Stylesheet-Klasse")
 + **panels** (enthält: Hauptpanelscreens, die die Anwendung annehmen kann)
 + **subpanels** (enthält: Panels, die von den Hauptpanels genutzt werden)

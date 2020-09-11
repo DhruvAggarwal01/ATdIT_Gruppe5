@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.*;
-
 import java.awt.Toolkit;
 
 /**
@@ -51,6 +50,7 @@ public class ActualApp {
         startTimeoutTimer(timeoutDelay);
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public static TimeoutTimer getTimeoutTimer() {
         return timeoutTimer;
     }

@@ -59,6 +59,7 @@ public class DiashowPanel extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public int getCounter() {
         return this.counter;
     }
