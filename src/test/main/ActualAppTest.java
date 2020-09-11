@@ -1,8 +1,8 @@
 package test.main;
 
-import main.ActualApp;
-
 import org.junit.*;
+
+import main.ActualApp;
 
 public class ActualAppTest {
 

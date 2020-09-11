@@ -47,7 +47,7 @@ public class OverviewPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
-    public JPanel getweatherPanel() {
+    public JPanel getWeatherPanel() {
         return weatherPanel;
     }
 
