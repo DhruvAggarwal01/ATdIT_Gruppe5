@@ -7,7 +7,6 @@ import subpanels.OrderPanels;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import java.io.*;
-import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,8 +48,7 @@ public class LogistikPanel extends JPanel {
         JPanel atRiskPanel = new OrderPanels(atRiskOrders, "Order at Risk",
                 "These Ordes are at Risk of delivering on Time!", 245, 220, 163);
         // 3. Panel: overdue
-        JPanel overduePanel = new OrderPanels(overdueOrders, "Order Overdue", "These Ordes are overdue!", 252, 130,
-                136);
+        JPanel overduePanel = new OrderPanels(overdueOrders, "Order Overdue", "These Ordes are overdue!", 252, 130, 136);
 
         buttonPanel.add(new JButton("search"));
         buttonPanel.add(new JButton("create Order"));
@@ -68,7 +66,7 @@ public class LogistikPanel extends JPanel {
         try {
             unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
             itsOnTimeOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
+        } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
         }
         unfinishedOrders.retainAll(itsOnTimeOrders);

@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.ArrayList;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -53,7 +52,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<Order> getFilteredDBRowsToSet(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException {
+            throws IOException, IllegalArgumentException {
         Set<Order> filteredUsers = new HashSet<Order>();
 
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
@@ -81,7 +80,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<Integer> getFilteredRowsIndexes(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException {
+            throws IOException, IllegalArgumentException {
         Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
 
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
@@ -134,7 +133,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
-    public Order getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException {
+    public Order getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException {
         Order order = new Order();
         Field[] declaredFields = order.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
@@ -144,13 +143,28 @@ public class DBOrdersExtractor {
             Cell cell = cellIterator.next();
             switch (cell.getCellType()) {
                 case NUMERIC:
-                    declaredFields[i].set(order, (int) cell.getNumericCellValue());
+                    try {
+                        declaredFields[i].set(order, (int) cell.getNumericCellValue());
+                    } catch (IllegalAccessException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                     break;
                 case STRING:
-                    declaredFields[i].set(order, cell.getStringCellValue());
+                    try {
+                        declaredFields[i].set(order, cell.getStringCellValue());
+                    } catch (IllegalAccessException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                     break;
                 case BOOLEAN:
-                    declaredFields[i].set(order, cell.getBooleanCellValue());
+                    try {
+                        declaredFields[i].set(order, cell.getBooleanCellValue());
+                    } catch (IllegalAccessException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 default:
                     break;
             }
