@@ -1,11 +1,8 @@
 package subpanels;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 
+import listener.TimerListener;
 import main.Styles;
 
 import java.awt.*;
@@ -13,7 +10,7 @@ import java.awt.event.*;
 
 /**
  * Diese Klasse baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern
- * (Ausschnitten) als Sneak-Peek durchlaufen zu lassen.
+ * (Ausschnitten) als "Sneak-Peeks" durchlaufen zu lassen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -22,16 +19,19 @@ public class DiashowPanel extends JPanel {
 
     private static final long serialVersionUID = 5722480908754773180L;
 
-    private int counter = 1;
+    private int counter = 0;
     private ImageIcon[] images = new ImageIcon[4];
     private JLabel diashowLabel;
+    private String diashowTitle;
 
     /**
-     * Konstruktor, der tbd
+     * Konstruktor, der die Einstellungen des UI und eigentlichen
+     * Diashow-Funktionalität aufbaut.
      * 
      * @param diashowTitle Diashow-Titel
      */
     public DiashowPanel(String diashowTitle) {
+        this.diashowTitle = diashowTitle;
         this.setLayout(new BorderLayout());
 
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
@@ -48,7 +48,8 @@ public class DiashowPanel extends JPanel {
         diashowLabel = new JLabel(images[0]);
         diashowLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        Timer timer = new Timer(4000, new TimerListener());
+        ActionListener tListener = new TimerListener(this);
+        Timer timer = new Timer(4000, tListener);
         timer.start();
 
         this.add(diashowTitleLabel, BorderLayout.NORTH);
@@ -58,19 +59,24 @@ public class DiashowPanel extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
     }
 
-    /**
-     * Innere Klasse, die tbd
-     */
-    class TimerListener implements ActionListener {
-
-        /**
-         * Diese Methode tbd
-         */
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            counter %= images.length;
-            diashowLabel.setIcon(images[counter++]);
-        }
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    public int getCounter() {
+        return this.counter;
     }
 
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public ImageIcon[] getImages() {
+        return this.images;
+    }
+
+    public String getTitlePanel() {
+        return diashowTitle;
+    }
+
+    public JLabel getDiashowLabel() {
+        return this.diashowLabel;
+    }
 }

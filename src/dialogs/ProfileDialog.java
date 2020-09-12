@@ -1,21 +1,18 @@
 package dialogs;
 
-import main.Styles;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
-import db_interaction.User;
+import main.Styles;
+import db_interaction.LogInCredentialsChecker;
+import listener.ResetSaveCloseListener;
 
 /**
  * 
  */
-public class ProfileDialog extends AbstractUsermenuDialog implements ActionListener {
+public class ProfileDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = 1L;
 
@@ -164,15 +161,16 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         ImageIcon saveAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
+        ActionListener rsscListener = new ResetSaveCloseListener(this);
         resetEntriesButton = new JButton("Reset Entries", resetEntriesIcon);
         resetEntriesButton.setFont(Styles.RSSC_BUTTON_FONT);
-        resetEntriesButton.addActionListener(this);
+        resetEntriesButton.addActionListener(rsscListener);
         saveButton = new JButton("Save", saveIcon);
         saveButton.setFont(Styles.RSSC_BUTTON_FONT);
-        saveButton.addActionListener(this);
+        saveButton.addActionListener(rsscListener);
         saveAndCloseButton = new JButton("Save & Close", saveAndCloseIcon);
         saveAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
-        saveAndCloseButton.addActionListener(this);
+        saveAndCloseButton.addActionListener(rsscListener);
 
         rsscPanel.add(resetEntriesButton);
         rsscPanel.add(saveButton);
@@ -190,24 +188,24 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
     }
 
     public void setInitDBUsersData() {
-        forenameTextField.setText(User.forename);
-        surnameTextField.setText(User.surname);
-        streetAndIdTextField.setText(User.street_nr);
-        zipTextField.setText(String.valueOf(User.zip));
-        cityTextField.setText(User.city);
-        emailTextField.setText(User.email);
+        forenameTextField.setText(LogInCredentialsChecker.sessionUser.getForename());
+        surnameTextField.setText(LogInCredentialsChecker.sessionUser.getSurname());
+        streetAndIdTextField.setText(LogInCredentialsChecker.sessionUser.getStreet_nr());
+        zipTextField.setText(String.valueOf(LogInCredentialsChecker.sessionUser.getZip()));
+        cityTextField.setText(LogInCredentialsChecker.sessionUser.getCity());
+        emailTextField.setText(LogInCredentialsChecker.sessionUser.getEmail());
     }
 
     public void saveEntriesOfTextFields() {
         if (isPswdChangeValid()) {
-            User.forename = forenameTextField.getText();
-            User.surname = surnameTextField.getText();
-            User.street_nr = streetAndIdTextField.getText();
-            User.zip = Integer.parseInt(zipTextField.getText());
-            User.city = cityTextField.getText();
-            User.email = emailTextField.getText();
+            LogInCredentialsChecker.sessionUser.setForename(forenameTextField.getText());
+            LogInCredentialsChecker.sessionUser.setSurname(surnameTextField.getText());
+            LogInCredentialsChecker.sessionUser.setStreet_nr(streetAndIdTextField.getText());
+            LogInCredentialsChecker.sessionUser.setZip(Integer.parseInt(zipTextField.getText()));
+            LogInCredentialsChecker.sessionUser.setCity(cityTextField.getText());
+            LogInCredentialsChecker.sessionUser.setEmail(emailTextField.getText());
             if (!new String(newPswdField.getPassword()).equals("")) {
-                User.password = new String(newPswdField.getPassword());
+                LogInCredentialsChecker.sessionUser.setPassword(new String(newPswdField.getPassword()));
             }
             errorMessage = "";
             possibleErrorMessageLabel.setIcon(null);
@@ -228,34 +226,38 @@ public class ProfileDialog extends AbstractUsermenuDialog implements ActionListe
         if (currentPswd.equals("") || newPswd.equals("") || confirmPswd.equals("")) {
             return true;
         }
-        return currentPswd.equals(User.password) && newPswd.equals(confirmPswd);
+        return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == resetEntriesButton) {
-            setInitDBUsersData();
-        }
-        if (e.getSource() == saveButton) {
-            saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-        if (e.getSource() == saveAndCloseButton) {
-            saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            if (possibleErrorMessageLabel.getText().equals("")) {
-                this.dispose();
-            }
-        }
+    public JButton getResetEntriesButton() {
+        return resetEntriesButton;
+    }
+
+    public JButton getSaveButton() {
+        return saveButton;
+    }
+
+    public JButton getSaveAndCloseButton() {
+        return saveAndCloseButton;
+    }
+
+    public JLabel getPossibleErrorMessageLabel() {
+        return possibleErrorMessageLabel;
+    }
+
+    public JPanel getPersonalInfoPanel() {
+        return personalInfoPanel;
+    }
+
+    public JPanel getContentPanel() {
+        return contentPanel;
+    }
+
+    public JPanel getRsscPanel() {
+        return rsscPanel;
+    }
+
+    public JPanel getChangePswdPanel() {
+        return rsscPanel;
     }
 }

@@ -3,12 +3,12 @@ package subpanels;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import main.Styles;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import java.io.*;
-import java.lang.reflect.Field;
-import java.util.HashSet;
+
 import java.util.Iterator;
 import java.util.Set;
 import db_interaction.DBOrdersExtractor;
@@ -72,6 +72,45 @@ public class OrderPanels extends JPanel {
 
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
+
+    }
+
+    class MouseClickListener extends MouseAdapter {
+        public void changeColor(Object a) {
+            JPanel theLabel = (JPanel) a;
+            Color color = theLabel.getBackground();
+            Integer r1 = color.getRed() + 30;
+            Integer g1 = color.getGreen() + 30;
+            Integer b1 = color.getBlue() + 30;
+            theLabel.setBackground(new Color(r1, g1, b1));
+        };
+
+        public void changeColor2(Object a) {
+            JPanel theLabel = (JPanel) a;
+            Color color = theLabel.getBackground();
+            Integer r1 = color.getRed() - 30;
+            Integer g1 = color.getGreen() - 30;
+            Integer b1 = color.getBlue() - 30;
+            theLabel.setBackground(new Color(r1, g1, b1));
+        };
+
+        /**
+         * Diese Methode tbd
+         */
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "EditOrder", null));
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            this.changeColor(e.getSource());
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            this.changeColor2(e.getSource());
+        }
 
     }
 

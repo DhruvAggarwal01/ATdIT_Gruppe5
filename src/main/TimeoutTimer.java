@@ -30,18 +30,11 @@ public class TimeoutTimer extends Timer {
         timeoutDelay = delay;
     }
 
-    /**
-     * Getter-Methode für <code>timeoutDelay</code>
-     * 
-     * @return Zeit bis zum Timeout
-     */
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     public static int getTimeoutDelay() {
         return timeoutDelay;
     }
 
-    /**
-     * Setter-Methode für <code>timeoutDelay</code>
-     */
     public static void setTimeoutDelay(int timeoutDelaySet) {
         timeoutDelay = timeoutDelaySet;
     }

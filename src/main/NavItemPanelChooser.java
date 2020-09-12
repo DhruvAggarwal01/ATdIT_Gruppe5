@@ -8,6 +8,12 @@ import javax.swing.border.*;
 import java.util.Objects;
 import panels.ShowOrder;
 import panels.OverviewPanel;
+import javax.swing.border.TitledBorder;
+
+import java.util.Objects;
+
+import panels.OverviewPanel;
+import panels.ReportingPanel;
 import panels.EditOrder;
 import panels.LogistikPanel;
 
@@ -125,6 +131,7 @@ public class NavItemPanelChooser extends JPanel {
         }
     }
 
+    /* ----- Overriding zum möglichen Vergleich zweier NavItemPanelChooser ------ */
     /**
      * {@inheritDoc}
      */

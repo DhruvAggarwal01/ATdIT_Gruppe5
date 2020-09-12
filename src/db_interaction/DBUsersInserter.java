@@ -29,7 +29,7 @@ public class DBUsersInserter {
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor(excelFileName);
             Set<Integer> rowIndexesContainingPersonnel_id = dbUsersExtractor.getFilteredRowsIndexes("personnel_id",
-                    User.personnel_id);
+                    LogInCredentialsChecker.sessionUser.getPersonnel_id());
 
             User user = new User();
 
@@ -43,6 +43,7 @@ public class DBUsersInserter {
                 int i = 0;
                 while (cellIterator.hasNext() && i < declaredFields.length) {
                     Cell cell = cellIterator.next();
+                    declaredFields[i].setAccessible(true);
                     switch (cell.getCellType()) {
                         case NUMERIC:
                             cell.setCellValue((int) declaredFields[i].get(user));
@@ -59,15 +60,13 @@ public class DBUsersInserter {
                     i++;
                 }
             }
-            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // keine Änderungen an der
-                                                                                          // Basis-Datenbank
+            FileOutputStream outFile = new FileOutputStream("databases/temp_USERS.xlsx"); // Änderungen nur temporär
             dbUsersExtractor.usersWorkbook.write(outFile);
             outFile.close();
             dbUsersExtractor.usersWorkbook.close();
         } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

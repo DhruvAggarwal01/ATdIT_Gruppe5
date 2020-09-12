@@ -19,20 +19,6 @@ public class DBUsersExtractor {
     public FileInputStream usersFile;
     public Workbook usersWorkbook;
 
-    // Filter-Algorithmus:
-    // 1. In Zeile 1 iterieren bis Spalte personnel_id gefunden (nihct einfach
-    // Spalte angeben, weil sich in der DB theoretisch die Spaltenanordnung ändern
-    // kann)
-    // 2. In dieser Spalte iterieren bis gesuchte personnel_id gefunden wurde
-    // 3. Diese Zeile merken, dann in 1. Zeile iterieren bis Spalte password
-    // gefunden (kann auch in Schritt 1 schon gemerkt werden)--> auch merken
-    // 4. Mit diesen beiden Werten Passwort-Zelle von betroffenem personnel (mit
-    // personnel_id) mit Passwort abgleichen
-
-    // isValueInSpecificCell: nutzbar, wenn username im loginscreen überprüft wurde
-    // (getFilteredDBRowsToMap) und man über key der hashmap in der/den Zeilen nach
-    // dem Passwort suchen will
-
     /**
      * 
      * @param excelFileName
@@ -64,7 +50,7 @@ public class DBUsersExtractor {
                 continue;
             } else if (isValueInSpecificCell(row.getRowNum(), columnName, filterValue)) {
                 User filteredUser = getRowConvertedToUser(row);
-                filteredUsers.add(filteredUser); // row.getRowNum() = filteredUser.getPersonnel_id()
+                filteredUsers.add(filteredUser);
             }
         }
         return filteredUsers;
@@ -141,6 +127,7 @@ public class DBUsersExtractor {
         int i = 0;
         while (cellIterator.hasNext() && i < declaredFields.length) {
             Cell cell = cellIterator.next();
+            declaredFields[i].setAccessible(true);
             switch (cell.getCellType()) {
                 case NUMERIC:
                     declaredFields[i].set(user, (int) cell.getNumericCellValue());
@@ -186,21 +173,5 @@ public class DBUsersExtractor {
         }
         return columnIndex;
     }
-
-    // public static void main(String[] args) {
-    // try {
-    // DBUsersExtractor dbUsersExtractor = new
-    // DBUsersExtractor("databases/USERS.xlsx");
-    // // System.out.println(dbUsersExtractor.getColumnIndexToName("personnel_id"));
-    // Set<User> filteredUserSet =
-    // dbUsersExtractor.getFilteredDBRowsToSet("forename", "Laura");
-
-    // System.out.println(Arrays.toString(filteredUserSet.toArray()));
-    // System.out.println(User.username);
-
-    // } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-    // e.printStackTrace();
-    // }
-    // }
 
 }
