@@ -44,4 +44,77 @@ public class Order {
                 && Objects.equals(price, navIPC.price) && Objects.equals(done, navIPC.done)
                 && Objects.equals(status, navIPC.status);
     }
+
+    public int getOrder_id() {
+        return this.order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public String getFirm() {
+        return this.firm;
+    }
+
+    public void setFirm(String firm) {
+        this.firm = firm;
+    }
+
+    public String getStone_type() {
+        return this.stone_type;
+    }
+
+    public void setStone_type(String stone_type) {
+        this.stone_type = stone_type;
+    }
+
+    public int getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getDue_date() {
+        return this.due_date;
+    }
+
+    public void setDue_date(int due_date) {
+        this.due_date = due_date;
+    }
+
+    public String getPhase() {
+        return this.phase;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public boolean getisDone() {
+        return this.done;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

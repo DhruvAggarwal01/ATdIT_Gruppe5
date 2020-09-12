@@ -1,4 +1,5 @@
 package panels;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,114 +19,211 @@ import main.NavItemPanelChooser;
 import main.Styles;
 
 public class EditOrder extends JPanel {
-    String orderSource;
-    Order currentOrder = new Order();
+
     private static final long serialVersionUID = 1L;
-    DBOrdersExtractor dbOrderExtractor;
-    Set<Order> rowCurrentOrder;
+
+    private JLabel dummyLabel;
+
+    private JLabel orderHeaderLabel;
+    private JLabel orderStatusLabel;
+
+    private JLabel firmLabel;
+    private JTextField firmField;
+
+    private JLabel stoneTypeLabel;
+    private JComboBox<String> stoneSelection;
+
+    private JLabel amountLabel;
+    private JTextField amountField;
+
+    private JLabel dueDateLabel;
+    private JTextField dueDateField;
+
+    private JLabel priceLabel;
+    private JLabel priceAmountLabel;
+
+    private JLabel phaseLabel;
+    private JComboBox<String> phaseSelection;
+
+    private JLabel doneLabel;
+    private JCheckBox doneBox;
+
+    private JButton backButton;
+    private JButton saveButton;
+
+    String orderSource;
 
     public EditOrder() {
+        Order currentOrder = new Order();
+        DBOrdersExtractor dbOrderExtractor;
+        this.orderSource = OrderPanels.getOrderSource();
+
+        final int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
+
+        Set<Order> rowCurrentOrder;
+
         try {
             dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-     
-        this.orderSource = OrderPanels.getOrderSource();
-        this.setLayout(new BorderLayout());
-
-        JPanel orderPanel = new JPanel(new GridLayout(11, 2, 10, 10));
-        int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
-        try {
-
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
-
-        } catch (IOException | IllegalArgumentException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
-   switch (currentOrder.status){
-       case"overdue":
-       orderPanel.setBackground(new Color(252, 130, 136));
-       break;
-       case"atRisk":
-       orderPanel.setBackground(new Color(245, 220, 163));
-       break;
-       case"onTime":
-       orderPanel.setBackground(new Color(188, 234, 174));
-       break;
-       default:    
-        orderPanel.setBackground(new Color(188, 234, 174));
-       break;
+       
+        setDisplayedValue(currentOrder);
+       
+JPanel editPanel =  createPanel();
+  setStatusBackground(currentOrder, editPanel);
+        this.setLayout(new BorderLayout());
+        this.add(editPanel, BorderLayout.CENTER);
+    }
 
-   } 
-   JComboBox<String> stoneSelection = new JComboBox<>();
-   stoneSelection.addItem("Weißer Stein");
-   stoneSelection.addItem("Roter Stein");
-   stoneSelection.addItem("Schwarzer Stein");
-   JComboBox<String> phaseSelection = new JComboBox<>();
-   phaseSelection.addItem("Planung");
-   phaseSelection.addItem("Sprengung");
-   phaseSelection.addItem("Transport");
-   phaseSelection.addItem("Geliefert");
-   JTextField firmField = new JTextField(currentOrder.firm);
-   JLabel firmLabel = new JLabel("Firma");
-   JTextField amountField = new JTextField("" + currentOrder.amount);
-   JTextField dueDateField = new JTextField("" + currentOrder.due_date);
-        orderPanel.add(new JLabel("Order Header")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(new JLabel("Auftragsnummer wird generiert"));
+    public JPanel createPanel() {
 
-        orderPanel.add(firmLabel).setFont(Styles.ORDER_INFO);
-        orderPanel.add(firmField);
-     
+        final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
 
-        orderPanel.add(new JLabel("Steinart")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(stoneSelection);
+        editPanel.add(orderHeaderLabel);
+        editPanel.add(orderStatusLabel);
 
-        orderPanel.add(new JLabel("Menge")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(amountField);
+        editPanel.add(firmLabel);
+        editPanel.add(firmField);
 
-        orderPanel.add(new JLabel("Lieferdatum")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(dueDateField);
+        editPanel.add(stoneTypeLabel);
+        editPanel.add(stoneSelection);
 
-        orderPanel.add(new JLabel("Preis")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(new JLabel("wird berechnet")).setFont(Styles.ORDER_INFO);
+        editPanel.add(amountLabel);
+        editPanel.add(amountField);
 
-        orderPanel.add(new JLabel("Status")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(phaseSelection);
+        editPanel.add(dueDateLabel);
+        editPanel.add(dueDateField);
 
-        orderPanel.add(new JLabel("Auftrag abgeschlossen : ")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(new JCheckBox("Auftrag abgeschlossen"));
-        JButton backButton = new JButton("Zurück");
+        editPanel.add(priceLabel);
+        editPanel.add(priceAmountLabel);
+        
+        editPanel.add(phaseLabel);
+        editPanel.add(phaseSelection);
+
+        editPanel.add(doneLabel);
+        editPanel.add(doneBox);
+
+        editPanel.add(dummyLabel);
+        editPanel.add(dummyLabel);
+
+        editPanel.add(backButton);
+        editPanel.add(saveButton);
+
+        editPanel.add(dummyLabel);
+        editPanel.add(dummyLabel);
+
+        return editPanel;
+    }
+
+    public void setStatusBackground(Order currentOrder, JPanel orderPanel) {
+
+        switch (currentOrder.status) {
+            case "overdue":
+                orderPanel.setBackground(new Color(252, 130, 136));
+                break;
+            case "atRisk":
+                orderPanel.setBackground(new Color(245, 220, 163));
+                break;
+            case "onTime":
+                orderPanel.setBackground(new Color(188, 234, 174));
+                break;
+            default:
+                orderPanel.setBackground(new Color(188, 234, 174));
+                break;
+        }
+    }
+
+    public void setDisplayedValue(Order currentOrder) {
+
+        dummyLabel = new JLabel("");
+
+        orderHeaderLabel = new JLabel("Order Header");
+        orderHeaderLabel.setFont(Styles.ORDER_INFO);
+
+        orderStatusLabel = new JLabel("Auftragsnummer wird generiert");
+        orderStatusLabel.setFont(Styles.ORDER_INFO);
+
+        firmLabel = new JLabel("Firma");
+        firmLabel.setFont(Styles.ORDER_INFO);
+
+        firmField = new JTextField(currentOrder.firm);
+
+        stoneTypeLabel = new JLabel("Steinart");
+        orderStatusLabel.setFont(Styles.ORDER_INFO);
+
+        stoneSelection = new JComboBox<String>();
+        stoneSelection.addItem("Weißer Stein");
+        stoneSelection.addItem("Roter Stein");
+        stoneSelection.addItem("Schwarzer Stein");
+
+        amountLabel = new JLabel("Menge:");
+        amountLabel.setFont(Styles.ORDER_INFO);
+
+        amountField = new JTextField(currentOrder.amount);
+
+        dueDateLabel = new JLabel("Lieferdatum");
+        dueDateLabel.setFont(Styles.ORDER_INFO);
+
+        dueDateField = new JTextField(currentOrder.due_date);
+
+        priceLabel = new JLabel("Preis");
+        priceAmountLabel = new JLabel("wird berechnet");
+
+        phaseLabel = new JLabel("Phase");
+        phaseSelection = new JComboBox<String>();
+        phaseSelection.addItem("Planung");
+        phaseSelection.addItem("Sprengung");
+        phaseSelection.addItem("Transport");
+        phaseSelection.addItem("Geliefert");
+
+        doneLabel = new JLabel("Auftrag abgeschlossen");
+        doneBox = new JCheckBox("Auftrag abgeschlossen");
+
+        backButton = new JButton("Zurück");
         backButton.addActionListener(new ActionListener() {
-     
+
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
                 MainPanel.getNavPane().setSelectedIndex(6);
             }
-     
-       
-        });  
-        orderPanel.add(new JLabel("")); 
-        orderPanel.add(new JLabel("")); 
-        JButton saveOrder = new JButton("Speichern");
-        saveOrder.addActionListener(new ActionListener() {
+
+        });
+
+        saveButton = new JButton("Speichern");
+        saveButton.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                
+            public void actionPerformed(final ActionEvent e) {
+
                 MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
-        
-         }});; 
-        orderPanel.add(saveOrder);
-        orderPanel.add(backButton);
 
-        orderPanel.setFont(Styles.ORDER_INFO);
-        this.add(orderPanel, BorderLayout.CENTER);
-
+            }
+        });
     }
 
+
+
+    public void saveEditedOrder() {
+
+      
+
+    }
+    // public void save(){
+    // if (true) { // Validator einfügen
+    // //
+    // currentOrder.setFirm(firmField.getText());
+    // currentOrder.setAmount(Integer.parseInt(amountField.getText()));
+    // currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
+
+    // } else {
+
+    // final ImageIcon errorMsgIcon = new ImageIcon(new
+    // ImageIcon("Library/images/errorIcon.png").getImage()
+    // .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+    // }}
 }
