@@ -4,13 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 public class KarteLabels extends JPanel {
-    private JPanel panel;
+    private JPanel panel, panelLabels;
+    private JLabel text1,text2;
 
     public KarteLabels() {
         this.setLayout(new BorderLayout());
-        JPanel panelLabels = new JPanel(new GridLayout(2, 1));
-        JLabel text1 = new JLabel("Drücke N um eine Stelle im Bild zu markieren. ");
-        JLabel text2 = new JLabel("Notizen über die jeweiligen Standorte kannst du hier anlegen:");
+        panelLabels = new JPanel(new GridLayout(2, 1));
+        text1 = new JLabel("Drücke N um eine Stelle im Bild zu markieren. ");
+        text2 = new JLabel("Notizen über die jeweiligen Standorte kannst du hier anlegen:");
         panel = new JPanel(new GridLayout(0, 1));
         panelLabels.add(text1);
         panelLabels.add(text2);
@@ -20,5 +21,14 @@ public class KarteLabels extends JPanel {
 
     public JPanel getPanel() {
         return this.panel;
+    }
+    public JPanel getPanelLabels() {
+        return panelLabels;
+    }
+    public JLabel getText1(){
+        return text1;
+    }
+    public JLabel getText2(){
+        return text2;
     }
 }
