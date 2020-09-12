@@ -11,7 +11,7 @@ public class WeatherPanelTest {
 
     @Test
     public void testGetPanelTitle(){
-        Assert.assertEquals("looks at the title of the Panel","weatherForecastTitle",weatherPanelTest.getTitlePanel());
+        Assert.assertEquals("looks at the title of the Panel","weatherForecastTitle",weatherPanelTest.getWeatherForecastTitle());
     }
 
     @Test

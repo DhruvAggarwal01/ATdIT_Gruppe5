@@ -173,38 +173,83 @@ public class HeaderPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für das Headertitel-Label
+     * 
+     * @return Headertitel-Label
+     */
     public JLabel getHeaderTitleJLabel() {
         return headerTitleJLabel;
     }
 
+    /**
+     * Getter-Methode für den Usericon-Button
+     * 
+     * @return Usericon-Button
+     */
     public AbstractButton getUserIconButton() {
         return this.userIconButton;
     }
 
+    /**
+     * Getter-Methode für das Welcome-Menüelement
+     * 
+     * @return Welcome-Menüelement
+     */
     public JMenuItem getWelcomeItem() {
         return this.welcomeItem;
     }
 
+    /**
+     * Setter-Methode für das Welcome-Menüelement
+     * 
+     * @param welcomeItem Welcome-Menüelement
+     */
     public void setWelcomeItem(JMenuItem welcomeItem) {
         this.welcomeItem = welcomeItem;
     }
 
+    /**
+     * Getter-Methode für das erste Menüelement
+     * 
+     * @return erstes Menüelement
+     */
     public JMenuItem getNormItem1() {
         return normItem1;
     }
 
+    /**
+     * Getter-Methode für das zweite Menüelement
+     * 
+     * @return zweites Menüelement
+     */
     public JMenuItem getNormItem2() {
         return normItem2;
     }
 
+    /**
+     * Getter-Methode für das dritte Menüelement
+     * 
+     * @return drittes Menüelement
+     */
     public JMenuItem getNormItem3() {
         return normItem3;
     }
 
+    /**
+     * Getter-Methode für das vierte Menüelement
+     * 
+     * @return viertes Menüelement
+     */
     public JMenuItem getNormItem4() {
         return normItem4;
     }
 
+    /**
+     * Getter-Methode für das Logoff-Menüelement
+     * 
+     * @return Logoff-Menüelement
+     */
     public JMenuItem getLogOffItem() {
         return logOffItem;
     }

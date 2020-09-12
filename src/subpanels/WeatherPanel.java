@@ -137,10 +137,20 @@ public class WeatherPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
-    public String getTitlePanel() {
+    /**
+     * Getter-Methode für den Wettervorhersage-Titel
+     * 
+     * @return Wettervorhersage-Titel
+     */
+    public String getWeatherForecastTitle() {
         return weatherForecastTitle;
     }
 
+    /**
+     * Getter-Methode für das Wettervorhersage-Label
+     * 
+     * @return Wettervorhersage-Label
+     */
     public JLabel getWeatherForecastTitleLabel() {
         return weatherForecastTitleLabel;
     }

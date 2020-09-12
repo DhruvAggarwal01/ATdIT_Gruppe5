@@ -21,17 +21,13 @@ public class DBUsersInserterTest {
     }
 
     @Test
-    public void testUserChangesAppliedToDatabase() { // tbd
+    public void testUserChangesAppliedToDatabase() throws IOException { // tbd
         LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
         LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();
-        try {
-            DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/temp_USERS.xlsx");
-            Row row = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(1);
-            int actualRole_id = (int) row.getCell(5).getNumericCellValue();
-            Assert.assertEquals("New role_id should be set in database", 2, actualRole_id);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/temp_USERS.xlsx");
+        Row row = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(1);
+        int actualRole_id = (int) row.getCell(5).getNumericCellValue();
+        Assert.assertEquals("New role_id should be set in database", 2, actualRole_id);
     }
 }

@@ -30,7 +30,6 @@ public class AppRunner {
         LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(southPanel.isOpaque(), new GridLayout(6, 2, 5, 5));
 
         southPanel.add(buttonOnTopPanel);
-
         mainPanel.add(southPanel, BorderLayout.CENTER);
 
         return mainPanel;
@@ -51,5 +50,15 @@ public class AppRunner {
 
         loginFrame.add(createMainPanel());
         loginFrame.setVisible(true);
+    }
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für den Login-Frame
+     * 
+     * @return Login-Frame
+     */
+    public static JFrame getLoginFrame() {
+        return loginFrame;
     }
 }

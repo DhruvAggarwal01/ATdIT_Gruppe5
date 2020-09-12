@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+import exceptions.NavItemNotFoundException;
+
 import java.util.Objects;
 
 import panels.OverviewPanel;
@@ -22,7 +24,7 @@ public class NavItemPanelChooser extends JPanel {
 
     private static final long serialVersionUID = 2503046166751075554L;
 
-    String navItemName01, navItemName02, navItemName03, panelExplorerTitle;
+    private String navItemName01, navItemName02, navItemName03, panelExplorerTitle;
 
     /**
      * Konstruktor, der zum zugehörigen NavigationItem einen passenden JPanel
@@ -31,6 +33,7 @@ public class NavItemPanelChooser extends JPanel {
      * @param navItemName01 Navigationsitem auf Ebene 1
      * @param navItemName02 Navigationsitem auf Ebene 2
      * @param navItemName03 Navigationsitem auf Ebene 3
+     * @throws NavItemNotFoundException
      */
     public NavItemPanelChooser(final String navItemName01, final String navItemName02, final String navItemName03) {
         this.navItemName01 = navItemName01;
@@ -40,8 +43,10 @@ public class NavItemPanelChooser extends JPanel {
         panelExplorerTitle = setPanelExplorerText();
         this.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), panelExplorerTitle,
                 TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, Styles.TAB_BORDERTITLE_FONT));
-
-        chooserFunctionality();
+        try {
+            chooserFunctionality();
+        } catch (NavItemNotFoundException nitfe) {
+        }
     }
 
     /**
@@ -81,7 +86,7 @@ public class NavItemPanelChooser extends JPanel {
      * @param navItemName02 Navigationsitem auf Ebene 2
      * @param navItemName03 Navigationsitem auf Ebene 3
      */
-    public void chooserFunctionality() {
+    public void chooserFunctionality() throws NavItemNotFoundException {
         switch (navItemName01) {
             case "Overview":
                 switch (navItemName02) {
@@ -91,9 +96,7 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                     case "Reporting":
                         this.setLayout(new BorderLayout());
-
                         this.add(new ReportingPanel(), BorderLayout.CENTER);
-
                         break;
                     default:
                         break;
@@ -103,7 +106,6 @@ public class NavItemPanelChooser extends JPanel {
                 break;
             case "Produktion":
                 break;
-
             case "Logistik":
                 switch (navItemName02) {
                     case "":
@@ -118,11 +120,8 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                 }
                 break;
-
-            // tbd
-
             default:
-                break;
+                throw new NavItemNotFoundException(navItemName01, navItemName02, navItemName03);
         }
     }
 
@@ -153,5 +152,15 @@ public class NavItemPanelChooser extends JPanel {
     @Override
     public int hashCode() { // wird
         return Objects.hash(navItemName01, navItemName02, navItemName03);
+    }
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für den Panel-Explorer-Titel
+     * 
+     * @return Panel-Explorer-Titel
+     */
+    public String getPanelExplorerTitle() {
+        return panelExplorerTitle;
     }
 }
