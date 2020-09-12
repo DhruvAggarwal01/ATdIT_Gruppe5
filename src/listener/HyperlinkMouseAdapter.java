@@ -33,6 +33,7 @@ public class HyperlinkMouseAdapter extends MouseAdapter {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+        System.out.println("CLICK");
         try {
             Desktop.getDesktop().browse(new URI(urlString));
         } catch (IOException | URISyntaxException e1) {

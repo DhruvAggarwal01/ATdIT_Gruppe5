@@ -6,12 +6,12 @@ import db_interaction.LogInCredentialsChecker;
 
 public class LogInCredentialsCheckerTest {
 
-    // @Test
-    // public void testIsCredentialsMatching() {
-    // LogInCredentialsChecker logInChecker = new
-    // LogInCredentialsChecker("max_mustermann", "passwort123");
-    // Assert.assertTrue(logInChecker.isCredentialsMatching());
-    // }
+    @Test
+    public void testIsCredentialsMatching() {
+        LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
+        boolean isMatchingCredentialsTest = logInChecker.isCredentialsMatching();
+        Assert.assertTrue(isMatchingCredentialsTest);
+    }
 
     @Test
     public void testSetSessionUser() {// tbd
@@ -24,6 +24,6 @@ public class LogInCredentialsCheckerTest {
     // LogInCredentialsChecker logInChecker = new
     // LogInCredentialsChecker("max_mustermann", "passwort123");
     // logInChecker.setSessionUser();
-    // System.out.println(User.username);
+    // System.out.println(LogInCredentialsChecker.sessionUser.getUsername());
     // }
 }
