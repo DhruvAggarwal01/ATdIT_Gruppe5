@@ -109,6 +109,12 @@ public class NavItemPanelChooser extends JPanel {
                 this.setLayout(new BorderLayout());
                 this.add(new ProduktionPanel(), BorderLayout.CENTER);
                 break;
+            case "Betriebsmittel":
+                break;
+            case "HR":
+                break;
+            case "Genehmigungen":
+                break;
             case "Logistik":
                 switch (navItemName02) {
                     case "":

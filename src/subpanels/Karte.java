@@ -52,7 +52,7 @@ public class Karte extends JPanel {
         this.setFocusable(true);
         this.requestFocusInWindow();
         
-        System.out.println(requestFocusInWindow());
+        // System.out.println(requestFocusInWindow()); //tbd: löschen, wenn nicht mehr gebraucht
     }
 
     private void getImage() {
