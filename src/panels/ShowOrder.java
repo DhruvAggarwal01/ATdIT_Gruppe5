@@ -7,11 +7,12 @@ import subpanels.OrderPanels;
 public class ShowOrder extends JPanel {
     
     private static final long serialVersionUID = 1L;
+    JPanel orderPanel;
     
     public ShowOrder() {
 
         this.setLayout(new BorderLayout());
-        JPanel orderPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+        orderPanel = new JPanel(new GridLayout(6, 2, 10, 10));
 
         orderPanel.add(new JLabel("Order Header"));
         orderPanel.add(new JLabel("overdue"));
@@ -38,6 +39,10 @@ public class ShowOrder extends JPanel {
         this.add(orderPanel, BorderLayout.CENTER);
     
 
+    }
+
+    public JPanel getOrderPanel(){
+        return orderPanel;
     }
 
 }

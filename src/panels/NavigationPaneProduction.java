@@ -28,6 +28,7 @@ public class NavigationPaneProduction extends JTabbedPane {
         this.addTab("Leerlaufintervalle", new IdleIntervalls());
         
     }
+
     
     
 

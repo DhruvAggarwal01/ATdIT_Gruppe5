@@ -14,6 +14,7 @@ import main.NavItemPanelChooser;
 public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
+    private JLabel onTimeLabel;
 
     /**
     
@@ -22,7 +23,7 @@ public class OrderPanels extends JPanel {
         this.setLayout(new GridLayout(8, 0, 10, 10));
         this.setBackground(new Color(rgbRed, rgbGreen, rgbBlue));
 
-        JLabel onTimeLabel = new JLabel(Title);
+        onTimeLabel = new JLabel(Title);
         onTimeLabel.setFont(Styles.SUBPANEL_TITLE_FONT2);
         onTimeLabel.setForeground(Color.BLACK);
         onTimeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -89,4 +90,7 @@ public class OrderPanels extends JPanel {
 
     }
 
+    public JLabel getOnTimeLabel(){
+        return onTimeLabel;
+    }
 }

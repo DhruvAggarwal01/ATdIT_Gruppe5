@@ -16,6 +16,9 @@ import listener.LogoIconMouseAdapter;
 public class ReportingPanel extends JPanel {
 
     private static final long serialVersionUID = -8379965032225222069L;
+    private JPanel reportingHeaderRowPanel;
+    private JButton backButton;
+    private JLabel mockLabel;
 
     /**
      * Konstruktor, der ein einfaches Label zentral im Panel platziert und ein
@@ -24,12 +27,12 @@ public class ReportingPanel extends JPanel {
     public ReportingPanel() {
         this.setLayout(new BorderLayout());
 
-        JPanel reportingHeaderRowPanel = new JPanel(new GridLayout(1, 7, 30, 30));
-        JButton backButton = new JButton("Zurück");
+        reportingHeaderRowPanel = new JPanel(new GridLayout(1, 7, 30, 30));
+        backButton = new JButton("Zurück");
         ActionListener limaListener = new LogoIconMouseAdapter();
         backButton.addActionListener(limaListener);
 
-        JLabel mockLabel = new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER);
+        mockLabel = new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER);
 
         reportingHeaderRowPanel.add(new JLabel(""));
         reportingHeaderRowPanel.add(new JLabel(""));
@@ -41,5 +44,15 @@ public class ReportingPanel extends JPanel {
 
         this.add(reportingHeaderRowPanel, BorderLayout.NORTH);
         this.add(mockLabel, BorderLayout.CENTER);
+    }
+
+    public JPanel getReportingHeaderRowPanel(){
+        return reportingHeaderRowPanel;
+    }
+    public JButton getBackButton(){
+        return backButton;
+    }
+    public JLabel getMockLabel(){
+        return mockLabel;
     }
 }
