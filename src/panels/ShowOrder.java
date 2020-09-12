@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.Iterator;
 import main.MainPanel;
 import main.NavItemPanelChooser;
+import main.Styles;
 public class ShowOrder extends JPanel {
     String orderSource;
     Order currentOrder = new Order();
@@ -32,7 +33,7 @@ public class ShowOrder extends JPanel {
      
         this.orderSource = OrderPanels.getOrderSource();
         this.setLayout(new BorderLayout());
-        JPanel orderPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+        JPanel orderPanel = new JPanel(new GridLayout(11, 2, 10, 10));
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
         try {
 
@@ -55,20 +56,32 @@ public class ShowOrder extends JPanel {
        break;
        default: break;
    }
-   orderPanel.add(new JLabel("Order Header"));
-   orderPanel.add(new JLabel("overdue"));
+   orderPanel.add(new JLabel(this.orderSource)).setFont(Styles.ORDER_INFO_HEAD);
+   orderPanel.add(new JLabel(currentOrder.status)).setFont(Styles.ORDER_INFO_HEAD);
 
-   orderPanel.add(new JLabel("Steinart"));
-   orderPanel.add(new JLabel(this.orderSource));
+    orderPanel.add(new JLabel("Firma:")).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(currentOrder.firm)).setFont(Styles.ORDER_INFO);
 
-   orderPanel.add(new JLabel("Menge"));
-   orderPanel.add(new JLabel("Steinart"));
+   orderPanel.add(new JLabel("Steinart")).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(currentOrder.stone_type)).setFont(Styles.ORDER_INFO);
 
-   orderPanel.add(new JLabel("Lieferdatum"));
-   orderPanel.add(new JLabel("Steinart"));
+   orderPanel.add(new JLabel("Menge")).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(" "+ currentOrder.amount)).setFont(Styles.ORDER_INFO);
 
-   orderPanel.add(new JLabel("Status"));
-   orderPanel.add(new JLabel("Steinart"));
+   orderPanel.add(new JLabel("Preis")).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(""+ currentOrder.price)).setFont(Styles.ORDER_INFO);
+
+   orderPanel.add(new JLabel("Lieferdatum")).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(" "+ currentOrder.due_date)).setFont(Styles.ORDER_INFO);
+
+   orderPanel.add(new JLabel("Phase")).setFont(Styles.ORDER_INFO);
+    orderPanel.add(new JLabel(currentOrder.phase)).setFont(Styles.ORDER_INFO);
+
+
+  
+    orderPanel.add(new JLabel("")); 
+    orderPanel.add(new JLabel("")); 
+   
  JButton backButton = new JButton("Zurück");
    backButton.addActionListener(new ActionListener() {
 
@@ -79,9 +92,23 @@ public class ShowOrder extends JPanel {
        }
 
   
-   });   orderPanel.add(new JLabel("Auftragsstatus"));
+   });  
    orderPanel.add(backButton);
+   JButton editButton = new JButton("Auftrag bearbeiten");
+   editButton.addActionListener(new ActionListener() {
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "EditOrder", null));
+
+ }});; 
+ orderPanel.add(editButton);
+    orderPanel.add(new JLabel("")); 
+    orderPanel.add(new JLabel("")); 
+    orderPanel.add(new JLabel("")); 
+    orderPanel.add(new JLabel("")); 
+   
         this.add(orderPanel, BorderLayout.CENTER);
 
     }
