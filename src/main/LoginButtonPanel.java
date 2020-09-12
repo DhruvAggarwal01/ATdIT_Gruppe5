@@ -69,6 +69,35 @@ public class LoginButtonPanel extends JPanel {
         return log.isCredentialsMatching();
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginButton) {
+            usernameField.setText(usernameField.getText().replace(" ", "")); // delete whitespaces
+
+            if (authenticate()) {
+                AppRunner.loginFrame.dispose();
+                User.isLoggedIn = true;
+                try {
+                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                    dbUsersInserter.applyChangedSessionUserToRow();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+                ActualApp.startApp();
+            } else {
+                usernameField.setText("");
+                passwordField.setText("");
+            }
+        }
+        if (e.getSource() == cancelButton) {
+            usernameField.setText("");
+            passwordField.setText("");
+        }
+        if (e.getSource() == pswdForgottenButton) {
+            possibleErrorMessageLabel.setText("Bitte wenden Sie sich an Ihren Administrator.");
+        }
+    }
+
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für das Text-Eingabefeld "Benutzername"
@@ -123,5 +152,4 @@ public class LoginButtonPanel extends JPanel {
     public JButton getPswdForgottenButton() {
         return this.pswdForgottenButton;
     }
-
 }

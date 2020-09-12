@@ -10,6 +10,7 @@ import exceptions.NavItemNotFoundException;
 import java.util.Objects;
 
 import panels.OverviewPanel;
+import panels.ProduktionPanel;
 import panels.ReportingPanel;
 import panels.EditOrder;
 import panels.LogistikPanel;
@@ -105,6 +106,8 @@ public class NavItemPanelChooser extends JPanel {
             case "ToDo's":
                 break;
             case "Produktion":
+                this.setLayout(new BorderLayout());
+                this.add(new ProduktionPanel(), BorderLayout.CENTER);
                 break;
             case "Logistik":
                 switch (navItemName02) {
