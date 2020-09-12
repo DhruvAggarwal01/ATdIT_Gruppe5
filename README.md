@@ -25,6 +25,7 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 + **subpanels** (enthält: Panels, die von den Hauptpanels genutzt werden)
 + **dialogs** (enthält: Dialogscreens, die die Interaktion mit dem Benutzer erlaubt)
 + **listener** (enthält: Listenerklassen)
++ **exceptions** (enthält: Eigene Exceptionklassen)
 + **db_interaction** (enthält: Klassen, die die Interaktion mit den Datenbanken regeln)
 + **test** (enthält: Unit-Tests zu den obigen Klassen)
 
@@ -36,7 +37,7 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 <code>TBD.jar</code>: Diese Datei kann durch Öffnen automatisch die gesamte Anwendung (ohne weitere Einstellungen) ausführen.
 
 ## Hinweise
-+ bei Warnungen im Editor, "nicht auffindbare" Files einmal öffnen --> Meldungen gehen weg
++ bei Warnungen im Editor, "nicht auffindbare" Files einmal öffnen --> Meldungen gehen weg (oder: über VSCode-Extension "Language Support for Java(TM) by Red Hat" "java clean" in Command Pallette ausführen)
 + werden Libraries nicht gefunden, überprüfen, ob die .jar-Bibliotheken im Ordner Library dem Classpath hinzugefügt sind
   + in VSCODE: links unten über referenced libraries oder vscode.settings-File
   + in Eclipse: über Build Path
