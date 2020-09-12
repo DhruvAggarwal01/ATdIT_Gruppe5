@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="UNSIGNED">
-  <PROJECT FORMAT="1.00" NAME="Codeablaufplan" AUTHOR="Dhruv Aggarwal" CREATED="2020.07.30 15:46:04" MODIFIED="2020.09.09 00:16:37">
+  <PROJECT FORMAT="1.00" NAME="Codeablaufplan" AUTHOR="Dhruv Aggarwal" CREATED="2020.07.30 15:46:04" MODIFIED="2020.09.12 20:15:01">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Codeablaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.09.09 00:16:37">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Codeablaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.09.12 20:15:01">
         <LAYOUT FORMAT="1.00" COLUMNS="14" ROWS="24">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="11">
@@ -60,6 +60,11 @@
                 <TEXT><![CDATA[Dialog schließen]]></TEXT>
               </FIGURE>
             </ENTRY>
+            <ENTRY COLUMN="4" ROW="4">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="360">
+                <TEXT><![CDATA[USERS.xlsx [DB]]]></TEXT>
+              </FIGURE>
+            </ENTRY>
             <ENTRY COLUMN="4" ROW="10">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="317">
                 <TEXT><![CDATA[]]></TEXT>
@@ -75,6 +80,11 @@
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
+            <ENTRY COLUMN="5" ROW="4">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="359">
+                <TEXT><![CDATA[DBUsersExtractor.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
             <ENTRY COLUMN="5" ROW="11">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="304">
                 <TEXT><![CDATA[ProfileDialog.java]]></TEXT>
@@ -83,6 +93,11 @@
             <ENTRY COLUMN="5" ROW="12">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="305">
                 <TEXT><![CDATA[SettingsDialog.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="6" ROW="4">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="363">
+                <TEXT><![CDATA[User.java]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="6" ROW="9">
@@ -371,6 +386,9 @@
           <CONNECTION FORMAT="1.00" ID="349" FROM="347" TO="332" TEXT="Daten aus User in Datenbank speichern" />
           <CONNECTION FORMAT="1.00" ID="351" FROM="350" TO="87" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="353" FROM="352" TO="350" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="361" FROM="360" TO="359" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="362" FROM="359" TO="363" TEXT="Daten aus Datenbank in User speichern" />
+          <CONNECTION FORMAT="1.00" ID="364" FROM="363" TO="350" TEXT="" />
         </CONNECTIONS>
       </DIAGRAM>
     </DIAGRAMS>
