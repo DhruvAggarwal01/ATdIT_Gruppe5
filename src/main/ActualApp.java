@@ -12,8 +12,8 @@ import java.awt.Toolkit;
 public class ActualApp {
 
     public static TimeoutTimer timeoutTimer;
-    private static JFrame appWindow;
     private static int timeoutDelay = 3600000;
+    private static JFrame appWindow;
 
     /**
      * Diese Methode startet den Timer für den Timeout der Applikation.
@@ -51,15 +51,31 @@ public class ActualApp {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für den Timeout-Timer
+     * 
+     * @return Timeout-Timer
+     */
     public static TimeoutTimer getTimeoutTimer() {
         return timeoutTimer;
     }
 
+    /**
+     * Getter-Methode für die Zeit bis zum Timeout
+     * 
+     * @return Zeit bis zum Timeout
+     */
+    public static int getTimeoutDelay() {
+        return timeoutDelay;
+    }
+
+    /**
+     * Getter-Methode für den Anwendungsframe
+     * 
+     * @return Anwendungsframe
+     */
     public static JFrame getAppWindow() {
         return appWindow;
     }
 
-    public static int getTimeoutDelay() {
-        return timeoutDelay;
-    }
 }

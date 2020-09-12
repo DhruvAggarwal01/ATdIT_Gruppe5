@@ -70,26 +70,56 @@ public class LoginButtonPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für das Text-Eingabefeld "Benutzername"
+     * 
+     * @return Text-Eingabefeld "Benutzername"
+     */
     public JTextField getUsernameField() {
         return usernameField;
     }
 
+    /**
+     * Getter-Methode für das Passwort-Eingabefeld
+     * 
+     * @return Passwort-Eingabefeld
+     */
     public JPasswordField getPasswordField() {
         return passwordField;
     }
 
+    /**
+     * Getter-Methode für das mögliche Errorlabel
+     * 
+     * @return mögliches Errorlabel
+     */
     public JLabel getPossibleErrorMessageLabel() {
         return possibleErrorMessageLabel;
     }
 
+    /**
+     * Getter-Methode für den "Login"-Button
+     * 
+     * @return "Login"-Button
+     */
     public JButton getLoginButton() {
         return this.loginButton;
     }
 
+    /**
+     * Getter-Methode für den "Abbrechen"-Button
+     * 
+     * @return "Abbrechen"-Button
+     */
     public JButton getCancelButton() {
         return this.cancelButton;
     }
 
+    /**
+     * Getter-Methode für den "Passwort vergessen"-Button
+     * 
+     * @return "Passwort vergessen"-Button
+     */
     public JButton getPswdForgottenButton() {
         return this.pswdForgottenButton;
     }

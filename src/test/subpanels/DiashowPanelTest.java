@@ -18,7 +18,7 @@ public class DiashowPanelTest {
 
   @Test
   public void testGetPanelTitle() {
-    Assert.assertEquals("Give the title of the diashow panel", "Title", diashowPanelTest.getTitlePanel());
+    Assert.assertEquals("Give the title of the diashow panel", "Title", diashowPanelTest.getDiashowTitle());
   }
 
   @Test

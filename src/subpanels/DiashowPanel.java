@@ -60,27 +60,58 @@ public class DiashowPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für den Diashowbilder-Zähler
+     * 
+     * @return Diashowbilder-Zähler
+     */
     public int getCounter() {
         return this.counter;
     }
 
+    /**
+     * Setter-Methode für den Diashowbilder-Zähler
+     * 
+     * @param counter Diashowbilder-Zähler
+     */
     public void setCounter(int counter) {
         this.counter = counter;
     }
 
+    /**
+     * Getter-Methode für das Diashowbilder-Array
+     * 
+     * @return Diashowbilder-Array
+     */
     public ImageIcon[] getImages() {
         return this.images;
     }
 
-    public String getTitlePanel() {
+    /**
+     * Getter-Methode für den Diashowpanel-Title
+     * 
+     * @return Diashowpanel-Title
+     */
+    public String getDiashowTitle() {
         return diashowTitle;
     }
 
+    /**
+     * Getter-Methode für das Diashowlabel
+     * 
+     * @return Diashowlabel
+     */
     public JLabel getDiashowLabel() {
         return this.diashowLabel;
     }
 
+    /**
+     * Getter-Methode für das Diashow-Timer
+     * 
+     * @return Diashow-Timer
+     */
     public Timer getTimer() {
         return timer;
     }
+
 }

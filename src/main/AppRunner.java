@@ -53,6 +53,11 @@ public class AppRunner {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /**
+     * Getter-Methode für den Login-Frame
+     * 
+     * @return Login-Frame
+     */
     public static JFrame getLoginFrame() {
         return loginFrame;
     }
