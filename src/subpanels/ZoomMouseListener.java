@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
 public class ZoomMouseListener extends MouseAdapter {
     private final Karte view;
@@ -52,4 +54,6 @@ public class ZoomMouseListener extends MouseAdapter {
         view.setReleased(true);
         view.repaint();
     }
+
+   
 }

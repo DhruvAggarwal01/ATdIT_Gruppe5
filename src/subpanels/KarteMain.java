@@ -7,10 +7,15 @@ public class KarteMain extends JPanel {
     
     public KarteMain(){
         this.setLayout(new BorderLayout());
-        Karte karte = new Karte();
+        Karte view = new Karte();
         KarteLabels labels = new KarteLabels();
 
-        this.add(karte, BorderLayout.CENTER);
+       
+        
+        
+        LabelListener lis = new LabelListener(labels, view, this);
+        view.addKeyListener(lis);
+        this.add(view, BorderLayout.CENTER);
         this.add(labels, BorderLayout.EAST);
     }
 }

@@ -72,7 +72,7 @@ public class LoginButtonPanel extends JPanel implements ActionListener {
         if (e.getSource() == loginButton) {
             usernameField.setText(usernameField.getText().replace(" ", "")); // delete whitespaces
             
-            if (true) {
+            if (authenticate()) {
                 AppRunner.loginFrame.dispose();
                 User.isLoggedIn = true;
                 try {

@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
@@ -29,6 +30,7 @@ public class Karte extends JPanel {
     private static final long serialVersionUID = -794208964734151914L;
 
     private BufferedImage img;
+    private ArrayList<Rectangle> liste = new ArrayList<Rectangle>();
     private double zoomFactor = 1;
     private double prevZoomFactor = 1;
     private boolean zoomer;
@@ -45,7 +47,12 @@ public class Karte extends JPanel {
         ZoomMouseListener lis = new ZoomMouseListener(this);
         addMouseListener(lis);
         addMouseMotionListener(lis);
+        
         addMouseWheelListener(lis);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+        
+        System.out.println(requestFocusInWindow());
     }
 
     private void getImage() {
@@ -95,7 +102,20 @@ public class Karte extends JPanel {
         }
         // All drawings go here
         g2.drawImage(img, 0, 0, this);
+        this.requestFocusInWindow();
+        //drawRectangles(g2);
     }
+
+    /**
+     * Diese Methode sollte verantwortlich sein um Rechtecke in einem Bild zeichnen zu können und somit die Standorte markieren zu können!
+     * @param g2
+     */
+    public void drawRectangles(Graphics2D g2){
+        if (!liste.isEmpty())
+            g2.drawRect(liste.get(0).getX() - 5, liste.get(0).getY() - 5, 10, 10 );
+    }
+
+   
 
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor *= zoomFactor;
@@ -127,5 +147,9 @@ public class Karte extends JPanel {
 
     public Point getStartPoint() {
         return this.startPoint;
+    }
+
+    public ArrayList<Rectangle> getList() {
+        return this.liste;
     }
 }
