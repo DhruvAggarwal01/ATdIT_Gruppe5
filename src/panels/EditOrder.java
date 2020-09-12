@@ -61,11 +61,11 @@ public class EditOrder extends JPanel {
        break;
 
    } 
-   JComboBox stoneSelection = new JComboBox<>();
+   JComboBox<String> stoneSelection = new JComboBox<>();
    stoneSelection.addItem("Weißer Stein");
    stoneSelection.addItem("Roter Stein");
    stoneSelection.addItem("Schwarzer Stein");
-   JComboBox phaseSelection = new JComboBox<>();
+   JComboBox<String> phaseSelection = new JComboBox<>();
    phaseSelection.addItem("Planung");
    phaseSelection.addItem("Sprengung");
    phaseSelection.addItem("Transport");
@@ -96,8 +96,8 @@ public class EditOrder extends JPanel {
         orderPanel.add(new JLabel("Status")).setFont(Styles.ORDER_INFO);
         orderPanel.add(phaseSelection);
 
-        orderPanel.add(new JLabel("Auftragsstatus")).setFont(Styles.ORDER_INFO);
-        orderPanel.add(new JComboBox<>());
+        orderPanel.add(new JLabel("Auftrag abgeschlossen : ")).setFont(Styles.ORDER_INFO);
+        orderPanel.add(new JCheckBox("Auftrag abgeschlossen"));
         JButton backButton = new JButton("Zurück");
         backButton.addActionListener(new ActionListener() {
      
@@ -111,7 +111,16 @@ public class EditOrder extends JPanel {
         });  
         orderPanel.add(new JLabel("")); 
         orderPanel.add(new JLabel("")); 
-        orderPanel.add(new JButton("Speichern"));
+        JButton saveOrder = new JButton("Speichern");
+        saveOrder.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
+        
+         }});; 
+        orderPanel.add(saveOrder);
         orderPanel.add(backButton);
 
         orderPanel.setFont(Styles.ORDER_INFO);
