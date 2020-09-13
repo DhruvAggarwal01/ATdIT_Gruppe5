@@ -7,17 +7,13 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
-import db_interaction.DBOrdersExtractor;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import panels.EditOrder;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.ss.usermodel.Row;
+
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DBOrdersInserter {
             Set<Integer> rowIndexesContainingPersonnel_id;
@@ -102,9 +98,11 @@ public class DBOrdersInserter {
         
                         Field[] declaredFields = order.getClass().getDeclaredFields();
                         int i = 0;
-                        
-                        while (cellIterator.hasNext() && i < declaredFields.length) {
-                            cellcount = cellcount + 1;
+                        cellcount = 0;
+                        int columns = 0;
+                        int totalColumns = 9;
+                        while (cellIterator.hasNext() && i < declaredFields.length && columns <= totalColumns) {
+                          
                             Cell cell = cellIterator.next();
                             declaredFields[i].setAccessible(true);
                              switch (cell.getCellType()) {
@@ -120,10 +118,11 @@ public class DBOrdersInserter {
                                  default:
                                      break;
                             }
-                            i++;
+                            i++; 
+                         cellcount = cellcount + 1;
                         }
                     }
-            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen nur temporär
+            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen permanent
             dbOrdersExtractor.usersWorkbook.write(outFile);
             outFile.close();
             dbOrdersExtractor.usersWorkbook.close();
