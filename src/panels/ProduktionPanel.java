@@ -1,29 +1,29 @@
 package panels;
 
-
 import java.awt.*;
 import javax.swing.*;
-import main.MainPanel;
 
+/**
+ * Diese Klasse erzeugt ein Panel für das Feld Produktion in der
+ * Navigationsleiste
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class ProduktionPanel extends JPanel {
-    
-    private static NavigationPaneProduction navPane;
-    /**
-     *
-     */
+
+    private NavigationPaneProduction navPane;
     private static final long serialVersionUID = 1L;
-    
+
+    /**
+     * Konstruktor, der das Layout richtig setzt, die Navigationsleiste
+     * <code>navPane</code> des Panels erzeugt und diese zum Panel dazufügt.
+     */
     public ProduktionPanel() {
         super();
         this.setLayout(new BorderLayout());
         navPane = new NavigationPaneProduction(JTabbedPane.NORTH, JTabbedPane.VERTICAL);
         this.add(navPane, BorderLayout.CENTER);
     }
-
-    private Container getContentPane() {
-        return null;
-    }
-
-    
 
 }

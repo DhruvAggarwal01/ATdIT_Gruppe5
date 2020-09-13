@@ -17,20 +17,20 @@ public class AppRunner {
 
     /**
      * Diese Methode erzeugt im Frame ein Login-Panel mit den nötigen
-     * Swing/AWT-Komponenten.
+     * Swing/AWT-Komponenten und sorgt dafür, dass diese richtig ausgerichtet werden.
      * 
      * @return Panel, das das Login-UI enthält
      */
     private static JPanel createMainPanel() {
         BackgroundImagePanel mainPanel = new BackgroundImagePanel(new BorderLayout());
 
-        JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        southPanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
+        JPanel structurePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        structurePanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
 
-        LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(southPanel.isOpaque(), new GridLayout(6, 2, 5, 5));
+        LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(structurePanel.isOpaque(), new GridLayout(6, 2, 5, 5));
 
-        southPanel.add(buttonOnTopPanel);
-        mainPanel.add(southPanel, BorderLayout.CENTER);
+        structurePanel.add(buttonOnTopPanel);
+        mainPanel.add(structurePanel, BorderLayout.CENTER);
 
         return mainPanel;
     }
