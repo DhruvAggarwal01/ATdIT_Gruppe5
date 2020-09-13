@@ -16,7 +16,7 @@ public class NavigationPaneProduction extends JTabbedPane {
 
     /**
      * Konsturktor, der die Navigationsleitse erzeugt.
-     *  Dabei gibt es 4 Tabs: Dashboard, Karte, Wgeoptimierung und Leerlaufintervalle
+     *  Dabei gibt es 4 Tabs: Dashboard, QuarryMap, Wgeoptimierung und Leerlaufintervalle
      * 
      * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
      * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn

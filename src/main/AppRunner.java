@@ -17,7 +17,8 @@ public class AppRunner {
 
     /**
      * Diese Methode erzeugt im Frame ein Login-Panel mit den nötigen
-     * Swing/AWT-Komponenten und sorgt dafür, dass diese richtig ausgerichtet werden.
+     * Swing/AWT-Komponenten und sorgt dafür, dass diese richtig ausgerichtet
+     * werden.
      * 
      * @return Panel, das das Login-UI enthält
      */

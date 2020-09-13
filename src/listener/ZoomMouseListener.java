@@ -8,7 +8,7 @@ import subpanels.*;
 
 /**
  * Klasse, die vom MouseAdapter erbt und ein Listener ist, der dafür
- * verantwrotlich ist die Karte vom Steinbruch richtig auszurichten.
+ * verantwrotlich ist die QuarryMap vom Steinbruch richtig auszurichten.
  */
 public class ZoomMouseListener extends MouseAdapter {
     private final QuarryMap view;
@@ -16,14 +16,14 @@ public class ZoomMouseListener extends MouseAdapter {
     /**
      * Konstruktor, der den Listener erzeugt und die Variable initialisiert.
      * 
-     * @param view die Karte vom Steinbruch.
+     * @param view die QuarryMap vom Steinbruch.
      */
     public ZoomMouseListener(QuarryMap view) {
         this.view = view;
     }
 
     /**
-     * Die folgenden Methoden sind dafür verantwrotlich, das Bild der Karte richtig auszurichten!
+     * Die folgenden Methoden sind dafür verantwrotlich, das Bild der QuarryMap richtig auszurichten!
      */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {

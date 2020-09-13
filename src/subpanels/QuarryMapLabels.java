@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Klasse die ein JPanel für die Notizen in der Karte mit den nötigen
+ * Klasse die ein JPanel für die Notizen in der QuarryMap mit den nötigen
  * Swing/AWT-Komponenten erzeugt.
  */
 public class QuarryMapLabels extends JPanel {
@@ -14,7 +14,8 @@ public class QuarryMapLabels extends JPanel {
     private JLabel text1;
 
     /**
-     * Konstruktor, der Layout setzt, die Swing/AWT-Komponenten initialisiert und zum Panel dazufügt.
+     * Konstruktor, der Layout setzt, die Swing/AWT-Komponenten initialisiert und
+     * zum Panel dazufügt.
      */
     public QuarryMapLabels() {
         this.setLayout(new BorderLayout());
@@ -34,5 +35,23 @@ public class QuarryMapLabels extends JPanel {
      */
     public JPanel getPanel() {
         return this.panel;
+    }
+
+    /**
+     * Getter-Methode für das Panel-LabelListener
+     * 
+     * @return Panel-Label
+     */
+    public JPanel getPanelLabels() {
+        return this.panelLabels;
+    }
+
+    /**
+     * Getter-Methode für Text1
+     * 
+     * @return Text1
+     */
+    public JLabel getText1() {
+        return this.text1;
     }
 }

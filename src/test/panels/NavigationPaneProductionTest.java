@@ -4,21 +4,18 @@ import org.junit.*;
 
 import panels.NavigationPaneProduction;
 
- //tbd
-
 public class NavigationPaneProductionTest {
-    
+
     NavigationPaneProduction navigationPaneProductionTest = new NavigationPaneProduction(0, 0);
 
     @Test
-    public void testGetTabCount(){
-       Assert.assertEquals(4,navigationPaneProductionTest.getTabCount());
+    public void testGetTabCount() {
+        Assert.assertEquals(4, navigationPaneProductionTest.getTabCount());
     }
 
     @Test
-    public void testGetTabAtIndex(){
+    public void testGetTabAtIndex() {
         System.out.println(navigationPaneProductionTest.getTitleAt(1));
     }
-
 
 }

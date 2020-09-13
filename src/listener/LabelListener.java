@@ -9,7 +9,7 @@ import subpanels.Rectangle;
 
 /**
  * Klasse, die von KeyAdapter erbt und ein Listener darstellt. Wenn die Taste N
- * gedrückt wird in Karte, soll man beliebig viele Notizen anlegen können
+ * gedrückt wird in QuarryMap, soll man beliebig viele Notizen anlegen können
  */
 public class LabelListener extends KeyAdapter {
 
@@ -21,7 +21,7 @@ public class LabelListener extends KeyAdapter {
      * Konstruktor, der den Listener erzeugt und die Variablen initialisiert
      * 
      * @param quarryMapLabels das Panel mit den JTextAreas
-     * @param view            das Panel mit der Karte vom Steinbruch
+     * @param view            das Panel mit der QuarryMap vom Steinbruch
      */
     public LabelListener(QuarryMapLabels quarryMapLabels, QuarryMap view) {
         this.view = view;

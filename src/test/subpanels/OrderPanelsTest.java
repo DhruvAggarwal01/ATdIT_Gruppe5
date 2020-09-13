@@ -1,7 +1,6 @@
 package test.subpanels;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import subpanels.OrderPanels;
 

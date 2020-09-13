@@ -6,14 +6,14 @@ import javax.swing.*;
 import listener.LabelListener;
 
 /**
- * Klasse, die das MainPanel für die Karte erzeugt.
+ * Klasse, die das MainPanel für die QuarryMap erzeugt.
  */
 public class QuarryMapMain extends JPanel {
 
     private static final long serialVersionUID = -1599519611357870398L;
 
     /**
-     * Konstruktor, der das Main-Panel der Karte erzeugt. Zu diesem Panel werden die
+     * Konstruktor, der das Main-Panel der QuarryMap erzeugt. Zu diesem Panel werden die
      * beiden anderen Panels <code>QuarryMap</code> und <code>QuarryMapLabels</code>
      * hinzugefügt.
      */
