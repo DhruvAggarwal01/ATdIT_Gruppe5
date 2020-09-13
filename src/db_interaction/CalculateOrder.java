@@ -1,9 +1,11 @@
 package db_interaction;
 
 public class CalculateOrder {
-    public void getSelectedPhase(){
+    public void getSelectedPhase() {
 
     }
-    public void getSelectedStoneType(){}
-    
+
+    public void getSelectedStoneType() {
+    }
+
 }
