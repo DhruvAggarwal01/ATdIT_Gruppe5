@@ -1,6 +1,8 @@
 # ATdIT_Gruppe5
 GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 
+**Alle bewertungsrelevanten Files liegen im master-Branch.**
+
 ## Ordnerstruktur
 &#x1F4D8; **01April_Aufgabe1** beinhaltet die Prototypen der Gruppenmitglieder (bzgl. Aufgabe der 1. Vorlesung)  
 
@@ -30,11 +32,12 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 + **test** (enthält: Unit-Tests zu den obigen Klassen)
 
 ## How to...
-"src/main/AppRunner.java": diese Klasse ist die ausführbare Klasse (enthält main-Methode), von der aus die Programmausführung gestartet wird.
++ "src/main/AppRunner.java": diese Klasse ist die ausführbare Klasse (enthält main-Methode), von der aus die Programmausführung gestartet wird.
++ "ATdIT_Gruppe5.jar": Ausführbare Datei für Anwendung
 
 ## Erklärungen
 <code>.gitignore</code>: Wie der Name schon sagt, werden die in diesem Dokument gelisteten Files von GitHub ignoriert
-<code>TBD.jar</code>: Diese Datei kann durch Öffnen automatisch die gesamte Anwendung (ohne weitere Einstellungen) ausführen.
+<code>ATdIT_Gruppe5.jar</code>: Diese Datei kann durch Öffnen automatisch die gesamte Anwendung (ohne weitere Einstellungen) ausführen.
 
 ## Hinweise
 + bei Warnungen im Editor, "nicht auffindbare" Files einmal öffnen --> Meldungen gehen weg (oder: über VSCode-Extension "Language Support for Java(TM) by Red Hat" "java clean" in Command Pallette ausführen)
