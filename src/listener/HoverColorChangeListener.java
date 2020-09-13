@@ -16,7 +16,7 @@ public class HoverColorChangeListener  extends MouseAdapter {
         theLabel.setBackground(new Color(r1, g1, b1));
     };
 
-    public void changeColor2(Object a) {
+    public void changeColorBack(Object a) {
         JPanel theLabel = (JPanel) a;
         Color color = theLabel.getBackground();
         Integer r1 = color.getRed() - 30;
@@ -45,7 +45,7 @@ public class HoverColorChangeListener  extends MouseAdapter {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.changeColor2(e.getSource());
+        this.changeColorBack(e.getSource());
     }
 
 }

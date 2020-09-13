@@ -8,6 +8,7 @@ public class Order {
     public String firm = "";
     public String stone_type = "";
     public int amount = 00000;
+    //due_date noch int Wert tbd
     public int due_date = 0;
     public String phase = "";
     public int price = 0;
@@ -24,7 +25,7 @@ public class Order {
 
     @Override
     public int hashCode() { // wird
-        return Objects.hash(order_id);
+        return Objects.hash(order_id, firm,stone_type,amount,due_date,phase, price, done, status, rowcount);
     }
 
     @Override

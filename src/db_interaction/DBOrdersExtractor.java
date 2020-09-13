@@ -146,7 +146,7 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, (int) cell.getNumericCellValue());
                     } catch (IllegalAccessException e) {
-                        // TODO Auto-generated catch block
+                  
                         e.printStackTrace();
                     }
                     break;
@@ -154,7 +154,7 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, cell.getStringCellValue());
                     } catch (IllegalAccessException e) {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
                     break;
@@ -162,7 +162,7 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, cell.getBooleanCellValue());
                     } catch (IllegalAccessException e) {
-                        // TODO Auto-generated catch block
+      
                         e.printStackTrace();
                     }
                 default:
