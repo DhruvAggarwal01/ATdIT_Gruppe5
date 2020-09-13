@@ -47,18 +47,38 @@ public class OverviewPanel extends JPanel {
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
-    public JPanel getweatherPanel() {
+    /**
+     * Getter-Methode für das Wettervorhersage-Panel
+     * 
+     * @return Wettervorhersage-Panel
+     */
+    public JPanel getWeatherPanel() {
         return weatherPanel;
     }
 
+    /**
+     * Getter-Methode für das Diashow-Panel
+     * 
+     * @return Diashow-Panel
+     */
     public JPanel getDiashowPanel() {
         return diashow;
     }
 
+    /**
+     * Getter-Methode für das Nachrichten-Panel
+     * 
+     * @return Nachrichten-Panel
+     */
     public JPanel getNewsPanel() {
         return newsPanel;
     }
 
+    /**
+     * Getter-Methode für die zwei kleineren Panels
+     * 
+     * @return zwei kleinere Panels
+     */
     public JPanel getSmallPanels() {
         return smallPanels;
     }

@@ -26,6 +26,7 @@ import db_interaction.DBOrdersInserter;
 public class EditOrder extends JPanel {
 
     private static final long serialVersionUID = 1L;
+    private JPanel editPanel;
 
     private JLabel dummyLabel;
 
@@ -255,5 +256,8 @@ public class EditOrder extends JPanel {
 
     }
 
-   
+    public JPanel getOrderPanel(){
+        return editPanel;
+    }
+
 }

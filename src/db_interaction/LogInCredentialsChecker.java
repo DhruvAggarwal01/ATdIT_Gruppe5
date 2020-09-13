@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
 
+import exceptions.LoginException;
+
 /**
  * Diese Klasse überprüft die Eingabe im Welcome-Screen
  * {@link src.WelcomeScreen} und extrahiert bei erfolgreichen LogIn-Eingaben die
@@ -43,10 +45,9 @@ public class LogInCredentialsChecker {
                 return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
             } else {
                 possibleErrorString = "Der Benutzername und/oder das Kennwort ist ungültig";
-                return null;
+                throw new LoginException(1);
             }
-        } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (LoginException | IllegalArgumentException | IllegalAccessException e) {
         }
         return null;
     }

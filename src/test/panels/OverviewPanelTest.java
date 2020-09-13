@@ -6,7 +6,12 @@ import panels.OverviewPanel;
 
 public class OverviewPanelTest {
 
-  OverviewPanel overviewPanelTest = new OverviewPanel();
+  OverviewPanel overviewPanelTest;
+
+  @Before
+  public void init() {
+    overviewPanelTest = new OverviewPanel();
+  }
 
   @Test
   public void testContainsPanels() {

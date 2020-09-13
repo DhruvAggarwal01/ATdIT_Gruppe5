@@ -42,7 +42,7 @@ public class LoginCancelForgottenListener implements ActionListener {
             loginButtonPanelView.getUsernameField()
                     .setText(loginButtonPanelView.getUsernameField().getText().replace(" ", "")); // delete whitespaces
             if (loginButtonPanelView.authenticate()) {
-                AppRunner.loginFrame.dispose();
+                AppRunner.getLoginFrame().dispose();
                 LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
                 try {
                     DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
