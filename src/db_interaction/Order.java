@@ -13,6 +13,7 @@ public class Order {
     public int price = 0;
     public boolean done = false;
     public String status = "";
+    public int rowcount = 1;
 
     @Override
     public String toString() {

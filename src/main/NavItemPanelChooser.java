@@ -110,15 +110,19 @@ public class NavItemPanelChooser extends JPanel {
                 switch (navItemName02) {
                     case "":
                         this.setLayout(new BorderLayout());
-                        this.add(new LogistikPanel(), BorderLayout.CENTER);
+                        //this.add(new LogistikPanel(), BorderLayout.CENTER);
                         break;
                     case "EditOrder":
                         this.setLayout(new BorderLayout());
-                        this.add(new EditOrder(), BorderLayout.CENTER); // tbd
+                        this.add(new EditOrder(false), BorderLayout.CENTER); // tbd
                         break;
                     case "ShowOrder":
                         this.setLayout(new BorderLayout());
                         this.add(new ShowOrder(), BorderLayout.CENTER); // tbd
+                        break;
+                    case "CreateOrder":
+                        this.setLayout(new BorderLayout());
+                        this.add(new EditOrder(true), BorderLayout.CENTER); // tbd
                         break;
                     default:
                         break;

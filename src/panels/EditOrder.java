@@ -51,37 +51,47 @@ public class EditOrder extends JPanel {
 
     private JButton backButton;
     private JButton saveButton;
-
+    int i;
     String orderSource;
+    Boolean create;
+    Boolean create2;
     public static Order currentOrder;
 
-    public EditOrder() {
-        currentOrder = new Order();
-        DBOrdersExtractor dbOrderExtractor;
-        this.orderSource = OrderPanels.getOrderSource();
+    public EditOrder(Boolean create2) {
+        this.create = create2;
+        if (create != true) {
+            currentOrder = new Order();
+            this.orderSource = OrderPanels.getOrderSource();
 
-        final int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
+            i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
+        }
+
+        else {
+            i = currentOrder.order_id;
+        }
+        DBOrdersExtractor dbOrderExtractor;
 
         Set<Order> rowCurrentOrder;
-
-        try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
-            rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
-            final Iterator<Order> it = rowCurrentOrder.iterator();
-            currentOrder = it.next();
-        } catch (final IOException e) {
-            e.printStackTrace();
+        if (this.orderSource != null) {
+            try {
+                dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+                rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
+                final Iterator<Order> it = rowCurrentOrder.iterator();
+                currentOrder = it.next();
+            } catch (final IOException e) {
+                e.printStackTrace();
+            }
         }
-       
+
         setDisplayedValue(currentOrder);
-       
-final JPanel editPanel =  createPanel();
-  setStatusBackground(currentOrder, editPanel);
+
+        final JPanel editPanel = createPanel();
+        setStatusBackground(currentOrder, editPanel);
         this.setLayout(new BorderLayout());
         this.add(editPanel, BorderLayout.CENTER);
     }
 
-// Fügt alle Elemente dem Panel hinzu
+    // Fügt alle Elemente dem Panel hinzu
     public JPanel createPanel() {
 
         final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
@@ -103,7 +113,7 @@ final JPanel editPanel =  createPanel();
 
         editPanel.add(priceLabel);
         editPanel.add(priceAmountLabel);
-        
+
         editPanel.add(phaseLabel);
         editPanel.add(phaseSelection);
 
@@ -122,7 +132,7 @@ final JPanel editPanel =  createPanel();
         return editPanel;
     }
 
-    //passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+    // passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
     public void setStatusBackground(final Order currentOrder, final JPanel orderPanel) {
 
         switch (currentOrder.status) {
@@ -141,7 +151,8 @@ final JPanel editPanel =  createPanel();
         }
     }
 
-    // Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden soll
+    // Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
+    // soll
     public void setDisplayedValue(final Order currentOrder) {
 
         dummyLabel = new JLabel("");
@@ -149,7 +160,7 @@ final JPanel editPanel =  createPanel();
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
 
-        orderStatusLabel = new JLabel("Auftragsnummer wird generiert");
+        orderStatusLabel = new JLabel("" + currentOrder.order_id);
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
         firmLabel = new JLabel("Firma");
@@ -201,27 +212,38 @@ final JPanel editPanel =  createPanel();
 
         saveButton = new JButton("Speichern");
         saveButton.addActionListener(new ActionListener() {
-          
+
             @Override
             public void actionPerformed(final ActionEvent e) {
                 saveEditedOrder();
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
+                if (create != true) {
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null)); 
+                } else {
+                   MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                }
 
             }
         });
     }
 
-
-
     public void saveEditedOrder() {
         currentOrder.setFirm(firmField.getText());
+        currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());
+        currentOrder.setAmount(Integer.parseInt(amountField.getText()));
+        currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
+        currentOrder.setPhase(phaseSelection.getSelectedItem().toString());
+        currentOrder.setDone(doneBox.isSelected());
 
-         try {
-                    final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
-                    dbOrdersInserter.applyChangedOrderToRow();
-                } catch (final IOException ioe) {
-                    ioe.printStackTrace();
-                }
+        try {
+            final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
+            if (create == true) {
+                dbOrdersInserter.addNewOrder();
+            } else {
+                dbOrdersInserter.applyChangedOrderToRow();
+            }
+        } catch (final IOException ioe) {
+            ioe.printStackTrace();
+        }
 
     }
     // public void save(){

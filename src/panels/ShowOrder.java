@@ -30,8 +30,11 @@ public class ShowOrder extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-     
-        this.orderSource = OrderPanels.getOrderSource();
+        if(this.orderSource != null){
+        this.orderSource = OrderPanels.getOrderSource();}
+        else{
+            this.orderSource = ""+ currentOrder.order_id;
+        }
         this.setLayout(new BorderLayout());
         JPanel orderPanel = new JPanel(new GridLayout(13, 2, 10, 10));
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
