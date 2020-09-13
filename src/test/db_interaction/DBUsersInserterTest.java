@@ -21,7 +21,7 @@ public class DBUsersInserterTest {
     }
 
     @Test
-    public void testUserChangesAppliedToDatabase() throws IOException { // tbd
+    public void testUserChangesAppliedToDatabase() throws IOException {
         LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
         LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();

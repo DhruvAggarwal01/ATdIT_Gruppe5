@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="UNSIGNED">
-  <PROJECT FORMAT="1.00" NAME="Codeablaufplan" AUTHOR="Dhruv Aggarwal" CREATED="2020.07.30 15:46:04" MODIFIED="2020.09.12 20:15:01">
+  <PROJECT FORMAT="1.00" NAME="Codeablaufplan" AUTHOR="Dhruv Aggarwal" CREATED="2020.07.30 15:46:04" MODIFIED="2020.09.13 15:19:07">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Codeablaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.09.12 20:15:01">
-        <LAYOUT FORMAT="1.00" COLUMNS="14" ROWS="24">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Codeablaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.09.13 15:19:07">
+        <LAYOUT FORMAT="1.00" COLUMNS="16" ROWS="25">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="11">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="332">
@@ -95,11 +95,6 @@
                 <TEXT><![CDATA[SettingsDialog.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="4">
-              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="363">
-                <TEXT><![CDATA[User.java]]></TEXT>
-              </FIGURE>
-            </ENTRY>
             <ENTRY COLUMN="6" ROW="9">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="6">
                 <TEXT><![CDATA[HeaderPanel.java]]></TEXT>
@@ -135,192 +130,232 @@
                 <TEXT><![CDATA["Ausloggen und Beenden..."?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="23">
+            <ENTRY COLUMN="6" ROW="24">
               <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
                 <TEXT><![CDATA[Ende]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="2">
+            <ENTRY COLUMN="7" ROW="4">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="363">
+                <TEXT><![CDATA[User.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="8" ROW="2">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="80">
                 <TEXT><![CDATA[BackgroundImagePanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="1">
+            <ENTRY COLUMN="8" ROW="15">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="382">
+                <TEXT><![CDATA[QuarryMap.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="8" ROW="16">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="380">
+                <TEXT><![CDATA[.]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="8" ROW="17">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="386">
+                <TEXT><![CDATA[QuarryMapLabels.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="9" ROW="1">
               <FIGURE SUBTYPE="PapStart" FORMAT="1.00" ID="1">
                 <TEXT><![CDATA[Start]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="2">
+            <ENTRY COLUMN="9" ROW="2">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="78">
                 <TEXT><![CDATA[AppRunner.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="3">
+            <ENTRY COLUMN="9" ROW="3">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="82">
                 <TEXT><![CDATA[LoginButtonPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="4">
+            <ENTRY COLUMN="9" ROW="4">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="350">
                 <TEXT><![CDATA[LogInCredentialsChecker.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="5">
+            <ENTRY COLUMN="9" ROW="5">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="87">
                 <TEXT><![CDATA[bei erfolgreichem LogIn]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="6">
+            <ENTRY COLUMN="9" ROW="6">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="75">
                 <TEXT><![CDATA[ActualApp.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="7">
+            <ENTRY COLUMN="9" ROW="7">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="4">
                 <TEXT><![CDATA[MainPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="8">
+            <ENTRY COLUMN="9" ROW="8">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="18">
                 <TEXT><![CDATA[Ausgabe von Panels]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="9">
+            <ENTRY COLUMN="9" ROW="9">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="354">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="0" ANCHOR="True">
+            <ENTRY COLUMN="9" ROW="16">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="368">
+                <TEXT><![CDATA[QuarryMapMain.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="10" ROW="0" ANCHOR="True">
               <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
                 <TEXT><![CDATA[Codeablaufplan]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="2">
+            <ENTRY COLUMN="10" ROW="2">
               <FIGURE SUBTYPE="PapComment" FORMAT="1.00" ID="77">
                 <TEXT><![CDATA[Ausführende Hauptklasse]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="4">
+            <ENTRY COLUMN="10" ROW="4">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="352">
                 <TEXT><![CDATA[DBUsersExtractor.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="6">
+            <ENTRY COLUMN="10" ROW="6">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="127">
                 <TEXT><![CDATA[TimeoutTimer.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="10">
+            <ENTRY COLUMN="10" ROW="10">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="32">
                 <TEXT><![CDATA[Reporting.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="12">
+            <ENTRY COLUMN="10" ROW="12">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="73">
                 <TEXT><![CDATA[WeatherPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="10">
+            <ENTRY COLUMN="10" ROW="15">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="378">
+                <TEXT><![CDATA[IdleIntervalls.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="11" ROW="15">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="367">
+                <TEXT><![CDATA[Dashboard.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="11" ROW="16">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="365">
+                <TEXT><![CDATA[Welcher Tab wurde ausgewählt?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="11" ROW="17">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="369">
+                <TEXT><![CDATA[RouteOptimization.java]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="12" ROW="10">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="69">
                 <TEXT><![CDATA[ReadRSSNewsPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="12">
+            <ENTRY COLUMN="12" ROW="12">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="45">
                 <TEXT><![CDATA[Ausgabe von Subpanels]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="13">
+            <ENTRY COLUMN="12" ROW="13">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="92">
                 <TEXT><![CDATA[DiashowPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="14">
-              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="133">
-                <TEXT><![CDATA[ToDoElement.java]]></TEXT>
+            <ENTRY COLUMN="12" ROW="16">
+              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="390">
+                <TEXT><![CDATA[NavigationPaneProduction.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="20">
+            <ENTRY COLUMN="12" ROW="21">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="136">
                 <TEXT><![CDATA[ShowOrder.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="21">
+            <ENTRY COLUMN="12" ROW="22">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="135">
-                <TEXT><![CDATA[Edit oder Show tbd]]></TEXT>
+                <TEXT><![CDATA[Edit oder Show?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="22">
+            <ENTRY COLUMN="12" ROW="23">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="142">
                 <TEXT><![CDATA[EditOrder.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="12">
+            <ENTRY COLUMN="13" ROW="12">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="28">
                 <TEXT><![CDATA[OverviewPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="14">
-              <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="29">
-                <TEXT><![CDATA[ToDoPanel.java]]></TEXT>
-              </FIGURE>
-            </ENTRY>
-            <ENTRY COLUMN="11" ROW="16">
+            <ENTRY COLUMN="13" ROW="16">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="30">
                 <TEXT><![CDATA[ProduktionPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="21">
+            <ENTRY COLUMN="13" ROW="22">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="44">
                 <TEXT><![CDATA[LogistikPanel.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="9">
+            <ENTRY COLUMN="14" ROW="9">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="8">
                 <TEXT><![CDATA[NavigationPane.java]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="10">
+            <ENTRY COLUMN="14" ROW="10">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="24">
                 <TEXT><![CDATA[Welcher Tab wurde ausgewählt?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="12">
+            <ENTRY COLUMN="14" ROW="12">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="273">
                 <TEXT><![CDATA[OverviewPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="14">
+            <ENTRY COLUMN="14" ROW="14">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="274">
                 <TEXT><![CDATA[ToDoPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="16">
+            <ENTRY COLUMN="14" ROW="16">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="275">
                 <TEXT><![CDATA[ProduktionPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="17">
+            <ENTRY COLUMN="14" ROW="18">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="284">
                 <TEXT><![CDATA[HRPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="18">
+            <ENTRY COLUMN="14" ROW="19">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="276">
                 <TEXT><![CDATA[BetriebsmittelPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="19">
+            <ENTRY COLUMN="14" ROW="20">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="289">
                 <TEXT><![CDATA[GenehmigungenPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="12" ROW="21">
+            <ENTRY COLUMN="14" ROW="22">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="277">
                 <TEXT><![CDATA[LogistikPanel?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="13" ROW="10">
+            <ENTRY COLUMN="15" ROW="10">
               <FIGURE SUBTYPE="PapModule" FORMAT="1.00" ID="145">
                 <TEXT><![CDATA[NavItemPanelChooser.java]]></TEXT>
               </FIGURE>
@@ -347,14 +382,14 @@
           <CONNECTION FORMAT="1.00" ID="88" FROM="87" TO="75" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="357" FROM="354" TO="8" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="164" FROM="82" TO="350" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="134" FROM="29" TO="133" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="366" FROM="30" TO="390" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="139" FROM="135" TO="136" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="141" FROM="135" TO="142" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="291" FROM="276" TO="289" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="278" FROM="273" TO="274" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="279" FROM="24" TO="273" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="280" FROM="273" TO="28" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="281" FROM="274" TO="29" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="393" FROM="365" TO="367" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="294" FROM="6" TO="292" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="285" FROM="275" TO="284" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="286" FROM="274" TO="275" TEXT="" />
@@ -366,7 +401,7 @@
           <CONNECTION FORMAT="1.00" ID="303" FROM="298" TO="299" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="306" FROM="295" TO="304" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="307" FROM="297" TO="305" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="309" FROM="308" TO="2" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="394" FROM="308" TO="2" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="310" FROM="299" TO="308" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="311" FROM="277" TO="44" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="312" FROM="275" TO="30" TEXT="" />
@@ -389,6 +424,10 @@
           <CONNECTION FORMAT="1.00" ID="361" FROM="360" TO="359" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="362" FROM="359" TO="363" TEXT="Daten aus Datenbank in User speichern" />
           <CONNECTION FORMAT="1.00" ID="364" FROM="363" TO="350" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="392" FROM="365" TO="369" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="376" FROM="365" TO="368" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="391" FROM="390" TO="365" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="381" FROM="368" TO="380" TEXT="" />
         </CONNECTIONS>
       </DIAGRAM>
     </DIAGRAMS>

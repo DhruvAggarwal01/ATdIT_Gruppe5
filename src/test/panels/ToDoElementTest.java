@@ -20,27 +20,23 @@ public class ToDoElementTest {
 
     @Test
     public void testGetName() {
-        Assert.assertEquals("Should provide the Name of the to do element","Name", probe.getName());
+        Assert.assertEquals("Should provide the Name of the to do element", "Name", probe.getName());
     }
 
     @Test
     public void testGetBeschreibung() {
-        Assert.assertEquals("provides the explaination of the element","Beschreibung", probe.getBeschreibung());
+        Assert.assertEquals("provides the explaination of the element", "Beschreibung", probe.getBeschreibung());
     }
 
-    @Test //tbd
+    @Test
     public void testGetDatum() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
         Calendar calendar = new GregorianCalendar(2013, 0, 31);
         System.out.println(sdf.format(calendar.getTime()));
-        /*
-         * probe.setDate(2020, 8, 28);
-         * Assert.assertEquals("Tue Jan 28 00:08:00 CET 2020",probe.getDatum());
-         */
     }
 
     @Test
     public void testGetPriorität() {
-        Assert.assertEquals("gives the given priority",1, probe.getPriorität());
+        Assert.assertEquals("gives the given priority", 1, probe.getPriorität());
     }
 }

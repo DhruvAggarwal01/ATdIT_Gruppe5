@@ -32,7 +32,7 @@ public class DiashowPanelTest {
   }
 
   @Test
-  public void testDurationTimeDiashow() { // tbd
+  public void testDurationTimeDiashow() {
     diashowPanelTest.getTimer().setInitialDelay(3);
     Instant start = Instant.now();
     System.out.println(start);

@@ -8,6 +8,13 @@ import db_interaction.LogInCredentialsChecker;
 import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
+/**
+ * Diese Klasse erzeugt ein Panel mit den nötigen mit den nötigen
+ * Swing/AWT-Komponenten für den Login Prozess.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class LoginButtonPanel extends JPanel {
 
     private static final long serialVersionUID = 40424705904401071L;
@@ -19,10 +26,25 @@ public class LoginButtonPanel extends JPanel {
     private JLabel possibleErrorMessageLabel;
     private JButton loginButton, cancelButton, pswdForgottenButton;
 
+    /**
+     * Konstruktor, der das LoginButtonPanel erzeugt, die nötigen
+     * Swing/AWT-Komponenten initiiert und zum JFrame dazufügt.
+     * 
+     * @param opaque gewährleistet, dass das Panel durchsichtig ist
+     * @param layout setzt das richtige Layout des Panels
+     */
     public LoginButtonPanel(boolean opaque, LayoutManager layout) {
         super(layout);
         setOpaque(opaque);
 
+        init();
+        addComponents();
+    }
+
+    /**
+     * Diese Methode initialisiert die Swing/AWT-Komponenten und fügt die nötigen Listener den Komponenten hinzu.
+     */
+    public void init() {
         KeyListener lKeyListener = new LoginKeyListener(this);
         usernameLabel = new JLabel("Username:");
         usernameField = new JTextField();
@@ -42,7 +64,12 @@ public class LoginButtonPanel extends JPanel {
         possibleErrorMessageLabel = new JLabel(
                 "                                                                                              ");
         possibleErrorMessageLabel.setFont(Styles.ERROR_MSG_FONT);
+    }
 
+    /**
+     * Diese Methode fügt die initialisierten Komponenten dem Panel hinzu.
+     */
+    public void addComponents() {
         add(new JLabel(""));
         add(new JLabel(""));
         add(new JLabel(""));
@@ -69,7 +96,6 @@ public class LoginButtonPanel extends JPanel {
         return  true;
     }
 
-    
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für das Text-Eingabefeld "Benutzername"

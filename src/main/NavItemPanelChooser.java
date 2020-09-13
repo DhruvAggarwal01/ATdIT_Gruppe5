@@ -1,24 +1,12 @@
 package main;
 
 import java.awt.*;
-
 import javax.swing.*;
-import javax.swing.border.*;
-
-import java.util.Objects;
-import panels.ShowOrder;
-import panels.OverviewPanel;
 import javax.swing.border.TitledBorder;
+import java.util.Objects;
 
 import exceptions.NavItemNotFoundException;
-
-import java.util.Objects;
-
-import panels.OverviewPanel;
-import panels.ProduktionPanel;
-import panels.ReportingPanel;
-import panels.EditOrder;
-import panels.LogistikPanel;
+import panels.*;
 
 /**
  * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
@@ -128,15 +116,15 @@ public class NavItemPanelChooser extends JPanel {
                         break;
                     case "EditOrder":
                         this.setLayout(new BorderLayout());
-                        this.add(new EditOrder(false), BorderLayout.CENTER); 
+                        this.add(new EditOrder(false), BorderLayout.CENTER);
                         break;
                     case "ShowOrder":
                         this.setLayout(new BorderLayout());
-                        this.add(new ShowOrder(), BorderLayout.CENTER); 
+                        this.add(new ShowOrder(), BorderLayout.CENTER);
                         break;
                     case "CreateOrder":
                         this.setLayout(new BorderLayout());
-                        this.add(new EditOrder(true), BorderLayout.CENTER); 
+                        this.add(new EditOrder(true), BorderLayout.CENTER);
                         break;
                     default:
                         break;

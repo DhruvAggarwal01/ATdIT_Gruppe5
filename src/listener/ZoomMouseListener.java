@@ -1,20 +1,30 @@
-package subpanels;
+package listener;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import subpanels.*;
 
+/**
+ * Klasse, die vom MouseAdapter erbt und ein Listener ist, der dafür
+ * verantwrotlich ist die QuarryMap vom Steinbruch richtig auszurichten.
+ */
 public class ZoomMouseListener extends MouseAdapter {
-    private final Karte view;
+    private final QuarryMap view;
 
-    public ZoomMouseListener(Karte view) {
+    /**
+     * Konstruktor, der den Listener erzeugt und die Variable initialisiert.
+     * 
+     * @param view die QuarryMap vom Steinbruch.
+     */
+    public ZoomMouseListener(QuarryMap view) {
         this.view = view;
     }
 
+    /**
+     * Die folgenden Methoden sind dafür verantwrotlich, das Bild der QuarryMap richtig auszurichten!
+     */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
 
@@ -55,5 +65,4 @@ public class ZoomMouseListener extends MouseAdapter {
         view.repaint();
     }
 
-   
 }

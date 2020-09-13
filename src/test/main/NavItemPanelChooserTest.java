@@ -35,7 +35,7 @@ public class NavItemPanelChooserTest {
         Assert.assertEquals(reportingPanelInstance.getClass(), nipChooserTest2.getComponent(0).getClass());
     }
 
-    @Test(expected = NavItemNotFoundException.class) // first tbd in tested class, then here
+    @Test(expected = NavItemNotFoundException.class)
     public void testChooserFunctionaliltyFailure() throws NavItemNotFoundException {
         nipChooserTestException = new NavItemPanelChooser("NoPanel", null, null);
         nipChooserTestException.chooserFunctionality();
