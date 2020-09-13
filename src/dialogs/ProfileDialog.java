@@ -188,6 +188,9 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         this.add(contentPanel);
     }
 
+    /**
+     * 
+     */
     public void setInitDBUsersData() {
         forenameTextField.setText(LogInCredentialsChecker.sessionUser.getForename());
         surnameTextField.setText(LogInCredentialsChecker.sessionUser.getSurname());
@@ -197,6 +200,9 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         emailTextField.setText(LogInCredentialsChecker.sessionUser.getEmail());
     }
 
+    /**
+     * 
+     */
     public void saveEntriesOfTextFields() {
         if (isPswdChangeValid()) {
             LogInCredentialsChecker.sessionUser.setForename(forenameTextField.getText());
@@ -220,6 +226,9 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         }
     }
 
+    /**
+     * 
+     */
     public boolean isPswdChangeValid() {
         String currentPswd = new String(currentPswdField.getPassword());
         String newPswd = new String(newPswdField.getPassword());
@@ -229,6 +238,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         }
         return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
 
     public JButton getResetEntriesButton() {
         return resetEntriesButton;

@@ -2,7 +2,6 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
 import listener.LogoIconMouseAdapter;
@@ -41,7 +40,7 @@ public class HeaderPanel extends JPanel {
      * 
      * @param headerTitle Applikationstitel
      */
-    public HeaderPanel(String headerTitle) { // Nutzer nutzer als parameter
+    public HeaderPanel(String headerTitle) {
         initSetUp();
 
         logoAndHeaderTitle.add(logoAdder("Library/images/dashboardlogo.png"));

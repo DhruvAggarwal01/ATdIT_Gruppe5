@@ -6,6 +6,7 @@ public class CalculateOrder {
     }
 
     public void getSelectedStoneType() {
+
     }
 
 }

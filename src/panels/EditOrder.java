@@ -1,12 +1,8 @@
 package panels;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.*;
-import db_interaction.DBOrdersExtractor;
-import db_interaction.Order;
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
@@ -15,6 +11,8 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 import db_interaction.DBOrdersInserter;
+import db_interaction.DBOrdersExtractor;
+import db_interaction.Order;
 import subpanels.OrderPanels;
 
 /**
@@ -272,6 +270,8 @@ public class EditOrder extends JPanel {
         }
 
     }
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
 
     public JPanel getOrderPanel() {
         return editPanel;

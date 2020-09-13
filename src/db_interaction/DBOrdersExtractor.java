@@ -2,9 +2,7 @@ package db_interaction;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -138,7 +136,6 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, (int) cell.getNumericCellValue());
                     } catch (IllegalAccessException e) {
-
                         e.printStackTrace();
                     }
                     break;
@@ -146,7 +143,6 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, cell.getStringCellValue());
                     } catch (IllegalAccessException e) {
-
                         e.printStackTrace();
                     }
                     break;
@@ -154,7 +150,6 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, cell.getBooleanCellValue());
                     } catch (IllegalAccessException e) {
-
                         e.printStackTrace();
                     }
                 default:

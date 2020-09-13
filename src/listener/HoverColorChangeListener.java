@@ -1,16 +1,23 @@
 package listener;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import main.MainPanel;
-import subpanels.OrderPanels;
 import main.NavItemPanelChooser;
+import subpanels.OrderPanels;
 
 /**
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class HoverColorChangeListener  extends MouseAdapter {
+public class HoverColorChangeListener extends MouseAdapter {
+
+    /**
+     * 
+     * @param a
+     */
     public void changeColor(Object a) {
         JPanel theLabel = (JPanel) a;
         Color color = theLabel.getBackground();
@@ -20,6 +27,10 @@ public class HoverColorChangeListener  extends MouseAdapter {
         theLabel.setBackground(new Color(r1, g1, b1));
     };
 
+    /**
+     * 
+     * @param a
+     */
     public void changeColorBack(Object a) {
         JPanel theLabel = (JPanel) a;
         Color color = theLabel.getBackground();
@@ -30,7 +41,7 @@ public class HoverColorChangeListener  extends MouseAdapter {
     };
 
     /**
-     * Diese Methode 
+     * Diese Methode
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -42,11 +53,17 @@ public class HoverColorChangeListener  extends MouseAdapter {
         MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
     }
 
+    /**
+     * 
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         this.changeColor(e.getSource());
     }
 
+    /**
+     * 
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         this.changeColorBack(e.getSource());

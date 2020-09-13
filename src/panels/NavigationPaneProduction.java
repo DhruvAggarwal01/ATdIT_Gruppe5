@@ -1,6 +1,7 @@
 package panels;
 
 import javax.swing.JTabbedPane;
+
 import main.Styles;
 import subpanels.*;
 
@@ -15,8 +16,8 @@ public class NavigationPaneProduction extends JTabbedPane {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Konsturktor, der die Navigationsleitse erzeugt.
-     *  Dabei gibt es 4 Tabs: Dashboard, QuarryMap, Wgeoptimierung und Leerlaufintervalle
+     * Konsturktor, der die Navigationsleitse erzeugt. Dabei gibt es 4 Tabs:
+     * Dashboard, QuarryMap, Wgeoptimierung und Leerlaufintervalle
      * 
      * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
      * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn
@@ -32,7 +33,6 @@ public class NavigationPaneProduction extends JTabbedPane {
         this.addTab("Karte", new QuarryMapMain());
         this.addTab("Wegoptimierung", new RouteOptimization());
         this.addTab("Leerlaufintervalle", new IdleIntervalls());
-
     }
 
 }

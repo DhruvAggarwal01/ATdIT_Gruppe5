@@ -1,8 +1,7 @@
 package db_interaction;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.poi.ss.usermodel.Row;
 
@@ -29,6 +28,9 @@ public class LogInCredentialsChecker {
 
     private String username, password;
 
+    /**
+     * 
+     */
     public LogInCredentialsChecker(String username, String password) {
         this.username = username;
         this.password = password;
@@ -39,6 +41,9 @@ public class LogInCredentialsChecker {
         }
     }
 
+    /**
+     * 
+     */
     public User getLoggedInUser() {
         try {
             if (isCredentialsMatching()) {
@@ -55,10 +60,17 @@ public class LogInCredentialsChecker {
         return null;
     }
 
+    /**
+     * 
+     */
     public void setSessionUser() {
         sessionUser = getLoggedInUser();
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean isCredentialsMatching() {
         try {
             rowIndexesContainingUsername = dbUsersExtractor.getFilteredRowsIndexes("username", username);

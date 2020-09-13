@@ -1,17 +1,14 @@
 package panels;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.*;
-import db_interaction.DBOrdersExtractor;
-import db_interaction.Order;
-
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
 
+import db_interaction.DBOrdersExtractor;
+import db_interaction.Order;
 import subpanels.OrderPanels;
 import main.MainPanel;
 import main.NavItemPanelChooser;
@@ -157,7 +154,6 @@ public class ShowOrder extends JPanel {
         getCurrentOrder();
         createShowshowOrderPanel();
         this.add(showOrderPanel, BorderLayout.CENTER);
-
     }
 
 }

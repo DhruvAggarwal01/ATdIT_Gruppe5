@@ -1,9 +1,8 @@
 package listener;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
+import java.awt.event.*;
+
 import subpanels.*;
 
 /**
@@ -26,7 +25,8 @@ public class ZoomMouseListener extends MouseAdapter {
     }
 
     /**
-     * Die folgenden Methoden sind dafür verantwrotlich, das Bild der QuarryMap richtig auszurichten!
+     * Die folgenden Methoden sind dafür verantwrotlich, das Bild der QuarryMap
+     * richtig auszurichten!
      */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
@@ -45,6 +45,9 @@ public class ZoomMouseListener extends MouseAdapter {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseDragged(MouseEvent e) {
         Point curPoint = e.getLocationOnScreen();
@@ -56,12 +59,18 @@ public class ZoomMouseListener extends MouseAdapter {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         view.setReleased(false);
         view.setStartPoint(MouseInfo.getPointerInfo().getLocation());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         view.setReleased(true);

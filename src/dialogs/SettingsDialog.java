@@ -2,7 +2,6 @@ package dialogs;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
@@ -128,6 +127,8 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         this.add(contentPanel);
     }
 
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+
     public JToggleButton getThemeToggleButton() {
         return themeToggleButton;
     }
@@ -136,10 +137,11 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         return closeButton;
     }
 
-    public JPanel getStyleSettingsPanel(){
+    public JPanel getStyleSettingsPanel() {
         return styleSettingsPanel;
     }
-    public JPanel getFunctionalitySettingsPanel(){
+
+    public JPanel getFunctionalitySettingsPanel() {
         return functionalitySettingsPanel;
     }
 

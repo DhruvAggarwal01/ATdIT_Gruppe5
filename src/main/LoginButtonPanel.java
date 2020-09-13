@@ -42,7 +42,8 @@ public class LoginButtonPanel extends JPanel {
     }
 
     /**
-     * Diese Methode initialisiert die Swing/AWT-Komponenten und fügt die nötigen Listener den Komponenten hinzu.
+     * Diese Methode initialisiert die Swing/AWT-Komponenten und fügt die nötigen
+     * Listener den Komponenten hinzu.
      */
     public void init() {
         KeyListener lKeyListener = new LoginKeyListener(this);
@@ -93,7 +94,7 @@ public class LoginButtonPanel extends JPanel {
         log.setSessionUser();
         possibleErrorMessageLabel.setText(log.possibleErrorString);
 
-        return  true;
+        return true;
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */

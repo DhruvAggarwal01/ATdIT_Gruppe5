@@ -1,19 +1,14 @@
-
 package db_interaction;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import panels.EditOrder;
-
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Sheet;
+
+import panels.EditOrder;
 
 /**
  * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
@@ -33,7 +28,7 @@ public class DBOrdersInserter {
     public Workbook ordersWorkbook;
 
     /**
-     * Kosntruktor
+     * Konstruktor
      * 
      * @param excelFileName
      * @throws IOException
@@ -82,8 +77,7 @@ public class DBOrdersInserter {
                 }
             }
 
-            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen nur
-                                                                                                // temporär
+            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx");
             dbOrdersExtractor.ordersWorkbook.write(outFile);
             outFile.close();
             dbOrdersExtractor.ordersWorkbook.close();
@@ -129,7 +123,6 @@ public class DBOrdersInserter {
                             break;
                         case STRING:
                             row.createCell(cellcount).setCellValue((String) declaredFields[i].get(order));
-                            ;
                             break;
                         case BOOLEAN:
                             row.createCell(cellcount).setCellValue((boolean) declaredFields[i].get(order));

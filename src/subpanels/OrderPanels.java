@@ -3,15 +3,13 @@ package subpanels;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import main.Styles;
-
 import java.io.*;
+import java.util.*;
+
 import listener.HoverColorChangeListener;
-import java.util.Iterator;
-import java.util.Set;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
+import main.Styles;
 
 /**
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -23,14 +21,6 @@ public class OrderPanels extends JPanel {
     Order currentOrder = new Order();
     DBOrdersExtractor dbOrderExtractor;
     static String sourceOrder;
-
-    public static String setOrderSource(String source) {
-        return sourceOrder = source;
-    }
-
-    public static String getOrderSource() {
-        return sourceOrder;
-    }
 
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
@@ -83,6 +73,16 @@ public class OrderPanels extends JPanel {
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
 
+    }
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+
+    public static String setOrderSource(String source) {
+        return sourceOrder = source;
+    }
+
+    public static String getOrderSource() {
+        return sourceOrder;
     }
 
 }

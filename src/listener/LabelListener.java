@@ -2,14 +2,14 @@ package listener;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+
 import subpanels.*;
 import subpanels.Rectangle;
 
 /**
  * Klasse, die von KeyAdapter erbt und ein Listener darstellt. Wenn die Taste N
- * gedrückt wird in QuarryMap, soll man beliebig viele Notizen anlegen können
+ * gedrückt wird, soll man beliebig viele Notizen anlegen können.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -48,9 +48,7 @@ public class LabelListener extends KeyAdapter {
 
             view.getList().add(r);
             createLabels();
-
         }
-
     }
 
     /**
@@ -64,6 +62,5 @@ public class LabelListener extends KeyAdapter {
         textarea.setWrapStyleWord(true);
         panel.add(textarea);
         panel.revalidate();
-
     }
 }

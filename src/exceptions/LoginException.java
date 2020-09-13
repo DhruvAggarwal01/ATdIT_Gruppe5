@@ -8,6 +8,9 @@ public class LoginException extends Exception {
 
     private static final long serialVersionUID = -7778912288639592607L;
 
+    /**
+     * Konstruktor
+     */
     public LoginException(int loginErrorId) {
         switch (loginErrorId) {
             case 0:

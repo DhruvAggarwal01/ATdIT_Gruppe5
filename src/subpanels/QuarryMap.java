@@ -1,20 +1,14 @@
 package subpanels;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.MouseInfo;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+import java.io.*;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
 import listener.ZoomMouseListener;
-
-import javax.imageio.ImageIO;
 
 /**
  * Klasse, die ein "zoomable Panel" erzeugt An diesem GitHub stark orientiert:
@@ -51,7 +45,6 @@ public class QuarryMap extends JPanel {
         addMouseWheelListener(lis);
         this.setFocusable(true);
         this.requestFocusInWindow();
-
     }
 
     /**
@@ -124,58 +117,65 @@ public class QuarryMap extends JPanel {
     // if (!liste.isEmpty())
     // g2.drawRect(liste.get(0).getX() - 5, liste.get(0).getY() - 5, 10, 10);
     // }
-    
-     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Setter-Methode für den Zoomfaktor
+     * 
      * @param zoomFactor
      */
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor *= zoomFactor;
     }
 
-     /**
+    /**
      * Setter-Methode für die Variable zoomer
+     * 
      * @param zoomer
      */
     public void setZoomer(boolean zoomer) {
         this.zoomer = zoomer;
     }
 
-     /**
+    /**
      * Setter-Methode für die Variable dragger
+     * 
      * @param dragger
      */
     public void setDragger(boolean dragger) {
         this.dragger = dragger;
     }
 
-     /**
+    /**
      * Setter-Methode für die Variable released
+     * 
      * @param released
      */
     public void setReleased(boolean released) {
         this.released = released;
     }
 
-     /**
+    /**
      * Setter-Methode für xDiff
+     * 
      * @param xDiff
      */
     public void setXDiff(int xDiff) {
         this.xDiff = xDiff;
     }
 
-     /**
+    /**
      * Setter-Methode für yDiff
+     * 
      * @param yDiff
      */
     public void setYDiff(int yDiff) {
         this.yDiff = yDiff;
     }
 
-     /**
+    /**
      * Setter-Methode für den Startpunkt
+     * 
      * @param startPoint
      */
     public void setStartPoint(Point startPoint) {

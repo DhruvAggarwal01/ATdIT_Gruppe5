@@ -13,13 +13,12 @@ public class Styles {
 
   /* ----------------------- Styles für Hauptpanel ---------------------------- */
   /**
-   * 
+   * Einsatzmöglichkeit: Color für umgebendes Panel
    */
   public final static Color SURROUNDING_PANEL_COLOR = new Color(110, 187, 255);
 
   /**
    * Einsatzmöglichkeit: Font für Anwendungstitel
-   * 
    */
   public final static Font APPHEADING = new Font("Rockwell Extra Bold", Font.BOLD, 26);
 
@@ -70,20 +69,18 @@ public class Styles {
    */
   public final static Font RSSC_BUTTON_FONT = new Font("Calibri", Font.BOLD, 14);
 
-    /**
-     * Einsatzmöglichkeit: Font für Bestätigungsbuttons
-     */
-    public final static Font ORDER_INFO = new Font("Calibri", Font.BOLD, 20);
+  /**
+   * Einsatzmöglichkeit: Font für Bestätigungsbuttons
+   */
+  public final static Font ORDER_INFO = new Font("Calibri", Font.BOLD, 20);
 
-        /**
-     * Einsatzmöglichkeit: Font für Bestätigungsbuttons
-     */
-    public final static Font ORDER_INFO_HEAD = new Font("Calibri", Font.BOLD, 24);
-    /**
-     * Einsatzmöglichkeit: Font für Fehlermdelungen
-     */
-    public final static Font ERROR_MSG_FONT = new Font("Calibri", Font.BOLD, 12);
-  
+  /**
+   * Einsatzmöglichkeit: Font für Bestätigungsbuttons
+   */
+  public final static Font ORDER_INFO_HEAD = new Font("Calibri", Font.BOLD, 24);
+  /**
+   * Einsatzmöglichkeit: Font für Fehlermdelungen
+   */
+  public final static Font ERROR_MSG_FONT = new Font("Calibri", Font.BOLD, 12);
 
 }
-

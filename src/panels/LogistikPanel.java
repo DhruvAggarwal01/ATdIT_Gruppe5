@@ -1,20 +1,16 @@
 package panels;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.*;
 
 import subpanels.OrderPanels;
 import main.MainPanel;
 import main.NavItemPanelChooser;
-
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
@@ -150,6 +146,5 @@ public class LogistikPanel extends JPanel {
         setOrderPanels();
         createLogisticsPanel();
         initCreateOrder();
-
     }
 }

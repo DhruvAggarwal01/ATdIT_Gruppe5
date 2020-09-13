@@ -1,12 +1,11 @@
 package subpanels;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 import listener.TimerListener;
 import main.Styles;
-
-import java.awt.*;
-import java.awt.event.*;
 
 /**
  * Diese Klasse baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern
