@@ -1,8 +1,5 @@
 package test.subpanels;
 
-import org.junit.*;
-
-import subpanels.OrderPanels;
 
 public class OrderPanelsTest {
     
