@@ -1,0 +1,1 @@
+Das Diagramm wurde mithilfe von PapDesigner erstellt.
