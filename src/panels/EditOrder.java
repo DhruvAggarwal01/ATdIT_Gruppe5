@@ -18,7 +18,7 @@ import db_interaction.DBOrdersInserter;
 import subpanels.OrderPanels;
 
 /**
- * 
+ * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
  */
 public class EditOrder extends JPanel {
 
@@ -61,7 +61,7 @@ public class EditOrder extends JPanel {
 
     /**
      * 
-     * @param create2
+     * @param create2 Gibt an ob man das EditPanel aufruft um einen Auftrag anzulegen oder um einen existierenden zu bearbeiten
      */
     public EditOrder(Boolean create2) {
         this.create = create2;
@@ -97,7 +97,11 @@ public class EditOrder extends JPanel {
         this.add(editPanel, BorderLayout.CENTER);
     }
 
-    // Fügt alle Elemente dem Panel hinzu
+
+    /**
+     *  Fügt alle Elemente dem edit Panel hinzu
+     * @return editPanel
+     */
     public JPanel createPanel() {
 
         final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
@@ -138,7 +142,12 @@ public class EditOrder extends JPanel {
         return editPanel;
     }
 
-    // passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+ 
+    /**
+     * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+     * @param currentOrder Auftrag für den das EditPanel geöffnet wurde
+     * @param orderPanel  Panel, dessen Hintergrundfarbe geändert werden soll
+     */
     public void setStatusBackground(final Order currentOrder, final JPanel orderPanel) {
 
         switch (currentOrder.status) {
@@ -157,8 +166,11 @@ public class EditOrder extends JPanel {
         }
     }
 
-    // Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
-    // soll
+
+    /**
+     *  Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
+     * @param currentOrder aktuelle Bestellung die bearbeitet wird
+     */
     public void setDisplayedValue(final Order currentOrder) {
 
         dummyLabel = new JLabel(" ");
@@ -232,6 +244,11 @@ public class EditOrder extends JPanel {
         });
     }
 
+    /**
+     * speichert die geändert Werte des aktuellen Auftrags
+     * Methode um einen neuen Auftrag anzulegen tbd
+     * Methode für InputValidation tbd
+     */
     public void saveEditedOrder() {
         currentOrder.setFirm(firmField.getText());
         currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());
