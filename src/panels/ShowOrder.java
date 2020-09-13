@@ -101,10 +101,10 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.stone_type)).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel("Menge")).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(" " + currentOrder.amount)).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(" " + currentOrder.amount + "  Tonnen")).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel("Preis")).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel("" + currentOrder.price)).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel("" + currentOrder.price + "  €")).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -116,7 +116,10 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.phase)).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel("Auftrag abgeschlossen : ")).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel("Auftrag noch nicht abgeschlossen")).setFont(Styles.ORDER_INFO);
+        if(currentOrder.done){
+            showOrderPanel.add(new JLabel("Der Auftrag ist abgeschlossen")).setFont(Styles.ORDER_INFO);
+        }else{
+        showOrderPanel.add(new JLabel("Der istAuftrag noch nicht abgeschlossen")).setFont(Styles.ORDER_INFO);}
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));

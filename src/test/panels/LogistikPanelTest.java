@@ -10,7 +10,7 @@ public class LogistikPanelTest {
 
     @Before
     public void init() {
-        logistikPanelTest= new LogistikPanel();
+        logistikPanelTest= new LogistikPanel(false);
     }
   
     //   @Test
