@@ -21,6 +21,9 @@ import java.util.Set;
  * Status geordnet aufzeigt (und bietet die Möglichkeit diese zu filtern und
  * einen neuen Auftrag anzulegen - tbd)
  * 
+ * implementiert die Methoden: createLogisticsPanel, setOrderPanels, getUnfinishedOrders,initCreateOrder, getMaxOrderID
+ *           
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */

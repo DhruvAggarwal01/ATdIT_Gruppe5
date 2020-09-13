@@ -16,6 +16,7 @@ public class Order {
     public String status = "";
     public int rowcount = 1;
 
+
     @Override
     public String toString() {
         return "{" + "order_id: " + order_id + " ; firm: " + firm + " ; stone_type: " + stone_type + " ; due_date: "
@@ -24,7 +25,7 @@ public class Order {
     }
 
     @Override
-    public int hashCode() { // wird
+    public int hashCode() { 
         return Objects.hash(order_id, firm,stone_type,amount,due_date,phase, price, done, status, rowcount);
     }
 

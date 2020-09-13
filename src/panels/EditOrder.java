@@ -19,6 +19,10 @@ import main.NavItemPanelChooser;
 import main.Styles;
 import db_interaction.DBOrdersInserter;
 
+
+/**
+ * 
+ */
 public class EditOrder extends JPanel {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +61,10 @@ public class EditOrder extends JPanel {
     Boolean create2;
     public static Order currentOrder;
 
+    /**
+     * 
+     * @param create2
+     */
     public EditOrder(Boolean create2) {
         this.create = create2;
         if (create != true) {
@@ -155,7 +163,7 @@ public class EditOrder extends JPanel {
     // soll
     public void setDisplayedValue(final Order currentOrder) {
 
-        dummyLabel = new JLabel("");
+        dummyLabel = new JLabel(" ");
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
@@ -197,7 +205,7 @@ public class EditOrder extends JPanel {
         phaseSelection.addItem("Geliefert");
 
         doneLabel = new JLabel("Auftrag abgeschlossen");
-        doneBox = new JCheckBox("Auftrag abgeschlossen");
+        doneBox = new JCheckBox("Auftrag abgeschlossen" + currentOrder.done);
 
         backButton = new JButton("Zurück");
         backButton.addActionListener(new ActionListener() {
@@ -217,9 +225,9 @@ public class EditOrder extends JPanel {
             public void actionPerformed(final ActionEvent e) {
                 saveEditedOrder();
                 if (create != true) {
-                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null)); 
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
                 } else {
-                   MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
                 }
 
             }
@@ -236,27 +244,16 @@ public class EditOrder extends JPanel {
 
         try {
             final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
-            if (create == true) {
-                dbOrdersInserter.addNewOrder();
-            } else {
-                dbOrdersInserter.applyChangedOrderToRow();
-            }
+            // if (create == true) {
+            // dbOrdersInserter.addNewOrder();
+            // } else {
+            dbOrdersInserter.applyChangedOrderToRow();
+            // }
         } catch (final IOException ioe) {
             ioe.printStackTrace();
         }
 
     }
-    // public void save(){
-    // if (true) { // Validator einfügen
-    // //
-    // currentOrder.setFirm(firmField.getText());
-    // currentOrder.setAmount(Integer.parseInt(amountField.getText()));
-    // currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
 
-    // } else {
-
-    // final ImageIcon errorMsgIcon = new ImageIcon(new
-    // ImageIcon("Library/images/errorIcon.png").getImage()
-    // .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
-    // }}
+   
 }
