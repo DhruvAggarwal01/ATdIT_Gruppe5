@@ -7,18 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
-import java.awt.*;
-import javax.swing.*;
-import subpanels.OrderPanels;
-import java.util.HashSet;
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
+
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 import db_interaction.DBOrdersInserter;
-
+import subpanels.OrderPanels;
 
 /**
  * 

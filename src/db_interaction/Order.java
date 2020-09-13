@@ -8,14 +8,14 @@ public class Order {
     public String firm = "";
     public String stone_type = "";
     public int amount = 00000;
-    //due_date noch int Wert tbd
-    public int due_date = 0;
+    public int due_date = 0; // due_date noch int Wert, in Version 2 mit date
     public String phase = "";
     public int price = 0;
     public boolean done = false;
     public String status = "";
     public int rowcount = 1;
 
+    /* -------------- Overriding zum möglichen Vergleich von Aufträgen ------------ */
 
     @Override
     public String toString() {
@@ -25,8 +25,8 @@ public class Order {
     }
 
     @Override
-    public int hashCode() { 
-        return Objects.hash(order_id, firm,stone_type,amount,due_date,phase, price, done, status, rowcount);
+    public int hashCode() {
+        return Objects.hash(order_id, firm, stone_type, amount, due_date, phase, price, done, status, rowcount);
     }
 
     @Override
@@ -48,74 +48,166 @@ public class Order {
                 && Objects.equals(status, navIPC.status);
     }
 
+     /* ----------------------- Getter/Setter-Methoden --------------------------- */
+
+    /**
+     * Getter-Methode für die Order_id
+     * 
+     * @return Order_id
+     */
     public int getOrder_id() {
         return this.order_id;
     }
 
+    /**
+     * Setter-Methode für die Auftragsnummer
+     * 
+     * @param order_id Auftragsnummer
+     */
     public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 
+    /**
+     * Getter-Methode für die firma
+     * 
+     * @return firm
+     */
     public String getFirm() {
         return this.firm;
     }
 
+    /**
+     * Setter-Methode für die Firma
+     * 
+     * @param firm Firma
+     */
     public void setFirm(String firm) {
         this.firm = firm;
     }
 
+    /**
+     * Getter-Methode für den stone_type
+     * 
+     * @return stone_type
+     */
     public String getStone_type() {
         return this.stone_type;
     }
 
+    /**
+     * Setter-Methode für die Steinart
+     * 
+     * @param stone_type Steinart
+     */
     public void setStone_type(String stone_type) {
         this.stone_type = stone_type;
     }
 
+    /**
+     * Getter-Methode für die Menge
+     * 
+     * @return amount
+     */
     public int getAmount() {
         return this.amount;
     }
 
+    /**
+     * Setter-Methode für die Menge
+     * 
+     * @param amount Menge
+     */
     public void setAmount(int amount) {
         this.amount = amount;
     }
 
+    /**
+     * Getter-Methode für das due_date
+     * 
+     * @return due_date
+     */
     public int getDue_date() {
         return this.due_date;
     }
 
+    /**
+     * Setter-Methode für das Lieferdatum
+     * 
+     * @param due_date Lieferdatum
+     */
     public void setDue_date(int due_date) {
         this.due_date = due_date;
     }
 
+    /**
+     * Getter-Methode für die phase
+     * 
+     * @return phase
+     */
     public String getPhase() {
         return this.phase;
     }
 
+    /**
+     * Setter-Methode für die Phase
+     * 
+     * @param phase
+     */
     public void setPhase(String phase) {
         this.phase = phase;
     }
 
+    /**
+     * Getter-Methode für den Preis
+     * 
+     * @return price
+     */
     public int getPrice() {
         return this.price;
     }
 
+    /**
+     * Setter-Methode für den Preis
+     * 
+     * @param price Preis
+     */
     public void setPrice(int price) {
         this.price = price;
     }
 
+    /**
+     * Getter-Methode für done
+     * 
+     * @return done
+     */
     public boolean getisDone() {
         return this.done;
     }
 
+    /**
+     * Setter-Methode für done, Abgeschlossenheit des Auftrags
+     * 
+     * @param done
+     */
     public void setDone(boolean done) {
         this.done = done;
     }
 
+    /**
+     * Getter-Methode für den status
+     * 
+     * @return status
+     */
     public String getStatus() {
         return this.status;
     }
 
+    /**
+     * Setter-Methode für den status
+     * 
+     * @param status
+     */
     public void setStatus(String status) {
         this.status = status;
     }
