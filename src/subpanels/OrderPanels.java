@@ -5,8 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import main.Styles;
-import main.MainPanel;
-import main.NavItemPanelChooser;
+
 import java.io.*;
 import listener.HoverColorChangeListener;
 import java.util.Iterator;
@@ -65,7 +64,7 @@ public class OrderPanels extends JPanel {
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
             final JLabel labelID2 = new JLabel(
-                    "Auftragsnummer: " + currentOrder.order_id + "  Firma: " + currentOrder.firm);
+                    "Auftragsnummer: " + currentOrder.order_id + "  Firma: " + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 

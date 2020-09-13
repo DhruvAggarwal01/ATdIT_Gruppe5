@@ -66,7 +66,7 @@ public class ShowOrder extends JPanel {
    orderPanel.add(orderStatus);
 
     orderPanel.add(new JLabel("Firma:")).setFont(Styles.ORDER_INFO);
-   orderPanel.add(new JLabel(currentOrder.firm)).setFont(Styles.ORDER_INFO);
+   orderPanel.add(new JLabel(currentOrder.getFirm())).setFont(Styles.ORDER_INFO);
 
    orderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
    orderPanel.add(new JSeparator(JSeparator.HORIZONTAL));

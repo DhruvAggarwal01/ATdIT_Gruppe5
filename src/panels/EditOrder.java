@@ -17,6 +17,7 @@ import java.util.Iterator;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
+import db_interaction.DBOrdersInserter;
 
 public class EditOrder extends JPanel {
 
@@ -52,9 +53,10 @@ public class EditOrder extends JPanel {
     private JButton saveButton;
 
     String orderSource;
+    public static Order currentOrder;
 
     public EditOrder() {
-        Order currentOrder = new Order();
+        currentOrder = new Order();
         DBOrdersExtractor dbOrderExtractor;
         this.orderSource = OrderPanels.getOrderSource();
 
@@ -73,12 +75,13 @@ public class EditOrder extends JPanel {
        
         setDisplayedValue(currentOrder);
        
-JPanel editPanel =  createPanel();
+final JPanel editPanel =  createPanel();
   setStatusBackground(currentOrder, editPanel);
         this.setLayout(new BorderLayout());
         this.add(editPanel, BorderLayout.CENTER);
     }
 
+// Fügt alle Elemente dem Panel hinzu
     public JPanel createPanel() {
 
         final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
@@ -119,7 +122,8 @@ JPanel editPanel =  createPanel();
         return editPanel;
     }
 
-    public void setStatusBackground(Order currentOrder, JPanel orderPanel) {
+    //passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+    public void setStatusBackground(final Order currentOrder, final JPanel orderPanel) {
 
         switch (currentOrder.status) {
             case "overdue":
@@ -137,7 +141,8 @@ JPanel editPanel =  createPanel();
         }
     }
 
-    public void setDisplayedValue(Order currentOrder) {
+    // Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden soll
+    public void setDisplayedValue(final Order currentOrder) {
 
         dummyLabel = new JLabel("");
 
@@ -150,7 +155,7 @@ JPanel editPanel =  createPanel();
         firmLabel = new JLabel("Firma");
         firmLabel.setFont(Styles.ORDER_INFO);
 
-        firmField = new JTextField(currentOrder.firm);
+        firmField = new JTextField(currentOrder.getFirm());
 
         stoneTypeLabel = new JLabel("Steinart");
         orderStatusLabel.setFont(Styles.ORDER_INFO);
@@ -163,12 +168,12 @@ JPanel editPanel =  createPanel();
         amountLabel = new JLabel("Menge:");
         amountLabel.setFont(Styles.ORDER_INFO);
 
-        amountField = new JTextField(currentOrder.amount);
+        amountField = new JTextField("" + currentOrder.amount);
 
         dueDateLabel = new JLabel("Lieferdatum");
         dueDateLabel.setFont(Styles.ORDER_INFO);
 
-        dueDateField = new JTextField(currentOrder.due_date);
+        dueDateField = new JTextField("" + currentOrder.due_date);
 
         priceLabel = new JLabel("Preis");
         priceAmountLabel = new JLabel("wird berechnet");
@@ -196,10 +201,10 @@ JPanel editPanel =  createPanel();
 
         saveButton = new JButton("Speichern");
         saveButton.addActionListener(new ActionListener() {
-
+          
             @Override
             public void actionPerformed(final ActionEvent e) {
-
+                saveEditedOrder();
                 MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
 
             }
@@ -209,8 +214,14 @@ JPanel editPanel =  createPanel();
 
 
     public void saveEditedOrder() {
+        currentOrder.setFirm(firmField.getText());
 
-      
+         try {
+                    final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
+                    dbOrdersInserter.applyChangedOrderToRow();
+                } catch (final IOException ioe) {
+                    ioe.printStackTrace();
+                }
 
     }
     // public void save(){

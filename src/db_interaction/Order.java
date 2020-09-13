@@ -101,12 +101,12 @@ public class Order {
         this.price = price;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-
     public boolean getisDone() {
         return this.done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 
     public String getStatus() {
