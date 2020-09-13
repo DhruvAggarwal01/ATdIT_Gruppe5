@@ -2,6 +2,12 @@ package db_interaction;
 
 import java.util.Objects;
 
+/**
+ * Diese Klasse
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class Order {
 
     public int order_id = 0;
@@ -15,8 +21,7 @@ public class Order {
     public String status = "";
     public int rowcount = 1;
 
-    /* -------------- Overriding zum möglichen Vergleich von Aufträgen ------------ */
-
+    /* ------------ Overriding zum möglichen Vergleich von Aufträgen ------------ */
     @Override
     public String toString() {
         return "{" + "order_id: " + order_id + " ; firm: " + firm + " ; stone_type: " + stone_type + " ; due_date: "
@@ -48,8 +53,7 @@ public class Order {
                 && Objects.equals(status, navIPC.status);
     }
 
-     /* ----------------------- Getter/Setter-Methoden --------------------------- */
-
+    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für die Order_id
      * 
@@ -69,7 +73,7 @@ public class Order {
     }
 
     /**
-     * Getter-Methode für die firma
+     * Getter-Methode für die Firma
      * 
      * @return firm
      */

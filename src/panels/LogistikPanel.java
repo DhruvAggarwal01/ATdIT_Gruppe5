@@ -21,8 +21,8 @@ import java.util.Set;
  * Status geordnet aufzeigt (und bietet die Möglichkeit diese zu filtern und
  * einen neuen Auftrag anzulegen - tbd)
  * 
- * implementiert die Methoden: createLogisticsPanel, setOrderPanels, getUnfinishedOrders,initCreateOrder, getMaxOrderID
- *           
+ * implementiert die Methoden: createLogisticsPanel, setOrderPanels,
+ * getUnfinishedOrders,initCreateOrder, getMaxOrderID
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -104,11 +104,11 @@ public class LogistikPanel extends JPanel {
     }
 
     /**
-     * weist currentOrder eine neuen Auftrag zu & 
+     * weist currentOrder eine neuen Auftrag zu &
      */
-    public void initCreateOrder(){
-      maxOrderID = getMaxOrderID();
-      createOrder.addActionListener(new ActionListener() {
+    public void initCreateOrder() {
+        maxOrderID = getMaxOrderID();
+        createOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
 
@@ -119,9 +119,12 @@ public class LogistikPanel extends JPanel {
             }
         });
     }
+
     /**
-     * Berechnet den int Wer der ersten OrderId ist die noch nicht in Verwendung ist.
-     * @return maxOrderId 
+     * Berechnet den int Wer der ersten OrderId ist die noch nicht in Verwendung
+     * ist.
+     * 
+     * @return maxOrderId
      */
     public int getMaxOrderID() {
         maxOrderID = 0;
@@ -134,9 +137,10 @@ public class LogistikPanel extends JPanel {
         }
         return maxOrderID;
     }
-/**
- * Konstruktur für das Logistik Panel
- */
+
+    /**
+     * Konstruktur für das Logistik Panel
+     */
     public LogistikPanel() {
         try {
             dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
@@ -146,7 +150,6 @@ public class LogistikPanel extends JPanel {
         setOrderPanels();
         createLogisticsPanel();
         initCreateOrder();
-        
 
     }
 }

@@ -4,17 +4,21 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.Graphics;
 
+/**
+ * Diese Klasse beinhaltet das Hintergrundbild für den Login Screen und zeigt
+ * dieses an.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class BackgroundImagePanel extends JPanel {
-    /**
-     * Diese Klasse beinhaltet das Hintergrundbild für den Login Screen und zeigt dieses an.
-     * 
-     * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
-     *         Lahr
-     */
+
     private static final long serialVersionUID = 6187241176653993435L;
 
     /**
-     * Konstruktor, der zuständig für das BackgroundImagePanel ist und somit dieses erzeugt mit dem richtigen Layout.
+     * Konstruktor, der zuständig für das BackgroundImagePanel ist und somit dieses
+     * erzeugt mit dem richtigen Layout.
+     * 
      * @param layout das richtige Layout für das Panel
      */
     public BackgroundImagePanel(LayoutManager layout) {
@@ -22,7 +26,7 @@ public class BackgroundImagePanel extends JPanel {
     }
 
     /**
-     * Durch überschreiben der paintComponent Methode kann man das Hintergrundbild, 
+     * Durch überschreiben der paintComponent Methode kann man das Hintergrundbild,
      * welches vorher von der Library geholt wird, anzeigen lassen.
      */
     @Override

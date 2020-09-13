@@ -13,6 +13,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 /**
  * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
  * dementsprechend die betroffenen Felder in der Users-Datenbank.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class DBUsersInserter {
 

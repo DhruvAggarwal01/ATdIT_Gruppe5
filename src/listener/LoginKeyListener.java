@@ -4,6 +4,10 @@ import java.awt.event.*;
 
 import main.LoginButtonPanel;
 
+/**
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class LoginKeyListener implements KeyListener {
 
     private final LoginButtonPanel loginButtonPanelView;

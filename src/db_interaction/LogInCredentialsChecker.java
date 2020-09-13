@@ -13,6 +13,9 @@ import exceptions.LoginException;
  * {@link src.WelcomeScreen} und extrahiert bei erfolgreichen LogIn-Eingaben die
  * zugehörigen User-Daten aus der Excel-Datenbank in eine SessionUser-Instanz.
  * +Ausloggen
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class LogInCredentialsChecker {
 

@@ -8,7 +8,10 @@ import subpanels.*;
 
 /**
  * Klasse, die vom MouseAdapter erbt und ein Listener ist, der dafür
- * verantwrotlich ist die QuarryMap vom Steinbruch richtig auszurichten.
+ * verantwortlich ist die QuarryMap vom Steinbruch richtig auszurichten.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class ZoomMouseListener extends MouseAdapter {
     private final QuarryMap view;

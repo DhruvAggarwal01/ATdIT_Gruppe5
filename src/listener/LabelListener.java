@@ -10,6 +10,9 @@ import subpanels.Rectangle;
 /**
  * Klasse, die von KeyAdapter erbt und ein Listener darstellt. Wenn die Taste N
  * gedrückt wird in QuarryMap, soll man beliebig viele Notizen anlegen können
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class LabelListener extends KeyAdapter {
 

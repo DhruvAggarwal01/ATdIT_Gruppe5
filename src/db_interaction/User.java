@@ -2,6 +2,12 @@ package db_interaction;
 
 import java.util.Objects;
 
+/**
+ * Diese Klasse
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class User {
 
     private int personnel_id = 0;

@@ -14,10 +14,11 @@ import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 
 /**
-
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class OrderPanels extends JPanel {
-   
+
     private static final long serialVersionUID = -7427825579667861982L;
     Order currentOrder = new Order();
     DBOrdersExtractor dbOrderExtractor;
@@ -85,6 +86,3 @@ public class OrderPanels extends JPanel {
     }
 
 }
-
-
-

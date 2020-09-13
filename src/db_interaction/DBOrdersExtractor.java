@@ -13,6 +13,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
  * Daten aus der Contracts-Datenbank nach bestimmten Kriterien (nach OrderID,
  * status, etc.) ermöglichen.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class DBOrdersExtractor {
 
@@ -20,6 +23,7 @@ public class DBOrdersExtractor {
     public Workbook ordersWorkbook;
 
     /**
+     * Konstruktor
      * 
      * @param excelFileName
      * @throws IOException
@@ -38,7 +42,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<Order> getFilteredDBRowsToSet(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException  {
+            throws IOException, IllegalArgumentException, IllegalAccessException {
         Set<Order> filteredOrders = new HashSet<Order>();
 
         Sheet ordersSheet = ordersWorkbook.getSheetAt(0);
@@ -66,7 +70,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<Integer> getFilteredRowsIndexes(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException  {
+            throws IOException, IllegalArgumentException, IllegalAccessException {
         Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
 
         Sheet ordersSheet = ordersWorkbook.getSheetAt(0);
@@ -84,6 +88,7 @@ public class DBOrdersExtractor {
     }
 
     /**
+     * Diese Methode
      * 
      * @param rowIndex
      * @param columnName
@@ -113,6 +118,7 @@ public class DBOrdersExtractor {
     }
 
     /**
+     * Diese Methode
      * 
      * @param toBeConvertedRow
      * @return
@@ -132,7 +138,7 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, (int) cell.getNumericCellValue());
                     } catch (IllegalAccessException e) {
-                  
+
                         e.printStackTrace();
                     }
                     break;
@@ -148,7 +154,7 @@ public class DBOrdersExtractor {
                     try {
                         declaredFields[i].set(order, cell.getBooleanCellValue());
                     } catch (IllegalAccessException e) {
-      
+
                         e.printStackTrace();
                     }
                 default:
@@ -187,6 +193,5 @@ public class DBOrdersExtractor {
         }
         return columnIndex;
     }
-
 
 }

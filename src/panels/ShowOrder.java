@@ -19,6 +19,9 @@ import main.Styles;
 
 /**
  * JPanel um das anzeigen eines Auftrags zu ermöglichen
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class ShowOrder extends JPanel {
 
@@ -31,11 +34,11 @@ public class ShowOrder extends JPanel {
     private DBOrdersExtractor dbOrderExtractor;
     Set<Order> rowCurrentOrder;
 
-
     /**
-     *  passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+     * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+     * 
      * @param currentOrder currentOrder Auftrag für den das EditPanel geöffnet wurde
-     * @param orderPanel  Panel, dessen Hintergrundfarbe geändert werden soll
+     * @param orderPanel   Panel, dessen Hintergrundfarbe geändert werden soll
      */
     public void setStatusBackground(final Order currentOrder, final JPanel showOrderPanel) {
 
@@ -58,10 +61,10 @@ public class ShowOrder extends JPanel {
     /**
      * weist currentOrder den richtigen Auftrag zu
      */
-    public void getCurrentOrder(){
+    public void getCurrentOrder() {
         this.orderSource = OrderPanels.getOrderSource();
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
-  
+
         try {
             dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
@@ -73,13 +76,14 @@ public class ShowOrder extends JPanel {
         }
 
     }
+
     /**
      * erstellt das Panel, und alle JLabel
      */
-    public void createShowshowOrderPanel(){
+    public void createShowshowOrderPanel() {
 
         showOrderPanel = new JPanel(new GridLayout(13, 2, 10, 10));
-     
+
         setStatusBackground(currentOrder, showOrderPanel);
 
         JLabel orderHeader = new JLabel(this.orderSource);
@@ -120,19 +124,19 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        JButton backButton = new JButton("Zurück");  
+        JButton backButton = new JButton("Zurück");
         showOrderPanel.add(backButton);
-        JButton editButton = new JButton("Auftrag bearbeiten");        
+        JButton editButton = new JButton("Auftrag bearbeiten");
         showOrderPanel.add(editButton);
 
-       backButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
                 MainPanel.getNavPane().setSelectedIndex(6);
             }
         });
-       
+
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,8 +157,6 @@ public class ShowOrder extends JPanel {
         getCurrentOrder();
         createShowshowOrderPanel();
         this.add(showOrderPanel, BorderLayout.CENTER);
-     
- 
 
     }
 

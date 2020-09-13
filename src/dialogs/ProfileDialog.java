@@ -10,7 +10,8 @@ import db_interaction.LogInCredentialsChecker;
 import listener.ResetSaveCloseListener;
 
 /**
- * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class ProfileDialog extends AbstractUsermenuDialog {
 

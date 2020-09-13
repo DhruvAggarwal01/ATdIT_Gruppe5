@@ -6,6 +6,9 @@ import javax.swing.*;
 /**
  * Klasse die ein JPanel für die Notizen in der QuarryMap mit den nötigen
  * Swing/AWT-Komponenten erzeugt.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class QuarryMapLabels extends JPanel {
 

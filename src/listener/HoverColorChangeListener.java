@@ -6,6 +6,10 @@ import main.MainPanel;
 import subpanels.OrderPanels;
 import main.NavItemPanelChooser;
 
+/**
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class HoverColorChangeListener  extends MouseAdapter {
     public void changeColor(Object a) {
         JPanel theLabel = (JPanel) a;
@@ -26,7 +30,7 @@ public class HoverColorChangeListener  extends MouseAdapter {
     };
 
     /**
-     * Diese Methode tbd
+     * Diese Methode 
      */
     @Override
     public void mouseClicked(MouseEvent e) {
