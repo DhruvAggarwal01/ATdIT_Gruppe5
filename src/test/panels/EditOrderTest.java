@@ -10,7 +10,7 @@ public class EditOrderTest {
 
   @Before
   public void init() {
-    editOrderTest= new EditOrder();
+    editOrderTest= new EditOrder(false);
   }
 
     @Test

@@ -141,8 +141,4 @@ public class ShowOrder extends JPanel {
 
     }
 
-    public JPanel getOrderPanel(){
-        return orderPanel;
-    }
-
 }
