@@ -17,6 +17,9 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 
+/**
+ * JPanel um das anzeigen eines Auftrags zu ermöglichen
+ */
 public class ShowOrder extends JPanel {
 
     private static final long serialVersionUID = 1L;
@@ -28,7 +31,12 @@ public class ShowOrder extends JPanel {
     private DBOrdersExtractor dbOrderExtractor;
     Set<Order> rowCurrentOrder;
 
-    // passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+
+    /**
+     *  passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+     * @param currentOrder currentOrder Auftrag für den das EditPanel geöffnet wurde
+     * @param orderPanel  Panel, dessen Hintergrundfarbe geändert werden soll
+     */
     public void setStatusBackground(final Order currentOrder, final JPanel showOrderPanel) {
 
         switch (currentOrder.status) {
@@ -47,6 +55,9 @@ public class ShowOrder extends JPanel {
         }
     }
 
+    /**
+     * weist currentOrder den richtigen Auftrag zu
+     */
     public void getCurrentOrder(){
         this.orderSource = OrderPanels.getOrderSource();
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
@@ -57,11 +68,14 @@ public class ShowOrder extends JPanel {
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
 
-        } catch (IOException | IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
     }
+    /**
+     * erstellt das Panel, und alle JLabel
+     */
     public void createShowshowOrderPanel(){
 
         showOrderPanel = new JPanel(new GridLayout(13, 2, 10, 10));
@@ -131,6 +145,9 @@ public class ShowOrder extends JPanel {
 
     }
 
+    /**
+     * Konstruktor für das ShowOrder Panel
+     */
     public ShowOrder() {
         this.setLayout(new BorderLayout());
         getCurrentOrder();

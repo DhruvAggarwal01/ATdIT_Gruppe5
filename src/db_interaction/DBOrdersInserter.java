@@ -23,7 +23,7 @@ public class DBOrdersInserter {
     private String excelFileName;
 
     public FileOutputStream usersFileOut;
-    public Workbook usersWorkbook;
+    public Workbook ordersWorkbook;
 
     public DBOrdersInserter(String excelFileName) throws IOException {
         this.excelFileName = excelFileName;
@@ -40,7 +40,7 @@ public class DBOrdersInserter {
 
             if (rowIndexesContainingPersonnel_id.size() == 1) {
                 Iterator<Integer> setOfRowsIterator = rowIndexesContainingPersonnel_id.iterator();
-                Row sessionUserRowBefore = dbOrdersExtractor.usersWorkbook.getSheetAt(0)
+                Row sessionUserRowBefore = dbOrdersExtractor.ordersWorkbook.getSheetAt(0)
                         .getRow(setOfRowsIterator.next());
                 Iterator<Cell> cellIterator = sessionUserRowBefore.cellIterator();
 
@@ -67,9 +67,9 @@ public class DBOrdersInserter {
             }
          
             FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen nur temporär
-            dbOrdersExtractor.usersWorkbook.write(outFile);
+            dbOrdersExtractor.ordersWorkbook.write(outFile);
             outFile.close();
-            dbOrdersExtractor.usersWorkbook.close();
+            dbOrdersExtractor.ordersWorkbook.close();
         } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
@@ -90,7 +90,7 @@ public class DBOrdersInserter {
                  
                     if (rowIndexesContainingPersonnel_id.size() == 1) {
                         Iterator<Integer> setOfRowsIterator = rowIndexesContainingPersonnel_id.iterator();
-                        Sheet worksheet = dbOrdersExtractor.usersWorkbook.getSheetAt(0);
+                        Sheet worksheet = dbOrdersExtractor.ordersWorkbook.getSheetAt(0);
                         int lastRow = worksheet.getLastRowNum();
                         Row row = worksheet.createRow(++lastRow);
                         Row row2 =  worksheet.getRow(lastRow);
@@ -123,9 +123,9 @@ public class DBOrdersInserter {
                         }
                     }
             FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen permanent
-            dbOrdersExtractor.usersWorkbook.write(outFile);
+            dbOrdersExtractor.ordersWorkbook.write(outFile);
             outFile.close();
-            dbOrdersExtractor.usersWorkbook.close();
+            dbOrdersExtractor.ordersWorkbook.close();
         } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }

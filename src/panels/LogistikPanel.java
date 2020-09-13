@@ -97,7 +97,7 @@ public class LogistikPanel extends JPanel {
             unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
             unfinishedOrders.retainAll(specificStatusOrders);
-        } catch (IOException | IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return unfinishedOrders;
@@ -129,7 +129,7 @@ public class LogistikPanel extends JPanel {
             setAllOrders = dbOrderExtractor.getFilteredRowsIndexes("rowcount", 1);
             maxOrderID = setAllOrders.size() + 1;
 
-        } catch (final IOException a) {
+        } catch (final IOException | IllegalAccessException a) {
             a.printStackTrace();
         }
         return maxOrderID;

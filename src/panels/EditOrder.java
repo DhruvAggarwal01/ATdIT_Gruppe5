@@ -84,7 +84,7 @@ public class EditOrder extends JPanel {
                 rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
                 final Iterator<Order> it = rowCurrentOrder.iterator();
                 currentOrder = it.next();
-            } catch (final IOException e) {
+            } catch (final IOException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
