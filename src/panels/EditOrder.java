@@ -28,7 +28,8 @@ public class EditOrder extends JPanel {
     private static final long serialVersionUID = 1L;
     private JPanel editPanel;
 
-    private JLabel dummyLabel;
+    private JLabel dummyLabel1;
+    private JLabel dummyLabel2;
 
     private JLabel orderHeaderLabel;
     private JLabel orderStatusLabel;
@@ -56,6 +57,9 @@ public class EditOrder extends JPanel {
 
     private JButton backButton;
     private JButton saveButton;
+
+    private JLabel infoLabel1;
+    private JLabel infoLabel2;
     int i;
     String orderSource;
     Boolean create;
@@ -129,14 +133,14 @@ public class EditOrder extends JPanel {
         editPanel.add(doneLabel);
         editPanel.add(doneBox);
 
-        editPanel.add(dummyLabel);
-        editPanel.add(dummyLabel);
+        editPanel.add(dummyLabel1);
+        editPanel.add(dummyLabel2);
 
         editPanel.add(backButton);
         editPanel.add(saveButton);
 
-        editPanel.add(dummyLabel);
-        editPanel.add(dummyLabel);
+        editPanel.add(infoLabel1);
+        editPanel.add(infoLabel2);
 
         return editPanel;
     }
@@ -164,7 +168,10 @@ public class EditOrder extends JPanel {
     // soll
     public void setDisplayedValue(final Order currentOrder) {
 
-        dummyLabel = new JLabel(" ");
+        dummyLabel1 = new JLabel(" ");
+         dummyLabel2 = new JLabel(" ");
+        infoLabel1 = new JLabel("Info: Lieferdatum nimmt nur reine ints an, dates to be implemented) ");
+        infoLabel2 = new JLabel("info: Input Validation wird noch implementiert");
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
@@ -172,33 +179,38 @@ public class EditOrder extends JPanel {
         orderStatusLabel = new JLabel("" + currentOrder.order_id);
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
-        firmLabel = new JLabel("Firma");
+        firmLabel = new JLabel("Firma (nur reine Strings eingeben)");
         firmLabel.setFont(Styles.ORDER_INFO);
 
         firmField = new JTextField(currentOrder.getFirm());
 
         stoneTypeLabel = new JLabel("Steinart");
-        orderStatusLabel.setFont(Styles.ORDER_INFO);
+        stoneTypeLabel.setFont(Styles.ORDER_INFO);
 
         stoneSelection = new JComboBox<String>();
-        stoneSelection.addItem("Weißer Stein");
-        stoneSelection.addItem("Roter Stein");
-        stoneSelection.addItem("Schwarzer Stein");
+        stoneSelection.addItem("Sandstein");
+        stoneSelection.addItem("Kalkstein");
+        stoneSelection.addItem("Granite");
+        stoneSelection.addItem("Basalte");
+        stoneSelection.addItem("Schiefer");
 
-        amountLabel = new JLabel("Menge:");
+        amountLabel = new JLabel("Menge (in Tonnen):");
         amountLabel.setFont(Styles.ORDER_INFO);
 
         amountField = new JTextField("" + currentOrder.amount);
 
-        dueDateLabel = new JLabel("Lieferdatum");
+        dueDateLabel = new JLabel("Lieferdatum ");
         dueDateLabel.setFont(Styles.ORDER_INFO);
 
         dueDateField = new JTextField("" + currentOrder.due_date);
 
         priceLabel = new JLabel("Preis");
+        priceLabel.setFont(Styles.ORDER_INFO);
         priceAmountLabel = new JLabel("wird berechnet");
+        priceAmountLabel.setFont(Styles.ORDER_INFO);
 
         phaseLabel = new JLabel("Phase");
+        phaseLabel.setFont(Styles.ORDER_INFO);
         phaseSelection = new JComboBox<String>();
         phaseSelection.addItem("Planung");
         phaseSelection.addItem("Sprengung");
@@ -206,7 +218,8 @@ public class EditOrder extends JPanel {
         phaseSelection.addItem("Geliefert");
 
         doneLabel = new JLabel("Auftrag abgeschlossen");
-        doneBox = new JCheckBox("Auftrag abgeschlossen" + currentOrder.done);
+        doneLabel.setFont(Styles.ORDER_INFO);
+        doneBox = new JCheckBox("Auftrag abgeschlossen");
 
         backButton = new JButton("Zurück");
         backButton.addActionListener(new ActionListener() {
@@ -219,6 +232,11 @@ public class EditOrder extends JPanel {
 
         });
 
+        if (create != true) {
+            saveButton = new JButton("Speichern");
+        } else {
+            saveButton = new JButton("Speichern noch nicht möglich");
+        }
         saveButton = new JButton("Speichern");
         saveButton.addActionListener(new ActionListener() {
 
@@ -242,7 +260,7 @@ public class EditOrder extends JPanel {
         currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
         currentOrder.setPhase(phaseSelection.getSelectedItem().toString());
         currentOrder.setDone(doneBox.isSelected());
-
+        currentOrder.setPrice(calculatePrice(currentOrder));
         try {
             final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
             // if (create == true) {
@@ -259,5 +277,30 @@ public class EditOrder extends JPanel {
     public JPanel getOrderPanel(){
         return editPanel;
     }
+    public int calculatePrice(Order currentOrder)  {    
+        int price = 0;
+        int amount = currentOrder.amount;
+        switch (currentOrder.stone_type) {
+            case "Sandstein":
+                price = amount * 75;
+                break;
+            case "Kalkstein":
+            price = amount * 130;
+                break;
+            case "Granite":
+                price = amount * 150;
+                break;
+            case "Basalte":
+            price = amount * 300;
+                break;
+            case "Schiefer":
+            price = amount * 400;
+                break;
+            default:
+            price = amount * 0;
+                break;
+        } 
+        return price;
+}
 
 }
