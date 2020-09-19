@@ -18,7 +18,7 @@ public class Order {
     public String phase = "";
     public int price = 0;
     public boolean done = false;
-    public String status = "";
+    public String status = "onTime";
     public int rowcount = 1;
 
     /* ------------ Overriding zum möglichen Vergleich von Aufträgen ------------ */

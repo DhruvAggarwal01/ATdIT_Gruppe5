@@ -6,7 +6,7 @@ public class CalculateOrder {
     public CalculateOrder(Order currentOrder) {
     
     }
-    public int calculatePrice(Order currentOrder)  {    
+    public static int calculatePrice(Order currentOrder)  {    
         int price = 0;
         int amount = currentOrder.amount;
         switch (currentOrder.stone_type) {

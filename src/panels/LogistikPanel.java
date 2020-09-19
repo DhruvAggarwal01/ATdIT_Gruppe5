@@ -12,6 +12,7 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
+import db_interaction.OrdersSorter;
 
 /**
  * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
@@ -98,60 +99,19 @@ public class LogistikPanel extends JPanel {
     public void setOrderPanels(Boolean displayAll) {
 
         if (displayAll) {
-            this.onTimeOrders = getAllOrders("onTime");
-            this.atRiskOrders = getAllOrders("atRisk");
-            this.overdueOrders = getAllOrders("overdue");
+            this.onTimeOrders = OrdersSorter.getAllOrders("onTime");
+            this.atRiskOrders = OrdersSorter.getAllOrders("atRisk");
+            this.overdueOrders = OrdersSorter.getAllOrders("overdue");
         } else {
-            this.onTimeOrders = getUnfinishedOrders("onTime");
-            this.atRiskOrders = getUnfinishedOrders("atRisk");
-            this.overdueOrders = getUnfinishedOrders("overdue");
+            this.onTimeOrders = OrdersSorter.getUnfinishedOrders("onTime");
+            this.atRiskOrders = OrdersSorter.getUnfinishedOrders("atRisk");
+            this.overdueOrders = OrdersSorter.getUnfinishedOrders("overdue");
         }
 
         onTimePanel = new OrderPanels(onTimeOrders, "Order on Time", "These Ordes are on Time!", 188, 234, 174);
         atRiskPanel = new OrderPanels(atRiskOrders, "Order at Risk", "These Ordes are at Risk of delivering on Time!",
                 245, 220, 163);
         overduePanel = new OrderPanels(overdueOrders, "Order Overdue", "These Ordes are overdue!", 252, 130, 136);
-    }
-
-    /**
-     * 
-     * @param status
-     * @return Set<Order> gefiltert nach status
-     */
-    public Set<Order> getUnfinishedOrders(final String status) {
-
-        Set<Order> specificStatusOrders = new HashSet<Order>();
-        Set<Order> unfinishedOrders = new HashSet<Order>();
-
-        try {
-            unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
-            specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
-            unfinishedOrders.retainAll(specificStatusOrders);
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return unfinishedOrders;
-    }
-
-    /**
-     * 
-     * @param status
-     * @return Set<Order> gefiltert nach status
-     */
-    public Set<Order> getAllOrders(final String status) {
-
-        Set<Order> specificStatusOrders = new HashSet<Order>();
-        Set<Order> allOrders = new HashSet<Order>();
-
-        try {
-            allOrders = dbOrderExtractor.getFilteredDBRowsToSet("rowcount", 1);
-            specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
-            allOrders.retainAll(specificStatusOrders);
-
-        } catch (IOException | IllegalArgumentException| IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return allOrders;
     }
 
     /**

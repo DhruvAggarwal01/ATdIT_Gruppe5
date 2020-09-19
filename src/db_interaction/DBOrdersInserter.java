@@ -18,7 +18,7 @@ import panels.EditOrder;
  *         Lahr
  */
 public class DBOrdersInserter {
-    Set<Integer> rowIndexesContainingPersonnel_id;
+    Set<Integer> rowIndexesContainingOrder_Id;
 
     int cellcount;
 
@@ -43,14 +43,14 @@ public class DBOrdersInserter {
     public void applyChangedOrderToRow() {
         try {
             DBOrdersExtractor dbOrdersExtractor = new DBOrdersExtractor(excelFileName);
-            Set<Integer> rowIndexesContainingPersonnel_id = dbOrdersExtractor.getFilteredRowsIndexes("order_id",
+            Set<Integer> rowIndexesContainingOrder_Id = dbOrdersExtractor.getFilteredRowsIndexes("order_id",
                     EditOrder.currentOrder.getOrder_id());
 
             Order order = new Order();
             order = EditOrder.currentOrder;
 
-            if (rowIndexesContainingPersonnel_id.size() == 1) {
-                Iterator<Integer> setOfRowsIterator = rowIndexesContainingPersonnel_id.iterator();
+            if (rowIndexesContainingOrder_Id.size() == 1) {
+                Iterator<Integer> setOfRowsIterator = rowIndexesContainingOrder_Id.iterator();
                 Row sessionUserRowBefore = dbOrdersExtractor.ordersWorkbook.getSheetAt(0)
                         .getRow(setOfRowsIterator.next());
                 Iterator<Cell> cellIterator = sessionUserRowBefore.cellIterator();
@@ -90,23 +90,23 @@ public class DBOrdersInserter {
      * Diese Methode ist für das Hinzufügen eines neuen Auftrags zuständig.
      */
     public void addNewOrder() {
-        rowIndexesContainingPersonnel_id = new HashSet<Integer>();
+        rowIndexesContainingOrder_Id = new HashSet<Integer>();
 
         try {
             DBOrdersExtractor dbOrdersExtractor = new DBOrdersExtractor(excelFileName);
             Integer number = EditOrder.currentOrder.getOrder_id(); // index is int type
 
-            rowIndexesContainingPersonnel_id.add(number);
+            rowIndexesContainingOrder_Id.add(number);
 
             Order order = new Order();
             order = EditOrder.currentOrder;
 
-            if (rowIndexesContainingPersonnel_id.size() == 1) {
+            if (rowIndexesContainingOrder_Id.size() == 1) {
                 Sheet worksheet = dbOrdersExtractor.ordersWorkbook.getSheetAt(0);
                 int lastRow = worksheet.getLastRowNum();
+                Row exampleRow = worksheet.getRow(2);
                 Row row = worksheet.createRow(++lastRow);
-                Row row2 = worksheet.getRow(lastRow);
-                Iterator<Cell> cellIterator = row2.cellIterator();
+                Iterator<Cell> cellIterator = exampleRow.cellIterator();
 
                 Field[] declaredFields = order.getClass().getDeclaredFields();
                 int i = 0;

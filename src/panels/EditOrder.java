@@ -2,7 +2,11 @@ package panels;
 
 import java.awt.*;
 import java.awt.event.*;
+
+
 import javax.swing.*;
+
+
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
@@ -10,10 +14,15 @@ import java.util.Iterator;
 import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
+import db_interaction.CalculateOrder;
 import db_interaction.DBOrdersInserter;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
+import listener.BackToOrderOverviewListener;
+import subpanels.ColorChooser;
 import subpanels.OrderPanels;
+import verifiers.OrderAmountInputVerifier;
+import verifiers.OrderStringVerifier;
 
 /**
  * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
@@ -57,7 +66,6 @@ public class EditOrder extends JPanel {
     private JButton saveButton;
 
     private JLabel infoLabel1;
-    private JLabel infoLabel2;
     int i;
     String orderSource;
     Boolean create;
@@ -69,7 +77,7 @@ public class EditOrder extends JPanel {
      * @param create2 Gibt an ob man das EditPanel aufruft um einen Auftrag
      *                anzulegen oder um einen existierenden zu bearbeiten
      */
-    public EditOrder(Boolean create2) {
+    public EditOrder(final Boolean create2) {
         this.create = create2;
         if (create != true) {
             currentOrder = new Order();
@@ -98,7 +106,7 @@ public class EditOrder extends JPanel {
         setDisplayedValue(currentOrder);
 
         final JPanel editPanel = createPanel();
-        setStatusBackground(currentOrder, editPanel);
+        ColorChooser.setPanelBackground(currentOrder, editPanel);
         this.setLayout(new BorderLayout());
         this.add(editPanel, BorderLayout.CENTER);
     }
@@ -143,34 +151,10 @@ public class EditOrder extends JPanel {
         editPanel.add(saveButton);
 
         editPanel.add(infoLabel1);
-        editPanel.add(infoLabel2);
 
         return editPanel;
     }
 
-    /**
-     * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
-     * 
-     * @param currentOrder Auftrag für den das EditPanel geöffnet wurde
-     * @param orderPanel   Panel, dessen Hintergrundfarbe geändert werden soll
-     */
-    public void setStatusBackground(final Order currentOrder, final JPanel orderPanel) {
-
-        switch (currentOrder.status) {
-            case "overdue":
-                orderPanel.setBackground(new Color(252, 130, 136));
-                break;
-            case "atRisk":
-                orderPanel.setBackground(new Color(245, 220, 163));
-                break;
-            case "onTime":
-                orderPanel.setBackground(new Color(188, 234, 174));
-                break;
-            default:
-                orderPanel.setBackground(new Color(188, 234, 174));
-                break;
-        }
-    }
 
     /**
      * Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
@@ -180,9 +164,8 @@ public class EditOrder extends JPanel {
     public void setDisplayedValue(final Order currentOrder) {
 
         dummyLabel1 = new JLabel(" ");
-         dummyLabel2 = new JLabel(" ");
+        dummyLabel2 = new JLabel(" ");
         infoLabel1 = new JLabel("Info: Lieferdatum nimmt nur reine ints an, dates to be implemented) ");
-        infoLabel2 = new JLabel("info: Input Validation wird noch implementiert");
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
@@ -190,10 +173,11 @@ public class EditOrder extends JPanel {
         orderStatusLabel = new JLabel("" + currentOrder.order_id);
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
-        firmLabel = new JLabel("Firma (nur reine Strings eingeben)");
+        firmLabel = new JLabel("Firma");
         firmLabel.setFont(Styles.ORDER_INFO);
 
         firmField = new JTextField(currentOrder.getFirm());
+        firmField.setInputVerifier(new OrderStringVerifier());
 
         stoneTypeLabel = new JLabel("Steinart");
         stoneTypeLabel.setFont(Styles.ORDER_INFO);
@@ -209,6 +193,7 @@ public class EditOrder extends JPanel {
         amountLabel.setFont(Styles.ORDER_INFO);
 
         amountField = new JTextField("" + currentOrder.amount);
+        amountField.setInputVerifier(new OrderAmountInputVerifier());
 
         dueDateLabel = new JLabel("Lieferdatum ");
         dueDateLabel.setFont(Styles.ORDER_INFO);
@@ -233,15 +218,7 @@ public class EditOrder extends JPanel {
         doneBox = new JCheckBox("Auftrag abgeschlossen");
 
         backButton = new JButton("Zurück");
-        backButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
-                MainPanel.getNavPane().setSelectedIndex(6);
-            }
-
-        });
+        backButton.addActionListener(new BackToOrderOverviewListener());
 
         if (create != true) {
             saveButton = new JButton("Speichern");
@@ -249,19 +226,34 @@ public class EditOrder extends JPanel {
             saveButton = new JButton("Speichern noch nicht möglich");
         }
         saveButton = new JButton("Speichern");
+
         saveButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                saveEditedOrder();
-                if (create != true) {
-                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "ShowOrder", null));
+                
+                if (checkOrderValidity()) {
+                    saveEditedOrder();
+                    if (create != true) {
+                        MainPanel.getNavPane().setComponentAt(6,
+                                new NavItemPanelChooser("Logistik", "ShowOrder", null));
+                    } else {
+                        MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                    }
                 } else {
-                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                   
+                    saveButton.setEnabled(false);
                 }
 
             }
         });
+    }
+
+    public boolean checkOrderValidity() {
+        boolean validFirmName = firmField.isValid();
+        boolean validAmount = amountField.isValid();
+        // boolean validDate = amountField.isValid();
+        return validFirmName && validAmount;
     }
 
     /**
@@ -269,24 +261,30 @@ public class EditOrder extends JPanel {
      * Auftrag anzulegen tbd Methode für InputValidation tbd
      */
     public void saveEditedOrder() {
+     
+            setOrder();
+            try {
+                final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
+                if (create == true) {
+                    dbOrdersInserter.addNewOrder();
+                } else {
+                    dbOrdersInserter.applyChangedOrderToRow();
+                }
+            } catch (final IOException ioe) {
+                ioe.printStackTrace();
+            }
+        
+
+    }
+
+    public void setOrder() {
         currentOrder.setFirm(firmField.getText());
         currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());
         currentOrder.setAmount(Integer.parseInt(amountField.getText()));
         currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
         currentOrder.setPhase(phaseSelection.getSelectedItem().toString());
         currentOrder.setDone(doneBox.isSelected());
-        currentOrder.setPrice(calculatePrice(currentOrder));
-        try {
-            final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
-            // if (create == true) {
-            // dbOrdersInserter.addNewOrder();
-            // } else {
-            dbOrdersInserter.applyChangedOrderToRow();
-            // }
-        } catch (final IOException ioe) {
-            ioe.printStackTrace();
-        }
-
+        currentOrder.setPrice(CalculateOrder.calculatePrice(currentOrder));
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
@@ -294,30 +292,5 @@ public class EditOrder extends JPanel {
     public JPanel getOrderPanel() {
         return editPanel;
     }
-    public int calculatePrice(Order currentOrder)  {    
-        int price = 0;
-        int amount = currentOrder.amount;
-        switch (currentOrder.stone_type) {
-            case "Sandstein":
-                price = amount * 75;
-                break;
-            case "Kalkstein":
-            price = amount * 130;
-                break;
-            case "Granite":
-                price = amount * 150;
-                break;
-            case "Basalte":
-            price = amount * 300;
-                break;
-            case "Schiefer":
-            price = amount * 400;
-                break;
-            default:
-            price = amount * 0;
-                break;
-        } 
-        return price;
-}
 
 }
