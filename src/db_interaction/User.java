@@ -46,12 +46,7 @@ public class User {
             return false;
         }
         final User user = (User) obj;
-        return Objects.equals(personnel_id, user.personnel_id) && Objects.equals(username, user.username)
-                && Objects.equals(forename, user.forename) && Objects.equals(surname, user.surname)
-                && Objects.equals(street_nr, user.street_nr) && Objects.equals(zip, user.zip)
-                && Objects.equals(city, user.city) && Objects.equals(email, user.email)
-                && Objects.equals(password, user.password) && Objects.equals(role_id, user.role_id)
-                && Objects.equals(isLoggedIn, user.isLoggedIn);
+        return Objects.equals(personnel_id, user.personnel_id);
     }
 
     /**
@@ -59,8 +54,7 @@ public class User {
      */
     @Override
     public int hashCode() { // wird
-        return Objects.hash(personnel_id, username, forename, surname, street_nr, zip, city, email, password, role_id,
-                isLoggedIn);
+        return Objects.hash(personnel_id);
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */

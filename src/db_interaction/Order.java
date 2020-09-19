@@ -31,7 +31,7 @@ public class Order {
 
     @Override
     public int hashCode() {
-        return Objects.hash(order_id, firm, stone_type, amount, due_date, phase, price, done, status, rowcount);
+        return Objects.hash(order_id);
     }
 
     @Override
@@ -46,11 +46,7 @@ public class Order {
             return false;
         }
         final Order navIPC = (Order) obj;
-        return Objects.equals(order_id, navIPC.order_id) && Objects.equals(firm, navIPC.firm)
-                && Objects.equals(stone_type, navIPC.stone_type) && Objects.equals(amount, navIPC.amount)
-                && Objects.equals(due_date, navIPC.due_date) && Objects.equals(phase, navIPC.phase)
-                && Objects.equals(price, navIPC.price) && Objects.equals(done, navIPC.done)
-                && Objects.equals(status, navIPC.status);
+        return Objects.equals(order_id, navIPC.order_id);
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
