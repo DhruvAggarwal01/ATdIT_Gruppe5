@@ -23,12 +23,14 @@ public class HeaderPanelTest {
         testMenu = (JMenu) testMenuBar.getComponent(0);
     }
 
+    //Checks if the Logo and Title are visible and returns true
     @Test
     public void testShowingLogoAndTitle() {
         Assert.assertTrue("True if logo and title are being shown",
                 MainPanel.getHeaderPanel().logoAndHeaderTitle.isShowing());
     }
 
+    //Checks if the UserIconMenu is visible and returns true
     @Test
     public void testShowingUserIconMenu() {
         Assert.assertTrue("true if user icon is being shown",
@@ -61,11 +63,13 @@ public class HeaderPanelTest {
         Assert.assertFalse("Profile Menu is deselected after clicking somewhere else", testMenu.isSelected());
     }
 
+    //Checks if the profileMenu is initialized correctly, which should return false because it is initialized as not selected
     @Test
     public void testProfileMenuNotSelected() {
         Assert.assertFalse("Profile Menu is not selected initially", testMenu.isSelected());
     }
 
+    //Creates a new HeaderPanel with the title 'Test' and checks if the title is set correctly with a getter 
     @Test
     public void testHeaderTitleAdder() {
         HeaderPanel panelTest = new HeaderPanel("Test");

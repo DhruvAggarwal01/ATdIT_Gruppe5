@@ -6,6 +6,7 @@ import main.AppRunner;
 
 public class AppRunnerTest {
 
+    //Checks if the LoginFrame is visible
     @Test
     public void testAppFrameIsVisible() {
         AppRunner.main(null);

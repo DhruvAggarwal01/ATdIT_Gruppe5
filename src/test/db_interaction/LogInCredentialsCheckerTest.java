@@ -13,6 +13,7 @@ public class LogInCredentialsCheckerTest {
         Assert.assertTrue(isMatchingCredentialsTest);
     }
 
+    //Creates a new User and checks if the given name in the constructor is correct
     @Test
     public void testSetSessionUser() {
         LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");

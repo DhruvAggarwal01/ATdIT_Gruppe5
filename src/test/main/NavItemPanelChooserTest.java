@@ -19,11 +19,13 @@ public class NavItemPanelChooserTest {
         nipChooserTest2 = new NavItemPanelChooser("Overview", "Reporting", null);
     }
 
+    //Checks if the PanelExplorerTextToLevel1 is initialized correctly as 'Overview'
     @Test
     public void testPanelExplorerTextToLevel1() {
         Assert.assertEquals("Overview", nipChooserTest1.getPanelExplorerTitle());
     }
 
+    //Checks if the panelExplorerTextToLevel2 is initialized correctly as 'Overview > Reporting'
     @Test
     public void testPanelExplorerTextToLevel2() {
         Assert.assertEquals("Overview > Reporting", nipChooserTest2.getPanelExplorerTitle());

@@ -8,6 +8,7 @@ public class NavigationPaneProductionTest {
 
     NavigationPaneProduction navigationPaneProductionTest = new NavigationPaneProduction(0, 0);
 
+    //Checks with a getter if all 4 tabs were added correctly
     @Test
     public void testGetTabCount() {
         Assert.assertEquals(4, navigationPaneProductionTest.getTabCount());

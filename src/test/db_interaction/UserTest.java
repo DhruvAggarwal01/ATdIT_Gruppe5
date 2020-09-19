@@ -6,12 +6,14 @@ import db_interaction.User;
 
 public class UserTest {
 
+    //Checks if the initialzed username "" is correct
     @Test
     public void testGetInitPublicStaticVariable() {
         User user = new User();
         Assert.assertEquals("", user.getUsername());
     }
 
+    //Checks if the setUsername method works and checks the new given username with a getter
     @Test
     public void testSetAndGetPublicStaticVariable() {
         User user = new User();
@@ -20,6 +22,7 @@ public class UserTest {
         user.setUsername(""); // zurückgesetzt zu initialem Wert
     }
 
+    //Checks if the overriden toString method gives the right parameters
     @Test
     public void testToString() {
         User user = new User();

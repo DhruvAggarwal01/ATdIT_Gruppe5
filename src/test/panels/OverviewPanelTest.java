@@ -13,13 +13,15 @@ public class OverviewPanelTest {
     overviewPanelTest = new OverviewPanel();
   }
 
+  //Checks with a getter if all 2 components of overviewPanel were added correctly
   @Test
-  public void testContainsPanels() {
+  public void testOverviewPanelContainsPanels() {
     Assert.assertEquals("Looks how many components where added", 2, overviewPanelTest.getComponentCount());
   }
 
+  //Checks with a getter if all 2 components of smallPanels were added correctly
   @Test
-  public void testCountSmallPanels() {
+  public void testCountComponentsSmallPanels() {
     Assert.assertEquals("Looks how many components where added", 2,
         overviewPanelTest.getSmallPanels().getComponentCount());
   }

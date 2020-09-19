@@ -16,16 +16,19 @@ public class DiashowPanelTest {
     diashowPanelTest = new DiashowPanel("Title");
   }
 
+  //Checks with a getter if the title of the diashowPanel is initialized correctly
   @Test
-  public void testGetPanelTitle() {
+  public void testGetDiashowPanelTitle() {
     Assert.assertEquals("Give the title of the diashow panel", "Title", diashowPanelTest.getDiashowTitle());
   }
 
+  //Checks with a getter if all 2 components of diashowPanel were added correctly
   @Test
-  public void testContainsPanels() {
+  public void testDiashowPanelContainsPanels() {
     Assert.assertEquals("Looks how many components where added", 2, diashowPanelTest.getComponentCount());
   }
 
+  //Checks if it is true that the timer of the diahowPanel is running with a boolean condition
   @Test
   public void testTimerIsRunning() {
     Assert.assertTrue(diashowPanelTest.getTimer().isRunning());
