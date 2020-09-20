@@ -2,14 +2,13 @@ package usedstrings;
 
 public class LogistikStrings {
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    /* ----------------------- General Logistik Strings --------------------------- */
 
     private static final String ordersDatabaseString = "databases/DefaultCONTRACTS.xlsx";
     private static final String logisticsString = "Logistik";
     private static final String displayAllString = "DisplayAll";
-    private static final String editOrderString= "EditOrder";
+    private static final String editOrderString = "EditOrder";
     private static final String emptyString = "";
-    
 
     /* ----------------------- Order Panels Strings--------------------------- */
 
@@ -26,8 +25,7 @@ public class LogistikStrings {
     private static final String atRiskDescription = "These Ordes are at Risk of delivering on Time!";
     private static final String overdueDescription = "These Ordes are overdue!";
 
-
-    /* ----------------------- Edit/ Show Order Strings --------------------------- */
+    /* ----------------------- Edit/Show Order Strings ---------------------------*/
 
     private static final String firmString = "Firma:";
     private static final String stoneTypeString = "Steinart";
@@ -47,10 +45,10 @@ public class LogistikStrings {
     private static final String phaseDeliveredSttring = "Geliefert";
 
     private static final String tonString = "Tonnen";
-    private static final String euroSign= "€";
-    private static final String orderDoneText= "Auftrag abgeschlossen: ";
+    private static final String euroSign = "€";
+    private static final String orderDoneText = "Auftrag abgeschlossen: ";
     private static final String orderDoneDescription = "Der Auftrag ist abgeschlossen";
-    private static final String orderNotDoneDescription= "Der ist Auftrag noch nicht abgeschlossen";
+    private static final String orderNotDoneDescription = "Der ist Auftrag noch nicht abgeschlossen";
     private static final String editOrderText = "Auftrag bearbeiten";
     private static final String backString = "Zurück";
     private static final String saveString = "Speichern";
@@ -61,137 +59,12 @@ public class LogistikStrings {
     private static final String wrongAmountErrorMessage = "Amount cannot be more than 1000t";
     private static final String invalidNameErrorMessae = "Field must only contain characters from the Alphabet";
 
-   
-    /* ----------------------- Getter Methoden --------------------------- */
-   
-       public static String getEmptyString() {
-        return emptyString;
-    }
-
-    public static String getSaveString() {
-        return saveString;
-    }
-      
-    public static String getEditOrderString() {
-        return editOrderString;
-    }
-    
-    public static String getTonString() {
-        return tonString;
-    }
-    public static String getEuroSign() {
-        return euroSign;
-    }
-   
-    public static String getOrderDoneText() {
-        return orderDoneText;
-    }
-   
-    public static String getOrderDoneDescription() {
-        return orderDoneDescription;
-    }
-   
-    public static String getOrderNotDoneDescription() {
-        return orderNotDoneDescription;
-    }
-   
-    public static String getEditOrderText() {
-        return editOrderText;
-    }
-
-    public static String getFirmString() {
-        return firmString;
-    }
-   
-    public static String getAmountString() {
-        return amountString;
-    }
-   
-    public static String getPriceString() {
-        return priceString;
-    }
-
-    public static String getPriceDescription() {
-        return priceDescription;
-    }
-   
-    public static String getDueDateString() {
-        return dueDateString;
-    }
-    public static String getPhaseString() {
-        return phaseString;
-    }
-   
-    public static String getPhasePlanningString() {
-        return phasePlanningString;
-    }
-    public static String getPhaseBombingString()  {
-        return phaseBombingString;
-    }
-    public static String getPhaseTransportString() {
-        return phaseTransportString;
-    }
-    public static String getPhaseDeliveredSttring() {
-        return phaseDeliveredSttring;
-    }
-   
 
 
-    public static String getBackString() {
-        return backString;
-    }
-    public static String getStoneTypeString() {
-        return stoneTypeString;
-    }
+    /* ----------------------- Getter Methoden für General Logistik Strings--------------------------- */
 
-    public static String getStoneTypeOneString() {
-        return stoneTypeOneString;
-    }
-    public static String getStoneTypeTwoSring() {
-        return stoneTypeTwoSring;
-    }
-    public static String getStoneTypeThreeString() {
-        return stoneTypeThreeString;
-    }
-    public static String getStoneTypeFourString() {
-        return stoneTypeFourString;
-    }
-   
-    public static String getStoneTypeFiveString() {
-        return stoneTypeFiveString;
-    }
-   
-   
-   
-       /* ----------------------- Getter/Setter-Methoden --------------------------- */
-   
-   
     public static String getOrdersDatabaseString() {
         return ordersDatabaseString;
-    }
-
-    public static String getOnlyNumbersErrorMessage() {
-        return onlyNumbersErrorMessage;
-    }
-
-    public static String getWrongAmountErrorMessage() {
-        return wrongAmountErrorMessage;
-    }
-
-    public static String getInvalidNameErrorMessae() {
-        return invalidNameErrorMessae;
-    }
-
-    public static String getDisplayAllText() {
-        return displayAllText;
-    }
-
-    public static String getCreateOrderText() {
-        return createOrderText;
-    }
-
-    public static String getSearchOrderText() {
-        return searchOrderText;
     }
 
     public static String getLogisticsString() {
@@ -201,6 +74,28 @@ public class LogistikStrings {
     public static String getDisplayAllString() {
         return displayAllString;
     }
+
+    public static String getEditOrderString() {
+        return editOrderString;
+    }
+
+    public static String getEmptyString() {
+        return emptyString;
+    }
+
+    /* ----------------------- Getter Methoden für Order Panels Strings --------------------------- */
+
+    public static String getDisplayAllText() {
+        return displayAllText;
+    }
+
+    public static String getCreateOrderText() {
+        return createOrderText;
+    }
+    public static String getSearchOrderText() {
+        return searchOrderText;
+    }
+
 
     public static String getOnTimeString() {
         return onTimeString;
@@ -237,5 +132,125 @@ public class LogistikStrings {
     public static String getOverdueDescription() {
         return overdueDescription;
     }
+
+
+    /* ----------------------- Getter Methoden fürEdit/Show Order Strings --------------------------- */
+
+
+    public static String getSaveString() {
+        return saveString;
+    }
+
+    public static String getTonString() {
+        return tonString;
+    }
+
+    public static String getEuroSign() {
+        return euroSign;
+    }
+
+    public static String getOrderDoneText() {
+        return orderDoneText;
+    }
+
+    public static String getOrderDoneDescription() {
+        return orderDoneDescription;
+    }
+
+    public static String getOrderNotDoneDescription() {
+        return orderNotDoneDescription;
+    }
+
+    public static String getEditOrderText() {
+        return editOrderText;
+    }
+
+    public static String getFirmString() {
+        return firmString;
+    }
+
+    public static String getAmountString() {
+        return amountString;
+    }
+
+    public static String getPriceString() {
+        return priceString;
+    }
+
+    public static String getPriceDescription() {
+        return priceDescription;
+    }
+
+    public static String getDueDateString() {
+        return dueDateString;
+    }
+
+    public static String getPhaseString() {
+        return phaseString;
+    }
+
+    public static String getPhasePlanningString() {
+        return phasePlanningString;
+    }
+
+    public static String getPhaseBombingString() {
+        return phaseBombingString;
+    }
+
+    public static String getPhaseTransportString() {
+        return phaseTransportString;
+    }
+
+    public static String getPhaseDeliveredSttring() {
+        return phaseDeliveredSttring;
+    }
+
+    public static String getBackString() {
+        return backString;
+    }
+
+    public static String getStoneTypeString() {
+        return stoneTypeString;
+    }
+
+    public static String getStoneTypeOneString() {
+        return stoneTypeOneString;
+    }
+
+    public static String getStoneTypeTwoSring() {
+        return stoneTypeTwoSring;
+    }
+
+    public static String getStoneTypeThreeString() {
+        return stoneTypeThreeString;
+    }
+
+    public static String getStoneTypeFourString() {
+        return stoneTypeFourString;
+    }
+
+    public static String getStoneTypeFiveString() {
+        return stoneTypeFiveString;
+    }
+
+
+
+    /* ----------------------- Getter Methoden für Logistik Verifier Strings --------------------------- */
+
+    public static String getOnlyNumbersErrorMessage() {
+        return onlyNumbersErrorMessage;
+    }
+
+    public static String getWrongAmountErrorMessage() {
+        return wrongAmountErrorMessage;
+    }
+
+    public static String getInvalidNameErrorMessae() {
+        return invalidNameErrorMessae;
+    }
+
+
+
+
 
 }
