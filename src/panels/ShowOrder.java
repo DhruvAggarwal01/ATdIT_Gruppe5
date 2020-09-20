@@ -14,6 +14,8 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 
+import usedstrings.LogistikStrings;
+
 /**
  * JPanel um das anzeigen eines Auftrags zu ermöglichen
  * 
@@ -63,7 +65,7 @@ public class ShowOrder extends JPanel {
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
@@ -91,48 +93,48 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(orderHeader);
         showOrderPanel.add(orderStatus);
 
-        showOrderPanel.add(new JLabel("Firma:")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getFirmString())).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.getFirm())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        showOrderPanel.add(new JLabel("Steinart")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getStoneTypeString())).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.stone_type)).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel("Menge")).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(" " + currentOrder.amount + "  Tonnen")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getAmountString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.amount + LogistikStrings.getTonString())).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel("Preis")).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel("" + currentOrder.price + "  €")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getPriceString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.price +  LogistikStrings.getEuroSign())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        showOrderPanel.add(new JLabel("Lieferdatum")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getDueDateString())).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(" " + currentOrder.due_date)).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel("Phase")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getPhaseString())).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.phase)).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel("Auftrag abgeschlossen : ")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneText())).setFont(Styles.ORDER_INFO);
         if(currentOrder.done){
-            showOrderPanel.add(new JLabel("Der Auftrag ist abgeschlossen")).setFont(Styles.ORDER_INFO);
+            showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneDescription())).setFont(Styles.ORDER_INFO);
         }else{
-        showOrderPanel.add(new JLabel("Der istAuftrag noch nicht abgeschlossen")).setFont(Styles.ORDER_INFO);}
+        showOrderPanel.add(new JLabel(LogistikStrings.getOrderNotDoneDescription())).setFont(Styles.ORDER_INFO);}
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        JButton backButton = new JButton("Zurück");
+        JButton backButton = new JButton(LogistikStrings.getBackString());
         showOrderPanel.add(backButton);
-        JButton editButton = new JButton("Auftrag bearbeiten");
+        JButton editButton = new JButton(LogistikStrings.getEditOrderText());
         showOrderPanel.add(editButton);
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
                 MainPanel.getNavPane().setSelectedIndex(6);
             }
         });
@@ -140,12 +142,12 @@ public class ShowOrder extends JPanel {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "EditOrder", null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), LogistikStrings.getEditOrderString(), null));
             }
         });
 
-        showOrderPanel.add(new JLabel(""));
-        showOrderPanel.add(new JLabel(""));
+        showOrderPanel.add(new JLabel(LogistikStrings.getEmptyString()));
+        showOrderPanel.add(new JLabel(LogistikStrings.getEmptyString()));
 
     }
 

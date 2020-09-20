@@ -23,6 +23,7 @@ import subpanels.ColorChooser;
 import subpanels.OrderPanels;
 import verifiers.OrderAmountInputVerifier;
 import verifiers.OrderStringVerifier;
+import usedstrings.LogistikStrings;
 
 /**
  * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
@@ -94,7 +95,7 @@ public class EditOrder extends JPanel {
         Set<Order> rowCurrentOrder;
         if (this.orderSource != null) {
             try {
-                dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+                dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
                 rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
                 final Iterator<Order> it = rowCurrentOrder.iterator();
                 currentOrder = it.next();
@@ -163,8 +164,8 @@ public class EditOrder extends JPanel {
      */
     public void setDisplayedValue(final Order currentOrder) {
 
-        dummyLabel1 = new JLabel(" ");
-        dummyLabel2 = new JLabel(" ");
+        dummyLabel1 = new JLabel(LogistikStrings.getEmptyString());
+        dummyLabel2 = new JLabel(LogistikStrings.getEmptyString());
         infoLabel1 = new JLabel("Info: Lieferdatum nimmt nur reine ints an, dates to be implemented) ");
 
         orderHeaderLabel = new JLabel("Order Header");
@@ -173,21 +174,21 @@ public class EditOrder extends JPanel {
         orderStatusLabel = new JLabel("" + currentOrder.order_id);
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
-        firmLabel = new JLabel("Firma");
+        firmLabel = new JLabel(LogistikStrings.getFirmString());
         firmLabel.setFont(Styles.ORDER_INFO);
 
         firmField = new JTextField(currentOrder.getFirm());
         firmField.setInputVerifier(new OrderStringVerifier());
 
-        stoneTypeLabel = new JLabel("Steinart");
+        stoneTypeLabel = new JLabel(LogistikStrings.getStoneTypeString());
         stoneTypeLabel.setFont(Styles.ORDER_INFO);
 
         stoneSelection = new JComboBox<String>();
-        stoneSelection.addItem("Sandstein");
-        stoneSelection.addItem("Kalkstein");
-        stoneSelection.addItem("Granite");
-        stoneSelection.addItem("Basalte");
-        stoneSelection.addItem("Schiefer");
+        stoneSelection.addItem(LogistikStrings.getStoneTypeOneString());
+        stoneSelection.addItem(LogistikStrings.getStoneTypeTwoSring());
+        stoneSelection.addItem(LogistikStrings.getStoneTypeThreeString());
+        stoneSelection.addItem(LogistikStrings.getStoneTypeFourString());
+        stoneSelection.addItem(LogistikStrings.getStoneTypeFiveString());
 
         amountLabel = new JLabel("Menge (in Tonnen):");
         amountLabel.setFont(Styles.ORDER_INFO);
@@ -195,38 +196,32 @@ public class EditOrder extends JPanel {
         amountField = new JTextField("" + currentOrder.amount);
         amountField.setInputVerifier(new OrderAmountInputVerifier());
 
-        dueDateLabel = new JLabel("Lieferdatum ");
+        dueDateLabel = new JLabel(LogistikStrings.getDueDateString());
         dueDateLabel.setFont(Styles.ORDER_INFO);
 
         dueDateField = new JTextField("" + currentOrder.due_date);
 
-        priceLabel = new JLabel("Preis");
+        priceLabel = new JLabel(LogistikStrings.getPriceString());
         priceLabel.setFont(Styles.ORDER_INFO);
-        priceAmountLabel = new JLabel("wird berechnet");
+        priceAmountLabel = new JLabel(LogistikStrings.getPriceDescription());
         priceAmountLabel.setFont(Styles.ORDER_INFO);
 
-        phaseLabel = new JLabel("Phase");
+        phaseLabel = new JLabel(LogistikStrings.getPhaseString());
         phaseLabel.setFont(Styles.ORDER_INFO);
         phaseSelection = new JComboBox<String>();
-        phaseSelection.addItem("Planung");
-        phaseSelection.addItem("Sprengung");
-        phaseSelection.addItem("Transport");
-        phaseSelection.addItem("Geliefert");
+        phaseSelection.addItem(LogistikStrings.getPhasePlanningString());
+        phaseSelection.addItem(LogistikStrings.getPhaseBombingString());
+        phaseSelection.addItem(LogistikStrings.getPhaseTransportString());
+        phaseSelection.addItem(LogistikStrings.getPhaseDeliveredSttring());
 
-        doneLabel = new JLabel("Auftrag abgeschlossen");
+        doneLabel = new JLabel(LogistikStrings.getOrderDoneText());
         doneLabel.setFont(Styles.ORDER_INFO);
-        doneBox = new JCheckBox("Auftrag abgeschlossen");
+        doneBox = new JCheckBox(LogistikStrings.getOrderDoneText());
 
-        backButton = new JButton("Zurück");
+        backButton = new JButton(LogistikStrings.getBackString());
         backButton.addActionListener(new BackToOrderOverviewListener());
 
-        if (create != true) {
-            saveButton = new JButton("Speichern");
-        } else {
-            saveButton = new JButton("Speichern noch nicht möglich");
-        }
-        saveButton = new JButton("Speichern");
-
+        saveButton = new JButton(LogistikStrings.getSaveString());
         saveButton.addActionListener(new ActionListener() {
 
             @Override
@@ -236,9 +231,9 @@ public class EditOrder extends JPanel {
                     saveEditedOrder();
                     if (create != true) {
                         MainPanel.getNavPane().setComponentAt(6,
-                                new NavItemPanelChooser("Logistik", "ShowOrder", null));
+                                new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "ShowOrder", null));
                     } else {
-                        MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null));
+                        MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
                     }
                 } else {
                    
@@ -264,7 +259,7 @@ public class EditOrder extends JPanel {
      
             setOrder();
             try {
-                final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter("databases/DefaultCONTRACTS.xlsx");
+                final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter(LogistikStrings.getOrdersDatabaseString());
                 if (create == true) {
                     dbOrdersInserter.addNewOrder();
                 } else {

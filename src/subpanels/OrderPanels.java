@@ -10,6 +10,7 @@ import listener.HoverColorChangeListener;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import main.Styles;
+import usedstrings.LogistikStrings;
 
 /**
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -26,7 +27,7 @@ public class OrderPanels extends JPanel {
             final Integer rgbGreen, final Integer rgbBlue) {
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString() );
 
         } catch (final IOException e) {
             e.printStackTrace();

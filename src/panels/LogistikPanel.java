@@ -126,7 +126,7 @@ public class LogistikPanel extends JPanel {
 
                 EditOrder.currentOrder = new Order();
                 EditOrder.currentOrder.setOrder_id(maxOrderID);
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "CreateOrder", null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "CreateOrder", null));
 
             }
         });
@@ -156,7 +156,7 @@ public class LogistikPanel extends JPanel {
 
     public LogistikPanel(Boolean DisplayAllOrders) {
         try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
         } catch (final IOException a) {
             a.printStackTrace();
         }
