@@ -17,14 +17,14 @@ public class OrderAmountInputVerifier extends InputVerifier {
             num = Integer.parseInt(text);
         } catch (final NumberFormatException e) {
             intInput.setBackground(Color.RED);
-            intInput.setText(LogistikStrings.getonlyNumbersErrorMessage());
+            intInput.setText(LogistikStrings.getOnlyNumbersErrorMessage());
             return false;
         }
         if (num <= MAX && num >= MIN){
             intInput.setBackground(Color.WHITE);
             return true;}  
         intInput.setBackground(Color.RED);
-        intInput.setText(LogistikStrings.getwrongAmountErrorMessage());
+        intInput.setText(LogistikStrings.getWrongAmountErrorMessage());
         return false;
     }
 }

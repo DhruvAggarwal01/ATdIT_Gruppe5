@@ -36,7 +36,7 @@ public class OrderDateVerifier extends InputVerifier {
                 num = Integer.parseInt(text);
             } catch (final NumberFormatException e) {
             intInput.setBackground(Color.RED);
-            intInput.setText(LogistikStrings.getinvalidNameErrorMessae());
+            intInput.setText(LogistikStrings.getInvalidNameErrorMessae());
             return false;
         }
         if (num <= MAX && num >= MIN){

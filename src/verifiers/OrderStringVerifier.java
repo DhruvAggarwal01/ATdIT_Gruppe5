@@ -14,7 +14,7 @@ public class OrderStringVerifier extends InputVerifier {
         for (char c : chars) {
             if(!Character.isLetter(c)) {
                 firmInput.setBackground(Color.RED);
-                firmInput.setText(LogistikStrings.getonlyNumbersErrorMessage());
+                firmInput.setText(LogistikStrings.getOnlyNumbersErrorMessage());
                 return false;
             }
         }

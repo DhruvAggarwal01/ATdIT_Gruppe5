@@ -13,6 +13,7 @@ import main.NavItemPanelChooser;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import db_interaction.OrdersSorter;
+import usedstrings.LogistikStrings;
 
 /**
  * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
@@ -55,10 +56,10 @@ public class LogistikPanel extends JPanel {
         buttonPanel = new JPanel(new GridLayout(1, 3, 300, 300));
         orderPanel = new JPanel(new GridLayout(1, 3, 10, 10));
 
-        createOrder = new JButton("create Order");
-        searchButton = new JButton("search");    
+        createOrder = new JButton(LogistikStrings.getCreateOrderText());
+        searchButton = new JButton(LogistikStrings.getSearchOrderText());    
         
-        doneOrdersBox = new JCheckBox("zeige auch abgeschlossene Aufträge an");
+        doneOrdersBox = new JCheckBox(LogistikStrings.getDisplayAllText());
         
         doneOrdersBox.addActionListener(new ActionListener() {
 
@@ -67,13 +68,13 @@ public class LogistikPanel extends JPanel {
                 Boolean displayAll = doneOrdersBox.isSelected();
                 if(displayAll){
 
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "DisplayAll", null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(),LogistikStrings.getDisplayAllString(), null));
                 MainPanel.getNavPane().setSelectedIndex(6); 
                  doneOrdersBox.setSelected(true);
             }
                 else if(!displayAll){
                
-                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", null, null)); 
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null)); 
                     MainPanel.getNavPane().setSelectedIndex(6);
                 }
             }
@@ -99,19 +100,19 @@ public class LogistikPanel extends JPanel {
     public void setOrderPanels(Boolean displayAll) {
 
         if (displayAll) {
-            this.onTimeOrders = OrdersSorter.getAllOrders("onTime");
-            this.atRiskOrders = OrdersSorter.getAllOrders("atRisk");
-            this.overdueOrders = OrdersSorter.getAllOrders("overdue");
+            this.onTimeOrders = OrdersSorter.getAllOrders(LogistikStrings.getOnTimeString());
+            this.atRiskOrders = OrdersSorter.getAllOrders(LogistikStrings.getAtRiskString());
+            this.overdueOrders = OrdersSorter.getAllOrders(LogistikStrings.getOverdueString());
         } else {
-            this.onTimeOrders = OrdersSorter.getUnfinishedOrders("onTime");
-            this.atRiskOrders = OrdersSorter.getUnfinishedOrders("atRisk");
-            this.overdueOrders = OrdersSorter.getUnfinishedOrders("overdue");
+            this.onTimeOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOnTimeString());
+            this.atRiskOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getAtRiskString());
+            this.overdueOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOverdueString());
         }
 
-        onTimePanel = new OrderPanels(onTimeOrders, "Order on Time", "These Ordes are on Time!", 188, 234, 174);
-        atRiskPanel = new OrderPanels(atRiskOrders, "Order at Risk", "These Ordes are at Risk of delivering on Time!",
+        onTimePanel = new OrderPanels(onTimeOrders, LogistikStrings.getOnTimeText(), LogistikStrings.getOnTimeDescription(), 188, 234, 174);
+        atRiskPanel = new OrderPanels(atRiskOrders, LogistikStrings.getAtRiskText(), LogistikStrings.getAtRiskDescription(),
                 245, 220, 163);
-        overduePanel = new OrderPanels(overdueOrders, "Order Overdue", "These Ordes are overdue!", 252, 130, 136);
+        overduePanel = new OrderPanels(overdueOrders,LogistikStrings.getOverdueText(), LogistikStrings.getOverdueDescription(), 252, 130, 136);
     }
 
     /**
