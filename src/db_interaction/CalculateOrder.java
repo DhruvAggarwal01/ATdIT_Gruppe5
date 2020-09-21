@@ -31,4 +31,28 @@ public class CalculateOrder {
         } 
         return price;
     }
+
+    public static String calculateStatus(Order currentOrder)  {    
+        String status = "";
+        String phase = currentOrder.phase;
+        int due_date = currentOrder.due_date;
+        switch (currentOrder.phase) {
+            case "Planung":
+               
+                break;
+            case "Sprengung":
+     
+                break;
+            case "Transport":
+            
+                break;
+            case "Geliefert":
+  
+                break;
+            default:
+        
+                break;
+        } 
+        return status;
+    }
 }

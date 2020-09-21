@@ -6,7 +6,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
@@ -19,6 +18,7 @@ import db_interaction.DBOrdersInserter;
 import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import listener.BackToOrderOverviewListener;
+import listener.ResetInputFieldListener;
 import subpanels.ColorChooser;
 import subpanels.OrderPanels;
 import verifiers.OrderAmountInputVerifier;
@@ -43,13 +43,13 @@ public class EditOrder extends JPanel {
     private JLabel orderStatusLabel;
 
     private JLabel firmLabel;
-    private JTextField firmField;
+    private static JTextField firmField;
 
     private JLabel stoneTypeLabel;
     private JComboBox<String> stoneSelection;
 
     private JLabel amountLabel;
-    private JTextField amountField;
+    private static JTextField amountField;
 
     private JLabel dueDateLabel;
     private JTextField dueDateField;
@@ -64,14 +64,24 @@ public class EditOrder extends JPanel {
     private JCheckBox doneBox;
 
     private JButton backButton;
-    private JButton saveButton;
+    private static JButton saveButton;
 
-    private JLabel infoLabel1;
     int i;
     String orderSource;
+    private static boolean validFirmName;
+    private static boolean validAmount;
+    private boolean validDate;
     Boolean create;
     Boolean create2;
     public static Order currentOrder;
+
+    public static void setValidFirmName(final boolean isValid) {
+        validFirmName = isValid;
+    }
+
+    public static void setValidAmount(final boolean isValid) {
+        validAmount = isValid;
+    }
 
     /**
      * 
@@ -83,7 +93,6 @@ public class EditOrder extends JPanel {
         if (create != true) {
             currentOrder = new Order();
             this.orderSource = OrderPanels.getOrderSource();
-
             i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
         }
 
@@ -151,11 +160,8 @@ public class EditOrder extends JPanel {
         editPanel.add(backButton);
         editPanel.add(saveButton);
 
-        editPanel.add(infoLabel1);
-
         return editPanel;
     }
-
 
     /**
      * Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
@@ -166,23 +172,20 @@ public class EditOrder extends JPanel {
 
         dummyLabel1 = new JLabel(LogistikStrings.getEmptyString());
         dummyLabel2 = new JLabel(LogistikStrings.getEmptyString());
-        infoLabel1 = new JLabel("Info: Lieferdatum nimmt nur reine ints an, dates to be implemented) ");
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
-
         orderStatusLabel = new JLabel("" + currentOrder.order_id);
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
         firmLabel = new JLabel(LogistikStrings.getFirmString());
         firmLabel.setFont(Styles.ORDER_INFO);
-
         firmField = new JTextField(currentOrder.getFirm());
         firmField.setInputVerifier(new OrderStringVerifier());
+        firmField.addMouseListener(new ResetInputFieldListener());
 
         stoneTypeLabel = new JLabel(LogistikStrings.getStoneTypeString());
         stoneTypeLabel.setFont(Styles.ORDER_INFO);
-
         stoneSelection = new JComboBox<String>();
         stoneSelection.addItem(LogistikStrings.getStoneTypeOneString());
         stoneSelection.addItem(LogistikStrings.getStoneTypeTwoSring());
@@ -192,13 +195,12 @@ public class EditOrder extends JPanel {
 
         amountLabel = new JLabel("Menge (in Tonnen):");
         amountLabel.setFont(Styles.ORDER_INFO);
-
         amountField = new JTextField("" + currentOrder.amount);
         amountField.setInputVerifier(new OrderAmountInputVerifier());
+        amountField.addMouseListener(new ResetInputFieldListener());
 
         dueDateLabel = new JLabel(LogistikStrings.getDueDateString());
         dueDateLabel.setFont(Styles.ORDER_INFO);
-
         dueDateField = new JTextField("" + currentOrder.due_date);
 
         priceLabel = new JLabel(LogistikStrings.getPriceString());
@@ -222,33 +224,36 @@ public class EditOrder extends JPanel {
         backButton.addActionListener(new BackToOrderOverviewListener());
 
         saveButton = new JButton(LogistikStrings.getSaveString());
+        if (create) {
+            saveButton.setEnabled(false);
+        } 
         saveButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                
-                if (checkOrderValidity()) {
                     saveEditedOrder();
                     if (create != true) {
                         MainPanel.getNavPane().setComponentAt(6,
                                 new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "ShowOrder", null));
                     } else {
-                        MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                        MainPanel.getNavPane().setComponentAt(6,
+                                new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
                     }
-                } else {
-                   
-                    saveButton.setEnabled(false);
-                }
+                
 
             }
         });
     }
 
-    public boolean checkOrderValidity() {
-        boolean validFirmName = firmField.isValid();
-        boolean validAmount = amountField.isValid();
-        // boolean validDate = amountField.isValid();
-        return validFirmName && validAmount;
+    public static void checkOrderValidity() {
+
+        if (validFirmName && validAmount) {
+            saveButton.setEnabled(true);
+       }else{
+        saveButton.setEnabled(false);
+       }
+
+        
     }
 
     /**
@@ -256,20 +261,17 @@ public class EditOrder extends JPanel {
      * Auftrag anzulegen tbd Methode für InputValidation tbd
      */
     public void saveEditedOrder() {
-     
-            setOrder();
-            try {
-                final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter(LogistikStrings.getOrdersDatabaseString());
-                if (create == true) {
-                    dbOrdersInserter.addNewOrder();
-                } else {
-                    dbOrdersInserter.applyChangedOrderToRow();
-                }
-            } catch (final IOException ioe) {
-                ioe.printStackTrace();
+        setOrder();
+        try {
+            final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter(LogistikStrings.getOrdersDatabaseString());
+            if (create == true) {
+                dbOrdersInserter.addNewOrder();
+            } else {
+                dbOrdersInserter.applyChangedOrderToRow();
             }
-        
-
+        } catch (final IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 
     public void setOrder() {

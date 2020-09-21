@@ -106,7 +106,7 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.amount + LogistikStrings.getTonString())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getPriceString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.price +  LogistikStrings.getEuroSign())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.price + LogistikStrings.getEuroSign())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -118,10 +118,11 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.phase)).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneText())).setFont(Styles.ORDER_INFO);
-        if(currentOrder.done){
+        if (currentOrder.done) {
             showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneDescription())).setFont(Styles.ORDER_INFO);
-        }else{
-        showOrderPanel.add(new JLabel(LogistikStrings.getOrderNotDoneDescription())).setFont(Styles.ORDER_INFO);}
+        } else {
+            showOrderPanel.add(new JLabel(LogistikStrings.getOrderNotDoneDescription())).setFont(Styles.ORDER_INFO);
+        }
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -134,7 +135,8 @@ public class ShowOrder extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                MainPanel.getNavPane().setComponentAt(6,
+                        new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
                 MainPanel.getNavPane().setSelectedIndex(6);
             }
         });
@@ -142,7 +144,8 @@ public class ShowOrder extends JPanel {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(), LogistikStrings.getEditOrderString(), null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(),
+                        LogistikStrings.getEditOrderString(), null));
             }
         });
 

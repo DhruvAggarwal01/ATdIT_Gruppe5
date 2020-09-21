@@ -2,6 +2,7 @@ package verifiers;
 import usedstrings.LogistikStrings;
 import javax.swing.*;
 import java.awt.*;
+import panels.EditOrder;
 
 public class OrderAmountInputVerifier extends InputVerifier {
     
@@ -18,13 +19,19 @@ public class OrderAmountInputVerifier extends InputVerifier {
         } catch (final NumberFormatException e) {
             intInput.setBackground(Color.RED);
             intInput.setText(LogistikStrings.getOnlyNumbersErrorMessage());
+            EditOrder.setValidAmount(false);
+            EditOrder.checkOrderValidity();
             return false;
         }
         if (num <= MAX && num >= MIN){
             intInput.setBackground(Color.WHITE);
+            EditOrder.setValidAmount(true);
+            EditOrder.checkOrderValidity();
             return true;}  
         intInput.setBackground(Color.RED);
         intInput.setText(LogistikStrings.getWrongAmountErrorMessage());
+        EditOrder.setValidAmount(false);
+        EditOrder.checkOrderValidity();
         return false;
     }
 }
