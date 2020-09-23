@@ -16,6 +16,23 @@ public class AppRunner {
     public static JFrame loginFrame;
 
     /**
+     * Diese main-Methode ist die ausführende Methode für die gesamte Anwendung.
+     * 
+     * @param args obligatorischer Eingabeparameter
+     */
+    public static void main(String[] args) {
+        loginFrame = new JFrame();
+        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginFrame.setTitle("App: " + MainPanel.getAppTitle());
+        loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        loginFrame.setResizable(false);
+        loginFrame.setLocationRelativeTo(null);
+
+        loginFrame.add(createMainPanel());
+        loginFrame.setVisible(true);
+    }
+
+    /**
      * Diese Methode erzeugt im Frame ein Login-Panel mit den nötigen
      * Swing/AWT-Komponenten und sorgt dafür, dass diese richtig ausgerichtet
      * werden.
@@ -34,23 +51,6 @@ public class AppRunner {
         mainPanel.add(structurePanel, BorderLayout.CENTER);
 
         return mainPanel;
-    }
-
-    /**
-     * Diese main-Methode ist die ausführende Methode für die gesamte Anwendung.
-     * 
-     * @param args obligatorischer Eingabeparameter
-     */
-    public static void main(String[] args) {
-        loginFrame = new JFrame();
-        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        loginFrame.setTitle("App: " + MainPanel.getAppTitle());
-        loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        loginFrame.setResizable(false);
-        loginFrame.setLocationRelativeTo(null);
-
-        loginFrame.add(createMainPanel());
-        loginFrame.setVisible(true);
     }
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */

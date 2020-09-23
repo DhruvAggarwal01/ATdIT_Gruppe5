@@ -27,7 +27,6 @@ public class NavItemPanelChooser extends JPanel {
      * @param navItemName01 Navigationsitem auf Ebene 1
      * @param navItemName02 Navigationsitem auf Ebene 2
      * @param navItemName03 Navigationsitem auf Ebene 3
-     * @throws NavItemNotFoundException
      */
     public NavItemPanelChooser(final String navItemName01, final String navItemName02, final String navItemName03) {
         this.navItemName01 = navItemName01;
@@ -40,6 +39,11 @@ public class NavItemPanelChooser extends JPanel {
         try {
             chooserFunctionality();
         } catch (NavItemNotFoundException nitfe) {
+            String exceptionMessage = nitfe.getExceptionMessage();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionMessage, "Error: " + nitfe.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            this.add(nitfe.getExceptionPanel(), BorderLayout.CENTER);
+            this.setEnabled(false);
         }
     }
 
@@ -114,7 +118,7 @@ public class NavItemPanelChooser extends JPanel {
                         this.setLayout(new BorderLayout());
                         this.add(new LogistikPanel(false), BorderLayout.CENTER);
                         break;
-                        case "DisplayAll":
+                    case "DisplayAll":
                         this.setLayout(new BorderLayout());
                         this.add(new LogistikPanel(true), BorderLayout.CENTER);
                         break;

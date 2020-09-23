@@ -3,10 +3,8 @@ package listener;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.IOException;
 
-import db_interaction.DBUsersInserter;
-import db_interaction.LogInCredentialsChecker;
+import db_interaction.LogOffExecutor;
 import dialogs.SettingsDialog;
 import dialogs.ProfileDialog;
 import main.ActualApp;
@@ -65,14 +63,8 @@ public class ProfileMenuItemListener implements ActionListener {
             });
         }
         if (e.getSource() == headerPanelView.getLogOffItem()) {
-            LogInCredentialsChecker.sessionUser.setIsLoggedIn(false);
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            ActualApp.getAppWindow().dispose();
+            LogOffExecutor logOffExecutor = new LogOffExecutor();
+            logOffExecutor.logOffAndDispose();
         }
     }
 }

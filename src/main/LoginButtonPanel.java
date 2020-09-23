@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import db_interaction.LogInCredentialsChecker;
+import exceptions.LoginException;
 import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
@@ -63,7 +64,7 @@ public class LoginButtonPanel extends JPanel {
         pswdForgottenButton.addActionListener(lcfListener);
 
         possibleErrorMessageLabel = new JLabel(
-                "                                                                                              ");
+                "                                                                                                                 ");
         possibleErrorMessageLabel.setFont(Styles.ERROR_MSG_FONT);
     }
 
@@ -91,9 +92,13 @@ public class LoginButtonPanel extends JPanel {
         String password = String.valueOf(passwordField.getPassword());
 
         LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
-        log.setSessionUser();
-        possibleErrorMessageLabel.setText(log.possibleErrorString);
-
+        try {
+            log.setSessionUser();
+        } catch (LoginException le) {
+            String exceptionMessage = le.getExceptionMessage();
+            possibleErrorMessageLabel.setText(exceptionMessage);
+            return false;
+        }
         return true;
     }
 

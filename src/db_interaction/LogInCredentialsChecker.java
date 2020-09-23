@@ -18,13 +18,11 @@ import exceptions.LoginException;
  */
 public class LogInCredentialsChecker {
 
-    public String possibleErrorString;
-
     DBUsersExtractor dbUsersExtractor;
     Set<Integer> rowIndexesContainingUsername;
     Set<Integer> rowIndexesContainingPassword;
     Set<Integer> rowIndexesMatchingCredentials;
-    public static User sessionUser;
+    public static User sessionUser = new User();
 
     private String username, password;
 
@@ -44,7 +42,14 @@ public class LogInCredentialsChecker {
     /**
      * 
      */
-    public User getLoggedInUser() {
+    public void setSessionUser() throws LoginException {
+        sessionUser = getLoggedInUser();
+    }
+
+    /**
+     * 
+     */
+    public User getLoggedInUser() throws LoginException {
         try {
             if (isCredentialsMatching()) {
                 Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
@@ -52,19 +57,11 @@ public class LogInCredentialsChecker {
 
                 return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
             } else {
-                possibleErrorString = "Der Benutzername und/oder das Kennwort ist ungültig";
                 throw new LoginException(1);
             }
-        } catch (LoginException | IllegalArgumentException | IllegalAccessException e) {
+        } catch (IllegalArgumentException | IllegalAccessException e) {
         }
         return null;
-    }
-
-    /**
-     * 
-     */
-    public void setSessionUser() {
-        sessionUser = getLoggedInUser();
     }
 
     /**
