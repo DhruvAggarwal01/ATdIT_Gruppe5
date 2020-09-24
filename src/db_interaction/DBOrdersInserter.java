@@ -46,8 +46,7 @@ public class DBOrdersInserter {
             Set<Integer> rowIndexesContainingOrder_Id = dbOrdersExtractor.getFilteredRowsIndexes("order_id",
                     EditOrder.currentOrder.getOrder_id());
 
-            Order order = new Order();
-            order = EditOrder.currentOrder;
+            Order order = EditOrder.currentOrder;
 
             if (rowIndexesContainingOrder_Id.size() == 1) {
                 Iterator<Integer> setOfRowsIterator = rowIndexesContainingOrder_Id.iterator();
@@ -55,6 +54,7 @@ public class DBOrdersInserter {
                         .getRow(setOfRowsIterator.next());
                 Iterator<Cell> cellIterator = sessionUserRowBefore.cellIterator();
 
+                //tbd:Kommentar
                 Field[] declaredFields = order.getClass().getDeclaredFields();
                 int i = 0;
                 while (cellIterator.hasNext() && i < declaredFields.length) {

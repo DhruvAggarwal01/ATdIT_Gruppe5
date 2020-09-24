@@ -29,7 +29,7 @@ public class NavigationPane extends JTabbedPane {
         this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
         this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
-        // this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
+        this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
         this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
         this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
         this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
