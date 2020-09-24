@@ -1,4 +1,6 @@
 package db_interaction;
+import java.util.Date;
+
 
 
 public class CalculateOrder {
@@ -36,6 +38,7 @@ public class CalculateOrder {
         String status = "";
         String phase = currentOrder.phase;
         int due_date = currentOrder.due_date;
+        Date actualDate = new Date();
         switch (currentOrder.phase) {
             case "Planung":
                
