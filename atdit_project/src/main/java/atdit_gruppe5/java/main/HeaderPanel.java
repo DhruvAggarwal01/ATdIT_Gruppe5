@@ -1,4 +1,4 @@
-package main;
+package main.java.atdit_gruppe5.java.main;
 
 import java.awt.*;
 import java.awt.event.*;
