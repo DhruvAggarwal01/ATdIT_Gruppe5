@@ -78,9 +78,14 @@ public class Styles {
    * Einsatzmöglichkeit: Font für Bestätigungsbuttons
    */
   public final static Font ORDER_INFO_HEAD = new Font("Calibri", Font.BOLD, 24);
+
   /**
-   * Einsatzmöglichkeit: Font für Fehlermdelungen
+   * Einsatzmöglichkeit: Font für Fehlermeldungen
    */
   public final static Font ERROR_MSG_FONT = new Font("Calibri", Font.BOLD, 12);
 
+  /**
+   * Einsatzmöglichkeit: Font für Fehlermeldungen
+   */
+  public final static Font ERROR_STACKTRACE_FONT = new Font("Calibri", Font.BOLD, 10);
 }

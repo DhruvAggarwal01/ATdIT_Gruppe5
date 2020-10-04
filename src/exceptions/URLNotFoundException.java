@@ -13,7 +13,7 @@ public class URLNotFoundException extends AbstractCustomException {
     @Override
     public String getExceptionMessage() {
         return "URL '" + urlString
-                + "' konnte nicht gefunden werden. Prüfen Sie, ob Ihr Internet korrekt eingeschaltet ist.";
+                + "' konnte nicht gefunden werden. Bitte überprüfen Sie eventuell Ihre Internetverbindung.";
     }
 
 }
