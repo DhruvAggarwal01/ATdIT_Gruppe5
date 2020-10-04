@@ -127,8 +127,6 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         this.add(contentPanel);
     }
 
-    
-
     public JToggleButton getThemeToggleButton() {
         return themeToggleButton;
     }

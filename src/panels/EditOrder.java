@@ -3,7 +3,6 @@ package panels;
 import java.awt.*;
 import java.awt.event.*;
 
-
 import javax.swing.*;
 
 import java.io.*;
@@ -226,20 +225,19 @@ public class EditOrder extends JPanel {
         saveButton = new JButton(LogistikStrings.getSaveString());
         if (create) {
             saveButton.setEnabled(false);
-        } 
+        }
         saveButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                    saveEditedOrder();
-                    if (create != true) {
-                        MainPanel.getNavPane().setComponentAt(6,
-                                new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "ShowOrder", null));
-                    } else {
-                        MainPanel.getNavPane().setComponentAt(6,
-                                new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
-                    }
-                
+                saveEditedOrder();
+                if (create != true) {
+                    MainPanel.getNavPane().setComponentAt(6,
+                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "ShowOrder", null));
+                } else {
+                    MainPanel.getNavPane().setComponentAt(6,
+                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                }
 
             }
         });
@@ -249,11 +247,10 @@ public class EditOrder extends JPanel {
 
         if (validFirmName && validAmount) {
             saveButton.setEnabled(true);
-       }else{
-        saveButton.setEnabled(false);
-       }
+        } else {
+            saveButton.setEnabled(false);
+        }
 
-        
     }
 
     /**
@@ -283,8 +280,6 @@ public class EditOrder extends JPanel {
         currentOrder.setDone(doneBox.isSelected());
         currentOrder.setPrice(CalculateOrder.calculatePrice(currentOrder));
     }
-
-    
 
     public JPanel getOrderPanel() {
         return editPanel;

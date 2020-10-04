@@ -1,8 +1,10 @@
 package verifiers;
-import usedstrings.LogistikStrings;
-import javax.swing.*;
+
 import java.awt.*;
+import javax.swing.*;
+
 import panels.EditOrder;
+import usedstrings.LogistikStrings;
 
 public class OrderStringVerifier extends InputVerifier {
 
@@ -13,7 +15,7 @@ public class OrderStringVerifier extends InputVerifier {
         final char[] chars = firmName.toCharArray();
 
         for (final char c : chars) {
-            if(!Character.isLetter(c)) {
+            if (!Character.isLetter(c)) {
                 firmInput.setBackground(Color.RED);
                 firmInput.setText(LogistikStrings.getInvalidNameErrorMessae());
                 EditOrder.setValidFirmName(false);
@@ -26,5 +28,5 @@ public class OrderStringVerifier extends InputVerifier {
         EditOrder.checkOrderValidity();
         return true;
     }
-       
+
 }

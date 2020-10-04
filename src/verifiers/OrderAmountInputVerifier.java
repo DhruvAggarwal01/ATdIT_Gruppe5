@@ -1,11 +1,13 @@
 package verifiers;
-import usedstrings.LogistikStrings;
-import javax.swing.*;
+
 import java.awt.*;
+import javax.swing.*;
+
 import panels.EditOrder;
+import usedstrings.LogistikStrings;
 
 public class OrderAmountInputVerifier extends InputVerifier {
-    
+
     final int MIN = 0;
     final int MAX = 1000;
 
@@ -23,11 +25,12 @@ public class OrderAmountInputVerifier extends InputVerifier {
             EditOrder.checkOrderValidity();
             return false;
         }
-        if (num <= MAX && num >= MIN){
+        if (num <= MAX && num >= MIN) {
             intInput.setBackground(Color.WHITE);
             EditOrder.setValidAmount(true);
             EditOrder.checkOrderValidity();
-            return true;}  
+            return true;
+        }
         intInput.setBackground(Color.RED);
         intInput.setText(LogistikStrings.getWrongAmountErrorMessage());
         EditOrder.setValidAmount(false);

@@ -3,7 +3,8 @@ package subpanels;
 import java.awt.*;
 
 /**
- * Klasse, um die koordinaten von Rechtecken auf der QuarryMap speichern zu können.
+ * Klasse, um die koordinaten von Rechtecken auf der QuarryMap speichern zu
+ * können.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -22,7 +23,6 @@ public class Rectangle {
         y = (int) p.getY();
     }
 
-    
     /**
      * Getter-Methode für die Koordinate x
      * 

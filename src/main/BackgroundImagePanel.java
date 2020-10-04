@@ -1,8 +1,8 @@
 package main;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.Graphics;
+import javax.swing.*;
 
 /**
  * Diese Klasse beinhaltet das Hintergrundbild für den Login Screen und zeigt

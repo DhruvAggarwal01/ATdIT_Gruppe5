@@ -10,10 +10,10 @@ public class EditOrderTest {
 
   @Before
   public void init() {
-    editOrderTest= new EditOrder(false);
+    editOrderTest = new EditOrder(false);
   }
 
-    @Test
+  @Test
   public void testOrderPanelContainsPanels() {
     Assert.assertEquals("Looks how many components where added", 12, editOrderTest.getOrderPanel().getComponentCount());
   }

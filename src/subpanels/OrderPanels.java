@@ -27,7 +27,7 @@ public class OrderPanels extends JPanel {
             final Integer rgbGreen, final Integer rgbBlue) {
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString() );
+            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
 
         } catch (final IOException e) {
             e.printStackTrace();
@@ -75,8 +75,6 @@ public class OrderPanels extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
 
     }
-
-    
 
     public static String setOrderSource(String source) {
         return sourceOrder = source;

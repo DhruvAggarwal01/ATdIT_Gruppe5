@@ -1,14 +1,12 @@
 package subpanels;
 
 import java.awt.*;
-
 import javax.swing.*;
 
 import db_interaction.Order;
 
-
 public class ColorChooser {
-    
+
     /**
      * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
      * 
@@ -33,5 +31,4 @@ public class ColorChooser {
         }
     }
 
-    
 }

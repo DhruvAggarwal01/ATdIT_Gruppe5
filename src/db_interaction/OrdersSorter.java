@@ -3,8 +3,6 @@ package db_interaction;
 import java.io.*;
 import java.util.*;
 
-
-
 public class OrdersSorter {
 
     static DBOrdersExtractor dbOrderExtractor;

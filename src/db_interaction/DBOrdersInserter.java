@@ -54,7 +54,7 @@ public class DBOrdersInserter {
                         .getRow(setOfRowsIterator.next());
                 Iterator<Cell> cellIterator = sessionUserRowBefore.cellIterator();
 
-                //tbd:Kommentar
+                // tbd:Kommentar
                 Field[] declaredFields = order.getClass().getDeclaredFields();
                 int i = 0;
                 while (cellIterator.hasNext() && i < declaredFields.length) {

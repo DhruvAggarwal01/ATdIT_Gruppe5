@@ -10,20 +10,23 @@ public class LogistikPanelTest {
 
     @Before
     public void init() {
-        logistikPanelTest= new LogistikPanel(false);
+        logistikPanelTest = new LogistikPanel(false);
     }
-  
-    //   @Test
+
+    // @Test
     // public void testButtonPanelContainsComponents() {
-    //   Assert.assertEquals("Looks how many components where added",2,logistikPanelTest.getButtonPanel().getComponentCount());
+    // Assert.assertEquals("Looks how many components where
+    // added",2,logistikPanelTest.getButtonPanel().getComponentCount());
     // }
     // @Test
     // public void testOrderPanelContainsComponents() {
-    //   Assert.assertEquals("Looks how many components where added", 3, logistikPanelTest.getOrderPanel().getComponentCount());
+    // Assert.assertEquals("Looks how many components where added", 3,
+    // logistikPanelTest.getOrderPanel().getComponentCount());
     // }
     // @Test
     // public void testLogistikPanelContainsComponents(){
-    //     Assert.assertEquals("Looks how many components where added", 2, logistikPanelTest.getComponentCount()); 
+    // Assert.assertEquals("Looks how many components where added", 2,
+    // logistikPanelTest.getComponentCount());
     // }
 
 }

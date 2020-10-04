@@ -16,7 +16,7 @@ public class IdleIntervalls extends JPanel {
     private static final long serialVersionUID = -934405642812343386L;
 
     /**
-     * Durch überschreiben der paintComponent Methode kann man das Hintergrundbild, 
+     * Durch überschreiben der paintComponent Methode kann man das Hintergrundbild,
      * welches vorher von der Library geholt wird, anzeigen lassen.
      */
     protected void paintComponent(Graphics g) {
