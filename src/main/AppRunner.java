@@ -53,7 +53,7 @@ public class AppRunner {
         return mainPanel;
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Login-Frame
      * 

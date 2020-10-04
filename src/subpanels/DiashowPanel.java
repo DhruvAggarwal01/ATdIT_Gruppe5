@@ -58,7 +58,7 @@ public class DiashowPanel extends JPanel {
         this.add(diashowLabel, BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Diashowbilder-Zähler
      * 

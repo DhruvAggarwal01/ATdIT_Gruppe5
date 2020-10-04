@@ -52,7 +52,7 @@ public class OverviewPanel extends JPanel {
         this.add(diashow, BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für das Wettervorhersage-Panel
      * 

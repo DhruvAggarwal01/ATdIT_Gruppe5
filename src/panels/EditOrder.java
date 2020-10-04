@@ -284,7 +284,7 @@ public class EditOrder extends JPanel {
         currentOrder.setPrice(CalculateOrder.calculatePrice(currentOrder));
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
 
     public JPanel getOrderPanel() {
         return editPanel;

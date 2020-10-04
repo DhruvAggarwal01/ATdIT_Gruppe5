@@ -49,7 +49,6 @@ public class Order {
         return Objects.equals(order_id, navIPC.order_id);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für die Order_id
      * 

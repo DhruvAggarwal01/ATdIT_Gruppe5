@@ -118,7 +118,7 @@ public class QuarryMap extends JPanel {
     // g2.drawRect(liste.get(0).getX() - 5, liste.get(0).getY() - 5, 10, 10);
     // }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Setter-Methode für den Zoomfaktor
      * 

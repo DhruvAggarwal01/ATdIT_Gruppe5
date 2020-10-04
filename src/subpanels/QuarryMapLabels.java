@@ -30,7 +30,7 @@ public class QuarryMapLabels extends JPanel {
         this.add(panel, BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für das Panel
      * 

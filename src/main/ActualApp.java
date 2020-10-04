@@ -50,7 +50,7 @@ public class ActualApp {
         startTimeoutTimer(timeoutDelay);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Timeout-Timer
      * 

@@ -22,7 +22,7 @@ public class Rectangle {
         y = (int) p.getY();
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für die Koordinate x
      * 

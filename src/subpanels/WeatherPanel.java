@@ -136,7 +136,7 @@ public class WeatherPanel extends JPanel {
         return map;
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Wettervorhersage-Titel
      * 

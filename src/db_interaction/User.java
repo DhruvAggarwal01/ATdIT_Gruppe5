@@ -57,7 +57,7 @@ public class User {
         return Objects.hash(personnel_id);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für die Personal-Id
      * 

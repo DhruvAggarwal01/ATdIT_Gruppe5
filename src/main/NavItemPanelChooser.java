@@ -172,7 +172,7 @@ public class NavItemPanelChooser extends JPanel {
         return Objects.hash(navItemName01, navItemName02, navItemName03);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Panel-Explorer-Titel
      * 

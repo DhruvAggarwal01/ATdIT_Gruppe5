@@ -102,7 +102,7 @@ public class LoginButtonPanel extends JPanel {
         return true;
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für das Text-Eingabefeld "Benutzername"
      * 

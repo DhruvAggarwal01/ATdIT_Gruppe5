@@ -46,7 +46,7 @@ public class ReportingPanel extends JPanel {
         this.add(mockLabel, BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
 
     public JPanel getReportingHeaderRowPanel() {
         return reportingHeaderRowPanel;

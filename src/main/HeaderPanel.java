@@ -171,7 +171,7 @@ public class HeaderPanel extends JPanel {
         return new JLabel(logoIIcon, horizontalAlignment);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für das Headertitel-Label
      * 

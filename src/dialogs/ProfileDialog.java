@@ -239,7 +239,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
 
     public JButton getResetEntriesButton() {
         return resetEntriesButton;

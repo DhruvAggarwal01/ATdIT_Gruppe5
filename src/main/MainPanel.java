@@ -34,7 +34,7 @@ public class MainPanel extends JFrame {
         c.add(navPane, BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
     /**
      * Getter-Methode für den Apptitel
      * 

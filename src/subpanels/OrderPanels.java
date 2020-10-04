@@ -76,7 +76,7 @@ public class OrderPanels extends JPanel {
 
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
+    
 
     public static String setOrderSource(String source) {
         return sourceOrder = source;
