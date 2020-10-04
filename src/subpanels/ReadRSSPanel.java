@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.*;
 import javax.swing.*;
 
+import exceptions.URLNotFoundException;
 import listener.HyperlinkMouseAdapter;
 import main.MainPanel;
 import main.NavItemPanelChooser;
@@ -30,7 +31,7 @@ public class ReadRSSPanel extends JPanel {
      * @param newsTitle Nachrichten-Panel-Titel
      * @param rssUrl    URL zum RSS-Nachrichtenfeed
      */
-    public ReadRSSPanel(String newsTitle, String rssUrl) {
+    public ReadRSSPanel(String newsTitle, String rssUrl) throws URLNotFoundException {
         this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
@@ -88,7 +89,7 @@ public class ReadRSSPanel extends JPanel {
      * @param rssUrl URL des RSS Feed
      * @return gelesener RSS Feed als String
      */
-    public String readRSSFeed(String rssUrl) {
+    public String readRSSFeed(String rssUrl) throws URLNotFoundException {
         try {
             URL rssUrlAddress = new URL(rssUrl);
             BufferedReader in = new BufferedReader(new InputStreamReader(rssUrlAddress.openStream()));
@@ -108,9 +109,8 @@ public class ReadRSSPanel extends JPanel {
             in.close();
             return sourceCode;
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new URLNotFoundException(rssUrl);
         }
-        return null;
     }
 
     /**

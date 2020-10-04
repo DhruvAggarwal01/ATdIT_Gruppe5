@@ -3,6 +3,7 @@ package panels;
 import java.awt.*;
 import javax.swing.*;
 
+import exceptions.URLNotFoundException;
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
@@ -29,17 +30,23 @@ public class OverviewPanel extends JPanel {
 
         smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
 
-        // 1. Panel: News
-        newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
-                "https://www.wochenblatt-reporter.de/albersweiler/rss");
+        try {
+            newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
+                    "https://www.wochenblatt-reporter.de/albersweiler/rss");
 
-        // 2. Panel: Wetter
-        weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
-        // 3. Panel:
+            weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+
+            smallPanels.add(newsPanel);
+            smallPanels.add(weatherPanel);
+        } catch (URLNotFoundException unfe) {
+            String exceptionMessage = unfe.getExceptionMessage();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionMessage, "Error: " + unfe.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            this.add(unfe.getExceptionPanel(), BorderLayout.CENTER);
+            this.setEnabled(false);
+        }
+
         diashow = new DiashowPanel("Impressionen vom Steinbruch");
-
-        smallPanels.add(newsPanel);
-        smallPanels.add(weatherPanel);
 
         this.add(smallPanels, BorderLayout.NORTH);
         this.add(diashow, BorderLayout.CENTER);
