@@ -4,7 +4,7 @@ package exceptions;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class LoginException extends Exception {
+public class LoginException extends AbstractCustomException {
 
     private static final long serialVersionUID = -7778912288639592607L;
 
@@ -26,7 +26,7 @@ public class LoginException extends Exception {
         }
     }
 
-    public String getExceptionMessage(){
+    public String getExceptionMessage() {
         return exceptionMessage;
     }
 }

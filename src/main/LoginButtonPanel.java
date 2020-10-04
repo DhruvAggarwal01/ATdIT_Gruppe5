@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import db_interaction.LogInCredentialsChecker;
 import exceptions.LoginException;
+import exceptions.NoneOfUsersBusinessException;
 import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
@@ -91,9 +92,14 @@ public class LoginButtonPanel extends JPanel {
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
 
-        LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
         try {
+            LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
             log.setSessionUser();
+        } catch (NoneOfUsersBusinessException noube) {
+            JPanel exceptionPanel = noube.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
         } catch (LoginException le) {
             String exceptionMessage = le.getExceptionMessage();
             possibleErrorMessageLabel.setText(exceptionMessage);
@@ -102,7 +108,6 @@ public class LoginButtonPanel extends JPanel {
         return true;
     }
 
-    
     /**
      * Getter-Methode für das Text-Eingabefeld "Benutzername"
      * 

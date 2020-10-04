@@ -39,10 +39,10 @@ public class NavItemPanelChooser extends JPanel {
         try {
             chooserFunctionality();
         } catch (NavItemNotFoundException nitfe) {
-            String exceptionMessage = nitfe.getExceptionMessage();
-            JOptionPane.showMessageDialog(new JFrame(), exceptionMessage, "Error: " + nitfe.getClass(),
+            JPanel exceptionPanel = nitfe.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + nitfe.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-            this.add(nitfe.getExceptionPanel(), BorderLayout.CENTER);
+            this.add(exceptionPanel, BorderLayout.CENTER);
             this.setEnabled(false);
         }
     }
@@ -172,7 +172,6 @@ public class NavItemPanelChooser extends JPanel {
         return Objects.hash(navItemName01, navItemName02, navItemName03);
     }
 
-    
     /**
      * Getter-Methode für den Panel-Explorer-Titel
      * 

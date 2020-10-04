@@ -2,7 +2,7 @@ package test.subpanels;
 
 import org.junit.*;
 
-import exceptions.URLNotFoundException;
+import exceptions.URLException;
 import subpanels.WeatherPanel;
 
 public class WeatherPanelTest {
@@ -10,7 +10,7 @@ public class WeatherPanelTest {
     WeatherPanel weatherPanelTest;
 
     @Before
-    public void init() throws URLNotFoundException {
+    public void init() throws URLException {
         weatherPanelTest = new WeatherPanel("weatherForecastTitle");
     }
 

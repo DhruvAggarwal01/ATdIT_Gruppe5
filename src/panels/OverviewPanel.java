@@ -3,7 +3,7 @@ package panels;
 import java.awt.*;
 import javax.swing.*;
 
-import exceptions.URLNotFoundException;
+import exceptions.URLException;
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
@@ -30,20 +30,25 @@ public class OverviewPanel extends JPanel {
 
         smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
 
+        // Abfangen etwaiger Abruffehler (falsche URL/ schlechte Internetverbindung)
         try {
             newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
                     "https://www.wochenblatt-reporter.de/albersweiler/rss");
-
-            weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
-
             smallPanels.add(newsPanel);
-            smallPanels.add(weatherPanel);
-        } catch (URLNotFoundException unfe) {
-            String exceptionMessage = unfe.getExceptionMessage();
-            JOptionPane.showMessageDialog(new JFrame(), exceptionMessage, "Error: " + unfe.getClass(),
+        } catch (URLException ue) {
+            JPanel exceptionPanel = ue.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + ue.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-            this.add(unfe.getExceptionPanel(), BorderLayout.CENTER);
-            this.setEnabled(false);
+            smallPanels.add(exceptionPanel);
+        }
+        try {
+            weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+            smallPanels.add(weatherPanel);
+        } catch (URLException ue) {
+            JPanel exceptionPanel = ue.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + ue.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            smallPanels.add(exceptionPanel);
         }
 
         diashow = new DiashowPanel("Impressionen vom Steinbruch");
@@ -52,7 +57,6 @@ public class OverviewPanel extends JPanel {
         this.add(diashow, BorderLayout.CENTER);
     }
 
-    
     /**
      * Getter-Methode für das Wettervorhersage-Panel
      * 

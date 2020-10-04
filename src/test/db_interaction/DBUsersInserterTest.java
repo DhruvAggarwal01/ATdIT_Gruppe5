@@ -1,27 +1,26 @@
 package test.db_interaction;
 
 import java.io.IOException;
+import org.junit.*;
 
 import org.apache.poi.ss.usermodel.Row;
-import org.junit.*;
 
 import db_interaction.DBUsersExtractor;
 import db_interaction.DBUsersInserter;
 import db_interaction.LogInCredentialsChecker;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 public class DBUsersInserterTest {
 
-    public void executeDBUsersInserter() {
-        try {
-            DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-            dbUsersInserter.applyChangedSessionUserToRow();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void executeDBUsersInserter() throws DatabaseConnectException, NoneOfUsersBusinessException {
+        DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+        dbUsersInserter.applyChangedSessionUserToRow();
     }
 
     @Test
-    public void testUserChangesAppliedToDatabase() throws IOException {
+    public void testUserChangesAppliedToDatabase()
+            throws IOException, DatabaseConnectException, NoneOfUsersBusinessException {
         LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
         LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();

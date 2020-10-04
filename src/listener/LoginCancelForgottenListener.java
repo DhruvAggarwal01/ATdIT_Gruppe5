@@ -1,10 +1,13 @@
 package listener;
 
+import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
+import javax.swing.*;
 
 import db_interaction.DBUsersInserter;
 import db_interaction.LogInCredentialsChecker;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 import main.ActualApp;
 import main.AppRunner;
 import main.LoginButtonPanel;
@@ -44,11 +47,17 @@ public class LoginCancelForgottenListener implements ActionListener {
             if (loginButtonPanelView.authenticate()) {
                 AppRunner.getLoginFrame().dispose();
                 LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
+                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                 try {
-                    DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                     dbUsersInserter.applyChangedSessionUserToRow();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
+                } catch (DatabaseConnectException dce) {
+                    JPanel exceptionPanel = dce.getExceptionPanel();
+                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (NoneOfUsersBusinessException noube) {
+                    JPanel exceptionPanel = noube.getExceptionPanel();
+                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                            JOptionPane.ERROR_MESSAGE);
                 }
                 ActualApp.startApp();
             } else {

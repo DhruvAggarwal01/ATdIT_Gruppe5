@@ -1,5 +1,7 @@
 package db_interaction;
 
+import javax.swing.*;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -9,6 +11,9 @@ import java.util.Set;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
+
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
@@ -24,11 +29,11 @@ public class DBUsersInserter {
     public FileOutputStream usersFileOut;
     public Workbook usersWorkbook;
 
-    public DBUsersInserter(String excelFileName) throws IOException {
+    public DBUsersInserter(String excelFileName) {
         this.excelFileName = excelFileName;
     }
 
-    public void applyChangedSessionUserToRow() {
+    public void applyChangedSessionUserToRow() throws DatabaseConnectException, NoneOfUsersBusinessException {
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor(excelFileName);
             Set<Integer> rowIndexesContainingPersonnel_id = dbUsersExtractor.getFilteredRowsIndexes("personnel_id",
@@ -67,8 +72,14 @@ public class DBUsersInserter {
             dbUsersExtractor.usersWorkbook.write(outFile);
             outFile.close();
             dbUsersExtractor.usersWorkbook.close();
-        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException iae) {
+            throw new NoneOfUsersBusinessException();
+        } catch (IOException ioe) {
+            throw new DatabaseConnectException(1);
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

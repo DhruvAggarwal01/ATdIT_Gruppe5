@@ -1,11 +1,14 @@
 package db_interaction;
 
-import java.io.IOException;
+import javax.swing.*;
+
 import java.util.*;
 
 import org.apache.poi.ss.usermodel.Row;
 
+import exceptions.DatabaseConnectException;
 import exceptions.LoginException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse überprüft die Eingabe im Welcome-Screen
@@ -34,47 +37,48 @@ public class LogInCredentialsChecker {
         this.password = password;
         try {
             dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
      * 
      */
-    public void setSessionUser() throws LoginException {
-        sessionUser = getLoggedInUser();
-    }
-
-    /**
-     * 
-     */
-    public User getLoggedInUser() throws LoginException {
+    public void setSessionUser() throws LoginException, NoneOfUsersBusinessException {
         try {
-            if (isCredentialsMatching()) {
-                Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
-                Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
-
-                return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
-            } else {
-                throw new LoginException(1);
-            }
-        } catch (IllegalArgumentException | IllegalAccessException e) {
+            sessionUser = getLoggedInUser();
+        } catch (IllegalAccessException iae) {
+            throw new NoneOfUsersBusinessException();
         }
-        return null;
+    }
+
+    /**
+     * 
+     */
+    public User getLoggedInUser() throws LoginException, NoneOfUsersBusinessException, IllegalAccessException {
+        if (isCredentialsMatching()) {
+            Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
+            Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
+            try {
+                return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
+            } catch (IllegalAccessException iae) {
+                throw new NoneOfUsersBusinessException();
+            }
+        } else {
+            throw new LoginException(1);
+        }
     }
 
     /**
      * 
      * @return
      */
-    public boolean isCredentialsMatching() {
-        try {
-            rowIndexesContainingUsername = dbUsersExtractor.getFilteredRowsIndexes("username", username);
-            rowIndexesContainingPassword = dbUsersExtractor.getFilteredRowsIndexes("password", password);
-        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
-        }
+    public boolean isCredentialsMatching() throws IllegalAccessException {
+        rowIndexesContainingUsername = dbUsersExtractor.getFilteredRowsIndexes("username", username);
+        rowIndexesContainingPassword = dbUsersExtractor.getFilteredRowsIndexes("password", password);
         rowIndexesContainingUsername.retainAll(rowIndexesContainingPassword);
         rowIndexesMatchingCredentials = rowIndexesContainingUsername; // Umbenennung
         return rowIndexesMatchingCredentials.size() == 1;

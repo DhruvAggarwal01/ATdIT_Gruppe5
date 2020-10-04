@@ -87,5 +87,5 @@ public class Styles {
   /**
    * Einsatzmöglichkeit: Font für Fehlermeldungen
    */
-  public final static Font ERROR_STACKTRACE_FONT = new Font("Calibri", Font.BOLD, 10);
+  public final static Font ERROR_STACKTRACE_FONT = new Font("Calibri", Font.PLAIN, 12);
 }

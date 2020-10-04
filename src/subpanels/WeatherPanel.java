@@ -10,7 +10,7 @@ import java.util.*;
 import com.google.gson.*;
 import com.google.gson.reflect.*;
 
-import exceptions.URLNotFoundException;
+import exceptions.URLException;
 import listener.HyperlinkMouseAdapter;
 import main.Styles;
 
@@ -35,7 +35,7 @@ public class WeatherPanel extends JPanel {
      * 
      * @param weatherForecastTitle Wettervorhersage-Panel-Titel
      */
-    public WeatherPanel(String weatherForecastTitle) throws URLNotFoundException {
+    public WeatherPanel(String weatherForecastTitle) throws URLException {
         this.weatherForecastTitle = weatherForecastTitle;
         this.setLayout(new BorderLayout());
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 5, 5, 20),
@@ -68,8 +68,8 @@ public class WeatherPanel extends JPanel {
             this.add(weatherForecastTitleLabel, BorderLayout.NORTH);
             this.add(weatherForecastArea, BorderLayout.CENTER);
 
-        } catch (IOException unfe) {
-            throw new URLNotFoundException(urlString);
+        } catch (IOException ue) {
+            throw new URLException(urlString, 0);
         }
     }
 
@@ -136,7 +136,6 @@ public class WeatherPanel extends JPanel {
         return map;
     }
 
-    
     /**
      * Getter-Methode für den Wettervorhersage-Titel
      * 

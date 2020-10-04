@@ -123,7 +123,7 @@ public class DBOrdersExtractor {
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
-    public Order getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException {
+    public Order getRowConvertedToUser(Row toBeConvertedRow) throws IllegalAccessException, IllegalArgumentException {
         Order order = new Order();
         Field[] declaredFields = order.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
@@ -133,25 +133,13 @@ public class DBOrdersExtractor {
             Cell cell = cellIterator.next();
             switch (cell.getCellType()) {
                 case NUMERIC:
-                    try {
-                        declaredFields[i].set(order, (int) cell.getNumericCellValue());
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+                    declaredFields[i].set(order, (int) cell.getNumericCellValue());
                     break;
                 case STRING:
-                    try {
-                        declaredFields[i].set(order, cell.getStringCellValue());
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+                    declaredFields[i].set(order, cell.getStringCellValue());
                     break;
                 case BOOLEAN:
-                    try {
-                        declaredFields[i].set(order, cell.getBooleanCellValue());
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+                    declaredFields[i].set(order, cell.getBooleanCellValue());
                 default:
                     break;
             }

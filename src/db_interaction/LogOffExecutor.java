@@ -1,19 +1,16 @@
 package db_interaction;
 
-import java.io.IOException;
-
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 import main.ActualApp;
 
 public class LogOffExecutor {
 
-    public void logOffAndDispose() {
+    public void logOffAndDispose() throws DatabaseConnectException, NoneOfUsersBusinessException {
         LogInCredentialsChecker.sessionUser.setIsLoggedIn(false);
-        try {
-            DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-            dbUsersInserter.applyChangedSessionUserToRow();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+        dbUsersInserter.applyChangedSessionUserToRow();
+
         ActualApp.getAppWindow().dispose();
     }
 

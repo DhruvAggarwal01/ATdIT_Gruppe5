@@ -6,6 +6,8 @@ import javax.swing.*;
 
 import db_interaction.LogOffExecutor;
 import dialogs.SettingsDialog;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 import dialogs.ProfileDialog;
 import main.ActualApp;
 import main.HeaderPanel;
@@ -64,7 +66,17 @@ public class ProfileMenuItemListener implements ActionListener {
         }
         if (e.getSource() == headerPanelView.getLogOffItem()) {
             LogOffExecutor logOffExecutor = new LogOffExecutor();
-            logOffExecutor.logOffAndDispose();
+            try {
+                logOffExecutor.logOffAndDispose();
+            } catch (DatabaseConnectException dce) {
+                JPanel exceptionPanel = dce.getExceptionPanel();
+                JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (NoneOfUsersBusinessException noube) {
+                JPanel exceptionPanel = noube.getExceptionPanel();
+                JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }

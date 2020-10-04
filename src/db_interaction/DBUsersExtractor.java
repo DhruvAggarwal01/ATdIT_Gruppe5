@@ -9,6 +9,8 @@ import java.util.Set;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import exceptions.DatabaseConnectException;
+
 /**
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
  * Daten aus der Users-Datenbank nach bestimmten Kriterien (nach Nutzername,
@@ -22,11 +24,15 @@ public class DBUsersExtractor {
     /**
      * 
      * @param excelFileName
-     * @throws IOException
+     * @throws DatabaseConnectException
      */
-    public DBUsersExtractor(String excelFileName) throws IOException {
-        usersFile = new FileInputStream(excelFileName);
-        usersWorkbook = new XSSFWorkbook(usersFile);
+    public DBUsersExtractor(String excelFileName) throws DatabaseConnectException {
+        try {
+            usersFile = new FileInputStream(excelFileName);
+            usersWorkbook = new XSSFWorkbook(usersFile);
+        } catch (IOException e) {
+            throw new DatabaseConnectException(0);
+        }
     }
 
     /**
@@ -38,7 +44,7 @@ public class DBUsersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<User> getFilteredDBRowsToSet(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException {
+            throws IllegalArgumentException, IllegalAccessException {
         Set<User> filteredUsers = new HashSet<User>();
 
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
@@ -66,7 +72,7 @@ public class DBUsersExtractor {
      * @throws IllegalArgumentException
      */
     public Set<Integer> getFilteredRowsIndexes(String columnName, Object filterValue)
-            throws IOException, IllegalArgumentException, IllegalAccessException {
+            throws IllegalArgumentException, IllegalAccessException {
         Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
 
         Sheet usersSheet = usersWorkbook.getSheetAt(0);

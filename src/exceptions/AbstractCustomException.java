@@ -24,9 +24,11 @@ public abstract class AbstractCustomException extends Exception {
         }
         JTextArea errorTraceTextArea = new JTextArea(errorStackTrace);
         errorTraceTextArea.setFont(Styles.ERROR_STACKTRACE_FONT);
+        errorTraceTextArea.setRows(7);
+        JScrollPane errorTraceScrollPane = new JScrollPane(errorTraceTextArea);
 
         exceptionPanel.add(new JLabel(getExceptionMessage(), errorMsgIcon, SwingUtilities.CENTER), BorderLayout.NORTH);
-        exceptionPanel.add(errorTraceTextArea, BorderLayout.CENTER);
+        exceptionPanel.add(errorTraceScrollPane);
 
         return exceptionPanel;
     }

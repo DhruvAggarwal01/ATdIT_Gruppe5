@@ -1,10 +1,12 @@
 package listener;
 
 import java.awt.event.*;
-import java.io.IOException;
+import javax.swing.*;
 
 import db_interaction.DBUsersInserter;
 import dialogs.ProfileDialog;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ein
@@ -34,29 +36,31 @@ public class ResetSaveCloseListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == profileDialogView.getResetEntriesButton()) {
-            profileDialogView.setInitDBUsersData();
-        }
-        if (e.getSource() == profileDialogView.getSaveButton()) {
-            profileDialogView.saveEntriesOfTextFields();
-            try {
+        try {
+            if (e.getSource() == profileDialogView.getResetEntriesButton()) {
+                profileDialogView.setInitDBUsersData();
+            }
+            if (e.getSource() == profileDialogView.getSaveButton()) {
+                profileDialogView.saveEntriesOfTextFields();
                 DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                 dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
             }
-        }
-        if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
-            profileDialogView.saveEntriesOfTextFields();
-            try {
+            if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
+                profileDialogView.saveEntriesOfTextFields();
                 DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
                 dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+                if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
+                    profileDialogView.dispose();
+                }
             }
-            if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
-                profileDialogView.dispose();
-            }
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (NoneOfUsersBusinessException noube) {
+            JPanel exceptionPanel = noube.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
