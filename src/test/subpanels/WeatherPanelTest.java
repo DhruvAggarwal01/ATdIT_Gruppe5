@@ -6,25 +6,24 @@ import exceptions.URLException;
 import subpanels.WeatherPanel;
 
 public class WeatherPanelTest {
+ 
+    //Creation of a new WeatherPanel and initialization with a title
 
-    WeatherPanel weatherPanelTest;
+    WeatherPanel weatherPanelTest = new WeatherPanel("weatherForecastTitle");
 
-    @Before
-    public void init() throws URLException {
-        weatherPanelTest = new WeatherPanel("weatherForecastTitle");
-    }
-
+    //Checks with a getter if the title of the weatherPanel is initialized correctly
     @Test
-    public void testGetPanelTitle() {
-        Assert.assertEquals("looks at the title of the Panel", "weatherForecastTitle",
-                weatherPanelTest.getWeatherForecastTitle());
+    public void testGetWeatherPanelTestTitle(){
+        Assert.assertEquals("looks at the title of the Panel","weatherForecastTitle",weatherPanelTest.getWeatherForecastTitle());
     }
 
+    //Checks with a getter if all 2 components of weatherPanelTest were added correctly
     @Test
-    public void testGetComponentCount() {
-        Assert.assertEquals("Looks how many components where added", 2, weatherPanelTest.getComponentCount());
+    public void testGetWeatherPanelTestComponentCount(){
+        Assert.assertEquals("Looks how many components where added",2, weatherPanelTest.getComponentCount());
     }
 
+    //Checks with getters if the title and the tooltipText of the weatherPanelTest were initialized correctly
     @Test
     public void testWeatherForecastTitlelLabel() {
         Assert.assertEquals("looks if the tooltiptext ist correct", "To: https://openweathermap.org/",

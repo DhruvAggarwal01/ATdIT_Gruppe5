@@ -10,6 +10,7 @@ public class HyperLinkMouseAdapterTest {
 
     JButton goToLinkButtonTest;
 
+    //Checks if the HyperLinkAdapter is implemented correctly
     @Test
     public void testRedirectOnClick() {
         goToLinkButtonTest = new JButton();

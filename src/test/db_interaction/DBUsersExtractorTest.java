@@ -14,18 +14,21 @@ import exceptions.DatabaseConnectException;
 
 public class DBUsersExtractorTest {
 
+  //Gets the right Column to the given Name (String)
     @Test
     public void testGetColumnIndexToName() throws DatabaseConnectException {
         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         Assert.assertEquals(1, dbUsersExtractor.getColumnIndexToName("personnel_id"));
     }
 
+    //Checks if a specific value is in the data base
     @Test
     public void testIsValueInSpecificCell() throws DatabaseConnectException {
         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         Assert.assertTrue(dbUsersExtractor.isValueInSpecificCell(2, "forename", "Max"));
     }
 
+    //Checks if the filter for the data base is implemented correctly
     @Test
     public void testGetFilteredDBRowsToSetSingle()
             throws IllegalArgumentException, IllegalAccessException, DatabaseConnectException {
