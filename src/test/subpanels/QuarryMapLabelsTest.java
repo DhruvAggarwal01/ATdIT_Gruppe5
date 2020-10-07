@@ -7,6 +7,8 @@ import subpanels.QuarryMapLabels;
 
 public class QuarryMapLabelsTest {
 
+   //Creation and initialization of a new QuarryMapLabel object
+   
     QuarryMapLabels quarryMapLabelsTest = new QuarryMapLabels();
 
     //Checks with a getter if all 2 components of panelLabel were added correctly

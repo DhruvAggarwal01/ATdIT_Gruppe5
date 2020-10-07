@@ -8,6 +8,7 @@ public class TimeoutTimerTest {
 
     TimeoutTimer timeoutimerTest;
 
+    //Creates and initializate a new TimeoutTimer object
     @Before
     public void init() {
         timeoutimerTest = new TimeoutTimer(30);

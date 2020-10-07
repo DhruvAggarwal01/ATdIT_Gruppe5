@@ -13,6 +13,7 @@ public class NavItemPanelChooserTest {
     NavItemPanelChooser nipChooserTest3;
     NavItemPanelChooser nipChooserTestException;
 
+    //Creates and initialized two new NavItemPanelChooser objects
     @Before
     public void init() {
         nipChooserTest1 = new NavItemPanelChooser("Overview", null, null);
@@ -37,6 +38,7 @@ public class NavItemPanelChooserTest {
         Assert.assertEquals(reportingPanelInstance.getClass(), nipChooserTest2.getComponent(0).getClass());
     }
 
+    //Checks if the Exception is caught correctly
     @Test(expected = NavItemNotFoundException.class)
     public void testChooserFunctionaliltyFailure() throws NavItemNotFoundException {
         nipChooserTestException = new NavItemPanelChooser("NoPanel", null, null);

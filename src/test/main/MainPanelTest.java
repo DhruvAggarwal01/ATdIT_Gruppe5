@@ -10,6 +10,7 @@ public class MainPanelTest {
 
     MainPanel mainPanel;
 
+    //Creates and initialize a new MainPanel object
     @Before
     public void init() {
         mainPanel = new MainPanel();

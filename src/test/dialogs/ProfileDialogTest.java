@@ -9,6 +9,7 @@ import dialogs.ProfileDialog;
 
 public class ProfileDialogTest {
 
+    //Creation and initialization of a new JFrame and ProfileDialog object
     JFrame frametest = new JFrame();
     ProfileDialog profileDialogTest = new ProfileDialog(frametest, null, false);
 

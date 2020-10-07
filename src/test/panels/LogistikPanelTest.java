@@ -8,6 +8,8 @@ public class LogistikPanelTest {
 
     LogistikPanel logistikPanelTest;
 
+    //initialization of a new LogistikPanel object
+    
     @Before
     public void init() {
         logistikPanelTest= new LogistikPanel(false);

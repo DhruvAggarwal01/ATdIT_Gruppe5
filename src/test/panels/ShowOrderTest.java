@@ -6,6 +6,7 @@ import panels.ShowOrder;
 
 public class ShowOrderTest {
     
+    //Creation and initialization of a new ShowOrder object
     ShowOrder showOrderTest = new ShowOrder();
     
     // @Test

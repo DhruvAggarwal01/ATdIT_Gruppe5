@@ -7,6 +7,7 @@ import panels.ReportingPanel;
 
 public class ReportingPanelTest {
     
+    //Creation and initialization of a new reportingPanel object
     ReportingPanel reportingPanelTest = new ReportingPanel();
 
     //Checks with a getter if all 7 components in reportingHeaderRowPanel were added correctly

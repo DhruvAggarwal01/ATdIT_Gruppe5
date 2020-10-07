@@ -15,6 +15,7 @@ public class HeaderPanelTest {
     JMenuBar testMenuBar;
     JMenu testMenu;
 
+    //Creation and initialization of a new MainPanel object
     @Before
     public void init() {
         mainPanel = new MainPanel();
@@ -37,6 +38,7 @@ public class HeaderPanelTest {
                 MainPanel.getHeaderPanel().userIconWithMenuInJPanel.isShowing());
     }
 
+    //TBD: Checks if the mouseListener is implemented correctly
     @Test
     public void testGoToOverviewOnClick() throws AWTException {
         MainPanel.getNavPane().setSelectedIndex(2); // (int) (Math.random() *

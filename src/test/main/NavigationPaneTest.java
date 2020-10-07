@@ -17,6 +17,7 @@ public class NavigationPaneTest {
     NavigationPane testNavPane;
     Container testContainer;
 
+    //Creates and initialized a new JFrame
     @Before
     public void init() {
         testFrame = new JFrame();

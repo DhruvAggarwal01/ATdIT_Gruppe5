@@ -8,6 +8,7 @@ public class EditOrderTest {
 
   EditOrder editOrderTest;
 
+  //Initialization of a new EditOrder object
   @Before
   public void init() {
     editOrderTest= new EditOrder(false);

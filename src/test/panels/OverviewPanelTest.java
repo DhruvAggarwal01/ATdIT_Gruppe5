@@ -8,6 +8,7 @@ public class OverviewPanelTest {
 
   OverviewPanel overviewPanelTest;
 
+  //Creation and initialization of a new OverviewPanelTest object
   @Before
   public void init() {
     overviewPanelTest = new OverviewPanel();

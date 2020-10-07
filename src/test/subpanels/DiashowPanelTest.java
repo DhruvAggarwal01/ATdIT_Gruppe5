@@ -11,6 +11,7 @@ public class DiashowPanelTest {
 
   DiashowPanel diashowPanelTest;
 
+  //Creates a new DiashowPanel object and initializate the title with 'title'
   @Before
   public void init() {
     diashowPanelTest = new DiashowPanel("Title");

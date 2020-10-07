@@ -7,6 +7,8 @@ import subpanels.WeatherPanel;
 
 public class WeatherPanelTest {
  
+    //Creation of a new WeatherPanel and initialization with a title
+
     WeatherPanel weatherPanelTest = new WeatherPanel("weatherForecastTitle");
 
     //Checks with a getter if the title of the weatherPanel is initialized correctly

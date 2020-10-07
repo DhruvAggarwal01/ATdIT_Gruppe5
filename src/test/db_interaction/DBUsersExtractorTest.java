@@ -14,6 +14,7 @@ import db_interaction.User;
 
 public class DBUsersExtractorTest {
 
+  //Gets the right Column to the given Name (String)
     @Test
     public void testGetColumnIndexToName() {
         try {
@@ -24,6 +25,7 @@ public class DBUsersExtractorTest {
         }
     }
 
+    //Checks if a specific value is in the data base
     @Test
     public void testIsValueInSpecificCell() {
         try {
@@ -34,6 +36,7 @@ public class DBUsersExtractorTest {
         }
     }
 
+    //Checks if the filter for the data base is implemented correctly
     @Test
     public void testGetFilteredDBRowsToSetSingle() {
         try {
