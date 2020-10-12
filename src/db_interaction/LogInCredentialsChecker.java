@@ -1,7 +1,6 @@
 package db_interaction;
 
 import javax.swing.*;
-
 import java.util.*;
 
 import org.apache.poi.ss.usermodel.Row;

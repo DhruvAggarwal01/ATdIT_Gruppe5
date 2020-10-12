@@ -2,6 +2,10 @@ package db_interaction;
 
 import java.util.Date;
 
+/**
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class CalculateOrder {
 
     public CalculateOrder(Order currentOrder) {

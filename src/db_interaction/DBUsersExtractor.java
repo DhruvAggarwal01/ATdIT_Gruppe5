@@ -15,6 +15,9 @@ import exceptions.DatabaseConnectException;
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
  * Daten aus der Users-Datenbank nach bestimmten Kriterien (nach Nutzername,
  * Passwort, etc.) ermöglichen.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 public class DBUsersExtractor {
 
@@ -22,8 +25,10 @@ public class DBUsersExtractor {
     public Workbook usersWorkbook;
 
     /**
+     * Diser Konstruktor instanziiert <code>usersWorkbook</code> mit dem passenden
+     * Excel-Workbook.
      * 
-     * @param excelFileName
+     * @param excelFileName Name der Excel-Datei
      * @throws DatabaseConnectException
      */
     public DBUsersExtractor(String excelFileName) throws DatabaseConnectException {
@@ -38,8 +43,8 @@ public class DBUsersExtractor {
     /**
      * Diese Methode filtert die Tupel heraus, für die das Kriterium zutrifft
      * 
-     * @param columnName
-     * @param filterValue
+     * @param columnName  Spaltenname im Excel
+     * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
      */
@@ -66,8 +71,8 @@ public class DBUsersExtractor {
      * Diese Methode filtert die Indizes der Tupel heraus, für die das
      * Filterkriterium zutrifft
      * 
-     * @param columnName
-     * @param filterValue
+     * @param columnName  Spaltenname im Excel
+     * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
      */
@@ -90,11 +95,14 @@ public class DBUsersExtractor {
     }
 
     /**
+     * Diese Methode überprüft, ob ein Wert/Objekt in der entsprechenden Excel-Zelle
+     * enthalten ist.
      * 
-     * @param rowIndex
-     * @param columnName
-     * @param filterValue
-     * @return
+     * @param rowIndex    Zeilenindex im Excel
+     * @param columnName  Spaltenname im Excel
+     * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
+     * @return <code>true</code>, wenn geprüfter Wert in der entsprechenden Zeile
+     *         enthalten ist und v.v.
      */
     public boolean isValueInSpecificCell(int rowIndex, String columnName, Object filterValue) {
         Sheet usersSheet = usersWorkbook.getSheetAt(0);
@@ -119,13 +127,27 @@ public class DBUsersExtractor {
     }
 
     /**
+     * Diese Methode wandelt eine Excel-Zeile in ein User-Objekt um
      * 
-     * @param toBeConvertedRow
-     * @return
+     * @param toBeConvertedRow in User-Objekt umzuwandelnde Zeile
+     * @return entsprechende Zeile zur Excel-Zeile
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
-    public User getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException {
+    public User getRowConvertedToUser(Row toBeConvertedRow) throws IllegalArgumentException, IllegalAccessException { // tbd:
+                                                                                                                      // bei
+                                                                                                                      // Zusammenfassuén
+                                                                                                                      // von
+                                                                                                                      // User/Order-Extraxtor,
+                                                                                                                      // kann
+                                                                                                                      // man
+                                                                                                                      // hier
+                                                                                                                      // statt
+                                                                                                                      // User
+                                                                                                                      // generische
+                                                                                                                      // Klasse
+                                                                                                                      // T
+                                                                                                                      // verwenden
         User user = new User();
         Field[] declaredFields = user.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
@@ -152,9 +174,11 @@ public class DBUsersExtractor {
     }
 
     /**
+     * Diese Methode gibt den Excel-Spaltenindex zum mitgegebenen Excel-Spaltennamen
+     * zurück.
      * 
-     * @param columnName
-     * @return
+     * @param columnName Spaltenname im Excel
+     * @return Excel-Spaltenindex zum mitgegebenen Excel-Spaltennamen
      */
     public int getColumnIndexToName(String columnName) {
         int columnIndex = 0;

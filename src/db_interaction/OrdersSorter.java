@@ -3,6 +3,12 @@ package db_interaction;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Diese Klasse tbd
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class OrdersSorter {
 
     static DBOrdersExtractor dbOrderExtractor;

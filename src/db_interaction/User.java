@@ -3,7 +3,7 @@ package db_interaction;
 import java.util.Objects;
 
 /**
- * Diese Klasse
+ * Diese Klasse tbd
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

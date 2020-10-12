@@ -5,6 +5,10 @@ import javax.swing.*;
 
 import db_interaction.Order;
 
+/**
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class ColorChooser {
 
     /**

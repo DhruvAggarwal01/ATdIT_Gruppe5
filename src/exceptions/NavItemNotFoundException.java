@@ -1,6 +1,8 @@
 package exceptions;
 
 /**
+ * Diese Klasse tbd
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
@@ -23,6 +25,9 @@ public class NavItemNotFoundException extends AbstractCustomException {
         this.navItemName03 = navItemName03;
     }
 
+    /**
+     * 
+     */
     @Override
     public String getExceptionMessage() {
         return "Navigationsleisten-Element {" + navItemName01 + " / " + navItemName02 + " / " + navItemName03

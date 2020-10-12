@@ -12,9 +12,13 @@ public class NoneOfUsersBusinessException extends AbstractCustomException {
 
     private static final long serialVersionUID = -7708693454111868203L;
 
+    /**
+     * 
+     * @return
+     */
     @Override
     public String getExceptionMessage() {
-        return "Es ist ein interner Fehler aufgetreten. Bitte geben Sie Diesen an Ihren Administrator weiter.";
+        return "Es ist ein interner Fehler aufgetreten. Bitte geben Sie diesen an Ihren Administrator weiter.";
     }
 
 }

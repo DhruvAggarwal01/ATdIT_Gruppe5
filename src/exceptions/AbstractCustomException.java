@@ -5,12 +5,26 @@ import javax.swing.*;
 
 import main.Styles;
 
+/**
+ * Diese Klasse tbd
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public abstract class AbstractCustomException extends Exception {
 
     private static final long serialVersionUID = -6592272596211461816L;
 
+    /**
+     * 
+     * @return
+     */
     public abstract String getExceptionMessage();
 
+    /**
+     * 
+     * @return
+     */
     public JPanel getExceptionPanel() {
         JPanel exceptionPanel = new JPanel(new BorderLayout());
 

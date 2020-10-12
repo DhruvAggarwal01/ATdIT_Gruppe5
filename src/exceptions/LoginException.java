@@ -1,6 +1,8 @@
 package exceptions;
 
 /**
+ * Diese Klasse tbd
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
@@ -26,6 +28,9 @@ public class LoginException extends AbstractCustomException {
         }
     }
 
+    /**
+     * 
+     */
     public String getExceptionMessage() {
         return exceptionMessage;
     }

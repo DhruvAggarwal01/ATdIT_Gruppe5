@@ -10,6 +10,8 @@ import db_interaction.LogInCredentialsChecker;
 import listener.ResetSaveCloseListener;
 
 /**
+ * Diese Klasse tbd
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
