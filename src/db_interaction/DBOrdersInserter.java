@@ -1,14 +1,16 @@
 package db_interaction;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.swing.*;
+
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.Sheet;
 
 import panels.EditOrder;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
@@ -31,16 +33,18 @@ public class DBOrdersInserter {
      * Konstruktor
      * 
      * @param excelFileName
-     * @throws IOException
      */
-    public DBOrdersInserter(String excelFileName) throws IOException {
+    public DBOrdersInserter(String excelFileName) {
         this.excelFileName = excelFileName;
     }
 
     /**
      * Diese Methode ändert die jeweilig, geänderten Einträge in der Datenbank.
+     * 
+     * @throws DatabaseConnectException
+     * @throws NoneOfUsersBusinessException
      */
-    public void applyChangedOrderToRow() {
+    public void applyChangedOrderToRow() throws DatabaseConnectException, NoneOfUsersBusinessException {
         try {
             DBOrdersExtractor dbOrdersExtractor = new DBOrdersExtractor(excelFileName);
             Set<Integer> rowIndexesContainingOrder_Id = dbOrdersExtractor.getFilteredRowsIndexes("order_id",
@@ -76,20 +80,24 @@ public class DBOrdersInserter {
                     i++;
                 }
             }
-
             FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx");
             dbOrdersExtractor.ordersWorkbook.write(outFile);
             outFile.close();
             dbOrdersExtractor.ordersWorkbook.close();
-        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException iae) {
+            throw new NoneOfUsersBusinessException();
+        } catch (IOException ioe) {
+            throw new DatabaseConnectException(1);
         }
     }
 
     /**
      * Diese Methode ist für das Hinzufügen eines neuen Auftrags zuständig.
+     * 
+     * @throws DatabaseConnectException
+     * @throws NoneOfUsersBusinessException
      */
-    public void addNewOrder() {
+    public void addNewOrder() throws DatabaseConnectException, NoneOfUsersBusinessException {
         rowIndexesContainingOrder_Id = new HashSet<Integer>();
 
         try {
@@ -138,8 +146,14 @@ public class DBOrdersInserter {
             dbOrdersExtractor.ordersWorkbook.write(outFile);
             outFile.close();
             dbOrdersExtractor.ordersWorkbook.close();
-        } catch (IllegalArgumentException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException iae) {
+            throw new NoneOfUsersBusinessException();
+        } catch (IOException ioe) {
+            throw new DatabaseConnectException(1);
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

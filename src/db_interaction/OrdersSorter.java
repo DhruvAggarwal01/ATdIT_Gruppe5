@@ -2,6 +2,9 @@ package db_interaction;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.*;
+
+import exceptions.DatabaseConnectException;
 
 /**
  * Diese Klasse tbd
@@ -14,11 +17,12 @@ public class OrdersSorter {
     static DBOrdersExtractor dbOrderExtractor;
 
     public OrdersSorter() {
-
         try {
             dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
-        } catch (final IOException a) {
-            a.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -37,8 +41,10 @@ public class OrdersSorter {
             unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
             unfinishedOrders.retainAll(specificStatusOrders);
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
         return unfinishedOrders;
     }
@@ -58,9 +64,10 @@ public class OrdersSorter {
             allOrders = dbOrderExtractor.getFilteredDBRowsToSet("rowcount", 1);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
             allOrders.retainAll(specificStatusOrders);
-
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
         return allOrders;
     }

@@ -23,6 +23,8 @@ import subpanels.OrderPanels;
 import verifiers.OrderAmountInputVerifier;
 import verifiers.OrderStringVerifier;
 import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
@@ -107,8 +109,10 @@ public class EditOrder extends JPanel {
                 rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
                 final Iterator<Order> it = rowCurrentOrder.iterator();
                 currentOrder = it.next();
-            } catch (final IOException | IllegalAccessException e) {
-                e.printStackTrace();
+            } catch (DatabaseConnectException dce) {
+                JPanel exceptionPanel = dce.getExceptionPanel();
+                JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -266,8 +270,14 @@ public class EditOrder extends JPanel {
             } else {
                 dbOrdersInserter.applyChangedOrderToRow();
             }
-        } catch (final IOException ioe) {
-            ioe.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (NoneOfUsersBusinessException noube) {
+            JPanel exceptionPanel = noube.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

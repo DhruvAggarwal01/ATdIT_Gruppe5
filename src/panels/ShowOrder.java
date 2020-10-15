@@ -15,6 +15,7 @@ import main.NavItemPanelChooser;
 import main.Styles;
 
 import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
 
 /**
  * JPanel um das anzeigen eines Auftrags zu ermöglichen
@@ -70,8 +71,10 @@ public class ShowOrder extends JPanel {
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
 
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }

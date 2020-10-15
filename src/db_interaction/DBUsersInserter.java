@@ -1,16 +1,10 @@
 package db_interaction;
 
-import javax.swing.*;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
 import exceptions.DatabaseConnectException;
 import exceptions.NoneOfUsersBusinessException;
@@ -29,10 +23,19 @@ public class DBUsersInserter {
     public FileOutputStream usersFileOut;
     public Workbook usersWorkbook;
 
+    /**
+     * 
+     * @param excelFileName
+     */
     public DBUsersInserter(String excelFileName) {
         this.excelFileName = excelFileName;
     }
 
+    /**
+     * 
+     * @throws DatabaseConnectException
+     * @throws NoneOfUsersBusinessException
+     */
     public void applyChangedSessionUserToRow() throws DatabaseConnectException, NoneOfUsersBusinessException {
         try {
             DBUsersExtractor dbUsersExtractor = new DBUsersExtractor(excelFileName);
@@ -76,10 +79,6 @@ public class DBUsersInserter {
             throw new NoneOfUsersBusinessException();
         } catch (IOException ioe) {
             throw new DatabaseConnectException(1);
-        } catch (DatabaseConnectException dce) {
-            JPanel exceptionPanel = dce.getExceptionPanel();
-            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
-                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

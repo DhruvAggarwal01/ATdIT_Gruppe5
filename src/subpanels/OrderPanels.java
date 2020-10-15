@@ -3,6 +3,7 @@ package subpanels;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -11,6 +12,7 @@ import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import main.Styles;
 import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
 
 /**
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -29,8 +31,10 @@ public class OrderPanels extends JPanel {
         try {
             dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
 
-        } catch (final IOException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
 
         this.setLayout(new GridLayout(8, 0, 10, 10));

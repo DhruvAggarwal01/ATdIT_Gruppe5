@@ -11,24 +11,25 @@ import org.junit.*;
 import db_interaction.DBUsersExtractor;
 import db_interaction.User;
 import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 public class DBUsersExtractorTest {
 
-  //Gets the right Column to the given Name (String)
+    // Gets the right Column to the given Name (String)
     @Test
     public void testGetColumnIndexToName() throws DatabaseConnectException {
         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         Assert.assertEquals(1, dbUsersExtractor.getColumnIndexToName("personnel_id"));
     }
 
-    //Checks if a specific value is in the data base
+    // Checks if a specific value is in the data base
     @Test
     public void testIsValueInSpecificCell() throws DatabaseConnectException {
         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         Assert.assertTrue(dbUsersExtractor.isValueInSpecificCell(2, "forename", "Max"));
     }
 
-    //Checks if the filter for the data base is implemented correctly
+    // Checks if the filter for the data base is implemented correctly
     @Test
     public void testGetFilteredDBRowsToSetSingle()
             throws IllegalArgumentException, IllegalAccessException, DatabaseConnectException {
@@ -62,8 +63,7 @@ public class DBUsersExtractorTest {
     }
 
     @Test
-    public void testGetRowConvertedToUser()
-            throws DatabaseConnectException, IllegalArgumentException, IllegalAccessException {
+    public void testGetRowConvertedToUser() throws DatabaseConnectException, NoneOfUsersBusinessException {
         DBUsersExtractor dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
         Sheet usersSheet = dbUsersExtractor.usersWorkbook.getSheetAt(0);
         Row row = usersSheet.getRow(1);

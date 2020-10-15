@@ -13,28 +13,28 @@ import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
- * Daten aus der Users-Datenbank nach bestimmten Kriterien (nach Nutzername,
- * Passwort, etc.) ermöglichen.
+ * Daten aus der Contracts-Datenbank nach bestimmten Kriterien (nach OrderID,
+ * status, etc.) ermöglichen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class DBUsersExtractor {
+public class DBGenericExtractor<T> {
 
-    public FileInputStream usersFile;
-    public Workbook usersWorkbook;
+    public FileInputStream gensFile;
+    public Workbook gensWorkbook;
 
     /**
-     * Diser Konstruktor instanziiert <code>usersWorkbook</code> mit dem passenden
+     * Diser Konstruktor instanziiert <code>gensWorkbook</code> mit dem passenden
      * Excel-Workbook.
      * 
      * @param excelFileName Name der Excel-Datei
      * @throws DatabaseConnectException
      */
-    public DBUsersExtractor(String excelFileName) throws DatabaseConnectException {
+    public DBGenericExtractor(String excelFileName) throws DatabaseConnectException {
         try {
-            usersFile = new FileInputStream(excelFileName);
-            usersWorkbook = new XSSFWorkbook(usersFile);
+            gensFile = new FileInputStream(excelFileName);
+            gensWorkbook = new XSSFWorkbook(gensFile);
         } catch (IOException e) {
             throw new DatabaseConnectException(0);
         }
@@ -46,19 +46,20 @@ public class DBUsersExtractor {
      * @param columnName  Spaltenname im Excel
      * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
      */
-    public Set<User> getFilteredDBRowsToSet(String columnName, Object filterValue) {
-        Set<User> filteredUsers = new HashSet<User>();
+    public Set<T> getFilteredDBRowsToSet(String columnName, Object filterValue) {
+        Set<T> filteredGens = new HashSet<T>();
 
-        Sheet usersSheet = usersWorkbook.getSheetAt(0);
-        Iterator<Row> rowIterator = usersSheet.iterator();
+        Sheet gensSheet = gensWorkbook.getSheetAt(0);
+        Iterator<Row> rowIterator = gensSheet.iterator();
+
         try {
             while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
                 Row row = rowIterator.next();
                 if (row.getRowNum() == 0) { // header
                     continue;
                 } else if (isValueInSpecificCell(row.getRowNum(), columnName, filterValue)) {
-                    User filteredUser = getRowConvertedToUser(row);
-                    filteredUsers.add(filteredUser);
+                    T filteredGen = getRowConvertedToGen(row);
+                    filteredGens.add(filteredGen); // row.getRowNum() = filteredUser.getPersonnel_id()
                 }
             }
         } catch (NoneOfUsersBusinessException noube) {
@@ -66,7 +67,7 @@ public class DBUsersExtractor {
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);
         }
-        return filteredUsers;
+        return filteredGens;
     }
 
     /**
@@ -79,8 +80,8 @@ public class DBUsersExtractor {
     public Set<Integer> getFilteredRowsIndexes(String columnName, Object filterValue) {
         Set<Integer> filteredRowsIndexes = new HashSet<Integer>();
 
-        Sheet usersSheet = usersWorkbook.getSheetAt(0);
-        Iterator<Row> rowIterator = usersSheet.iterator();
+        Sheet gensSheet = gensWorkbook.getSheetAt(0);
+        Iterator<Row> rowIterator = gensSheet.iterator();
 
         while (rowIterator.hasNext()) { // iterate through all rows of the excel sheet (incl. header row)
             Row row = rowIterator.next();
@@ -104,8 +105,8 @@ public class DBUsersExtractor {
      *         enthalten ist und v.v.
      */
     public boolean isValueInSpecificCell(int rowIndex, String columnName, Object filterValue) {
-        Sheet usersSheet = usersWorkbook.getSheetAt(0);
-        Row row = usersSheet.getRow(rowIndex);
+        Sheet gensSheet = gensWorkbook.getSheetAt(0);
+        Row row = gensSheet.getRow(rowIndex);
         Cell specificCell = row.getCell(getColumnIndexToName(columnName));
 
         Object cellValue = null;
@@ -126,31 +127,30 @@ public class DBUsersExtractor {
     }
 
     /**
-     * Diese Methode wandelt eine Excel-Zeile in ein User-Objekt um
+     * Diese Methode wandelt eine Excel-Zeile in ein Order-Objekt um
      * 
-     * @param toBeConvertedRow in User-Objekt umzuwandelnde Zeile
+     * @param toBeConvertedRow in Order-Objekt umzuwandelnde Zeile
      * @return entsprechende Zeile zur Excel-Zeile
      * @throws NoneOfUsersBusinessException
      */
-    public User getRowConvertedToUser(Row toBeConvertedRow) throws NoneOfUsersBusinessException {
-        User user = new User();
-        Field[] declaredFields = user.getClass().getDeclaredFields();
+    public T getRowConvertedToGen(Row toBeConvertedRow) throws NoneOfUsersBusinessException {
+        T gen = new T(); // tbd: instantiate generic in method, maybe by geneirc method?
+        Field[] declaredFields = gen.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
 
         try {
             int i = 0;
             while (cellIterator.hasNext() && i < declaredFields.length) {
                 Cell cell = cellIterator.next();
-                declaredFields[i].setAccessible(true);
                 switch (cell.getCellType()) {
                     case NUMERIC:
-                        declaredFields[i].set(user, (int) cell.getNumericCellValue());
+                        declaredFields[i].set(gen, (int) cell.getNumericCellValue());
                         break;
                     case STRING:
-                        declaredFields[i].set(user, cell.getStringCellValue());
+                        declaredFields[i].set(gen, cell.getStringCellValue());
                         break;
                     case BOOLEAN:
-                        declaredFields[i].set(user, cell.getBooleanCellValue());
+                        declaredFields[i].set(gen, cell.getBooleanCellValue());
                     default:
                         break;
                 }
@@ -159,7 +159,7 @@ public class DBUsersExtractor {
         } catch (IllegalAccessException iae) {
             throw new NoneOfUsersBusinessException();
         }
-        return user;
+        return gen;
     }
 
     /**
@@ -172,8 +172,8 @@ public class DBUsersExtractor {
     public int getColumnIndexToName(String columnName) {
         int columnIndex = 0;
 
-        Sheet usersSheet = usersWorkbook.getSheetAt(0);
-        Row headerRow = usersSheet.getRow(0);
+        Sheet gensSheet = gensWorkbook.getSheetAt(0);
+        Row headerRow = gensSheet.getRow(0);
         Iterator<Cell> cellIterator = headerRow.cellIterator();
 
         while (cellIterator.hasNext()) {

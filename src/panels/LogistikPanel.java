@@ -14,6 +14,7 @@ import db_interaction.DBOrdersExtractor;
 import db_interaction.Order;
 import db_interaction.OrdersSorter;
 import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
 
 /**
  * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
@@ -126,12 +127,10 @@ public class LogistikPanel extends JPanel {
         createOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-
                 EditOrder.currentOrder = new Order();
                 EditOrder.currentOrder.setOrder_id(maxOrderID);
                 MainPanel.getNavPane().setComponentAt(6,
                         new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "CreateOrder", null));
-
             }
         });
     }
@@ -144,13 +143,8 @@ public class LogistikPanel extends JPanel {
      */
     public int getMaxOrderID() {
         maxOrderID = 0;
-        try {
-            setAllOrders = dbOrderExtractor.getFilteredRowsIndexes("rowcount", 1);
-            maxOrderID = setAllOrders.size() + 1;
-
-        } catch (final IOException | IllegalAccessException a) {
-            a.printStackTrace();
-        }
+        setAllOrders = dbOrderExtractor.getFilteredRowsIndexes("rowcount", 1);
+        maxOrderID = setAllOrders.size() + 1;
         return maxOrderID;
     }
 
@@ -161,13 +155,13 @@ public class LogistikPanel extends JPanel {
     public LogistikPanel(Boolean DisplayAllOrders) {
         try {
             dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
-        } catch (final IOException a) {
-            a.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
-
         setOrderPanels(DisplayAllOrders);
         createLogisticsPanel();
         initCreateOrder();
-
     }
 }

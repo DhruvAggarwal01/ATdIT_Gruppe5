@@ -61,11 +61,7 @@ public class LogInCredentialsChecker {
         if (isCredentialsMatching()) {
             Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
             Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
-            try {
-                return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
-            } catch (IllegalAccessException iae) {
-                throw new NoneOfUsersBusinessException();
-            }
+            return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
         } else {
             throw new LoginException(1);
         }
