@@ -24,6 +24,8 @@ public class DBGenericExtractor<T> {
     public FileInputStream gensFile;
     public Workbook gensWorkbook;
 
+    private Object object;
+
     /**
      * Diser Konstruktor instanziiert <code>gensWorkbook</code> mit dem passenden
      * Excel-Workbook.
@@ -31,7 +33,8 @@ public class DBGenericExtractor<T> {
      * @param excelFileName Name der Excel-Datei
      * @throws DatabaseConnectException
      */
-    public DBGenericExtractor(String excelFileName) throws DatabaseConnectException {
+    public DBGenericExtractor(String excelFileName, T genericObject) throws DatabaseConnectException {
+        object = genericObject;
         try {
             gensFile = new FileInputStream(excelFileName);
             gensWorkbook = new XSSFWorkbook(gensFile);
@@ -133,9 +136,9 @@ public class DBGenericExtractor<T> {
      * @return entsprechende Zeile zur Excel-Zeile
      * @throws NoneOfUsersBusinessException
      */
+    @SuppressWarnings("unchecked")
     public T getRowConvertedToGen(Row toBeConvertedRow) throws NoneOfUsersBusinessException {
-        T gen = new T(); // tbd: instantiate generic in method, maybe by geneirc method?
-        Field[] declaredFields = gen.getClass().getDeclaredFields();
+        Field[] declaredFields = object.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
 
         try {
@@ -144,13 +147,13 @@ public class DBGenericExtractor<T> {
                 Cell cell = cellIterator.next();
                 switch (cell.getCellType()) {
                     case NUMERIC:
-                        declaredFields[i].set(gen, (int) cell.getNumericCellValue());
+                        declaredFields[i].set(object, (int) cell.getNumericCellValue());
                         break;
                     case STRING:
-                        declaredFields[i].set(gen, cell.getStringCellValue());
+                        declaredFields[i].set(object, cell.getStringCellValue());
                         break;
                     case BOOLEAN:
-                        declaredFields[i].set(gen, cell.getBooleanCellValue());
+                        declaredFields[i].set(object, cell.getBooleanCellValue());
                     default:
                         break;
                 }
@@ -159,7 +162,7 @@ public class DBGenericExtractor<T> {
         } catch (IllegalAccessException iae) {
             throw new NoneOfUsersBusinessException();
         }
-        return gen;
+        return (T) object;
     }
 
     /**
