@@ -1,6 +1,6 @@
 package verifiers;
 
-import java.awt.*;
+
 import javax.swing.*;
 
 import panels.EditOrder;
@@ -16,14 +16,14 @@ public class OrderStringVerifier extends InputVerifier {
 
         for (final char c : chars) {
             if (!Character.isLetter(c)) {
-                firmInput.setBackground(Color.RED);
+                firmInput.setBackground(java.awt.Color.RED);
                 firmInput.setText(LogistikStrings.getInvalidNameErrorMessae());
                 EditOrder.setValidFirmName(false);
                 EditOrder.checkOrderValidity();
                 return false;
             }
         }
-        firmInput.setBackground(Color.WHITE);
+        firmInput.setBackground(java.awt.Color.WHITE);
         EditOrder.setValidFirmName(true);
         EditOrder.checkOrderValidity();
         return true;

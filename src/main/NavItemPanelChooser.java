@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.util.Objects;
@@ -34,7 +33,7 @@ public class NavItemPanelChooser extends JPanel {
         this.navItemName03 = navItemName03;
 
         panelExplorerTitle = setPanelExplorerText();
-        this.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), panelExplorerTitle,
+        this.setBorder(new TitledBorder(BorderFactory.createLineBorder(java.awt.Color.black), panelExplorerTitle,
                 TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, Styles.TAB_BORDERTITLE_FONT));
         try {
             chooserFunctionality();
@@ -42,7 +41,7 @@ public class NavItemPanelChooser extends JPanel {
             JPanel exceptionPanel = nitfe.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + nitfe.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-            this.add(exceptionPanel, BorderLayout.CENTER);
+            this.add(exceptionPanel, java.awt.BorderLayout.CENTER);
             this.setEnabled(false);
         }
     }
@@ -89,12 +88,12 @@ public class NavItemPanelChooser extends JPanel {
             case "Overview":
                 switch (navItemName02) {
                     case "":
-                        this.setLayout(new BorderLayout());
-                        this.add(new OverviewPanel(), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new OverviewPanel(), java.awt.BorderLayout.CENTER);
                         break;
                     case "Reporting":
-                        this.setLayout(new BorderLayout());
-                        this.add(new ReportingPanel(), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new ReportingPanel(), java.awt.BorderLayout.CENTER);
                         break;
                     default:
                         break;
@@ -103,8 +102,8 @@ public class NavItemPanelChooser extends JPanel {
             case "ToDo's":
                 break;
             case "Produktion":
-                this.setLayout(new BorderLayout());
-                this.add(new ProduktionPanel(), BorderLayout.CENTER);
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(new ProduktionPanel(), java.awt.BorderLayout.CENTER);
                 break;
             case "Betriebsmittel":
                 break;
@@ -115,24 +114,24 @@ public class NavItemPanelChooser extends JPanel {
             case "Logistik":
                 switch (navItemName02) {
                     case "":
-                        this.setLayout(new BorderLayout());
-                        this.add(new LogistikPanel(false), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new LogistikPanel(false), java.awt.BorderLayout.CENTER);
                         break;
                     case "DisplayAll":
-                        this.setLayout(new BorderLayout());
-                        this.add(new LogistikPanel(true), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new LogistikPanel(true), java.awt.BorderLayout.CENTER);
                         break;
                     case "EditOrder":
-                        this.setLayout(new BorderLayout());
-                        this.add(new EditOrder(false), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new EditOrder(false), java.awt.BorderLayout.CENTER);
                         break;
                     case "ShowOrder":
-                        this.setLayout(new BorderLayout());
-                        this.add(new ShowOrder(), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new ShowOrder(), java.awt.BorderLayout.CENTER);
                         break;
                     case "CreateOrder":
-                        this.setLayout(new BorderLayout());
-                        this.add(new EditOrder(true), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new EditOrder(true), java.awt.BorderLayout.CENTER);
                         break;
                     default:
                         break;

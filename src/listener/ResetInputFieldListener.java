@@ -1,6 +1,5 @@
 package listener;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -17,18 +16,18 @@ public class ResetInputFieldListener extends MouseAdapter {
         switch (fieldInputText) {
             case "Field must only contain numbers":
                 mysource.setText("");
-                mysource.setBackground(Color.WHITE);
+                mysource.setBackground(java.awt.Color.WHITE);
                 break;
             case "Amount cannot be more than 1000t":
-                mysource.setBackground(Color.WHITE);
+                mysource.setBackground(java.awt.Color.WHITE);
                 mysource.setText("");
                 break;
             case "Field must only contain characters from the Alphabet":
                 mysource.setText("");
-                mysource.setBackground(Color.WHITE);
+                mysource.setBackground(java.awt.Color.WHITE);
                 break;
             case "0":
-                mysource.setBackground(Color.WHITE);
+                mysource.setBackground(java.awt.Color.WHITE);
                 mysource.setText("");
                 break;
             default:

@@ -1,6 +1,5 @@
 package dialogs;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
@@ -60,13 +59,13 @@ public class SettingsDialog extends AbstractUsermenuDialog {
      */
     @Override
     public void contentSettingsSet() {
-        contentPanel = new JPanel(new GridLayout(6, 1));
+        contentPanel = new JPanel(new java.awt.GridLayout(6, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(settingsDialogTitle)));
-        contentPanel.setBackground(new Color(220, 220, 220));
+        contentPanel.setBackground(new java.awt.Color(220, 220, 220));
 
-        styleSettingsPanel = new JPanel(new GridLayout(1, 2));
-        functionalitySettingsPanel = new JPanel(new GridLayout(1, 2));
+        styleSettingsPanel = new JPanel(new java.awt.GridLayout(1, 2));
+        functionalitySettingsPanel = new JPanel(new java.awt.GridLayout(1, 2));
 
         // Main title: Einstellungen
         settingsTitleLabel = new JLabel("EINSTELLUNGEN");
@@ -105,7 +104,7 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         ImageIcon applyAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
-        cPanel = new JPanel(new GridLayout(1, 3, 140, 140));
+        cPanel = new JPanel(new java.awt.GridLayout(1, 3, 140, 140));
         ActionListener tacListener = new TimeoutAndCloseListener(this);
         closeButton = new JButton("Close", closeIcon);
         closeButton.setFont(Styles.RSSC_BUTTON_FONT);

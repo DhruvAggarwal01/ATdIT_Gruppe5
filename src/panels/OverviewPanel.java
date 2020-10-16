@@ -1,6 +1,6 @@
 package panels;
 
-import java.awt.*;
+
 import javax.swing.*;
 
 import exceptions.URLException;
@@ -26,9 +26,9 @@ public class OverviewPanel extends JPanel {
      * Konstruktor, der die Subpanels erzeugt und hinzufügt.
      */
     public OverviewPanel() {
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
 
-        smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
+        smallPanels = new JPanel(new java.awt.GridLayout(1, 2, 30, 30));
 
         // Abfangen etwaiger Abruffehler (falsche URL/ schlechte Internetverbindung)
         try {
@@ -53,8 +53,8 @@ public class OverviewPanel extends JPanel {
 
         diashow = new DiashowPanel("Impressionen vom Steinbruch");
 
-        this.add(smallPanels, BorderLayout.NORTH);
-        this.add(diashow, BorderLayout.CENTER);
+        this.add(smallPanels, java.awt.BorderLayout.NORTH);
+        this.add(diashow, java.awt.BorderLayout.CENTER);
     }
 
     /**

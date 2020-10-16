@@ -1,8 +1,6 @@
 package dialogs;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 import main.Styles;
@@ -76,13 +74,13 @@ public class ProfileDialog extends AbstractUsermenuDialog {
      */
     @Override
     public void contentSettingsSet() {
-        contentPanel = new JPanel(new GridLayout(7, 1));
+        contentPanel = new JPanel(new java.awt.GridLayout(7, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(profileDialogTitle)));
-        contentPanel.setBackground(new Color(220, 220, 220));
+        contentPanel.setBackground(new java.awt.Color(220, 220, 220));
 
-        personalInfoPanel = new JPanel(new GridLayout(6, 2));
-        changePswdPanel = new JPanel(new GridLayout(3, 2));
+        personalInfoPanel = new JPanel(new java.awt.GridLayout(6, 2));
+        changePswdPanel = new JPanel(new java.awt.GridLayout(3, 2));
 
         // Main title: Profile Information
         profileInfoTitleLabel = new JLabel("PROFIL INFORMATIONEN");
@@ -153,9 +151,9 @@ public class ProfileDialog extends AbstractUsermenuDialog {
 
         possibleErrorMessageLabel = new JLabel(errorMessage, SwingConstants.CENTER);
         possibleErrorMessageLabel.setFont(Styles.ERROR_MSG_FONT);
-        possibleErrorMessageLabel.setForeground(Color.RED);
+        possibleErrorMessageLabel.setForeground(java.awt.Color.RED);
 
-        rsscPanel = new JPanel(new GridLayout(1, 3, 140, 140));
+        rsscPanel = new JPanel(new java.awt.GridLayout(1, 3, 140, 140));
         // Action buttons
         ImageIcon resetEntriesIcon = new ImageIcon(new ImageIcon("Library/images/resetEntriesIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));

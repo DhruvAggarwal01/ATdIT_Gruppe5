@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -16,7 +15,7 @@ public class MainPanel extends JFrame {
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
-    private Container c;
+    private java.awt.Container c;
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Hauptframe-Fensters ist. Das
@@ -25,13 +24,13 @@ public class MainPanel extends JFrame {
      */
     public MainPanel() {
         c = getContentPane();
-        c.setLayout(new BorderLayout());
+        c.setLayout(new java.awt.BorderLayout());
 
         headerPanel = new HeaderPanel("<html><p>" + appTitle + "</p></html>");
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
 
-        c.add(headerPanel, BorderLayout.NORTH);
-        c.add(navPane, BorderLayout.CENTER);
+        c.add(headerPanel, java.awt.BorderLayout.NORTH);
+        c.add(navPane, java.awt.BorderLayout.CENTER);
     }
 
     /**

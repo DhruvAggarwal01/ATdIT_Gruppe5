@@ -1,6 +1,5 @@
 package listener;
 
-import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
 import javax.swing.*;
@@ -36,7 +35,7 @@ public class HyperlinkMouseAdapter extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         try {
-            Desktop.getDesktop().browse(new URI(urlString));
+            java.awt.Desktop.getDesktop().browse(new URI(urlString));
         } catch (Exception exc) {
             URLException urlException = new URLException(urlString, 1);
             JPanel exceptionPanel = urlException.getExceptionPanel();

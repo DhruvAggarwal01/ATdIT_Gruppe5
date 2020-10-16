@@ -1,6 +1,5 @@
 package test.main;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import org.junit.*;
@@ -15,7 +14,7 @@ public class HeaderPanelTest {
     JMenuBar testMenuBar;
     JMenu testMenu;
 
-    //Creation and initialization of a new MainPanel object
+    // Creation and initialization of a new MainPanel object
     @Before
     public void init() {
         mainPanel = new MainPanel();
@@ -24,26 +23,26 @@ public class HeaderPanelTest {
         testMenu = (JMenu) testMenuBar.getComponent(0);
     }
 
-    //Checks if the Logo and Title are visible and returns true
+    // Checks if the Logo and Title are visible and returns true
     @Test
     public void testShowingLogoAndTitle() {
         Assert.assertTrue("True if logo and title are being shown",
                 MainPanel.getHeaderPanel().logoAndHeaderTitle.isShowing());
     }
 
-    //Checks if the UserIconMenu is visible and returns true
+    // Checks if the UserIconMenu is visible and returns true
     @Test
     public void testShowingUserIconMenu() {
         Assert.assertTrue("true if user icon is being shown",
                 MainPanel.getHeaderPanel().userIconWithMenuInJPanel.isShowing());
     }
 
-    //TBD: Checks if the mouseListener is implemented correctly
+    // TBD: Checks if the mouseListener is implemented correctly
     @Test
-    public void testGoToOverviewOnClick() throws AWTException {
+    public void testGoToOverviewOnClick() throws java.awt.AWTException {
         MainPanel.getNavPane().setSelectedIndex(2); // (int) (Math.random() *
         // MainPanel.getNavPane().getComponentCount()));
-        Robot testingBot = new Robot();
+        java.awt.Robot testingBot = new java.awt.Robot();
         int x = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getX();
         int y = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getY();
         System.out.println(x);
@@ -56,22 +55,24 @@ public class HeaderPanelTest {
     }
 
     @Test
-    public void testProfileMenuDeselected() throws AWTException {
+    public void testProfileMenuDeselected() throws java.awt.AWTException {
         testMenu.setSelected(true);
-        Robot testingBot = new Robot();
+        java.awt.Robot testingBot = new java.awt.Robot();
         testingBot.mouseMove(60, 0);
         testingBot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         testingBot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Assert.assertFalse("Profile Menu is deselected after clicking somewhere else", testMenu.isSelected());
     }
 
-    //Checks if the profileMenu is initialized correctly, which should return false because it is initialized as not selected
+    // Checks if the profileMenu is initialized correctly, which should return false
+    // because it is initialized as not selected
     @Test
     public void testProfileMenuNotSelected() {
         Assert.assertFalse("Profile Menu is not selected initially", testMenu.isSelected());
     }
 
-    //Creates a new HeaderPanel with the title 'Test' and checks if the title is set correctly with a getter 
+    // Creates a new HeaderPanel with the title 'Test' and checks if the title is
+    // set correctly with a getter
     @Test
     public void testHeaderTitleAdder() {
         HeaderPanel panelTest = new HeaderPanel("Test");

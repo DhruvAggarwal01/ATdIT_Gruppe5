@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import java.awt.Graphics;
 import javax.swing.*;
 
@@ -21,7 +20,7 @@ public class BackgroundImagePanel extends JPanel {
      * 
      * @param layout das richtige Layout für das Panel
      */
-    public BackgroundImagePanel(LayoutManager layout) {
+    public BackgroundImagePanel(java.awt.LayoutManager layout) {
         super(layout);
     }
 
@@ -32,8 +31,9 @@ public class BackgroundImagePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Library/images/LoginScreen.png");
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        java.awt.Image backgroundImage = java.awt.Toolkit.getDefaultToolkit()
+                .getImage("Library/images/LoginScreen.png");
+        java.awt.Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         g.drawImage(backgroundImage, 0, 0, size.width, size.height, this);
     }
 }

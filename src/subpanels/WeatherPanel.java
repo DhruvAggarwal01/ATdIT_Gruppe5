@@ -1,6 +1,5 @@
 package subpanels;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
@@ -37,7 +36,7 @@ public class WeatherPanel extends JPanel {
      */
     public WeatherPanel(String weatherForecastTitle) throws URLException {
         this.weatherForecastTitle = weatherForecastTitle;
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 5, 5, 20),
                 BorderFactory.createRaisedBevelBorder()));
 
@@ -65,8 +64,8 @@ public class WeatherPanel extends JPanel {
             Map<String, Object> wholeMap = jsonToMap(result.toString());
             contentAndSettingsForWeatherForecastArea(wholeMap);
 
-            this.add(weatherForecastTitleLabel, BorderLayout.NORTH);
-            this.add(weatherForecastArea, BorderLayout.CENTER);
+            this.add(weatherForecastTitleLabel, java.awt.BorderLayout.NORTH);
+            this.add(weatherForecastArea, java.awt.BorderLayout.CENTER);
 
         } catch (IOException ue) {
             throw new URLException(urlString, 0);
@@ -80,10 +79,10 @@ public class WeatherPanel extends JPanel {
      */
     public void settingsForPanelTitle(String urlAddress) {
         weatherForecastTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
-        weatherForecastTitleLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        weatherForecastTitleLabel.setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
         weatherForecastTitleLabel.setText(weatherForecastTitle);
-        weatherForecastTitleLabel.setForeground(Color.BLUE.darker());
-        weatherForecastTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        weatherForecastTitleLabel.setForeground(java.awt.Color.BLUE.darker());
+        weatherForecastTitleLabel.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         weatherForecastTitleLabel.setToolTipText("To: " + urlAddress);
         weatherForecastTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 5));
         MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(urlAddress);
@@ -103,17 +102,17 @@ public class WeatherPanel extends JPanel {
         weatherForecastArea = new JTextArea() {
             private static final long serialVersionUID = 1L;
 
-            Image weatherStatusImage = new ImageIcon("Library/images/OpenWeatherMapLogo.png").getImage();
+            java.awt.Image weatherStatusImage = new ImageIcon("Library/images/OpenWeatherMapLogo.png").getImage();
             {
                 setOpaque(false);
             }
 
-            public void paint(Graphics g) {
+            public void paint(java.awt.Graphics g) {
                 g.drawImage(weatherStatusImage, 0, 0, this);
                 super.paint(g);
             }
         };
-        weatherForecastArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        weatherForecastArea.setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
         weatherForecastArea.setText(
                 "Current Temperature: " + mainMap.get("temp") + "\nCurrent Humidity: " + mainMap.get("humidity")
                         + "\nWind Speeds: " + windMap.get("speed") + "\nWind Angle: " + windMap.get("deg"));
