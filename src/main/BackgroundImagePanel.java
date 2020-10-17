@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Graphics;
 import javax.swing.*;
 
 /**
@@ -29,7 +28,7 @@ public class BackgroundImagePanel extends JPanel {
      * welches vorher von der Library geholt wird, anzeigen lassen.
      */
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
         java.awt.Image backgroundImage = java.awt.Toolkit.getDefaultToolkit()
                 .getImage("Library/images/LoginScreen.png");

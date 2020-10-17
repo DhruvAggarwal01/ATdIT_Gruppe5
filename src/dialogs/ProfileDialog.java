@@ -8,7 +8,9 @@ import db_interaction.LogInCredentialsChecker;
 import listener.ResetSaveCloseListener;
 
 /**
- * Diese Klasse tbd
+ * Diese Klasse baut ein Dialogfenster auf, das dem Benutzer die
+ * Interaktionsfläche bietet, um relevante Nutzerdaten anzupassen oder auch nur
+ * anzusehen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
