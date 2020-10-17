@@ -12,8 +12,8 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 import main.Styles;
 import db_interaction.CalculateOrder;
-import db_interaction.DBOrdersInserter;
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
+import db_interaction.DBOrderInserter;
 import db_interaction.Order;
 import listener.BackToOrderOverviewListener;
 import listener.ResetInputFieldListener;
@@ -94,17 +94,16 @@ public class EditOrder extends JPanel {
             currentOrder = new Order();
             this.orderSource = OrderPanels.getOrderSource();
             i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
-        }
-
-        else {
+        } else {
             i = currentOrder.order_id;
         }
-        DBOrdersExtractor dbOrderExtractor;
 
+        DBGenericExtractor<Order> dbOrderExtractor;
         Set<Order> rowCurrentOrder;
         if (this.orderSource != null) {
             try {
-                dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
+                dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(),
+                        new Order());
                 rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
                 final Iterator<Order> it = rowCurrentOrder.iterator();
                 currentOrder = it.next();
@@ -263,11 +262,13 @@ public class EditOrder extends JPanel {
     public void saveEditedOrder() {
         setOrder();
         try {
-            final DBOrdersInserter dbOrdersInserter = new DBOrdersInserter(LogistikStrings.getOrdersDatabaseString());
+            DBOrderInserter dbOrdersInserter = new DBOrderInserter(LogistikStrings.getOrdersDatabaseString(),
+                    new Order());
             if (create == true) {
                 dbOrdersInserter.addNewOrder();
             } else {
-                dbOrdersInserter.applyChangedOrderToRow();
+                dbOrdersInserter.applyChangedGenericToRow("order_id", EditOrder.currentOrder.getOrder_id(),
+                        EditOrder.currentOrder);
             }
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();

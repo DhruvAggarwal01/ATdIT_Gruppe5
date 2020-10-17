@@ -3,8 +3,9 @@ package listener;
 import java.awt.event.*;
 import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
+import db_interaction.DBGenericInserter;
 import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 import exceptions.DatabaseConnectException;
 import exceptions.NoneOfUsersBusinessException;
 import main.ActualApp;
@@ -46,9 +47,11 @@ public class LoginCancelForgottenListener implements ActionListener {
             if (loginButtonPanelView.authenticate()) {
                 AppRunner.getLoginFrame().dispose();
                 LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                        new User());
                 try {
-                    dbUsersInserter.applyChangedSessionUserToRow();
+                    dbUsersInserter.applyChangedGenericToRow("personnel_id",
+                            LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
                 } catch (DatabaseConnectException dce) {
                     JPanel exceptionPanel = dce.getExceptionPanel();
                     JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),

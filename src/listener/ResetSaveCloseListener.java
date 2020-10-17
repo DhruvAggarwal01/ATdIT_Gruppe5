@@ -3,7 +3,9 @@ package listener;
 import java.awt.event.*;
 import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
+import db_interaction.DBGenericInserter;
+import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 import dialogs.ProfileDialog;
 import exceptions.DatabaseConnectException;
 import exceptions.NoneOfUsersBusinessException;
@@ -42,13 +44,17 @@ public class ResetSaveCloseListener implements ActionListener {
             }
             if (e.getSource() == profileDialogView.getSaveButton()) {
                 profileDialogView.saveEntriesOfTextFields();
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                        new User());
+                dbUsersInserter.applyChangedGenericToRow("personnel_id",
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
             }
             if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
                 profileDialogView.saveEntriesOfTextFields();
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                        new User());
+                dbUsersInserter.applyChangedGenericToRow("personnel_id",
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
                 if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
                     profileDialogView.dispose();
                 }

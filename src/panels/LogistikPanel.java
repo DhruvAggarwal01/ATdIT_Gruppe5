@@ -9,7 +9,7 @@ import java.util.*;
 import subpanels.OrderPanels;
 import main.MainPanel;
 import main.NavItemPanelChooser;
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
 import db_interaction.Order;
 import db_interaction.OrdersSorter;
 import usedstrings.LogistikStrings;
@@ -44,7 +44,25 @@ public class LogistikPanel extends JPanel {
     private JPanel onTimePanel;
     private JPanel atRiskPanel;
     private JPanel overduePanel;
-    DBOrdersExtractor dbOrderExtractor;
+    DBGenericExtractor<Order> dbOrderExtractor;
+
+    /**
+     * Konstruktur für das Logistik-Panel
+     * 
+     * @param DisplayAllOrders
+     */
+    public LogistikPanel(Boolean DisplayAllOrders) {
+        try {
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        setOrderPanels(DisplayAllOrders);
+        createLogisticsPanel();
+        initCreateOrder();
+    }
 
     /**
      * bestimmt den Aufbau des LogistikPanels
@@ -147,20 +165,4 @@ public class LogistikPanel extends JPanel {
         return maxOrderID;
     }
 
-    /**
-     * Konstruktur für das Logistik Panel
-     */
-
-    public LogistikPanel(Boolean DisplayAllOrders) {
-        try {
-            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
-        } catch (DatabaseConnectException dce) {
-            JPanel exceptionPanel = dce.getExceptionPanel();
-            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        setOrderPanels(DisplayAllOrders);
-        createLogisticsPanel();
-        initCreateOrder();
-    }
 }

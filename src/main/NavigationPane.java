@@ -35,7 +35,7 @@ public class NavigationPane extends JTabbedPane {
         this.addTab("HR", new NavItemPanelChooser("HR", null, null));
         this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
         this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
-        this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
+        // this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
     }
 
 }

@@ -14,8 +14,9 @@ public class LogOffExecutor {
 
     public void logOffAndDispose() throws DatabaseConnectException, NoneOfUsersBusinessException {
         LogInCredentialsChecker.sessionUser.setIsLoggedIn(false);
-        DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-        dbUsersInserter.applyChangedSessionUserToRow();
+        DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx", new User());
+        dbUsersInserter.applyChangedGenericToRow("personnel_id", LogInCredentialsChecker.sessionUser.getPersonnel_id(),
+                new User());
 
         ActualApp.getAppWindow().dispose();
     }

@@ -81,7 +81,7 @@ public class DBGenericInserter<T> {
                     i++;
                 }
             }
-            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx");
+            FileOutputStream outFile = new FileOutputStream(excelFileName);
             dbGensExtractor.gensWorkbook.write(outFile);
             outFile.close();
             dbGensExtractor.gensWorkbook.close();

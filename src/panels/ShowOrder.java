@@ -1,13 +1,12 @@
 package panels;
 
-
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
 
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
 import db_interaction.Order;
 import subpanels.OrderPanels;
 import main.MainPanel;
@@ -31,7 +30,7 @@ public class ShowOrder extends JPanel {
     Order currentOrder = new Order();
     private JPanel showOrderPanel;
 
-    private DBOrdersExtractor dbOrderExtractor;
+    private DBGenericExtractor<Order> dbOrderExtractor;
     Set<Order> rowCurrentOrder;
 
     /**
@@ -66,7 +65,7 @@ public class ShowOrder extends JPanel {
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();

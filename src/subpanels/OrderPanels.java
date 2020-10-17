@@ -1,6 +1,5 @@
 package subpanels;
 
-
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -8,7 +7,7 @@ import java.io.*;
 import java.util.*;
 
 import listener.HoverColorChangeListener;
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
 import db_interaction.Order;
 import main.Styles;
 import usedstrings.LogistikStrings;
@@ -22,14 +21,14 @@ public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
     Order currentOrder = new Order();
-    DBOrdersExtractor dbOrderExtractor;
+    DBGenericExtractor<Order> dbOrderExtractor;
     static String sourceOrder;
 
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor(LogistikStrings.getOrdersDatabaseString());
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
 
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();

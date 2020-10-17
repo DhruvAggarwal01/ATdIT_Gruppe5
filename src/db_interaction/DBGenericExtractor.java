@@ -160,6 +160,7 @@ public class DBGenericExtractor<T> {
                 i++;
             }
         } catch (IllegalAccessException iae) {
+            iae.printStackTrace();
             throw new NoneOfUsersBusinessException();
         }
         return (T) object;

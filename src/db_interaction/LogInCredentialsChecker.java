@@ -20,22 +20,26 @@ import exceptions.NoneOfUsersBusinessException;
  */
 public class LogInCredentialsChecker {
 
-    DBUsersExtractor dbUsersExtractor;
+    DBGenericExtractor<User> dbUsersExtractor;
     Set<Integer> rowIndexesContainingUsername;
     Set<Integer> rowIndexesContainingPassword;
     Set<Integer> rowIndexesMatchingCredentials;
+
     public static User sessionUser = new User();
 
     private String username, password;
 
     /**
+     * tbd
      * 
+     * @param username
+     * @param password
      */
     public LogInCredentialsChecker(String username, String password) {
         this.username = username;
         this.password = password;
         try {
-            dbUsersExtractor = new DBUsersExtractor("databases/USERS.xlsx");
+            dbUsersExtractor = new DBGenericExtractor<User>("databases/DefaultUSERS.xlsx", new User());
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
@@ -44,7 +48,10 @@ public class LogInCredentialsChecker {
     }
 
     /**
+     * tbd
      * 
+     * @throws LoginException
+     * @throws NoneOfUsersBusinessException
      */
     public void setSessionUser() throws LoginException, NoneOfUsersBusinessException {
         try {
@@ -55,21 +62,28 @@ public class LogInCredentialsChecker {
     }
 
     /**
+     * tbd
      * 
+     * @return
+     * @throws LoginException
+     * @throws NoneOfUsersBusinessException
+     * @throws IllegalAccessException
      */
     public User getLoggedInUser() throws LoginException, NoneOfUsersBusinessException, IllegalAccessException {
         if (isCredentialsMatching()) {
             Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
-            Row sessionUserRow = dbUsersExtractor.usersWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
-            return dbUsersExtractor.getRowConvertedToUser(sessionUserRow);
+            Row sessionUserRow = dbUsersExtractor.gensWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
+            return dbUsersExtractor.getRowConvertedToGen(sessionUserRow);
         } else {
             throw new LoginException(1);
         }
     }
 
     /**
+     * tbd
      * 
      * @return
+     * @throws IllegalAccessException
      */
     public boolean isCredentialsMatching() throws IllegalAccessException {
         rowIndexesContainingUsername = dbUsersExtractor.getFilteredRowsIndexes("username", username);

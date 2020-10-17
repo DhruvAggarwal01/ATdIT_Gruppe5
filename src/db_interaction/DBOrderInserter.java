@@ -17,7 +17,7 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
 
     public DBOrderInserter(String excelFileName, Order genericObject) {
         super(excelFileName, genericObject);
-        this.excelFileName = excelFileName;
+        // this.excelFileName = excelFileName;
     }
 
     /**
@@ -31,12 +31,11 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
 
         try {
             DBGenericExtractor<Order> dbOrdersExtractor = new DBGenericExtractor<Order>(excelFileName, new Order());
-            Integer number = EditOrder.currentOrder.getOrder_id(); // index is int type
+            Integer number = EditOrder.currentOrder.getOrder_id();
 
             rowIndexesContainingGeneric_Id.add(number);
 
-            Order order = new Order();
-            order = EditOrder.currentOrder;
+            Order order = EditOrder.currentOrder;
 
             if (rowIndexesContainingGeneric_Id.size() == 1) {
                 Sheet worksheet = dbOrdersExtractor.gensWorkbook.getSheetAt(0);
@@ -71,7 +70,7 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
                     cellcount = cellcount + 1;
                 }
             }
-            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen permanent
+            FileOutputStream outFile = new FileOutputStream(excelFileName);
             dbOrdersExtractor.gensWorkbook.write(outFile);
             outFile.close();
             dbOrdersExtractor.gensWorkbook.close();
