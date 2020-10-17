@@ -1,14 +1,11 @@
 package db_interaction;
 
-import javax.swing.*;
-
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
 import org.apache.poi.ss.usermodel.*;
 
-import panels.EditOrder;
 import exceptions.DatabaseConnectException;
 import exceptions.NoneOfUsersBusinessException;
 
@@ -20,21 +17,17 @@ import exceptions.NoneOfUsersBusinessException;
  *         Lahr
  */
 public class DBGenericInserter<T> {
-    Set<Integer> rowIndexesContainingOrder_Id;
-
-    int cellcount;
 
     private String excelFileName;
-
-    public FileOutputStream usersFileOut;
-    public Workbook ordersWorkbook;
-
     private Object object;
 
+    Set<Integer> rowIndexesContainingGeneric_Id;
+
     /**
-     * Konstruktor
+     * tbd
      * 
      * @param excelFileName
+     * @param genericObject
      */
     public DBGenericInserter(String excelFileName, T genericObject) {
         this.excelFileName = excelFileName;
@@ -44,39 +37,43 @@ public class DBGenericInserter<T> {
     /**
      * Diese Methode ändert die jeweilig, geänderten Einträge in der Datenbank.
      * 
+     * @param columnName    Spaltenname im Excel
+     * @param filterValue   Wert, nach dem in der Spalte gefiltert werden soll
+     * @param genericObject Objekt, auf dessen Felder die Zeilenelemente angewandet
+     *                      werden
      * @throws DatabaseConnectException
      * @throws NoneOfUsersBusinessException
      */
-    public void applyChangedOrderToRow() throws DatabaseConnectException, NoneOfUsersBusinessException {
+    @SuppressWarnings("unchecked")
+    public void applyChangedGenericToRow(String columnName, Object filterValue, Object genericObject)
+            throws DatabaseConnectException, NoneOfUsersBusinessException {
         try {
-            DBOrdersExtractor dbOrdersExtractor = new DBOrdersExtractor(excelFileName);
-            Set<Integer> rowIndexesContainingOrder_Id = dbOrdersExtractor.getFilteredRowsIndexes("order_id",
-                    EditOrder.currentOrder.getOrder_id());
+            DBGenericExtractor<T> dbGensExtractor = new DBGenericExtractor<T>(excelFileName, (T) object);
+            rowIndexesContainingGeneric_Id = dbGensExtractor.getFilteredRowsIndexes(columnName, filterValue);
 
-            Order order = EditOrder.currentOrder; // tbd: diesen unterschiedlichen Teil in eigene Methode auslagern und
-                                                  // als Parameter verlangen
+            T gen = (T) genericObject;
 
-            if (rowIndexesContainingOrder_Id.size() == 1) {
-                Iterator<Integer> setOfRowsIterator = rowIndexesContainingOrder_Id.iterator();
-                Row sessionUserRowBefore = dbOrdersExtractor.ordersWorkbook.getSheetAt(0)
-                        .getRow(setOfRowsIterator.next());
+            if (rowIndexesContainingGeneric_Id.size() == 1) {
+                Iterator<Integer> setOfRowsIterator = rowIndexesContainingGeneric_Id.iterator();
+                Row sessionUserRowBefore = dbGensExtractor.gensWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());
                 Iterator<Cell> cellIterator = sessionUserRowBefore.cellIterator();
 
-                // tbd:Kommentar
-                Field[] declaredFields = order.getClass().getDeclaredFields();
+                // auf die Felder des mitgegebenen Objekts werden die dementsprechenden
+                // Zeilenelemente angewandt
+                Field[] declaredFields = gen.getClass().getDeclaredFields();
                 int i = 0;
                 while (cellIterator.hasNext() && i < declaredFields.length) {
                     Cell cell = cellIterator.next();
                     declaredFields[i].setAccessible(true);
                     switch (cell.getCellType()) {
                         case NUMERIC:
-                            cell.setCellValue((int) declaredFields[i].get(order));
+                            cell.setCellValue((int) declaredFields[i].get(gen));
                             break;
                         case STRING:
-                            cell.setCellValue((String) declaredFields[i].get(order));
+                            cell.setCellValue((String) declaredFields[i].get(gen));
                             break;
                         case BOOLEAN:
-                            cell.setCellValue((boolean) declaredFields[i].get(order));
+                            cell.setCellValue((boolean) declaredFields[i].get(gen));
                             break;
                         default:
                             break;
@@ -85,79 +82,13 @@ public class DBGenericInserter<T> {
                 }
             }
             FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx");
-            dbOrdersExtractor.ordersWorkbook.write(outFile);
+            dbGensExtractor.gensWorkbook.write(outFile);
             outFile.close();
-            dbOrdersExtractor.ordersWorkbook.close();
+            dbGensExtractor.gensWorkbook.close();
         } catch (IllegalAccessException iae) {
             throw new NoneOfUsersBusinessException();
         } catch (IOException ioe) {
             throw new DatabaseConnectException(1);
-        }
-    }
-
-    /**
-     * Diese Methode ist für das Hinzufügen eines neuen Auftrags zuständig.
-     * 
-     * @throws DatabaseConnectException
-     * @throws NoneOfUsersBusinessException
-     */
-    public void addNewOrder() throws DatabaseConnectException, NoneOfUsersBusinessException {
-        rowIndexesContainingOrder_Id = new HashSet<Integer>();
-
-        try {
-            DBOrdersExtractor dbOrdersExtractor = new DBOrdersExtractor(excelFileName);
-            Integer number = EditOrder.currentOrder.getOrder_id(); // index is int type
-
-            rowIndexesContainingOrder_Id.add(number);
-
-            Order order = new Order();
-            order = EditOrder.currentOrder;
-
-            if (rowIndexesContainingOrder_Id.size() == 1) {
-                Sheet worksheet = dbOrdersExtractor.ordersWorkbook.getSheetAt(0);
-                int lastRow = worksheet.getLastRowNum();
-                Row exampleRow = worksheet.getRow(2);
-                Row row = worksheet.createRow(++lastRow);
-                Iterator<Cell> cellIterator = exampleRow.cellIterator();
-
-                Field[] declaredFields = order.getClass().getDeclaredFields();
-                int i = 0;
-                cellcount = 0;
-                int columns = 0;
-                int totalColumns = 9;
-                while (cellIterator.hasNext() && i < declaredFields.length && columns <= totalColumns) {
-
-                    Cell cell = cellIterator.next();
-                    declaredFields[i].setAccessible(true);
-                    switch (cell.getCellType()) {
-                        case NUMERIC:
-                            row.createCell(cellcount).setCellValue((int) declaredFields[i].get(order));
-                            break;
-                        case STRING:
-                            row.createCell(cellcount).setCellValue((String) declaredFields[i].get(order));
-                            break;
-                        case BOOLEAN:
-                            row.createCell(cellcount).setCellValue((boolean) declaredFields[i].get(order));
-                            break;
-                        default:
-                            break;
-                    }
-                    i++;
-                    cellcount = cellcount + 1;
-                }
-            }
-            FileOutputStream outFile = new FileOutputStream("databases/DefaultCONTRACTS.xlsx"); // Änderungen permanent
-            dbOrdersExtractor.ordersWorkbook.write(outFile);
-            outFile.close();
-            dbOrdersExtractor.ordersWorkbook.close();
-        } catch (IllegalAccessException iae) {
-            throw new NoneOfUsersBusinessException();
-        } catch (IOException ioe) {
-            throw new DatabaseConnectException(1);
-        } catch (DatabaseConnectException dce) {
-            JPanel exceptionPanel = dce.getExceptionPanel();
-            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
-                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
