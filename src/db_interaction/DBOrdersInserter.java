@@ -1,7 +1,6 @@
 package db_interaction;
 
 import javax.swing.*;
-
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.*;
@@ -20,14 +19,10 @@ import exceptions.NoneOfUsersBusinessException;
  *         Lahr
  */
 public class DBOrdersInserter {
-    Set<Integer> rowIndexesContainingOrder_Id;
-
-    int cellcount;
 
     private String excelFileName;
 
-    public FileOutputStream usersFileOut;
-    public Workbook ordersWorkbook;
+    Set<Integer> rowIndexesContainingOrder_Id;
 
     /**
      * Konstruktor
@@ -106,8 +101,7 @@ public class DBOrdersInserter {
 
             rowIndexesContainingOrder_Id.add(number);
 
-            Order order = new Order();
-            order = EditOrder.currentOrder;
+            Order order = EditOrder.currentOrder;
 
             if (rowIndexesContainingOrder_Id.size() == 1) {
                 Sheet worksheet = dbOrdersExtractor.ordersWorkbook.getSheetAt(0);
@@ -118,11 +112,10 @@ public class DBOrdersInserter {
 
                 Field[] declaredFields = order.getClass().getDeclaredFields();
                 int i = 0;
-                cellcount = 0;
+                int cellcount = 0;
                 int columns = 0;
                 int totalColumns = 9;
                 while (cellIterator.hasNext() && i < declaredFields.length && columns <= totalColumns) {
-
                     Cell cell = cellIterator.next();
                     declaredFields[i].setAccessible(true);
                     switch (cell.getCellType()) {

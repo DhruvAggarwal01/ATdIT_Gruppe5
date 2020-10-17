@@ -41,7 +41,7 @@ public class ShowOrder extends JPanel {
      */
     public void setStatusBackground(final Order currentOrder, final JPanel showOrderPanel) {
 
-        switch (currentOrder.status) {
+        switch (currentOrder.getStatus()) {
             case "overdue":
                 showOrderPanel.setBackground(new java.awt.Color(252, 130, 136));
                 break;
@@ -65,7 +65,7 @@ public class ShowOrder extends JPanel {
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
 
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), currentOrder);
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
@@ -89,7 +89,7 @@ public class ShowOrder extends JPanel {
 
         JLabel orderHeader = new JLabel(this.orderSource);
         orderHeader.setFont(Styles.ORDER_INFO_HEAD);
-        JLabel orderStatus = new JLabel(currentOrder.status);
+        JLabel orderStatus = new JLabel(currentOrder.getStatus());
         orderStatus.setFont(Styles.ORDER_INFO_HEAD);
 
         showOrderPanel.add(orderHeader);
@@ -102,25 +102,27 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
         showOrderPanel.add(new JLabel(LogistikStrings.getStoneTypeString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.stone_type)).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getStone_type())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getAmountString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.amount + LogistikStrings.getTonString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getAmount() + LogistikStrings.getTonString()))
+                .setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getPriceString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.price + LogistikStrings.getEuroSign())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getPrice() + LogistikStrings.getEuroSign()))
+                .setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
         showOrderPanel.add(new JLabel(LogistikStrings.getDueDateString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(" " + currentOrder.due_date)).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(" " + currentOrder.getDue_date())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getPhaseString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.phase)).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getPhase())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneText())).setFont(Styles.ORDER_INFO);
-        if (currentOrder.done) {
+        if (currentOrder.getIsDone()) {
             showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneDescription())).setFont(Styles.ORDER_INFO);
         } else {
             showOrderPanel.add(new JLabel(LogistikStrings.getOrderNotDoneDescription())).setFont(Styles.ORDER_INFO);

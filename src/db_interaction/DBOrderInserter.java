@@ -14,10 +14,12 @@ import exceptions.NoneOfUsersBusinessException;
 public class DBOrderInserter extends DBGenericInserter<Order> {
 
     private String excelFileName;
+    private Order genericObject;
 
     public DBOrderInserter(String excelFileName, Order genericObject) {
         super(excelFileName, genericObject);
-        // this.excelFileName = excelFileName;
+        this.excelFileName = excelFileName;
+        this.genericObject = genericObject;
     }
 
     /**
@@ -30,7 +32,9 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
         rowIndexesContainingGeneric_Id = new HashSet<Integer>();
 
         try {
-            DBGenericExtractor<Order> dbOrdersExtractor = new DBGenericExtractor<Order>(excelFileName, new Order());
+            DBGenericExtractor<Order> dbOrdersExtractor = new DBGenericExtractor<Order>(excelFileName, genericObject); // check
+                                                                                                                       // again
+                                                                                                                       // tbd
             Integer number = EditOrder.currentOrder.getOrder_id();
 
             rowIndexesContainingGeneric_Id.add(number);
@@ -50,7 +54,6 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
                 int columns = 0;
                 int totalColumns = 9;
                 while (cellIterator.hasNext() && i < declaredFields.length && columns <= totalColumns) {
-
                     Cell cell = cellIterator.next();
                     declaredFields[i].setAccessible(true);
                     switch (cell.getCellType()) {

@@ -1,6 +1,5 @@
 package subpanels;
 
-
 import javax.swing.*;
 
 import db_interaction.Order;
@@ -19,7 +18,7 @@ public class ColorChooser {
      */
     public static void setPanelBackground(final Order currentOrder, final JPanel orderPanel) {
 
-        switch (currentOrder.status) {
+        switch (currentOrder.getStatus()) {
             case "overdue":
                 orderPanel.setBackground(new java.awt.Color(252, 130, 136));
                 break;

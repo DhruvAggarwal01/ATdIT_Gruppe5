@@ -10,23 +10,23 @@ import java.util.Objects;
  */
 public class Order {
 
-    public int order_id = 0;
-    public String firm = "";
-    public String stone_type = "";
-    public int amount = 00000;
-    public int due_date = 0; // due_date noch int Wert, in Version 2 mit date
-    public String phase = "";
-    public int price = 0;
-    public boolean done = false;
-    public String status = "onTime";
-    public int rowcount = 1;
+    private int order_id = 0;
+    private String firm = "";
+    private String stone_type = "";
+    private int amount = 00000;
+    private int due_date = 0; // due_date noch int Wert, in Version 2 mit date
+    private String phase = "";
+    private int price = 0;
+    private boolean isDone = false;
+    private String status = "onTime";
+    private int rowcount = 1;
 
     /* ------------ Overriding zum möglichen Vergleich von Aufträgen ------------ */
     @Override
     public String toString() {
         return "{" + "order_id: " + order_id + " ; firm: " + firm + " ; stone_type: " + stone_type + " ; due_date: "
-                + due_date + " ; phase: " + phase + " ; amount: " + amount + " ; Price: " + price + " ; done: " + done
-                + " ; status: " + status + "}";
+                + due_date + " ; phase: " + phase + " ; amount: " + amount + " ; Price: " + price + " ; isDone: "
+                + isDone + " ; status: " + status + "}";
     }
 
     @Override
@@ -176,21 +176,21 @@ public class Order {
     }
 
     /**
-     * Getter-Methode für done
+     * Getter-Methode für den done-Status
      * 
-     * @return done
+     * @return done-Status
      */
-    public boolean getisDone() {
-        return this.done;
+    public boolean getIsDone() {
+        return this.isDone;
     }
 
     /**
-     * Setter-Methode für done, Abgeschlossenheit des Auftrags
+     * Setter-Methode für den done-Status
      * 
-     * @param done
+     * @param amount done-Status
      */
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setIsDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
     /**

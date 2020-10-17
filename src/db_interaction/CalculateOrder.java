@@ -9,13 +9,13 @@ import java.util.Date;
 public class CalculateOrder {
 
     public CalculateOrder(Order currentOrder) {
-
+        // tbd?
     }
 
     public static int calculatePrice(Order currentOrder) {
         int price = 0;
-        int amount = currentOrder.amount;
-        switch (currentOrder.stone_type) {
+        int amount = currentOrder.getAmount();
+        switch (currentOrder.getStone_type()) {
             case "Sandstein":
                 price = amount * 75;
                 break;
@@ -40,10 +40,10 @@ public class CalculateOrder {
 
     public static String calculateStatus(Order currentOrder) {
         String status = "";
-        String phase = currentOrder.phase;
-        int due_date = currentOrder.due_date;
+        String phase = currentOrder.getPhase();
+        int due_date = currentOrder.getDue_date();
         Date actualDate = new Date();
-        switch (currentOrder.phase) {
+        switch (currentOrder.getPhase()) {
             case "Planung":
 
                 break;

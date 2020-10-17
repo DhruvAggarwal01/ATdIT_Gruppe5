@@ -28,7 +28,7 @@ public class OrderPanels extends JPanel {
             final Integer rgbGreen, final Integer rgbBlue) {
 
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), currentOrder);
 
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
@@ -59,7 +59,7 @@ public class OrderPanels extends JPanel {
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
             final JLabel labelID2 = new JLabel(
-                    "Auftragsnummer: " + currentOrder.order_id + "  Firma: " + currentOrder.getFirm());
+                    "Auftragsnummer: " + currentOrder.getOrder_id() + "  Firma: " + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 

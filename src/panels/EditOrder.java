@@ -95,7 +95,7 @@ public class EditOrder extends JPanel {
             this.orderSource = OrderPanels.getOrderSource();
             i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
         } else {
-            i = currentOrder.order_id;
+            i = currentOrder.getOrder_id();
         }
 
         DBGenericExtractor<Order> dbOrderExtractor;
@@ -176,7 +176,7 @@ public class EditOrder extends JPanel {
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
-        orderStatusLabel = new JLabel("" + currentOrder.order_id);
+        orderStatusLabel = new JLabel("" + currentOrder.getOrder_id());
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
         firmLabel = new JLabel(LogistikStrings.getFirmString());
@@ -196,13 +196,13 @@ public class EditOrder extends JPanel {
 
         amountLabel = new JLabel("Menge (in Tonnen):");
         amountLabel.setFont(Styles.ORDER_INFO);
-        amountField = new JTextField("" + currentOrder.amount);
+        amountField = new JTextField("" + currentOrder.getAmount());
         amountField.setInputVerifier(new OrderAmountInputVerifier());
         amountField.addMouseListener(new ResetInputFieldListener());
 
         dueDateLabel = new JLabel(LogistikStrings.getDueDateString());
         dueDateLabel.setFont(Styles.ORDER_INFO);
-        dueDateField = new JTextField("" + currentOrder.due_date);
+        dueDateField = new JTextField("" + currentOrder.getDue_date());
 
         priceLabel = new JLabel(LogistikStrings.getPriceString());
         priceLabel.setFont(Styles.ORDER_INFO);
@@ -287,7 +287,7 @@ public class EditOrder extends JPanel {
         currentOrder.setAmount(Integer.parseInt(amountField.getText()));
         currentOrder.setDue_date(Integer.parseInt(dueDateField.getText()));
         currentOrder.setPhase(phaseSelection.getSelectedItem().toString());
-        currentOrder.setDone(doneBox.isSelected());
+        currentOrder.setIsDone(doneBox.isSelected());
         currentOrder.setPrice(CalculateOrder.calculatePrice(currentOrder));
     }
 
