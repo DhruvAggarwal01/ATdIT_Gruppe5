@@ -155,13 +155,13 @@ public class DBGenericExtractor<T> {
                         break;
                     case BOOLEAN:
                         declaredFields[i].set(object, cell.getBooleanCellValue());
+                        break;
                     default:
                         break;
                 }
                 i++;
             }
         } catch (IllegalAccessException iae) {
-            iae.printStackTrace();
             throw new NoneOfUsersBusinessException();
         }
         return (T) object;

@@ -38,7 +38,9 @@ public class OrdersSorter {
         try {
             dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
             unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
+            System.out.println("unfinished: " + unfinishedOrders);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
+            System.out.println("mit Status : " + status + " , " + specificStatusOrders);
             unfinishedOrders.retainAll(specificStatusOrders);
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
