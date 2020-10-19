@@ -140,6 +140,7 @@ public class DBOrdersExtractor {
                     break;
                 case BOOLEAN:
                     declaredFields[i].set(order, cell.getBooleanCellValue());
+                    break;
                 default:
                     break;
             }
