@@ -51,7 +51,7 @@ public class LoginCancelForgottenListener implements ActionListener {
                         new User());
                 try {
                     dbUsersInserter.applyChangedGenericToRow("personnel_id",
-                            LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
+                            LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);
                 } catch (DatabaseConnectException dce) {
                     JPanel exceptionPanel = dce.getExceptionPanel();
                     JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),

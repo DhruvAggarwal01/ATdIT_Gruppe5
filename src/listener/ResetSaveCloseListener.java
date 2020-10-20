@@ -47,14 +47,14 @@ public class ResetSaveCloseListener implements ActionListener {
                 DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
                         new User());
                 dbUsersInserter.applyChangedGenericToRow("personnel_id",
-                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);
             }
             if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
                 profileDialogView.saveEntriesOfTextFields();
                 DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
                         new User());
                 dbUsersInserter.applyChangedGenericToRow("personnel_id",
-                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), new User());
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);
                 if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
                     profileDialogView.dispose();
                 }
