@@ -141,6 +141,15 @@ public class DBGenericExtractor<T> {
         Field[] declaredFields = object.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
 
+        Object genObj = null;
+        if (object.getClass().equals(new User().getClass())) {
+            genObj = new User();
+        } else if (object.getClass().equals(new Order().getClass())) {
+            genObj = new Order();
+        } else {
+            throw new NoneOfUsersBusinessException();
+        }
+
         try {
             int i = 0;
             while (cellIterator.hasNext() && i < declaredFields.length) {
@@ -148,13 +157,13 @@ public class DBGenericExtractor<T> {
                 declaredFields[i].setAccessible(true);
                 switch (cell.getCellType()) {
                     case NUMERIC:
-                        declaredFields[i].set(object, (int) cell.getNumericCellValue());
+                        declaredFields[i].set(genObj, (int) cell.getNumericCellValue());
                         break;
                     case STRING:
-                        declaredFields[i].set(object, cell.getStringCellValue());
+                        declaredFields[i].set(genObj, cell.getStringCellValue());
                         break;
                     case BOOLEAN:
-                        declaredFields[i].set(object, cell.getBooleanCellValue());
+                        declaredFields[i].set(genObj, cell.getBooleanCellValue());
                         break;
                     default:
                         break;
@@ -164,7 +173,7 @@ public class DBGenericExtractor<T> {
         } catch (IllegalAccessException iae) {
             throw new NoneOfUsersBusinessException();
         }
-        return (T) object;
+        return (T) genObj;
     }
 
     /**

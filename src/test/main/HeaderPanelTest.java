@@ -45,7 +45,6 @@ public class HeaderPanelTest {
         java.awt.Robot testingBot = new java.awt.Robot();
         int x = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getX();
         int y = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getY();
-        System.out.println(x);
         testingBot.mouseMove(x, y);
         testingBot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         testingBot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);

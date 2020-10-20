@@ -57,7 +57,6 @@ public class DBUsersExtractorTest {
         Set<Integer> filteredUserSet = dbUsersExtractor.getFilteredRowsIndexes("username", "max_mustermann");
         Iterator<Integer> setOfRowsIterator = filteredUserSet.iterator();
         while (setOfRowsIterator.hasNext()) {
-            // System.out.println(setOfRowsIterator.next().intValue());
         }
 
     }
