@@ -1,6 +1,7 @@
 package subpanels;
 
 public class Tasks {
+    private int id;
     private String name;
     private String date;
     private String description;
@@ -9,7 +10,8 @@ public class Tasks {
 
    
 
-    public Tasks(String name, String date, String description, String time, String priority){
+    public Tasks(int id, String name, String date, String description, String time, String priority){
+        this.id = id;
         this.name = name;
         this.date = date;
         this.description = description;
@@ -19,6 +21,9 @@ public class Tasks {
 
     /* ----------------------- Getter/Setter-Methoden --------------------------- */
     
+    public int getId() {
+        return this.id;
+    }
     public String getName() {
         return this.name;
     }

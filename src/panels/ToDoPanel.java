@@ -1,6 +1,9 @@
 package panels;
 
 import javax.swing.*;
+
+import listener.ToDoPanelButtonListener;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -34,14 +37,14 @@ public class ToDoPanel extends JPanel {
 
     public ToDoPanel() {
         this.setLayout(new BorderLayout());
-        
+
         aufgabenListe = new JPanel(new GridLayout(0, 1, 10, 10));
         buttonPanel = new JPanel();
-        
+
         neueAufgabe = new JButton("Neue Aufgabe");
         buttonPanel.add(neueAufgabe);
 
-        ButtonListener listenerNeueAufgabe = new ButtonListener(this);
+        ToDoPanelButtonListener listenerNeueAufgabe = new ToDoPanelButtonListener(this);
         neueAufgabe.addActionListener(listenerNeueAufgabe);
 
         this.add(aufgabenListe, BorderLayout.CENTER);
@@ -52,22 +55,8 @@ public class ToDoPanel extends JPanel {
         return this.task_list;
     }
 
-
-    class ButtonListener implements ActionListener {
-        private ToDoPanel panel;
-
-        public ButtonListener(ToDoPanel panel) {
-            this.panel = panel;
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            new NeueAufgabe(panel);
-        }
-    }
-
     public JPanel getAufgabenListe() {
         return aufgabenListe;
     }
-
 
 }
