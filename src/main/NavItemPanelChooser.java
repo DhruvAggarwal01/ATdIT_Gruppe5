@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import exceptions.NavItemNotFoundException;
 import panels.*;
-import panels.ToDoPanel;
 
 /**
  * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
@@ -98,8 +97,6 @@ public class NavItemPanelChooser extends JPanel {
                 }
                 break;
             case "ToDo's":
-                this.setLayout(new BorderLayout());
-                this.add(new ToDoPanel(), BorderLayout.CENTER);
                 break;
             case "Produktion":
                 this.setLayout(new BorderLayout());
