@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import subpanels.NeueAufgabe;
+import subpanels.NewTask;
 import subpanels.Tasks;
 
 /**
@@ -23,9 +23,9 @@ public class ToDoPanel extends JPanel {
 
     private static final long serialVersionUID = -1436022192721531424L;
 
-    private JPanel aufgabenListe;
+    private JPanel taskList;
     private JPanel buttonPanel;
-    private JButton neueAufgabe;
+    private JButton newTask;
     private ArrayList<Tasks> task_list = new ArrayList<Tasks>();
 
     /**
@@ -38,16 +38,16 @@ public class ToDoPanel extends JPanel {
     public ToDoPanel() {
         this.setLayout(new BorderLayout());
 
-        aufgabenListe = new JPanel(new GridLayout(0, 1, 10, 10));
+        taskList = new JPanel(new GridLayout(0, 1, 10, 10));
         buttonPanel = new JPanel();
 
-        neueAufgabe = new JButton("Neue Aufgabe");
-        buttonPanel.add(neueAufgabe);
+        newTask = new JButton("Neue Aufgabe");
+        buttonPanel.add(newTask);
 
-        ToDoPanelButtonListener listenerNeueAufgabe = new ToDoPanelButtonListener(this);
-        neueAufgabe.addActionListener(listenerNeueAufgabe);
+        ToDoPanelButtonListener listenerNewTask = new ToDoPanelButtonListener(this);
+        newTaskActionListener(listenerNewTask);
 
-        this.add(aufgabenListe, BorderLayout.CENTER);
+        this.add(taskList, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
 
@@ -56,7 +56,7 @@ public class ToDoPanel extends JPanel {
     }
 
     public JPanel getAufgabenListe() {
-        return aufgabenListe;
+        return taskList;
     }
 
 }

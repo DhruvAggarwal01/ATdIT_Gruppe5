@@ -6,36 +6,36 @@ import panels.ToDoPanel;
 
 import java.awt.*;
 import java.awt.event.*;
-import subpanels.NeueAufgabe;
+import subpanels.NewTask;
 import subpanels.TaskButton;
 import subpanels.Tasks;
 
 public class NewTaskListener implements ActionListener {
-    private NeueAufgabe dialog;
+    private NewTask dialog;
     private ToDoPanel toDoPanel;
     private String name;
-    private String beschreibung;
-    private String datum;
-    private String uhrzeit;
-    private String priorität;
+    private String description;
+    private String date;
+    private String time;
+    private String priority;
     private ToDoPanelButtonListener li;
     private static int id = 0;
 
 
-    public NewTaskListener(NeueAufgabe dialog, String name, String beschreibung, String datum, String uhrzeit, String priorität, ToDoPanelButtonListener li, ToDoPanel toDoPanel){
+    public NewTaskListener(NewTask dialog, String name, String description, String date, String time, String priority, ToDoPanelButtonListener li, ToDoPanel toDoPanel){
         this.dialog = dialog;
         this.name = name;
-        this.beschreibung = beschreibung;
-        this.datum = datum;
-        this.uhrzeit = uhrzeit;
-        this.priorität = priorität;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.priority = priority;
         this.li = li;
         this.toDoPanel = toDoPanel;
 
     }
     public void actionPerformed(ActionEvent e) {
         
-        Tasks t = new Tasks(++id, name, beschreibung, datum, uhrzeit, priorität);
+        Tasks t = new Tasks(++id, name, description, date, time, priority);
         toDoPanel.getTask_list().add(t);
         TaskButton task = new TaskButton(id, t.getName());
         task.addActionListener(li);
