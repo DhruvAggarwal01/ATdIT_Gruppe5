@@ -3,7 +3,6 @@ package subpanels;
 import java.awt.event.*;
 import javax.swing.*;
 
-import java.io.*;
 import java.util.*;
 
 import listener.HoverColorChangeListener;

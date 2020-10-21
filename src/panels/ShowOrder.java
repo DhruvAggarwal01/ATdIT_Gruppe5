@@ -2,7 +2,6 @@ package panels;
 
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.util.Set;
 import java.util.Iterator;
 
@@ -105,7 +104,7 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.getStone_type())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getAmountString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getAmount() + LogistikStrings.getTonString()))
+        showOrderPanel.add(new JLabel(currentOrder.getAmount() + " " + LogistikStrings.getTonString()))
                 .setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(LogistikStrings.getPriceString())).setFont(Styles.ORDER_INFO);

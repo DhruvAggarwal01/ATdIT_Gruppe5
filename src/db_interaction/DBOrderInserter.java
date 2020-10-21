@@ -32,9 +32,7 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
         rowIndexesContainingGeneric_Id = new HashSet<Integer>();
 
         try {
-            DBGenericExtractor<Order> dbOrdersExtractor = new DBGenericExtractor<Order>(excelFileName, genericObject); // check
-                                                                                                                       // again
-                                                                                                                       // tbd
+            DBGenericExtractor<Order> dbOrdersExtractor = new DBGenericExtractor<Order>(excelFileName, genericObject);
             Integer number = EditOrder.currentOrder.getOrder_id();
 
             rowIndexesContainingGeneric_Id.add(number);

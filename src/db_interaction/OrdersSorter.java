@@ -1,6 +1,5 @@
 package db_interaction;
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
