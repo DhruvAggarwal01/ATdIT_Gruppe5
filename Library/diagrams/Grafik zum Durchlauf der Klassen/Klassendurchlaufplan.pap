@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="UNSIGNED">
-  <PROJECT FORMAT="1.00" NAME="Codeablaufplan" AUTHOR="Dhruv Aggarwal" CREATED="2020.07.30 15:46:04" MODIFIED="2020.09.13 15:19:07">
+  <PROJECT FORMAT="1.00" NAME="Klassendurchlaufplan" AUTHOR="ATdIT1 - Gruppe 5" CREATED="2020.07.30 15:46:04" MODIFIED="2020.10.18 19:05:08">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Codeablaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.09.13 15:19:07">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Klassendurchlaufplan" CREATED="2020.07.30 15:46:22" MODIFIED="2020.10.18 19:05:08">
         <LAYOUT FORMAT="1.00" COLUMNS="16" ROWS="25">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="11">
@@ -212,7 +212,7 @@
             </ENTRY>
             <ENTRY COLUMN="10" ROW="0" ANCHOR="True">
               <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
-                <TEXT><![CDATA[Codeablaufplan]]></TEXT>
+                <TEXT><![CDATA[Klassendurchlaufplan]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="10" ROW="2">
