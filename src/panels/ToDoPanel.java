@@ -5,11 +5,9 @@ import javax.swing.*;
 import listener.ToDoPanelButtonListener;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
-import subpanels.NewTask;
-import subpanels.Tasks;
+
+
 
 /**
  * Diese Klasse bildet die To-Do-Verwaltung der Steinbruch Software ab
@@ -26,7 +24,7 @@ public class ToDoPanel extends JPanel {
     private JPanel taskList;
     private JPanel buttonPanel;
     private JButton newTask;
-    private ArrayList<Tasks> task_list = new ArrayList<Tasks>();
+  
 
     /**
      * Konstruktor bietet ein <code>JPanel</code>, welches alle aktiven
@@ -45,15 +43,13 @@ public class ToDoPanel extends JPanel {
         buttonPanel.add(newTask);
 
         ToDoPanelButtonListener listenerNewTask = new ToDoPanelButtonListener(this);
-        newTaskActionListener(listenerNewTask);
+        newTask.addActionListener(listenerNewTask);
 
         this.add(taskList, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    public ArrayList<Tasks> getTask_list() {
-        return this.task_list;
-    }
+  
 
     public JPanel getAufgabenListe() {
         return taskList;
