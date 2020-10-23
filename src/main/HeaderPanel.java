@@ -1,21 +1,11 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+import listener.LogoIconMouseAdapter;
+import listener.ProfileMenuItemListener;
+import listener.UserIconMouseAdapter;
 
 /**
  * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
@@ -31,23 +21,31 @@ public class HeaderPanel extends JPanel {
     public JPanel logoAndHeaderTitle;
     public JLabel logoIconInJLabel;
     public JLabel headerTitleJLabel;
-    public AbstractButton userIconButton;
-    public JMenuBar mb;
+
+    private AbstractButton userIconButton;
+    private JMenuBar mb;
+    private JMenuItem normItem1;
+    private JMenuItem normItem2;
+    private JMenuItem normItem3;
+    private JMenuItem normItem4;
+    private JMenuItem logOffItem;
+    private JMenuItem welcomeItem;
+
     public JPanel userIconWithMenuInJPanel;
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
      * Header setzt sich aus Anwendungsicon, -titel und User-Icon zusammen.
      * 
-     * @param headerTitle der Anwendungsname
+     * @param headerTitle Applikationstitel
      */
-    public HeaderPanel(String headerTitle) { // Nutzer nutzer als parameter
+    public HeaderPanel(String headerTitle) {
         initSetUp();
 
         logoAndHeaderTitle.add(logoAdder("Library/images/dashboardlogo.png"));
         logoAndHeaderTitle.add(headerTitleAdder(headerTitle));
 
-        userIconWithMenuInJPanel.add(userSymbolAdder("Library/images/userIcon.png"), BorderLayout.EAST);
+        userIconWithMenuInJPanel.add(userSymbolAdder("Library/images/userIcon.png"), java.awt.BorderLayout.EAST);
 
         this.add(new JLabel());
         this.add(logoAndHeaderTitle);
@@ -58,28 +56,32 @@ public class HeaderPanel extends JPanel {
      * Diese Methode nimmt die initialen Voreinstellungen, wie
      * <code>setLayout</code>, <code>setBorder</code>, vor und stellt die benötigten
      * Subpanels bereit.
-     * 
      */
     public void initSetUp() {
-        this.setLayout(new GridLayout(1, 3, 0, 0));
-        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png"); // --> andere Option mit Bild
+        this.setLayout(new java.awt.GridLayout(1, 3, 0, 0));
+        ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png");
         this.setBorder(BorderFactory.createMatteBorder(-1, -1, -1, -1, borderLine));
+        this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
-        logoAndHeaderTitle = new JPanel(new GridLayout(2, 1));
-        userIconWithMenuInJPanel = new JPanel(new BorderLayout()); // Listener soll sich nur auf diesen JPanel beziehen
+        logoAndHeaderTitle = new JPanel(new java.awt.GridLayout(2, 1));
+        logoAndHeaderTitle.setBackground(Styles.SURROUNDING_PANEL_COLOR);
+        userIconWithMenuInJPanel = new JPanel(new java.awt.BorderLayout());
+        userIconWithMenuInJPanel.setBackground(Styles.SURROUNDING_PANEL_COLOR);
     }
 
     /**
-     * Diese Methode passt das Icon an, verbessert die UX und Interaktion mit einem
-     * Benutzer und gibt das Icon, gewrappt durch ein JLabel, wieder zurück.
+     * Diese Methode passt das Icon an, verbessert die UX mittels Cursor-Anpassung
+     * und Interaktion mit einem Benutzer und gibt das Icon, gewrappt durch ein
+     * JLabel, wieder zurück.
      * 
-     * @param filename
-     * @return angepasstes Applogo-Icon
+     * @param filename Pfad zum Logo-Icon
+     * @return angepasstes Logo-Icon
      */
     public JLabel logoAdder(String filename) {
-        logoIconInJLabel = resizeToJLabel(filename, 44, 44, JLabel.CENTER);
-        logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        logoIconInJLabel.addMouseListener(new MouseLogoIconListener());
+        logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
+        logoIconInJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MouseAdapter liMouseAdapter = new LogoIconMouseAdapter();
+        logoIconInJLabel.addMouseListener(liMouseAdapter);
 
         return logoIconInJLabel;
     }
@@ -89,12 +91,12 @@ public class HeaderPanel extends JPanel {
      * versehen und schließlich, gewrappt durch ein JLabel, wieder zurückgegeben
      * wird.
      * 
-     * @param headerTitle
+     * @param headerTitle Header-Titel
      * @return Label für Titel
      */
     public JLabel headerTitleAdder(String headerTitle) {
-        headerTitleJLabel = new JLabel(headerTitle, JLabel.CENTER);
-        headerTitleJLabel.setFont(new Font("Serif", Font.BOLD, 36));
+        headerTitleJLabel = new JLabel(headerTitle, SwingConstants.CENTER);
+        headerTitleJLabel.setFont(Styles.APPHEADING);
 
         return headerTitleJLabel;
     }
@@ -103,17 +105,16 @@ public class HeaderPanel extends JPanel {
      * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
      * "Menüheader" ein User-Icon.
      * 
-     * @param userIconFile
+     * @param userIconFile Pfad zum User-Icon
      * @return User-Icon-Menü innerhalb einer JMenuBar
      */
     public JMenuBar userSymbolAdder(String userIconFile) {
         userIconButton = new JMenu();
-
         ImageIcon userImage = new ImageIcon(userIconFile);
         userIconButton.setIcon(userImage);
 
-        JMenuItem welcomeItem = new JMenuItem("<HTML><U>Willkommen (tbd)UserName!</U></HTML>");
-        welcomeItem.setEnabled(false);
+        MouseAdapter uiMouseAdapter = new UserIconMouseAdapter(this);
+        userIconButton.addMouseListener(uiMouseAdapter);
 
         ImageIcon profileIcon = new ImageIcon(new ImageIcon("Library/images/profileIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
@@ -124,15 +125,18 @@ public class HeaderPanel extends JPanel {
         ImageIcon aboutIcon = new ImageIcon(new ImageIcon("Library/images/aboutIcon.png").getImage()
                 .getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 
-        JMenuItem normItem1 = new JMenuItem("Ihr Profil", profileIcon);
-        JMenuItem normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        ActionListener pmiListener = new ProfileMenuItemListener(this);
+        normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        normItem1.addActionListener(pmiListener);
+        normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        normItem2.addActionListener(pmiListener);
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
-        JMenuItem normItem3 = new JMenuItem("Hilfe", helpIcon);
-        JMenuItem normItem4 = new JMenuItem("Über...", aboutIcon);
-        JMenuItem logOffItem = new JMenuItem("Ausloggen...");
+        normItem3 = new JMenuItem("Hilfe", helpIcon);
+        normItem4 = new JMenuItem("Über...", aboutIcon);
+        logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        logOffItem.addActionListener(pmiListener);
 
-        userIconButton.add(welcomeItem);
         userIconButton.add(normItem1);
         userIconButton.add(normItem2);
         userIconButton.add(separatorItem);
@@ -141,22 +145,10 @@ public class HeaderPanel extends JPanel {
         userIconButton.add(logOffItem);
 
         mb = new JMenuBar();
+        mb.setBackground(Styles.SURROUNDING_PANEL_COLOR);
         mb.add(userIconButton);
 
         return mb;
-    }
-
-    /**
-     * Innere Klasse für den MouseListener speziell für das Applogo-Icon
-     */
-    class MouseLogoIconListener extends MouseAdapter {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            MainPanel.getNavPane().setComponentAt(0, new NavItemPanelChooser("Overview", null, null));
-            MainPanel.getNavPane().setSelectedIndex(0);
-        }
-
     }
 
     /**
@@ -164,18 +156,98 @@ public class HeaderPanel extends JPanel {
      * <code>width</code> x <code>height</code>. Danach wird das Bild in ein JLabel
      * gegeben, um dieses wiederum z.B. zur Ausgabe nutzen zu können.
      * 
-     * @param filename
-     * @param width
-     * @param height
+     * @param filename Pfad zum Bild
+     * @param width    einzustellende Breite des Bildes
+     * @param height   einzustellende Höhe des Bildes
      * @return Größe-angepasstes Applogo-Icon
      */
     private static JLabel resizeToJLabel(String filename, int width, int height, int horizontalAlignment) {
         ImageIcon logoIIcon = new ImageIcon(filename);
-        Image logoImage = logoIIcon.getImage();
+        java.awt.Image logoImage = logoIIcon.getImage();
         logoImage = logoImage.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         logoIIcon = new ImageIcon(logoImage);
 
         return new JLabel(logoIIcon, horizontalAlignment);
     }
 
+    /**
+     * Getter-Methode für das Headertitel-Label
+     * 
+     * @return Headertitel-Label
+     */
+    public JLabel getHeaderTitleJLabel() {
+        return headerTitleJLabel;
+    }
+
+    /**
+     * Getter-Methode für den Usericon-Button
+     * 
+     * @return Usericon-Button
+     */
+    public AbstractButton getUserIconButton() {
+        return this.userIconButton;
+    }
+
+    /**
+     * Getter-Methode für das Welcome-Menüelement
+     * 
+     * @return Welcome-Menüelement
+     */
+    public JMenuItem getWelcomeItem() {
+        return this.welcomeItem;
+    }
+
+    /**
+     * Setter-Methode für das Welcome-Menüelement
+     * 
+     * @param welcomeItem Welcome-Menüelement
+     */
+    public void setWelcomeItem(JMenuItem welcomeItem) {
+        this.welcomeItem = welcomeItem;
+    }
+
+    /**
+     * Getter-Methode für das erste Menüelement
+     * 
+     * @return erstes Menüelement
+     */
+    public JMenuItem getNormItem1() {
+        return normItem1;
+    }
+
+    /**
+     * Getter-Methode für das zweite Menüelement
+     * 
+     * @return zweites Menüelement
+     */
+    public JMenuItem getNormItem2() {
+        return normItem2;
+    }
+
+    /**
+     * Getter-Methode für das dritte Menüelement
+     * 
+     * @return drittes Menüelement
+     */
+    public JMenuItem getNormItem3() {
+        return normItem3;
+    }
+
+    /**
+     * Getter-Methode für das vierte Menüelement
+     * 
+     * @return viertes Menüelement
+     */
+    public JMenuItem getNormItem4() {
+        return normItem4;
+    }
+
+    /**
+     * Getter-Methode für das Logoff-Menüelement
+     * 
+     * @return Logoff-Menüelement
+     */
+    public JMenuItem getLogOffItem() {
+        return logOffItem;
+    }
 }

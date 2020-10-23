@@ -1,10 +1,6 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 /**
  * Diese Klasse leitet den Aufbau der Anwendung ein.
@@ -19,72 +15,73 @@ public class MainPanel extends JFrame {
     private static String appTitle = "Steinbruch ALBERSWEILER";
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
-    private Container c;
+    private java.awt.Container c;
 
     /**
      * Konstruktor, der zuständig für den Aufbau des Hauptframe-Fensters ist. Das
      * Fenster setzt sich aus Header, Navigationsleiste und dem dazugehörigen
      * Panel-Feld zusammen.
      */
-    public MainPanel() { // User user vorgefertigt einfügen (je nach Bezeichnung Klassenname ändern/je
-        // je nach Recht andere NavPane) als Parameter
+    public MainPanel() {
         c = getContentPane();
-        c.setLayout(new BorderLayout());
+        c.setLayout(new java.awt.BorderLayout());
 
-        headerPanel = new HeaderPanel(appTitle);
-        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT); 
+        headerPanel = new HeaderPanel("<html><p>" + appTitle + "</p></html>");
+        navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
 
-        c.add(headerPanel, BorderLayout.NORTH);
-        c.add(navPane, BorderLayout.CENTER);
+        c.add(headerPanel, java.awt.BorderLayout.NORTH);
+        c.add(navPane, java.awt.BorderLayout.CENTER);
     }
 
     /**
-     * Getter-Methode für <code>appTitle</code>
+     * Getter-Methode für den Apptitel
      * 
-     * @return <code>appTitle</code>
+     * @return Apptitel
      */
     public static String getAppTitle() {
         return appTitle;
     }
 
     /**
-     * Getter-Methode für <code>navPane</code>
+     * Setter-Methode für den Apptitel
      * 
-     * @return <code>navPane</code>
-     */
-    public static NavigationPane getNavPane() {
-        return navPane;
-    }
-
-    /**
-     * Getter-Methode für <code>headerPanel</code>
-     * 
-     * @return <code>headerPanel</code>
-     */
-    public static HeaderPanel getHeaderPanel() {
-        return headerPanel;
-    }
-
-    /**
-     * Setter-Methode für <code>appTitle</code>
-     * 
-     * @return <code>appTitle</code>
+     * @param appTitleSet Apptitel
      */
     public static void setAppTitle(String appTitleSet) {
         appTitle = appTitleSet;
     }
 
     /**
-     * Setter-Methode für <code>navPane</code>
+     * Getter-Methode für die Navigationsleiste
      * 
+     * @return Navigationsleiste
+     */
+    public static NavigationPane getNavPane() {
+        return navPane;
+    }
+
+    /**
+     * Setter-Methode für die Navigationsleiste
+     * 
+     * @param navPaneSet Navigationsleiste
      */
     public static void setNavPane(NavigationPane navPaneSet) {
         navPane = navPaneSet;
     }
 
     /**
-     * Setter-Methode für <code>headerPanel</code>
+     * Getter-Methode für den Headerpanel
      * 
+     * @return Headerpanel
+     */
+    public static HeaderPanel getHeaderPanel() {
+        return headerPanel;
+    }
+
+    /**
+     * Setter-Methode für den Headerpanel
+     * 
+     * @param headerPanelSet Headerpanel
      */
     public static void setHeaderPanel(HeaderPanel headerPanelSet) {
         headerPanel = headerPanelSet;

@@ -1,11 +1,11 @@
 package main;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 /**
- * Je nach dem welche Rechte der eingeloggte User innehat, sind Tabs nutzbar
- * bzw. nicht nutzbar.
+ * Diese Klasse enthält die Tabs der Applikation. Dabei werden über die Klasse
+ * <code>NavItemPanelChooser</code> die jeweilig anzuzeigenden Panels
+ * aufgerufen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -13,8 +13,6 @@ import javax.swing.JTabbedPane;
 public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
-
-    private boolean isAllowedToView;
 
     /**
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
@@ -26,25 +24,18 @@ public class NavigationPane extends JTabbedPane {
      */
     public NavigationPane(int tabPlacement, int tabLayoutPolicy) {
         super(tabPlacement, tabLayoutPolicy);
-        this.setFont(Styles.NAVPANE_FONT);
-        isAllowedToView = true; // noch hartkodiert --> aus User-DB
-        if (isAllowedToView) {
-            this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
-            this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
-            this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
-            this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
-            this.addTab("HR", new NavItemPanelChooser("HR", null, null));
-            this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
-            this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
-        } else {
-            showError(
-                    "Keine gültige Genehmigung für Ihren Nutzer. Kontaktieren Sie Ihren Administrator für weitere Hilfe.",
-                    "Problem.");
-        }
-    }
 
-    public static void showError(String errorMessage, String title) {
-        JOptionPane.showMessageDialog(Application.getAppWindow(), errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
+        this.setFont(Styles.NAVPANE_FONT);
+        this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
+
+        this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
+        this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
+        this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
+        this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
+        this.addTab("HR", new NavItemPanelChooser("HR", null, null));
+        this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
+        this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
+        // this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
     }
 
 }

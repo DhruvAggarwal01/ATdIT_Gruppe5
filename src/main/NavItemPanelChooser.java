@@ -1,18 +1,14 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.util.Objects;
 
-import panels.OverviewPanel;
+import exceptions.NavItemNotFoundException;
+import panels.*;
 
 /**
- * Je nach ausgewaehltem Tab wird ein anderer Panel (hier: JPanel) als Tab
- * gesetzt.
+ * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -21,24 +17,33 @@ public class NavItemPanelChooser extends JPanel {
 
     private static final long serialVersionUID = 2503046166751075554L;
 
-    String navItemName01, navItemName02, navItemName03, panelExplorerTitle;
+    private String navItemName01, navItemName02, navItemName03, panelExplorerTitle;
 
     /**
      * Konstruktor, der zum zugehörigen NavigationItem einen passenden JPanel
      * einsetzt
      * 
-     * @param navItemName Name des ausgewaehlten Tabs (NavigationItem)
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      */
-    public NavItemPanelChooser(String navItemName01, String navItemName02, String navItemName03) {
+    public NavItemPanelChooser(final String navItemName01, final String navItemName02, final String navItemName03) {
         this.navItemName01 = navItemName01;
         this.navItemName02 = navItemName02;
         this.navItemName03 = navItemName03;
 
         panelExplorerTitle = setPanelExplorerText();
-        this.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), panelExplorerTitle,
+        this.setBorder(new TitledBorder(BorderFactory.createLineBorder(java.awt.Color.black), panelExplorerTitle,
                 TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, Styles.TAB_BORDERTITLE_FONT));
-
-        chooserFunctionality();
+        try {
+            chooserFunctionality();
+        } catch (NavItemNotFoundException nitfe) {
+            JPanel exceptionPanel = nitfe.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + nitfe.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            this.add(exceptionPanel, java.awt.BorderLayout.CENTER);
+            this.setEnabled(false);
+        }
     }
 
     /**
@@ -46,9 +51,9 @@ public class NavItemPanelChooser extends JPanel {
      * null-Referenz an eines der Explorer-Teile zugewiesen, so wird diese mit einem
      * leeren String ausgetauscht.
      * 
-     * @param navItemName01
-     * @param navItemName02
-     * @param navItemName03
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      * 
      * @return Panel-Explorer-Text
      */
@@ -74,31 +79,106 @@ public class NavItemPanelChooser extends JPanel {
      * Diese Methode ist dafür zuständig aus den verschiedenen Panels je nach
      * Nutzerwunsch den Richtigen auszuwählen und selbst anzunehmen.
      * 
-     * @param navItemName01
-     * @param navItemName02
-     * @param navItemName03
+     * @param navItemName01 Navigationsitem auf Ebene 1
+     * @param navItemName02 Navigationsitem auf Ebene 2
+     * @param navItemName03 Navigationsitem auf Ebene 3
      */
-    public void chooserFunctionality() {
+    public void chooserFunctionality() throws NavItemNotFoundException {
         switch (navItemName01) {
             case "Overview":
                 switch (navItemName02) {
                     case "":
-                        this.setLayout(new BorderLayout());
-                        this.add(new OverviewPanel(), BorderLayout.CENTER);
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new OverviewPanel(), java.awt.BorderLayout.CENTER);
                         break;
                     case "Reporting":
-                        this.setLayout(new BorderLayout());
-                        this.add(new JLabel("REPORTING tbd"), BorderLayout.CENTER); // tbd
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new ReportingPanel(), java.awt.BorderLayout.CENTER);
+                        break;
                     default:
                         break;
                 }
+                break;
             case "ToDo's":
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(new ToDoPanel(), java.awt.BorderLayout.CENTER);
                 break;
             case "Produktion":
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(new ProduktionPanel(), java.awt.BorderLayout.CENTER);
                 break;
-            // tbd
+            case "Betriebsmittel":
+                break;
+            case "HR":
+                break;
+            case "Genehmigungen":
+                break;
+            case "Logistik":
+                switch (navItemName02) {
+                    case "":
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new LogistikPanel(false), java.awt.BorderLayout.CENTER);
+                        break;
+                    case "DisplayAll":
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new LogistikPanel(true), java.awt.BorderLayout.CENTER);
+                        break;
+                    case "EditOrder":
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new EditOrder(false), java.awt.BorderLayout.CENTER);
+                        break;
+                    case "ShowOrder":
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new ShowOrder(), java.awt.BorderLayout.CENTER);
+                        break;
+                    case "CreateOrder":
+                        this.setLayout(new java.awt.BorderLayout());
+                        this.add(new EditOrder(true), java.awt.BorderLayout.CENTER);
+                        break;
+                    default:
+                        break;
+                }
+                break;
             default:
-                break;
+                throw new NavItemNotFoundException(navItemName01, navItemName02, navItemName03);
         }
+    }
+
+    /* ----- Overriding zum möglichen Vergleich zweier NavItemPanelChooser ------ */
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NavItemPanelChooser navIPC = (NavItemPanelChooser) obj;
+        return Objects.equals(navItemName01, navIPC.navItemName01)
+                && Objects.equals(navItemName02, navIPC.navItemName02)
+                && Objects.equals(navItemName03, navIPC.navItemName03);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() { // wird
+        return Objects.hash(navItemName01, navItemName02, navItemName03);
+    }
+
+    /**
+     * Getter-Methode für den Panel-Explorer-Titel
+     * 
+     * @return Panel-Explorer-Titel
+     */
+    public String getPanelExplorerTitle() {
+        return panelExplorerTitle;
     }
 }
