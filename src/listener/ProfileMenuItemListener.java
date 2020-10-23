@@ -7,7 +7,7 @@ import javax.swing.*;
 import db_interaction.LogOffExecutor;
 import dialogs.SettingsDialog;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 import dialogs.ProfileDialog;
 import main.ActualApp;
 import main.HeaderPanel;
@@ -72,7 +72,7 @@ public class ProfileMenuItemListener implements ActionListener {
                 JPanel exceptionPanel = dce.getExceptionPanel();
                 JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                         JOptionPane.ERROR_MESSAGE);
-            } catch (NoneOfUsersBusinessException noube) {
+            } catch (InternalException noube) {
                 JPanel exceptionPanel = noube.getExceptionPanel();
                 JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                         JOptionPane.ERROR_MESSAGE);

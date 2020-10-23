@@ -11,7 +11,7 @@ import org.junit.*;
 import db_interaction.DBGenericExtractor;
 import db_interaction.User;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 public class DBUsersExtractorTest {
 
@@ -62,7 +62,7 @@ public class DBUsersExtractorTest {
     }
 
     @Test
-    public void testGetRowConvertedToUser() throws DatabaseConnectException, NoneOfUsersBusinessException {
+    public void testGetRowConvertedToUser() throws DatabaseConnectException, InternalException {
         DBGenericExtractor<User> dbUsersExtractor = new DBGenericExtractor<User>("databases/DefaultUSERS.xlsx", new User());
         Sheet usersSheet = dbUsersExtractor.gensWorkbook.getSheetAt(0);
         Row row = usersSheet.getRow(1);

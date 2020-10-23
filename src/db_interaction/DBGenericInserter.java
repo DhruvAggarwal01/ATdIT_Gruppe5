@@ -7,7 +7,7 @@ import java.util.*;
 import org.apache.poi.ss.usermodel.*;
 
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
@@ -42,11 +42,11 @@ public class DBGenericInserter<T> {
      * @param genericObject Objekt, auf dessen Felder die Zeilenelemente angewandet
      *                      werden
      * @throws DatabaseConnectException
-     * @throws NoneOfUsersBusinessException
+     * @throws InternalException
      */
     @SuppressWarnings("unchecked")
     public void applyChangedGenericToRow(String columnName, Object filterValue, Object genericObject)
-            throws DatabaseConnectException, NoneOfUsersBusinessException {
+            throws DatabaseConnectException, InternalException {
         try {
             DBGenericExtractor<T> dbGensExtractor = new DBGenericExtractor<T>(excelFileName, (T) object);
             rowIndexesContainingGeneric_Id = dbGensExtractor.getFilteredRowsIndexes(columnName, filterValue);
@@ -86,7 +86,7 @@ public class DBGenericInserter<T> {
             outFile.close();
             dbGensExtractor.gensWorkbook.close();
         } catch (IllegalAccessException iae) {
-            throw new NoneOfUsersBusinessException();
+            throw new InternalException();
         } catch (IOException ioe) {
             throw new DatabaseConnectException(1);
         }

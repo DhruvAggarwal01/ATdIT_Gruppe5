@@ -4,10 +4,12 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
+
 import javax.imageio.ImageIO;
 import java.io.*;
 import java.util.ArrayList;
 
+import exceptions.InternalException;
 import listener.ZoomMouseListener;
 
 /**
@@ -35,8 +37,10 @@ public class QuarryMap extends JPanel {
 
     /**
      * Konstruktor, der das Panel erzeugt und die Listener dazufügt.
+     * 
+     * @throws InternalException
      */
-    public QuarryMap() {
+    public QuarryMap() throws InternalException {
         getImage();
         ZoomMouseListener lis = new ZoomMouseListener(this);
         addMouseListener(lis);
@@ -50,12 +54,14 @@ public class QuarryMap extends JPanel {
     /**
      * Methode, die das Bild, was den Steinbruch von oben zeigen soll, aus der
      * Library holt.
+     * 
+     * @throws InternalException
      */
-    private void getImage() {
+    private void getImage() throws InternalException {
         try {
             img = ImageIO.read(new File("Library/images/Steinbruch1.jpg"));
         } catch (IOException e) {
-            e.getStackTrace();
+            throw new InternalException();
         }
     }
 

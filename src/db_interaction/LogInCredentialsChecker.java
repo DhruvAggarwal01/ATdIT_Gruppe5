@@ -7,7 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 
 import exceptions.DatabaseConnectException;
 import exceptions.LoginException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * Diese Klasse überprüft die Eingabe im Welcome-Screen
@@ -51,13 +51,13 @@ public class LogInCredentialsChecker {
      * tbd
      * 
      * @throws LoginException
-     * @throws NoneOfUsersBusinessException
+     * @throws InternalException
      */
-    public void setSessionUser() throws LoginException, NoneOfUsersBusinessException {
+    public void setSessionUser() throws LoginException, InternalException {
         try {
             sessionUser = getLoggedInUser();
         } catch (IllegalAccessException iae) {
-            throw new NoneOfUsersBusinessException();
+            throw new InternalException();
         }
     }
 
@@ -66,10 +66,10 @@ public class LogInCredentialsChecker {
      * 
      * @return
      * @throws LoginException
-     * @throws NoneOfUsersBusinessException
+     * @throws InternalException
      * @throws IllegalAccessException
      */
-    public User getLoggedInUser() throws LoginException, NoneOfUsersBusinessException, IllegalAccessException {
+    public User getLoggedInUser() throws LoginException, InternalException, IllegalAccessException {
         if (isCredentialsMatching()) {
             Iterator<Integer> setOfRowsIterator = rowIndexesMatchingCredentials.iterator();
             Row sessionUserRow = dbUsersExtractor.gensWorkbook.getSheetAt(0).getRow(setOfRowsIterator.next());

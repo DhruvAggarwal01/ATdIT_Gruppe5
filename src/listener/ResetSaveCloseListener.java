@@ -8,7 +8,7 @@ import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 import dialogs.ProfileDialog;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ein
@@ -63,7 +63,7 @@ public class ResetSaveCloseListener implements ActionListener {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);

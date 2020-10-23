@@ -8,7 +8,7 @@ package exceptions;
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
-public class NoneOfUsersBusinessException extends AbstractCustomException {
+public class InternalException extends AbstractCustomException {
 
     private static final long serialVersionUID = -7708693454111868203L;
 

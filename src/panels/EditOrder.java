@@ -23,7 +23,7 @@ import verifiers.OrderAmountInputVerifier;
 import verifiers.OrderStringVerifier;
 import usedstrings.LogistikStrings;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
@@ -274,7 +274,7 @@ public class EditOrder extends JPanel {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);

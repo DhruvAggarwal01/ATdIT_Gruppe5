@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import db_interaction.LogInCredentialsChecker;
 import exceptions.LoginException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
@@ -95,7 +95,7 @@ public class LoginButtonPanel extends JPanel {
         try {
             LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
             log.setSessionUser();
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);
