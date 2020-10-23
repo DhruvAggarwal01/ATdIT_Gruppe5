@@ -1,10 +1,14 @@
 package listener;
 
 import java.awt.event.*;
-import java.io.IOException;
+import javax.swing.*;
 
-import db_interaction.DBUsersInserter;
+import db_interaction.DBGenericInserter;
+import db_interaction.LogInCredentialsChecker;
+import db_interaction.User;
 import dialogs.ProfileDialog;
+import exceptions.DatabaseConnectException;
+import exceptions.NoneOfUsersBusinessException;
 
 /**
  * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ein
@@ -34,29 +38,35 @@ public class ResetSaveCloseListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == profileDialogView.getResetEntriesButton()) {
-            profileDialogView.setInitDBUsersData();
-        }
-        if (e.getSource() == profileDialogView.getSaveButton()) {
-            profileDialogView.saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+        try {
+            if (e.getSource() == profileDialogView.getResetEntriesButton()) {
+                profileDialogView.setInitDBUsersData();
             }
-        }
-        if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
-            profileDialogView.saveEntriesOfTextFields();
-            try {
-                DBUsersInserter dbUsersInserter = new DBUsersInserter("databases/USERS.xlsx");
-                dbUsersInserter.applyChangedSessionUserToRow();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+            if (e.getSource() == profileDialogView.getSaveButton()) {
+                profileDialogView.saveEntriesOfTextFields();
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                        new User());
+                dbUsersInserter.applyChangedGenericToRow("personnel_id",
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);
             }
-            if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
-                profileDialogView.dispose();
+            if (e.getSource() == profileDialogView.getSaveAndCloseButton()) {
+                profileDialogView.saveEntriesOfTextFields();
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                        new User());
+                dbUsersInserter.applyChangedGenericToRow("personnel_id",
+                        LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);
+                if (profileDialogView.getPossibleErrorMessageLabel().getText().equals("")) {
+                    profileDialogView.dispose();
+                }
             }
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (NoneOfUsersBusinessException noube) {
+            JPanel exceptionPanel = noube.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

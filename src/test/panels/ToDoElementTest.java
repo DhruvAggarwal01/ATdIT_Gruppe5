@@ -1,42 +1,42 @@
-package test.panels;
+// package test.panels;
 
-import org.junit.*;
+// import org.junit.*;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+// import java.text.SimpleDateFormat;
+// import java.util.*;
 
-import panels.ToDoElement;
+// import panels.ToDoElement;
 
-public class ToDoElementTest {
+// public class ToDoElementTest {
 
-    Date datumprobe = new Date();
-    Date zeitprobe = new Date();
-    ToDoElement probe;
+//     Date datumprobe = new Date();
+//     Date zeitprobe = new Date();
+//     ToDoElement probe;
 
-    @Before
-    public void init() {
-        probe = new ToDoElement("Name", "Beschreibung", datumprobe, zeitprobe, 1);
-    }
+//     @Before
+//     public void init() {
+//         probe = new ToDoElement("Name", "Beschreibung", datumprobe, zeitprobe, 1);
+//     }
 
-    @Test
-    public void testGetName() {
-        Assert.assertEquals("Should provide the Name of the to do element", "Name", probe.getName());
-    }
+//     @Test
+//     public void testGetName() {
+//         Assert.assertEquals("Should provide the Name of the to do element", "Name", probe.getName());
+//     }
 
-    @Test
-    public void testGetBeschreibung() {
-        Assert.assertEquals("provides the explaination of the element", "Beschreibung", probe.getBeschreibung());
-    }
+//     @Test
+//     public void testGetBeschreibung() {
+//         Assert.assertEquals("provides the explaination of the element", "Beschreibung", probe.getBeschreibung());
+//     }
 
-    @Test
-    public void testGetDatum() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
-        Calendar calendar = new GregorianCalendar(2013, 0, 31);
-        System.out.println(sdf.format(calendar.getTime()));
-    }
+//     @Test
+//     public void testGetDatum() {
+//         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
+//         Calendar calendar = new GregorianCalendar(2013, 0, 31);
+//         System.out.println(sdf.format(calendar.getTime()));
+//     }
 
-    @Test
-    public void testGetPriorität() {
-        Assert.assertEquals("gives the given priority", 1, probe.getPriorität());
-    }
-}
+//     @Test
+//     public void testGetPriorität() {
+//         Assert.assertEquals("gives the given priority", 1, probe.getPriorität());
+//     }
+// }

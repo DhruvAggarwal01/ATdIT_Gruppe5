@@ -1,16 +1,18 @@
 package panels;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-import java.io.*;
 import java.util.*;
 
 import subpanels.OrderPanels;
 import main.MainPanel;
 import main.NavItemPanelChooser;
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
 import db_interaction.Order;
+import db_interaction.OrdersSorter;
+import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
 
 /**
  * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
@@ -19,6 +21,7 @@ import db_interaction.Order;
  * 
  * implementiert die Methoden: createLogisticsPanel, setOrderPanels,
  * getUnfinishedOrders,initCreateOrder, getMaxOrderID
+ * 
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -34,32 +37,77 @@ public class LogistikPanel extends JPanel {
     private JPanel buttonPanel;
     private JPanel orderPanel;
     private JButton createOrder;
+    private JButton searchButton;
+    private JCheckBox doneOrdersBox;
 
     private JPanel onTimePanel;
     private JPanel atRiskPanel;
     private JPanel overduePanel;
-    DBOrdersExtractor dbOrderExtractor;
+    DBGenericExtractor<Order> dbOrderExtractor;
+
+    /**
+     * Konstruktur für das Logistik-Panel
+     * 
+     * @param DisplayAllOrders
+     */
+    public LogistikPanel(Boolean DisplayAllOrders) {
+        try {
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        setOrderPanels(DisplayAllOrders);
+        createLogisticsPanel();
+        initCreateOrder();
+    }
 
     /**
      * bestimmt den Aufbau des LogistikPanels
      */
     public void createLogisticsPanel() {
 
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
 
-        buttonPanel = new JPanel(new GridLayout(1, 2, 300, 300));
-        orderPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        buttonPanel = new JPanel(new java.awt.GridLayout(1, 3, 300, 300));
+        orderPanel = new JPanel(new java.awt.GridLayout(1, 3, 10, 10));
 
-        createOrder = new JButton("create Order");
-        buttonPanel.add(new JButton("search"));
+        createOrder = new JButton(LogistikStrings.getCreateOrderText());
+        searchButton = new JButton(LogistikStrings.getSearchOrderText());
+
+        doneOrdersBox = new JCheckBox(LogistikStrings.getDisplayAllText());
+
+        doneOrdersBox.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Boolean displayAll = doneOrdersBox.isSelected();
+                if (displayAll) {
+
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(
+                            LogistikStrings.getLogisticsString(), LogistikStrings.getDisplayAllString(), null));
+                    MainPanel.getNavPane().setSelectedIndex(6);
+                    doneOrdersBox.setSelected(true);
+                } else if (!displayAll) {
+
+                    MainPanel.getNavPane().setComponentAt(6,
+                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                    MainPanel.getNavPane().setSelectedIndex(6);
+                }
+            }
+
+        });
+        buttonPanel.add(searchButton);
+        buttonPanel.add(doneOrdersBox);
         buttonPanel.add(createOrder);
 
         orderPanel.add(onTimePanel);
         orderPanel.add(atRiskPanel);
         orderPanel.add(overduePanel);
 
-        this.add(buttonPanel, BorderLayout.NORTH);
-        this.add(orderPanel, BorderLayout.CENTER);
+        this.add(buttonPanel, java.awt.BorderLayout.NORTH);
+        this.add(orderPanel, java.awt.BorderLayout.CENTER);
 
     }
 
@@ -67,36 +115,24 @@ public class LogistikPanel extends JPanel {
      * holt alle nicht fertigen Orders in Kategorien sortiert & Konstuiert je
      * Kategorie ein OrderPanel
      */
-    public void setOrderPanels() {
+    public void setOrderPanels(Boolean displayAll) {
 
-        onTimeOrders = getUnfinishedOrders("onTime");
-        atRiskOrders = getUnfinishedOrders("atRisk");
-        overdueOrders = getUnfinishedOrders("overdue");
-
-        onTimePanel = new OrderPanels(onTimeOrders, "Order on Time", "These Ordes are on Time!", 188, 234, 174);
-        atRiskPanel = new OrderPanels(atRiskOrders, "Order at Risk", "These Ordes are at Risk of delivering on Time!",
-                245, 220, 163);
-        overduePanel = new OrderPanels(overdueOrders, "Order Overdue", "These Ordes are overdue!", 252, 130, 136);
-    }
-
-    /**
-     * 
-     * @param status
-     * @return Set<Order> gefiltert nach status
-     */
-    public Set<Order> getUnfinishedOrders(final String status) {
-
-        Set<Order> specificStatusOrders = new HashSet<Order>();
-        Set<Order> unfinishedOrders = new HashSet<Order>();
-
-        try {
-            unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
-            specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
-            unfinishedOrders.retainAll(specificStatusOrders);
-        } catch (IOException | IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        if (displayAll) {
+            this.onTimeOrders = OrdersSorter.getAllOrders(LogistikStrings.getOnTimeString());
+            this.atRiskOrders = OrdersSorter.getAllOrders(LogistikStrings.getAtRiskString());
+            this.overdueOrders = OrdersSorter.getAllOrders(LogistikStrings.getOverdueString());
+        } else {
+            this.onTimeOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOnTimeString());
+            this.atRiskOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getAtRiskString());
+            this.overdueOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOverdueString());
         }
-        return unfinishedOrders;
+
+        onTimePanel = new OrderPanels(onTimeOrders, LogistikStrings.getOnTimeText(),
+                LogistikStrings.getOnTimeDescription(), 188, 234, 174);
+        atRiskPanel = new OrderPanels(atRiskOrders, LogistikStrings.getAtRiskText(),
+                LogistikStrings.getAtRiskDescription(), 245, 220, 163);
+        overduePanel = new OrderPanels(overdueOrders, LogistikStrings.getOverdueText(),
+                LogistikStrings.getOverdueDescription(), 252, 130, 136);
     }
 
     /**
@@ -107,11 +143,10 @@ public class LogistikPanel extends JPanel {
         createOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-
                 EditOrder.currentOrder = new Order();
                 EditOrder.currentOrder.setOrder_id(maxOrderID);
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser("Logistik", "CreateOrder", null));
-
+                MainPanel.getNavPane().setComponentAt(6,
+                        new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "CreateOrder", null));
             }
         });
     }
@@ -124,27 +159,9 @@ public class LogistikPanel extends JPanel {
      */
     public int getMaxOrderID() {
         maxOrderID = 0;
-        try {
-            setAllOrders = dbOrderExtractor.getFilteredRowsIndexes("rowcount", 1);
-            maxOrderID = setAllOrders.size() + 1;
-
-        } catch (final IOException | IllegalAccessException a) {
-            a.printStackTrace();
-        }
+        setAllOrders = dbOrderExtractor.getFilteredRowsIndexes("rowcount", 1);
+        maxOrderID = setAllOrders.size() + 1;
         return maxOrderID;
     }
 
-    /**
-     * Konstruktur für das Logistik Panel
-     */
-    public LogistikPanel() {
-        try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
-        } catch (final IOException a) {
-            a.printStackTrace();
-        }
-        setOrderPanels();
-        createLogisticsPanel();
-        initCreateOrder();
-    }
 }

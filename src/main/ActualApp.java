@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.*;
-import java.awt.Toolkit;
 
 /**
  * Diese Klasse dient zum Aufbau der eigentlichen Anwendungsapplikation.
@@ -42,7 +41,7 @@ public class ActualApp {
     public static void startApp() {
         appWindow = new MainPanel();
         appWindow.setTitle("App: " + MainPanel.getAppTitle());
-        appWindow.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());
+        appWindow.setMinimumSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
         appWindow.pack();
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);
@@ -50,7 +49,6 @@ public class ActualApp {
         startTimeoutTimer(timeoutDelay);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für den Timeout-Timer
      * 

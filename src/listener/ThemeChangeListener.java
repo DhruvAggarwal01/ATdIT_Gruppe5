@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import dialogs.SettingsDialog;
+import exceptions.ThemeChangeException;
 import main.ActualApp;
 
 /**
@@ -35,32 +36,34 @@ public class ThemeChangeListener implements ChangeListener {
      */
     @Override
     public void stateChanged(ChangeEvent e) {
-        if (e.getSource() == settingsDialogView.getThemeToggleButton()) {
-            if (settingsDialogView.getThemeToggleButton().isSelected()) {
-                settingsDialogView.getThemeToggleButton().setText("On");
-                settingsDialogView.getThemeToggleButton().setIcon(settingsDialogView.nightModeONIcon);
-
-                try {
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                        | UnsupportedLookAndFeelException e1) {
-                    e1.printStackTrace();
-                }
-
-            } else {
-                settingsDialogView.getThemeToggleButton().setText("Off");
-                settingsDialogView.getThemeToggleButton().setIcon(settingsDialogView.nightModeOFFIcon);
-
-                try {
-                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                    SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
-                } catch (UnsupportedLookAndFeelException e1) {
-                } catch (ClassNotFoundException e2) {
-                } catch (InstantiationException e3) {
-                } catch (IllegalAccessException e4) {
+        try {
+            if (e.getSource() == settingsDialogView.getThemeToggleButton()) {
+                if (settingsDialogView.getThemeToggleButton().isSelected()) {
+                    settingsDialogView.getThemeToggleButton().setText("On");
+                    settingsDialogView.getThemeToggleButton().setIcon(settingsDialogView.nightModeONIcon);
+                    try {
+                        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                        SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                            | UnsupportedLookAndFeelException excs) {
+                        throw new ThemeChangeException(0);
+                    }
+                } else {
+                    settingsDialogView.getThemeToggleButton().setText("Off");
+                    settingsDialogView.getThemeToggleButton().setIcon(settingsDialogView.nightModeOFFIcon);
+                    try {
+                        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+                        SwingUtilities.updateComponentTreeUI(ActualApp.getAppWindow());
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                            | UnsupportedLookAndFeelException excs) {
+                        throw new ThemeChangeException(0);
+                    }
                 }
             }
+        } catch (ThemeChangeException tce) {
+            JPanel exceptionPanel = tce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + tce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 }

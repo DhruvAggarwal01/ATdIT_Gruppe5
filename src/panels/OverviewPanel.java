@@ -1,8 +1,9 @@
 package panels;
 
-import java.awt.*;
+
 import javax.swing.*;
 
+import exceptions.URLException;
 import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
@@ -25,27 +26,37 @@ public class OverviewPanel extends JPanel {
      * Konstruktor, der die Subpanels erzeugt und hinzufügt.
      */
     public OverviewPanel() {
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
 
-        smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
+        smallPanels = new JPanel(new java.awt.GridLayout(1, 2, 30, 30));
 
-        // 1. Panel: News
-        newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
-                "https://www.wochenblatt-reporter.de/albersweiler/rss");
+        // Abfangen etwaiger Abruffehler (falsche URL/ schlechte Internetverbindung)
+        try {
+            newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
+                    "https://www.wochenblatt-reporter.de/albersweiler/rss");
+            smallPanels.add(newsPanel);
+        } catch (URLException ue) {
+            JPanel exceptionPanel = ue.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + ue.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            smallPanels.add(exceptionPanel);
+        }
+        try {
+            weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+            smallPanels.add(weatherPanel);
+        } catch (URLException ue) {
+            JPanel exceptionPanel = ue.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + ue.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+            smallPanels.add(exceptionPanel);
+        }
 
-        // 2. Panel: Wetter
-        weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
-        // 3. Panel:
         diashow = new DiashowPanel("Impressionen vom Steinbruch");
 
-        smallPanels.add(newsPanel);
-        smallPanels.add(weatherPanel);
-
-        this.add(smallPanels, BorderLayout.NORTH);
-        this.add(diashow, BorderLayout.CENTER);
+        this.add(smallPanels, java.awt.BorderLayout.NORTH);
+        this.add(diashow, java.awt.BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für das Wettervorhersage-Panel
      * 

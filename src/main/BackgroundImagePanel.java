@@ -1,8 +1,6 @@
 package main;
 
-import java.awt.*;
 import javax.swing.*;
-import java.awt.Graphics;
 
 /**
  * Diese Klasse beinhaltet das Hintergrundbild für den Login Screen und zeigt
@@ -21,7 +19,7 @@ public class BackgroundImagePanel extends JPanel {
      * 
      * @param layout das richtige Layout für das Panel
      */
-    public BackgroundImagePanel(LayoutManager layout) {
+    public BackgroundImagePanel(java.awt.LayoutManager layout) {
         super(layout);
     }
 
@@ -30,10 +28,11 @@ public class BackgroundImagePanel extends JPanel {
      * welches vorher von der Library geholt wird, anzeigen lassen.
      */
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
-        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Library/images/LoginScreen.png");
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        java.awt.Image backgroundImage = java.awt.Toolkit.getDefaultToolkit()
+                .getImage("Library/images/LoginScreen.png");
+        java.awt.Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         g.drawImage(backgroundImage, 0, 0, size.width, size.height, this);
     }
 }

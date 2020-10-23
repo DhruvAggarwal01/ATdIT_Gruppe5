@@ -1,6 +1,6 @@
 package panels;
 
-import java.awt.*;
+
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -25,9 +25,9 @@ public class ReportingPanel extends JPanel {
      * Button, welches eine Zurück-Taste darstellt.
      */
     public ReportingPanel() {
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
 
-        reportingHeaderRowPanel = new JPanel(new GridLayout(1, 7, 30, 30));
+        reportingHeaderRowPanel = new JPanel(new java.awt.GridLayout(1, 7, 30, 30));
         backButton = new JButton("Zurück");
         ActionListener limaListener = new LogoIconMouseAdapter();
         backButton.addActionListener(limaListener);
@@ -42,11 +42,9 @@ public class ReportingPanel extends JPanel {
         reportingHeaderRowPanel.add(new JLabel(""));
         reportingHeaderRowPanel.add(backButton);
 
-        this.add(reportingHeaderRowPanel, BorderLayout.NORTH);
-        this.add(mockLabel, BorderLayout.CENTER);
+        this.add(reportingHeaderRowPanel, java.awt.BorderLayout.NORTH);
+        this.add(mockLabel, java.awt.BorderLayout.CENTER);
     }
-
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
 
     public JPanel getReportingHeaderRowPanel() {
         return reportingHeaderRowPanel;

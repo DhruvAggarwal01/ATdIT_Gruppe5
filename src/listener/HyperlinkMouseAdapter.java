@@ -1,9 +1,10 @@
 package listener;
 
-import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.net.*;
+import javax.swing.*;
+
+import exceptions.URLException;
 
 /**
  * Diese Klasse dient der Weiterleitung zu einer bestimmten URL beim Klicken auf
@@ -33,11 +34,13 @@ public class HyperlinkMouseAdapter extends MouseAdapter {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("CLICK");
         try {
-            Desktop.getDesktop().browse(new URI(urlString));
-        } catch (IOException | URISyntaxException e1) {
-            e1.printStackTrace();
+            java.awt.Desktop.getDesktop().browse(new URI(urlString));
+        } catch (Exception exc) {
+            URLException urlException = new URLException(urlString, 1);
+            JPanel exceptionPanel = urlException.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + urlException.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

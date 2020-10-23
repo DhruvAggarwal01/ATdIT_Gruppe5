@@ -11,17 +11,21 @@ public class ActualAppTest {
         System.out.println("Test wird gestartet.");
     }
 
+
+    // Gets the appWindow with a getter which should not be initialized
     @Test
     public void testGetAppWindowNull() {
         Assert.assertNull("AppWindow should not be initialized yet", ActualApp.getAppWindow());
     }
 
+    // Checks with a getter if the initialized timeoutDelay of int 3600000 is initialized correctly
     @Test
     public void testTimeoutDelay() {
         Assert.assertEquals("Timeout delay should be initialized with int 3600000", 3600000,
                 ActualApp.getTimeoutDelay());
     }
 
+    //Checks with a getter if the setter changes the timeoutTimer correctly 
     @Test
     public void testTimeoutTimerIsRunning() {
         ActualApp.startTimeoutTimer(1000);

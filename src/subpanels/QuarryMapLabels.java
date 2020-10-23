@@ -1,6 +1,6 @@
 package subpanels;
 
-import java.awt.*;
+
 import javax.swing.*;
 
 /**
@@ -21,16 +21,15 @@ public class QuarryMapLabels extends JPanel {
      * zum Panel dazufügt.
      */
     public QuarryMapLabels() {
-        this.setLayout(new BorderLayout());
-        panelLabels = new JPanel(new GridLayout(1, 1));
+        this.setLayout(new java.awt.BorderLayout());
+        panelLabels = new JPanel(new java.awt.GridLayout(1, 1));
         text1 = new JLabel("Drücke N um Notizen über die Standorte anzulegen: ");
-        panel = new JPanel(new GridLayout(0, 1));
+        panel = new JPanel(new java.awt.GridLayout(0, 1));
         panelLabels.add(text1);
-        this.add(panelLabels, BorderLayout.NORTH);
-        this.add(panel, BorderLayout.CENTER);
+        this.add(panelLabels, java.awt.BorderLayout.NORTH);
+        this.add(panel, java.awt.BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für das Panel
      * 

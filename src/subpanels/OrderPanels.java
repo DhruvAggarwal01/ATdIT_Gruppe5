@@ -1,15 +1,16 @@
 package subpanels;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
+
 import java.util.*;
 
 import listener.HoverColorChangeListener;
-import db_interaction.DBOrdersExtractor;
+import db_interaction.DBGenericExtractor;
 import db_interaction.Order;
 import main.Styles;
+import usedstrings.LogistikStrings;
+import exceptions.DatabaseConnectException;
 
 /**
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -19,26 +20,28 @@ public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
     Order currentOrder = new Order();
-    DBOrdersExtractor dbOrderExtractor;
+    DBGenericExtractor<Order> dbOrderExtractor;
     static String sourceOrder;
 
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
 
         try {
-            dbOrderExtractor = new DBOrdersExtractor("databases/DefaultCONTRACTS.xlsx");
+            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), currentOrder);
 
-        } catch (final IOException e) {
-            e.printStackTrace();
+        } catch (DatabaseConnectException dce) {
+            JPanel exceptionPanel = dce.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
         }
 
-        this.setLayout(new GridLayout(8, 0, 10, 10));
-        this.setBackground(new Color(rgbRed, rgbGreen, rgbBlue));
+        this.setLayout(new java.awt.GridLayout(8, 0, 10, 10));
+        this.setBackground(new java.awt.Color(rgbRed, rgbGreen, rgbBlue));
 
         final JLabel onTimeLabel = new JLabel(Title);
         onTimeLabel.setFont(Styles.SUBPANEL_TITLE_FONT2);
-        onTimeLabel.setForeground(Color.BLACK);
-        onTimeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        onTimeLabel.setForeground(java.awt.Color.BLACK);
+        onTimeLabel.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         onTimeLabel.setToolTipText(ToolTip);
         onTimeLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
         onTimeLabel.addMouseListener(new MouseAdapter() {
@@ -55,12 +58,12 @@ public class OrderPanels extends JPanel {
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
             final JLabel labelID2 = new JLabel(
-                    "Auftragsnummer: " + currentOrder.order_id + "  Firma: " + currentOrder.getFirm());
+                    "Auftragsnummer: " + currentOrder.getOrder_id() + "  Firma: " + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 
             labelID.addMouseListener(mouseCL);
-            labelID.setBackground(new Color(rgbRed - 75, rgbGreen - 75, rgbBlue - 75));
+            labelID.setBackground(new java.awt.Color(rgbRed - 75, rgbGreen - 75, rgbBlue - 75));
             labelID.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5),
                     BorderFactory.createRaisedBevelBorder()));
 
@@ -74,8 +77,6 @@ public class OrderPanels extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
 
     }
-
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
 
     public static String setOrderSource(String source) {
         return sourceOrder = source;

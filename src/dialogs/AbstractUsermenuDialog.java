@@ -3,6 +3,8 @@ package dialogs;
 import javax.swing.*;
 
 /**
+ * 
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */

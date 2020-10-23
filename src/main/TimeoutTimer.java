@@ -29,7 +29,6 @@ public class TimeoutTimer extends Timer {
         timeoutDelay = delay;
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für die Zeit bis zum Timeout
      * 

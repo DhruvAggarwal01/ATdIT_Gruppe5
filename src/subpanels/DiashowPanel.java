@@ -1,6 +1,6 @@
 package subpanels;
 
-import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -32,14 +32,14 @@ public class DiashowPanel extends JPanel {
      */
     public DiashowPanel(String diashowTitle) {
         this.diashowTitle = diashowTitle;
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 20, 20, 20),
                 BorderFactory.createRaisedBevelBorder()));
 
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
         diashowTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         diashowTitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        diashowTitleLabel.setForeground(Color.BLUE.darker());
+        diashowTitleLabel.setForeground(java.awt.Color.BLUE.darker());
         diashowTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
         for (int i = 0; i < images.length; i++) {
@@ -54,11 +54,10 @@ public class DiashowPanel extends JPanel {
         timer = new Timer(4000, tListener);
         timer.start();
 
-        this.add(diashowTitleLabel, BorderLayout.NORTH);
-        this.add(diashowLabel, BorderLayout.CENTER);
+        this.add(diashowTitleLabel, java.awt.BorderLayout.NORTH);
+        this.add(diashowLabel, java.awt.BorderLayout.CENTER);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für den Diashowbilder-Zähler
      * 

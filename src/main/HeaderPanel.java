@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -46,7 +45,7 @@ public class HeaderPanel extends JPanel {
         logoAndHeaderTitle.add(logoAdder("Library/images/dashboardlogo.png"));
         logoAndHeaderTitle.add(headerTitleAdder(headerTitle));
 
-        userIconWithMenuInJPanel.add(userSymbolAdder("Library/images/userIcon.png"), BorderLayout.EAST);
+        userIconWithMenuInJPanel.add(userSymbolAdder("Library/images/userIcon.png"), java.awt.BorderLayout.EAST);
 
         this.add(new JLabel());
         this.add(logoAndHeaderTitle);
@@ -59,14 +58,14 @@ public class HeaderPanel extends JPanel {
      * Subpanels bereit.
      */
     public void initSetUp() {
-        this.setLayout(new GridLayout(1, 3, 0, 0));
+        this.setLayout(new java.awt.GridLayout(1, 3, 0, 0));
         ImageIcon borderLine = new ImageIcon("Library/images/hammerIcon.png");
         this.setBorder(BorderFactory.createMatteBorder(-1, -1, -1, -1, borderLine));
         this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
-        logoAndHeaderTitle = new JPanel(new GridLayout(2, 1));
+        logoAndHeaderTitle = new JPanel(new java.awt.GridLayout(2, 1));
         logoAndHeaderTitle.setBackground(Styles.SURROUNDING_PANEL_COLOR);
-        userIconWithMenuInJPanel = new JPanel(new BorderLayout());
+        userIconWithMenuInJPanel = new JPanel(new java.awt.BorderLayout());
         userIconWithMenuInJPanel.setBackground(Styles.SURROUNDING_PANEL_COLOR);
     }
 
@@ -80,7 +79,7 @@ public class HeaderPanel extends JPanel {
      */
     public JLabel logoAdder(String filename) {
         logoIconInJLabel = resizeToJLabel(filename, 32, 32, JLabel.CENTER);
-        logoIconInJLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        logoIconInJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MouseAdapter liMouseAdapter = new LogoIconMouseAdapter();
         logoIconInJLabel.addMouseListener(liMouseAdapter);
 
@@ -164,14 +163,13 @@ public class HeaderPanel extends JPanel {
      */
     private static JLabel resizeToJLabel(String filename, int width, int height, int horizontalAlignment) {
         ImageIcon logoIIcon = new ImageIcon(filename);
-        Image logoImage = logoIIcon.getImage();
+        java.awt.Image logoImage = logoIIcon.getImage();
         logoImage = logoImage.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         logoIIcon = new ImageIcon(logoImage);
 
         return new JLabel(logoIIcon, horizontalAlignment);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für das Headertitel-Label
      * 

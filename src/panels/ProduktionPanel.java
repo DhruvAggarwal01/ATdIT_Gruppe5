@@ -1,6 +1,6 @@
 package panels;
 
-import java.awt.*;
+
 import javax.swing.*;
 
 /**
@@ -21,9 +21,9 @@ public class ProduktionPanel extends JPanel {
      */
     public ProduktionPanel() {
         super();
-        this.setLayout(new BorderLayout());
+        this.setLayout(new java.awt.BorderLayout());
         navPane = new NavigationPaneProduction(JTabbedPane.NORTH, JTabbedPane.VERTICAL);
-        this.add(navPane, BorderLayout.CENTER);
+        this.add(navPane, java.awt.BorderLayout.CENTER);
     }
 
 }

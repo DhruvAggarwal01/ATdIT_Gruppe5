@@ -1,9 +1,8 @@
 package subpanels;
 
-import java.awt.*;
-
 /**
- * Klasse, um die koordinaten von Rechtecken auf der QuarryMap speichern zu können.
+ * Klasse, um die koordinaten von Rechtecken auf der QuarryMap speichern zu
+ * können.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -17,12 +16,11 @@ public class Rectangle {
      * 
      * @param p: Point, der die Koordinaten der eines Rechtecks beinhaltet.
      */
-    public Rectangle(Point p) {
+    public Rectangle(java.awt.Point p) {
         x = (int) p.getX();
         y = (int) p.getY();
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für die Koordinate x
      * 

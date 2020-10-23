@@ -3,24 +3,24 @@ package db_interaction;
 import java.util.Objects;
 
 /**
- * Diese Klasse
+ * Diese Klasse tbd
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class User {
 
-    private int personnel_id = 0;
-    private String username = "";
-    private String forename = "";
-    private String surname = "";
-    private String street_nr = "";
-    private int zip = 00000;
-    private String city = "";
-    private String email = "..._...@....";
-    private String password = "**********";
-    private int role_id = 1;
-    private boolean isLoggedIn = false;
+    public int personnel_id = 0;
+    public String username = "";
+    public String forename = "";
+    public String surname = "";
+    public String street_nr = "";
+    public int zip = 00000;
+    public String city = "";
+    public String email = "..._...@....";
+    public String password = "**********";
+    public int role_id = 1;
+    public boolean isLoggedIn = false;
 
     @Override
     public String toString() {
@@ -46,12 +46,7 @@ public class User {
             return false;
         }
         final User user = (User) obj;
-        return Objects.equals(personnel_id, user.personnel_id) && Objects.equals(username, user.username)
-                && Objects.equals(forename, user.forename) && Objects.equals(surname, user.surname)
-                && Objects.equals(street_nr, user.street_nr) && Objects.equals(zip, user.zip)
-                && Objects.equals(city, user.city) && Objects.equals(email, user.email)
-                && Objects.equals(password, user.password) && Objects.equals(role_id, user.role_id)
-                && Objects.equals(isLoggedIn, user.isLoggedIn);
+        return Objects.equals(personnel_id, user.personnel_id);
     }
 
     /**
@@ -59,11 +54,9 @@ public class User {
      */
     @Override
     public int hashCode() { // wird
-        return Objects.hash(personnel_id, username, forename, surname, street_nr, zip, city, email, password, role_id,
-                isLoggedIn);
+        return Objects.hash(personnel_id);
     }
 
-    /* ----------------------- Getter/Setter-Methoden --------------------------- */
     /**
      * Getter-Methode für die Personal-Id
      * 
