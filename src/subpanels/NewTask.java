@@ -2,6 +2,7 @@ package subpanels;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.text.DateFormatter;
 
 import listener.NewTaskListener;
 import listener.ToDoPanelButtonListener;
@@ -17,7 +18,7 @@ public class NewTask extends JDialog {
     private TaskButton taskButton;
     private JPanel panel;
     private JLabel name, description, date, time, priority;
-    private JTextField nameText, dateSet, timeSet;
+    private JTextField nameText, timeSet, dateSet;
     private JTextArea descriptionText;
     private JComboBox<String> prioritySet;
     private JButton addTaskButton;
@@ -80,9 +81,6 @@ public class NewTask extends JDialog {
         panel.add(prioritySet);
         panel.add(addTaskButton);
 
-        // nameText.getText(), descriptionText.getText(),
-        // dateSet.getText(), timeSet.getText(),
-        // prioritySet.getSelectedItem().toString()
         NewTaskListener listenerAddTask = new NewTaskListener(this, li, toDoPanel, taskButton);
         addTaskButton.addActionListener(listenerAddTask);
 
@@ -105,7 +103,7 @@ public class NewTask extends JDialog {
         return this.dateSet;
     }
 
-    public void setDateSet(JTextField dateSet) {
+    public void setDateSet(JFormattedTextField dateSet) {
         this.dateSet = dateSet;
     }
 

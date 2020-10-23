@@ -1,13 +1,9 @@
 package panels;
 
 import javax.swing.*;
-
-import listener.ToDoPanelButtonListener;
-
 import java.awt.*;
 
-
-
+import listener.ToDoPanelButtonListener;
 
 /**
  * Diese Klasse bildet die To-Do-Verwaltung der Steinbruch Software ab
@@ -16,40 +12,32 @@ import java.awt.*;
  *         Lahr
  * 
  */
-
 public class ToDoPanel extends JPanel {
 
     private static final long serialVersionUID = -1436022192721531424L;
-
     private JPanel taskList;
     private JPanel buttonPanel;
-    private JButton newTask;
-  
+    private JButton newTaskButton;
 
     /**
-     * Konstruktor bietet ein <code>JPanel</code>, welches alle aktiven
-     * To-Do-ELemente in Form von <code>JCheckBox</code>en fassen soll und die
-     * Buttons <code>Neue Aufgabe</code> und <code>Aufgabe bearbeiten</code>, welche
-     * ein neues To-Do-Element erstellen oder ein bestehendes bearbeiten
+     * Diese Methode ist der Konstruktor und erzeugt das ToDOPanel. 
      */
-
     public ToDoPanel() {
         this.setLayout(new BorderLayout());
 
         taskList = new JPanel(new GridLayout(0, 1, 10, 10));
         buttonPanel = new JPanel();
 
-        newTask = new JButton("Neue Aufgabe");
-        buttonPanel.add(newTask);
+        newTaskButton = new JButton("Neue Aufgabe");
+        newTaskButton.setPreferredSize(new Dimension(300, 100));
+        buttonPanel.add(newTaskButton);
 
         ToDoPanelButtonListener listenerNewTask = new ToDoPanelButtonListener(this);
-        newTask.addActionListener(listenerNewTask);
+        newTaskButton.addActionListener(listenerNewTask);
 
         this.add(taskList, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
-
-  
 
     public JPanel getAufgabenListe() {
         return taskList;

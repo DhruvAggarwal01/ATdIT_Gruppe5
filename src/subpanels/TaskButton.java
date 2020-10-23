@@ -1,11 +1,11 @@
 package subpanels;
 
-
+import java.util.Random;
+import java.awt.Color;
 import javax.swing.JButton;
 
 
 public class TaskButton extends JButton {
-    //private int id;
     private String name;
     private String date;
     private String description;
@@ -18,8 +18,7 @@ public class TaskButton extends JButton {
 
     public TaskButton( String name,String description, String date, String time, String priority) {
         this.setText(name);
-        //this.setBackground(createColour());
-        //this.id = id;
+        this.setBackground(createColour());
         this.name = name;
         this.date = date;
         this.description = description;
@@ -27,16 +26,13 @@ public class TaskButton extends JButton {
         this.priority = priority;
     }
 
-    /* public int getId() {
-        return this.id;
-    } */
+   
 
-   /*  public Color createColour(){
-        float red = Math.random();
-        float green = Math.random();
-        float blue = Math.random();
-        return (new Color(red, green, blue));
-    } */
+    public Color createColour(){
+        Random r = new Random();
+        int rgb = Color.HSBtoRGB(r.nextFloat(),r.nextFloat(),0.5f + r.nextFloat() / 2f);
+        return (new Color(rgb));
+    }
 
     public String getName() {
         return this.name;
