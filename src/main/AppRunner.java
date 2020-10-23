@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -23,7 +24,7 @@ public class AppRunner {
         loginFrame = new JFrame();
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setTitle("App: " + MainPanel.getAppTitle());
-        loginFrame.setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         loginFrame.setResizable(false);
         loginFrame.setLocationRelativeTo(null);
 
@@ -39,16 +40,16 @@ public class AppRunner {
      * @return Panel, das das Login-UI enthält
      */
     private static JPanel createMainPanel() {
-        BackgroundImagePanel mainPanel = new BackgroundImagePanel(new java.awt.BorderLayout());
+        BackgroundImagePanel mainPanel = new BackgroundImagePanel(new BorderLayout());
 
-        JPanel structurePanel = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER));
+        JPanel structurePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         structurePanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
 
         LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(structurePanel.isOpaque(),
-                new java.awt.GridLayout(6, 2, 5, 5));
+                new GridLayout(6, 2, 5, 5));
 
         structurePanel.add(buttonOnTopPanel);
-        mainPanel.add(structurePanel, java.awt.BorderLayout.CENTER);
+        mainPanel.add(structurePanel, BorderLayout.CENTER);
 
         return mainPanel;
     }

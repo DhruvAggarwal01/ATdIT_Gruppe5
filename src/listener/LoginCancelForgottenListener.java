@@ -7,7 +7,7 @@ import db_interaction.DBGenericInserter;
 import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 import main.ActualApp;
 import main.AppRunner;
 import main.LoginButtonPanel;
@@ -56,7 +56,7 @@ public class LoginCancelForgottenListener implements ActionListener {
                     JPanel exceptionPanel = dce.getExceptionPanel();
                     JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                             JOptionPane.ERROR_MESSAGE);
-                } catch (NoneOfUsersBusinessException noube) {
+                } catch (InternalException noube) {
                     JPanel exceptionPanel = noube.getExceptionPanel();
                     JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                             JOptionPane.ERROR_MESSAGE);

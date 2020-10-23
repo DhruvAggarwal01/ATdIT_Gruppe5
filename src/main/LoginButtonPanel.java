@@ -1,11 +1,12 @@
 package main;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 import db_interaction.LogInCredentialsChecker;
 import exceptions.LoginException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
@@ -34,7 +35,7 @@ public class LoginButtonPanel extends JPanel {
      * @param opaque gewährleistet, dass das Panel durchsichtig ist
      * @param layout setzt das richtige Layout des Panels
      */
-    public LoginButtonPanel(boolean opaque, java.awt.LayoutManager layout) {
+    public LoginButtonPanel(boolean opaque, LayoutManager layout) {
         super(layout);
         setOpaque(opaque);
 
@@ -94,7 +95,7 @@ public class LoginButtonPanel extends JPanel {
         try {
             LogInCredentialsChecker log = new LogInCredentialsChecker(username, password);
             log.setSessionUser();
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);

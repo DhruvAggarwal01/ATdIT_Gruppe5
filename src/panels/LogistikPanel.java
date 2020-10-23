@@ -1,7 +1,7 @@
 package panels;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
@@ -68,10 +68,10 @@ public class LogistikPanel extends JPanel {
      */
     public void createLogisticsPanel() {
 
-        this.setLayout(new java.awt.BorderLayout());
+        this.setLayout(new BorderLayout());
 
-        buttonPanel = new JPanel(new java.awt.GridLayout(1, 3, 300, 300));
-        orderPanel = new JPanel(new java.awt.GridLayout(1, 3, 10, 10));
+        buttonPanel = new JPanel(new GridLayout(1, 3, 300, 300));
+        orderPanel = new JPanel(new GridLayout(1, 3, 10, 10));
 
         createOrder = new JButton(LogistikStrings.getCreateOrderText());
         searchButton = new JButton(LogistikStrings.getSearchOrderText());
@@ -106,8 +106,8 @@ public class LogistikPanel extends JPanel {
         orderPanel.add(atRiskPanel);
         orderPanel.add(overduePanel);
 
-        this.add(buttonPanel, java.awt.BorderLayout.NORTH);
-        this.add(orderPanel, java.awt.BorderLayout.CENTER);
+        this.add(buttonPanel, BorderLayout.NORTH);
+        this.add(orderPanel, BorderLayout.CENTER);
 
     }
 

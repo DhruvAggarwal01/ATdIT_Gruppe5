@@ -10,11 +10,11 @@ import db_interaction.DBGenericInserter;
 import db_interaction.LogInCredentialsChecker;
 import db_interaction.User;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 public class DBUsersInserterTest {
 
-    public void executeDBUsersInserter() throws DatabaseConnectException, NoneOfUsersBusinessException {
+    public void executeDBUsersInserter() throws DatabaseConnectException, InternalException {
         DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx", new User());
         dbUsersInserter.applyChangedGenericToRow("personnel_id", LogInCredentialsChecker.sessionUser.getPersonnel_id(),
                 new User());
@@ -22,7 +22,7 @@ public class DBUsersInserterTest {
 
     @Test
     public void testUserChangesAppliedToDatabase()
-            throws IOException, DatabaseConnectException, NoneOfUsersBusinessException {
+            throws IOException, DatabaseConnectException, InternalException {
         LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
         LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();

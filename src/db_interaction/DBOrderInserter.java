@@ -9,7 +9,7 @@ import org.apache.poi.ss.usermodel.*;
 
 import panels.EditOrder;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 public class DBOrderInserter extends DBGenericInserter<Order> {
 
@@ -26,9 +26,9 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
      * Diese Methode ist für das Hinzufügen eines neuen Auftrags zuständig.
      * 
      * @throws DatabaseConnectException
-     * @throws NoneOfUsersBusinessException
+     * @throws InternalException
      */
-    public void addNewOrder() throws DatabaseConnectException, NoneOfUsersBusinessException {
+    public void addNewOrder() throws DatabaseConnectException, InternalException {
         rowIndexesContainingGeneric_Id = new HashSet<Integer>();
 
         try {
@@ -76,7 +76,7 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
             outFile.close();
             dbOrdersExtractor.gensWorkbook.close();
         } catch (IllegalAccessException iae) {
-            throw new NoneOfUsersBusinessException();
+            throw new InternalException();
         } catch (IOException ioe) {
             throw new DatabaseConnectException(1);
         } catch (DatabaseConnectException dce) {

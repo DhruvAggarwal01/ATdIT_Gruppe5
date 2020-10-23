@@ -1,7 +1,7 @@
 package db_interaction;
 
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 import main.ActualApp;
 
 /**
@@ -12,7 +12,7 @@ import main.ActualApp;
  */
 public class LogOffExecutor {
 
-    public void logOffAndDispose() throws DatabaseConnectException, NoneOfUsersBusinessException {
+    public void logOffAndDispose() throws DatabaseConnectException, InternalException {
         LogInCredentialsChecker.sessionUser.setIsLoggedIn(false);
         DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
                 new User());

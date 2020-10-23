@@ -1,5 +1,6 @@
 package panels;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ import verifiers.OrderAmountInputVerifier;
 import verifiers.OrderStringVerifier;
 import usedstrings.LogistikStrings;
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
@@ -117,8 +118,8 @@ public class EditOrder extends JPanel {
 
         final JPanel editPanel = createPanel();
         ColorChooser.setPanelBackground(currentOrder, editPanel);
-        this.setLayout(new java.awt.BorderLayout());
-        this.add(editPanel, java.awt.BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.add(editPanel, BorderLayout.CENTER);
     }
 
     /**
@@ -128,7 +129,7 @@ public class EditOrder extends JPanel {
      */
     public JPanel createPanel() {
 
-        final JPanel editPanel = new JPanel(new java.awt.GridLayout(11, 2, 10, 10));
+        final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
 
         editPanel.add(orderHeaderLabel);
         editPanel.add(orderStatusLabel);
@@ -273,7 +274,7 @@ public class EditOrder extends JPanel {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                     JOptionPane.ERROR_MESSAGE);
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);

@@ -1,8 +1,9 @@
 package subpanels;
 
-
+import java.awt.*;
 import javax.swing.*;
 
+import exceptions.InternalException;
 import listener.LabelListener;
 
 /**
@@ -21,13 +22,20 @@ public class QuarryMapMain extends JPanel {
      * <code>QuarryMapLabels</code> hinzugefügt.
      */
     public QuarryMapMain() {
-        this.setLayout(new java.awt.BorderLayout());
-        QuarryMap view = new QuarryMap();
-        QuarryMapLabels labels = new QuarryMapLabels();
+        this.setLayout(new BorderLayout());
+        try {
+            QuarryMap view = new QuarryMap();
+            QuarryMapLabels labels = new QuarryMapLabels();
 
-        LabelListener lis = new LabelListener(labels, view);
-        view.addKeyListener(lis);
-        this.add(view, java.awt.BorderLayout.CENTER);
-        this.add(labels, java.awt.BorderLayout.EAST);
+            LabelListener lis = new LabelListener(labels, view);
+            view.addKeyListener(lis);
+
+            this.add(view, BorderLayout.CENTER);
+            this.add(labels, BorderLayout.EAST);
+        } catch (InternalException noube) {
+            JPanel exceptionPanel = noube.getExceptionPanel();
+            JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

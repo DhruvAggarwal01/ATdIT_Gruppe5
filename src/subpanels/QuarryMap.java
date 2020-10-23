@@ -1,12 +1,15 @@
 package subpanels;
 
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
+
 import javax.imageio.ImageIO;
 import java.io.*;
 import java.util.ArrayList;
 
+import exceptions.InternalException;
 import listener.ZoomMouseListener;
 
 /**
@@ -30,12 +33,14 @@ public class QuarryMap extends JPanel {
     private double yOffset = 0;
     private int xDiff;
     private int yDiff;
-    private java.awt.Point startPoint;
+    private Point startPoint;
 
     /**
      * Konstruktor, der das Panel erzeugt und die Listener dazufügt.
+     * 
+     * @throws InternalException
      */
-    public QuarryMap() {
+    public QuarryMap() throws InternalException {
         getImage();
         ZoomMouseListener lis = new ZoomMouseListener(this);
         addMouseListener(lis);
@@ -49,12 +54,14 @@ public class QuarryMap extends JPanel {
     /**
      * Methode, die das Bild, was den Steinbruch von oben zeigen soll, aus der
      * Library holt.
+     * 
+     * @throws InternalException
      */
-    private void getImage() {
+    private void getImage() throws InternalException {
         try {
             img = ImageIO.read(new File("Library/images/Steinbruch1.jpg"));
         } catch (IOException e) {
-            e.getStackTrace();
+            throw new InternalException();
         }
     }
 
@@ -63,16 +70,16 @@ public class QuarryMap extends JPanel {
      * Bild immer an die richtige Stelle geschrieben wird.
      */
     @Override
-    public void paint(java.awt.Graphics g) {
+    public void paint(Graphics g) {
         super.paint(g);
 
-        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
 
         if (zoomer) {
             AffineTransform at = new AffineTransform();
 
-            double xRel = java.awt.MouseInfo.getPointerInfo().getLocation().getX() - getLocationOnScreen().getX();
-            double yRel = java.awt.MouseInfo.getPointerInfo().getLocation().getY() - getLocationOnScreen().getY();
+            double xRel = MouseInfo.getPointerInfo().getLocation().getX() - getLocationOnScreen().getX();
+            double yRel = MouseInfo.getPointerInfo().getLocation().getY() - getLocationOnScreen().getY();
 
             double zoomDiv = zoomFactor / prevZoomFactor;
 
@@ -176,7 +183,7 @@ public class QuarryMap extends JPanel {
      * 
      * @param startPoint
      */
-    public void setStartPoint(java.awt.Point startPoint) {
+    public void setStartPoint(Point startPoint) {
         this.startPoint = startPoint;
     }
 
@@ -185,7 +192,7 @@ public class QuarryMap extends JPanel {
      * 
      * @return startPoint
      */
-    public java.awt.Point getStartPoint() {
+    public Point getStartPoint() {
         return this.startPoint;
     }
 

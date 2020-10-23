@@ -1,6 +1,6 @@
 package verifiers;
 
-
+import java.awt.*;
 import javax.swing.*;
 
 import java.util.Calendar;
@@ -35,7 +35,7 @@ public class OrderDateVerifier extends InputVerifier {
         try {
             num = Integer.parseInt(text);
         } catch (final NumberFormatException e) {
-            intInput.setBackground(java.awt.Color.RED);
+            intInput.setBackground(Color.RED);
             intInput.setText(LogistikStrings.getInvalidNameErrorMessae());
             return false;
         }

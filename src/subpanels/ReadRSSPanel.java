@@ -1,5 +1,6 @@
 package subpanels;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
@@ -31,12 +32,12 @@ public class ReadRSSPanel extends JPanel {
      * @param rssUrl    URL zum RSS-Nachrichtenfeed
      */
     public ReadRSSPanel(String newsTitle, String rssUrl) throws URLException {
-        this.setLayout(new java.awt.BorderLayout());
+        this.setLayout(new BorderLayout());
 
         JLabel newsTitleLabel = new JLabel(newsTitle);
         newsTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
-        newsTitleLabel.setForeground(java.awt.Color.BLUE.darker());
-        newsTitleLabel.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        newsTitleLabel.setForeground(Color.BLUE.darker());
+        newsTitleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         newsTitleLabel.setToolTipText("To: " + rssUrl.substring(0, rssUrl.length() - 4)); // entferne das '/rss'
         newsTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
         MouseAdapter hMouseAdapter = new HyperlinkMouseAdapter(rssUrl.substring(0, rssUrl.length() - 4));
@@ -46,12 +47,12 @@ public class ReadRSSPanel extends JPanel {
 
             private static final long serialVersionUID = -1968962839234170862L;
 
-            java.awt.Image weatherStatusImage = new ImageIcon("Library/images/emptyTransparent.png").getImage();
+            Image weatherStatusImage = new ImageIcon("Library/images/emptyTransparent.png").getImage();
             {
                 setOpaque(false);
             }
 
-            public void paint(java.awt.Graphics g) {
+            public void paint(Graphics g) {
                 g.drawImage(weatherStatusImage, 0, 0, this);
                 super.paint(g);
             }
@@ -68,14 +69,14 @@ public class ReadRSSPanel extends JPanel {
         JPanel reportingPanel = new JPanel();
         reportingPanel.setBorder(BorderFactory.createRaisedBevelBorder());
         JLabel reportingLabel = new JLabel("<HTML><U>zum Reporting</U></HTML>", JLabel.CENTER);
-        reportingLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        reportingPanel.add(reportingLabel, java.awt.BorderLayout.CENTER);
+        reportingLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        reportingPanel.add(reportingLabel, BorderLayout.CENTER);
         MouseAdapter mCL = new MouseClickListener();
         reportingPanel.addMouseListener(mCL);
 
-        this.add(newsTitleLabel, java.awt.BorderLayout.NORTH);
-        this.add(sp, java.awt.BorderLayout.CENTER);
-        this.add(reportingPanel, java.awt.BorderLayout.SOUTH);
+        this.add(newsTitleLabel, BorderLayout.NORTH);
+        this.add(sp, BorderLayout.CENTER);
+        this.add(reportingPanel, BorderLayout.SOUTH);
 
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(20, 20, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));

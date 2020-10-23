@@ -1,5 +1,6 @@
 package listener;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import subpanels.*;
@@ -49,13 +50,12 @@ public class ZoomMouseListener extends MouseAdapter {
      */
     @Override
     public void mouseDragged(MouseEvent e) {
-        java.awt.Point curPoint = e.getLocationOnScreen();
+        Point curPoint = e.getLocationOnScreen();
         view.setXDiff(curPoint.x - view.getStartPoint().x);
         view.setYDiff(curPoint.y - view.getStartPoint().y);
 
         view.setDragger(true);
         view.repaint();
-
     }
 
     /**
@@ -64,7 +64,7 @@ public class ZoomMouseListener extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         view.setReleased(false);
-        view.setStartPoint(java.awt.MouseInfo.getPointerInfo().getLocation());
+        view.setStartPoint(MouseInfo.getPointerInfo().getLocation());
     }
 
     /**

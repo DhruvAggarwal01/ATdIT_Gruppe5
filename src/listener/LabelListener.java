@@ -1,7 +1,8 @@
 package listener;
 
-import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 import subpanels.QuarryMap;
 import subpanels.QuarryMapLabels;
@@ -42,8 +43,8 @@ public class LabelListener extends KeyAdapter {
      */
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_N) {
-            java.awt.PointerInfo pi = java.awt.MouseInfo.getPointerInfo();
-            java.awt.Point p = pi.getLocation();
+            PointerInfo pi = MouseInfo.getPointerInfo();
+            Point p = pi.getLocation();
             Rectangle r = new Rectangle(p);
 
             view.getList().add(r);

@@ -5,7 +5,7 @@ import org.junit.*;
 import db_interaction.LogInCredentialsChecker;
 import exceptions.DatabaseConnectException;
 import exceptions.LoginException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 public class LogInCredentialsCheckerTest {
 
@@ -18,7 +18,7 @@ public class LogInCredentialsCheckerTest {
 
     //Creates a new User and checks if the given name in the constructor is correct
     @Test
-    public void testSetSessionUser() throws LoginException, DatabaseConnectException, NoneOfUsersBusinessException {
+    public void testSetSessionUser() throws LoginException, DatabaseConnectException, InternalException {
         LogInCredentialsChecker logInChecker = new LogInCredentialsChecker("max_mustermann", "passwort123");
         logInChecker.setSessionUser();
         Assert.assertEquals("max_mustermann", LogInCredentialsChecker.sessionUser.getUsername());

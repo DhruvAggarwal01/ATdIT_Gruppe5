@@ -9,7 +9,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import exceptions.DatabaseConnectException;
-import exceptions.NoneOfUsersBusinessException;
+import exceptions.InternalException;
 
 /**
  * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
@@ -65,7 +65,7 @@ public class DBGenericExtractor<T> {
                     filteredGens.add(filteredGen); // row.getRowNum() = filteredUser.getPersonnel_id()
                 }
             }
-        } catch (NoneOfUsersBusinessException noube) {
+        } catch (InternalException noube) {
             JPanel exceptionPanel = noube.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
                     JOptionPane.ERROR_MESSAGE);
@@ -134,10 +134,10 @@ public class DBGenericExtractor<T> {
      * 
      * @param toBeConvertedRow in Order-Objekt umzuwandelnde Zeile
      * @return entsprechende Zeile zur Excel-Zeile
-     * @throws NoneOfUsersBusinessException
+     * @throws InternalException
      */
     @SuppressWarnings("unchecked")
-    public T getRowConvertedToGen(Row toBeConvertedRow) throws NoneOfUsersBusinessException {
+    public T getRowConvertedToGen(Row toBeConvertedRow) throws InternalException {
         Field[] declaredFields = object.getClass().getDeclaredFields();
         Iterator<Cell> cellIterator = toBeConvertedRow.cellIterator();
 
@@ -147,7 +147,7 @@ public class DBGenericExtractor<T> {
         } else if (object.getClass().equals(new Order().getClass())) {
             genObj = new Order();
         } else {
-            throw new NoneOfUsersBusinessException();
+            throw new InternalException();
         }
 
         try {
@@ -171,7 +171,7 @@ public class DBGenericExtractor<T> {
                 i++;
             }
         } catch (IllegalAccessException iae) {
-            throw new NoneOfUsersBusinessException();
+            throw new InternalException();
         }
         return (T) genObj;
     }

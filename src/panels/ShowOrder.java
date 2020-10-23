@@ -1,5 +1,6 @@
 package panels;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.Set;
@@ -42,16 +43,16 @@ public class ShowOrder extends JPanel {
 
         switch (currentOrder.getStatus()) {
             case "overdue":
-                showOrderPanel.setBackground(new java.awt.Color(252, 130, 136));
+                showOrderPanel.setBackground(new Color(252, 130, 136));
                 break;
             case "atRisk":
-                showOrderPanel.setBackground(new java.awt.Color(245, 220, 163));
+                showOrderPanel.setBackground(new Color(245, 220, 163));
                 break;
             case "onTime":
-                showOrderPanel.setBackground(new java.awt.Color(188, 234, 174));
+                showOrderPanel.setBackground(new Color(188, 234, 174));
                 break;
             default:
-                showOrderPanel.setBackground(new java.awt.Color(188, 234, 174));
+                showOrderPanel.setBackground(new Color(188, 234, 174));
                 break;
         }
     }
@@ -82,7 +83,7 @@ public class ShowOrder extends JPanel {
      */
     public void createShowshowOrderPanel() {
 
-        showOrderPanel = new JPanel(new java.awt.GridLayout(13, 2, 10, 10));
+        showOrderPanel = new JPanel(new GridLayout(13, 2, 10, 10));
 
         setStatusBackground(currentOrder, showOrderPanel);
 
@@ -161,10 +162,10 @@ public class ShowOrder extends JPanel {
      * Konstruktor für das ShowOrder Panel
      */
     public ShowOrder() {
-        this.setLayout(new java.awt.BorderLayout());
+        this.setLayout(new BorderLayout());
         getCurrentOrder();
         createShowshowOrderPanel();
-        this.add(showOrderPanel, java.awt.BorderLayout.CENTER);
+        this.add(showOrderPanel, BorderLayout.CENTER);
     }
 
 }

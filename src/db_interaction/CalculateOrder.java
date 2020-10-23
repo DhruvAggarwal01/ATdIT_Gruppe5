@@ -8,10 +8,6 @@ import java.util.Date;
  */
 public class CalculateOrder {
 
-    public CalculateOrder(Order currentOrder) {
-        // tbd?
-    }
-
     public static int calculatePrice(Order currentOrder) {
         int price = 0;
         int amount = currentOrder.getAmount();
@@ -45,19 +41,14 @@ public class CalculateOrder {
         Date actualDate = new Date();
         switch (currentOrder.getPhase()) {
             case "Planung":
-
                 break;
             case "Sprengung":
-
                 break;
             case "Transport":
-
                 break;
             case "Geliefert":
-
                 break;
             default:
-
                 break;
         }
         return status;
