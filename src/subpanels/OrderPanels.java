@@ -1,5 +1,6 @@
 package subpanels;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -35,13 +36,13 @@ public class OrderPanels extends JPanel {
                     JOptionPane.ERROR_MESSAGE);
         }
 
-        this.setLayout(new java.awt.GridLayout(8, 0, 10, 10));
-        this.setBackground(new java.awt.Color(rgbRed, rgbGreen, rgbBlue));
+        this.setLayout(new GridLayout(8, 0, 10, 10));
+        this.setBackground(new Color(rgbRed, rgbGreen, rgbBlue));
 
         final JLabel onTimeLabel = new JLabel(Title);
         onTimeLabel.setFont(Styles.SUBPANEL_TITLE_FONT2);
-        onTimeLabel.setForeground(java.awt.Color.BLACK);
-        onTimeLabel.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        onTimeLabel.setForeground(Color.BLACK);
+        onTimeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         onTimeLabel.setToolTipText(ToolTip);
         onTimeLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
         onTimeLabel.addMouseListener(new MouseAdapter() {
@@ -63,7 +64,7 @@ public class OrderPanels extends JPanel {
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 
             labelID.addMouseListener(mouseCL);
-            labelID.setBackground(new java.awt.Color(rgbRed - 75, rgbGreen - 75, rgbBlue - 75));
+            labelID.setBackground(new Color(rgbRed - 75, rgbGreen - 75, rgbBlue - 75));
             labelID.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5),
                     BorderFactory.createRaisedBevelBorder()));
 

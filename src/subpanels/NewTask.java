@@ -1,8 +1,6 @@
 package subpanels;
 
 import java.awt.*;
-
-
 import javax.swing.*;
 
 import listener.NewTaskListener;
@@ -33,7 +31,6 @@ public class NewTask extends JDialog {
         initializePanel();
         addTaskButton = new JButton("Aufgabe hinzufuegen");
         addComponentsToPanel(li);
-
     }
 
     public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener li, TaskButton taskButton) {
@@ -41,7 +38,7 @@ public class NewTask extends JDialog {
         this.taskButton = taskButton;
         initializePanel();
         addTaskButton = new JButton("Aufgabe aktualisieren");
-        
+
         nameText.setText(taskButton.getName());
         descriptionText.setText(taskButton.getDescription());
         dateSet.setText(taskButton.getDate());
@@ -67,7 +64,7 @@ public class NewTask extends JDialog {
         timeSet = new JTextField();
 
         prioritySet = new JComboBox<String>(prioritäten);
-        
+
     }
 
     public void addComponentsToPanel(ToDoPanelButtonListener li) {
@@ -82,10 +79,11 @@ public class NewTask extends JDialog {
         panel.add(priority);
         panel.add(prioritySet);
         panel.add(addTaskButton);
-        
-        //nameText.getText(), descriptionText.getText(),
-        //dateSet.getText(), timeSet.getText(), prioritySet.getSelectedItem().toString()
-        NewTaskListener listenerAddTask = new NewTaskListener(this, li, toDoPanel,taskButton);
+
+        // nameText.getText(), descriptionText.getText(),
+        // dateSet.getText(), timeSet.getText(),
+        // prioritySet.getSelectedItem().toString()
+        NewTaskListener listenerAddTask = new NewTaskListener(this, li, toDoPanel, taskButton);
         addTaskButton.addActionListener(listenerAddTask);
 
         add(panel);

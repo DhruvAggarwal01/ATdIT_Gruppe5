@@ -1,5 +1,6 @@
 package listener;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -19,11 +20,11 @@ public class HoverColorChangeListener extends MouseAdapter {
      */
     public void changeColor(Object a) {
         JPanel theLabel = (JPanel) a;
-        java.awt.Color color = theLabel.getBackground();
+        Color color = theLabel.getBackground();
         Integer r1 = color.getRed() + 30;
         Integer g1 = color.getGreen() + 30;
         Integer b1 = color.getBlue() + 30;
-        theLabel.setBackground(new java.awt.Color(r1, g1, b1));
+        theLabel.setBackground(new Color(r1, g1, b1));
     };
 
     /**
@@ -32,11 +33,11 @@ public class HoverColorChangeListener extends MouseAdapter {
      */
     public void changeColorBack(Object a) {
         JPanel theLabel = (JPanel) a;
-        java.awt.Color color = theLabel.getBackground();
+        Color color = theLabel.getBackground();
         Integer r1 = color.getRed() - 30;
         Integer g1 = color.getGreen() - 30;
         Integer b1 = color.getBlue() - 30;
-        theLabel.setBackground(new java.awt.Color(r1, g1, b1));
+        theLabel.setBackground(new Color(r1, g1, b1));
     };
 
     /**

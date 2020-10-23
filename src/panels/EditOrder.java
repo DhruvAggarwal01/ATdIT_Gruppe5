@@ -1,5 +1,6 @@
 package panels;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -117,8 +118,8 @@ public class EditOrder extends JPanel {
 
         final JPanel editPanel = createPanel();
         ColorChooser.setPanelBackground(currentOrder, editPanel);
-        this.setLayout(new java.awt.BorderLayout());
-        this.add(editPanel, java.awt.BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.add(editPanel, BorderLayout.CENTER);
     }
 
     /**
@@ -128,7 +129,7 @@ public class EditOrder extends JPanel {
      */
     public JPanel createPanel() {
 
-        final JPanel editPanel = new JPanel(new java.awt.GridLayout(11, 2, 10, 10));
+        final JPanel editPanel = new JPanel(new GridLayout(11, 2, 10, 10));
 
         editPanel.add(orderHeaderLabel);
         editPanel.add(orderStatusLabel);

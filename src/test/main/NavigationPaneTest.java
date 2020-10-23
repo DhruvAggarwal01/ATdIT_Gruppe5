@@ -1,5 +1,6 @@
 package test.main;
 
+import java.awt.*;
 import javax.swing.*;
 
 import org.junit.*;
@@ -12,7 +13,7 @@ public class NavigationPaneTest {
     JFrame testFrame;
 
     NavigationPane testNavPane;
-    java.awt.Container testContainer;
+    Container testContainer;
 
     // Creates and initialized a new JFrame
     @Before

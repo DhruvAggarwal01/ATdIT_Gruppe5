@@ -10,7 +10,7 @@ public class NewTaskListener implements ActionListener {
     private NewTask dialog;
     private ToDoPanel toDoPanel;
     private ToDoPanelButtonListener li;
-    //private static int id = 0;
+    // private static int id = 0;
     private TaskButton b;
 
     public NewTaskListener(NewTask dialog, ToDoPanelButtonListener li, ToDoPanel toDoPanel, TaskButton b) {
@@ -23,7 +23,6 @@ public class NewTaskListener implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (b == null) {
-
             TaskButton b = new TaskButton(dialog.getNameText().getText(), dialog.getDescriptionText().getText(),
                     dialog.getDateSet().getText(), dialog.getTimeSet().getText(),
                     dialog.getPrioritySet().getSelectedItem().toString());

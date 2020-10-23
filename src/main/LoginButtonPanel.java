@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -34,7 +35,7 @@ public class LoginButtonPanel extends JPanel {
      * @param opaque gewährleistet, dass das Panel durchsichtig ist
      * @param layout setzt das richtige Layout des Panels
      */
-    public LoginButtonPanel(boolean opaque, java.awt.LayoutManager layout) {
+    public LoginButtonPanel(boolean opaque, LayoutManager layout) {
         super(layout);
         setOpaque(opaque);
 

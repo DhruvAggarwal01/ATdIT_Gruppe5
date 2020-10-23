@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -41,7 +42,7 @@ public class ActualApp {
     public static void startApp() {
         appWindow = new MainPanel();
         appWindow.setTitle("App: " + MainPanel.getAppTitle());
-        appWindow.setMinimumSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        appWindow.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());
         appWindow.pack();
         appWindow.setLocation(0, 0);
         appWindow.setVisible(true);

@@ -1,5 +1,7 @@
 package test.main;
 
+import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.*;
 import org.junit.*;
@@ -39,10 +41,10 @@ public class HeaderPanelTest {
 
     // TBD: Checks if the mouseListener is implemented correctly
     @Test
-    public void testGoToOverviewOnClick() throws java.awt.AWTException {
+    public void testGoToOverviewOnClick() throws AWTException {
         MainPanel.getNavPane().setSelectedIndex(2); // (int) (Math.random() *
         // MainPanel.getNavPane().getComponentCount()));
-        java.awt.Robot testingBot = new java.awt.Robot();
+        Robot testingBot = new Robot();
         int x = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getX();
         int y = MainPanel.getHeaderPanel().logoAndHeaderTitle.getComponent(0).getY();
         testingBot.mouseMove(x, y);
@@ -54,9 +56,9 @@ public class HeaderPanelTest {
     }
 
     @Test
-    public void testProfileMenuDeselected() throws java.awt.AWTException {
+    public void testProfileMenuDeselected() throws AWTException {
         testMenu.setSelected(true);
-        java.awt.Robot testingBot = new java.awt.Robot();
+        Robot testingBot = new Robot();
         testingBot.mouseMove(60, 0);
         testingBot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         testingBot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);

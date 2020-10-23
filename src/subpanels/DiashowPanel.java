@@ -1,6 +1,6 @@
 package subpanels;
 
-
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -32,19 +32,19 @@ public class DiashowPanel extends JPanel {
      */
     public DiashowPanel(String diashowTitle) {
         this.diashowTitle = diashowTitle;
-        this.setLayout(new java.awt.BorderLayout());
+        this.setLayout(new BorderLayout());
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 20, 20, 20),
                 BorderFactory.createRaisedBevelBorder()));
 
         JLabel diashowTitleLabel = new JLabel(diashowTitle);
         diashowTitleLabel.setFont(Styles.SUBPANEL_TITLE_FONT);
         diashowTitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        diashowTitleLabel.setForeground(java.awt.Color.BLUE.darker());
+        diashowTitleLabel.setForeground(Color.BLUE.darker());
         diashowTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
         for (int i = 0; i < images.length; i++) {
             images[i] = new ImageIcon(new ImageIcon("Library/images/DiashowPic" + (i + 1) + ".jpg").getImage()
-                    .getScaledInstance(500, 120, java.awt.Image.SCALE_SMOOTH));
+                    .getScaledInstance(500, 120, Image.SCALE_SMOOTH));
         }
 
         diashowLabel = new JLabel(images[0]);
@@ -54,8 +54,8 @@ public class DiashowPanel extends JPanel {
         timer = new Timer(4000, tListener);
         timer.start();
 
-        this.add(diashowTitleLabel, java.awt.BorderLayout.NORTH);
-        this.add(diashowLabel, java.awt.BorderLayout.CENTER);
+        this.add(diashowTitleLabel, BorderLayout.NORTH);
+        this.add(diashowLabel, BorderLayout.CENTER);
     }
 
     /**
