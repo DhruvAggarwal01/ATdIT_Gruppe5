@@ -100,8 +100,8 @@ public class NavItemPanelChooser extends JPanel {
                 }
                 break;
             case "ToDo's":
-                this.setLayout(new BorderLayout());
-                this.add(new ToDoPanel(), BorderLayout.CENTER);
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(new ToDoPanel(), java.awt.BorderLayout.CENTER);
                 break;
             case "Produktion":
                 this.setLayout(new java.awt.BorderLayout());
