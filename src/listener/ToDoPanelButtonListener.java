@@ -3,7 +3,7 @@ package listener;
 import java.awt.event.*;
 
 import panels.ToDoPanel;
-import subpanels.NewTask;
+import dialogs.NewTask;
 import subpanels.TaskButton;
 
 /**

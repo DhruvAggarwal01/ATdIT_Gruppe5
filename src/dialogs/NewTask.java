@@ -1,4 +1,4 @@
-package subpanels;
+package dialogs;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import listener.NewTaskListener;
 import listener.ToDoPanelButtonListener;
 import panels.ToDoPanel;
+import subpanels.TaskButton;
 
 /**
  * Diese Klasse legt fest wie neue Aufgaben angelegt werden.
