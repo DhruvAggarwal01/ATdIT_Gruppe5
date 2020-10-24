@@ -1,8 +1,10 @@
 package panels;
 
-import javax.swing.*;
-import java.awt.*;
-
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import listener.ToDoPanelButtonListener;
 
 /**
@@ -20,7 +22,9 @@ public class ToDoPanel extends JPanel {
     private JButton newTaskButton;
 
     /**
-     * Diese Methode ist der Konstruktor und erzeugt das ToDOPanel. 
+     * Diese Methode ist der Konstruktor und erzeugt das ToDOPanel und die dafür
+     * nötigen Swing/AWT-Komponenten erzeugt. Die taskList nimmt dabei Komponenten
+     * vom Typ TaskButton auf und zusätzlich wird noch ein JButton hinzugefügt.
      */
     public ToDoPanel() {
         this.setLayout(new BorderLayout());
