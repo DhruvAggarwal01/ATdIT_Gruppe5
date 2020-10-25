@@ -90,7 +90,7 @@ public class Styles {
   public final static Font ERROR_STACKTRACE_FONT = new Font("Calibri", Font.PLAIN, 12);
 
   /**
-   * gibt ein Font-Objekt zurück, um in der Klasse Speicherressourcen einzusparen.
+   * gibt ein Font-Objekt zurück, um in der Klasse Systemressourcen einzusparen.
    * 
    * @param name  Font-Name
    * @param style Font-Style

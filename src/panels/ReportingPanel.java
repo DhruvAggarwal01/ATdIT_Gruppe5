@@ -46,17 +46,31 @@ public class ReportingPanel extends JPanel {
         this.add(mockLabel, BorderLayout.CENTER);
     }
 
-    // tbd
-
+    /**
+     * Getter-Methode für das Panel für die Reporting-Header-Zeile
+     * 
+     * @return Panel für die Reporting-Header-Zeile
+     */
     public JPanel getReportingHeaderRowPanel() {
         return reportingHeaderRowPanel;
     }
 
+    /**
+     * Getter-Methode für den Zurück-Button
+     * 
+     * @return Zurück-Button
+     */
     public JButton getBackButton() {
         return backButton;
     }
 
+    /**
+     * Getter-Methode für das Pseudolabel
+     * 
+     * @return Pseudolabel
+     */
     public JLabel getMockLabel() {
         return mockLabel;
     }
+
 }

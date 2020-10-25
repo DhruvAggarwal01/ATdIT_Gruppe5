@@ -117,44 +117,92 @@ public class NewTask extends JDialog {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
-    // tbd
-
+    /**
+     * Getter-Methode für den Namen-Textfeld
+     * 
+     * @return Namen-Textfeld
+     */
     public JTextField getNameText() {
         return this.nameText;
     }
 
+    /**
+     * Setter-Methode für den Namen-Textfeld
+     * 
+     * @param nameText Namen-Textfeld
+     */
     public void setNameText(JTextField nameText) {
         this.nameText = nameText;
     }
 
+    /**
+     * Getter-Methode für den Datum-Textfeld
+     * 
+     * @return Datum-Textfeld
+     */
     public JTextField getDateSet() {
         return this.dateSet;
     }
 
+    /**
+     * Setter-Methode für den Datum-Textfeld
+     * 
+     * @param dateSet Datum-Textfeld
+     */
     public void setDateSet(JTextField dateSet) {
         this.dateSet = dateSet;
     }
 
+    /**
+     * Getter-Methode für den Zeit-Textfeld
+     * 
+     * @return Zeit-Textfeld
+     */
     public JTextField getTimeSet() {
         return this.timeSet;
     }
 
+    /**
+     * Setter-Methode für den Zeit-Textfeld
+     * 
+     * @param timeSet Zeit-Textfeld
+     */
     public void setTimeSet(JTextField timeSet) {
         this.timeSet = timeSet;
     }
 
+    /**
+     * Getter-Methode für den Beschreibung-Textfeld
+     * 
+     * @return Beschreibung-Textfeld
+     */
     public JTextArea getDescriptionText() {
         return this.descriptionText;
     }
 
+    /**
+     * Setter-Methode für den Beschreibung-Textfeld
+     * 
+     * @param descriptionText Beschreibung-Textfeld
+     */
     public void setDescriptionText(JTextArea descriptionText) {
         this.descriptionText = descriptionText;
     }
 
+    /**
+     * Getter-Methode für die Priorität-ComboBox
+     * 
+     * @return Priorität-ComboBox
+     */
     public JComboBox<String> getPrioritySet() {
         return this.prioritySet;
     }
 
+    /**
+     * Setter-Methode für die Priorität-ComboBox
+     * 
+     * @param prioritySet Priorität-ComboBox
+     */
     public void setPrioritySet(JComboBox<String> prioritySet) {
         this.prioritySet = prioritySet;
     }

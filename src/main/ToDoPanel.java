@@ -16,9 +16,9 @@ public class ToDoPanel extends JFrame {
     private static final long serialVersionUID = -2490912819402618727L;
 
     private Container c;
-    public JPanel aufgabenListe;
-    public JButton neueAufgabe;
-    public JButton aufgabeBearbeiten;
+    public JPanel taskList;
+    public JButton newTask;
+    public JButton taskEdit;
 
     /**
      * bietet ein <code>JPanel</code>, welches alle aktiven To-Do-Elemente in Form
@@ -29,22 +29,22 @@ public class ToDoPanel extends JFrame {
      */
     public ToDoPanel() {
         c = getContentPane();
-        neueAufgabe = new JButton("Neue Aufgabe");
-        aufgabeBearbeiten = new JButton("Aufgabe bearbeiten");
-        aufgabenListe = new JPanel();
-        JCheckBox aufgabe1 = new JCheckBox("Aufgabe 1");
-        JCheckBox aufgabe2 = new JCheckBox("Aufgabe 2");
-        JCheckBox aufgabe3 = new JCheckBox("Aufgabe 3");
-        aufgabenListe.add(aufgabe1);
-        aufgabenListe.add(aufgabe2);
-        aufgabenListe.add(aufgabe3);
-        c.add(aufgabenListe);
-        c.add(neueAufgabe);
-        c.add(aufgabeBearbeiten);
-        ButtonListener listenerNeueAufgabe = new ButtonListener();
-        neueAufgabe.addActionListener(listenerNeueAufgabe);
-        ListenerAufgabeBearbeiten listenerBearbeiten = new ListenerAufgabeBearbeiten();
-        aufgabeBearbeiten.addActionListener(listenerBearbeiten);
+        newTask = new JButton("Neue Aufgabe");
+        taskEdit = new JButton("Aufgabe bearbeiten");
+        taskList = new JPanel();
+        JCheckBox task1 = new JCheckBox("Aufgabe 1");
+        JCheckBox task2 = new JCheckBox("Aufgabe 2");
+        JCheckBox task3 = new JCheckBox("Aufgabe 3");
+        taskList.add(task1);
+        taskList.add(task2);
+        taskList.add(task3);
+        c.add(taskList);
+        c.add(newTask);
+        c.add(taskEdit);
+        ButtonListener listenernewTask = new ButtonListener();
+        newTask.addActionListener(listenernewTask);
+        ListenertaskEdit listenerBearbeiten = new ListenertaskEdit();
+        taskEdit.addActionListener(listenerBearbeiten);
 
     }
 
@@ -60,7 +60,7 @@ public class ToDoPanel extends JFrame {
     /**
      * tbd
      */
-    class ListenerAufgabeBearbeiten implements ActionListener {
+    class ListenertaskEdit implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             // Selbes Fenster wie bei "Neue Aufgabe" geht auf, aber bisherigen Werte sind
             // schon darin enthalten

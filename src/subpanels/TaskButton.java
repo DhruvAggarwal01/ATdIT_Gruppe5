@@ -49,45 +49,93 @@ public class TaskButton extends JButton {
      * blue)); }
      */
 
-    // tbd
-
+    /**
+     * Getter-Methode für den ToDo-Namen
+     * 
+     * @return ToDo-Name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Setter-Methode für den ToDo-Namen
+     * 
+     * @param name ToDo-Name
+     */
     public void setName(String name) {
         this.setText(name);
         this.name = name;
     }
 
+    /**
+     * Getter-Methode für den Zurück-Button
+     * 
+     * @return Da-Button
+     */
     public String getDate() {
         return this.date;
     }
 
+    /**
+     * Setter-Methode für den Datum
+     * 
+     * @param date Datum
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     * Getter-Methode für die Beschreibung
+     * 
+     * @return Beschreibung
+     */
     public String getDescription() {
         return this.description;
     }
 
+    /**
+     * Setter-Methode für die Beschreibung
+     * 
+     * @param description Beschreibung
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Getter-Methode für die Zeit
+     * 
+     * @return Zeit
+     */
     public String getTime() {
         return this.time;
     }
 
+    /**
+     * Setter-Methode für die Zeit
+     * 
+     * @param time Zeit
+     */
     public void setTime(String time) {
         this.time = time;
     }
 
+    /**
+     * Getter-Methode für die Priorität
+     * 
+     * @return Priorität
+     */
     public String getPriority() {
         return this.priority;
     }
 
+    /**
+     * Setter-Methode für die Priorität
+     * 
+     * @param priority Priorität
+     */
     public void setPriority(String priority) {
         this.priority = priority;
     }

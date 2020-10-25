@@ -46,8 +46,8 @@ public class NewTaskListener implements ActionListener {
             b.addActionListener(li);
 
             // b.setText(t.getName());
-            toDoPanel.getAufgabenListe().add(b);
-            toDoPanel.getAufgabenListe().revalidate();
+            toDoPanel.getTaskList().add(b);
+            toDoPanel.getTaskList().revalidate();
         } else {
             b.setName(dialog.getNameText().getText());
             b.setDescription(dialog.getDescriptionText().getText());

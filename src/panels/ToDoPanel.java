@@ -41,9 +41,12 @@ public class ToDoPanel extends JPanel {
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    // tbd
-
-    public JPanel getAufgabenListe() {
+    /**
+     * Getter-Methode für das Panel für die Aufgabenliste
+     * 
+     * @return Panel für die Aufgabenliste
+     */
+    public JPanel getTaskList() {
         return taskList;
     }
 

@@ -244,37 +244,76 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
 
-    // tbd
-
+    /**
+     * Getter-Methode für den Button zum Einträge-Reset
+     * 
+     * @return Button zum Einträge-Reset
+     */
     public JButton getResetEntriesButton() {
         return resetEntriesButton;
     }
 
+    /**
+     * Getter-Methode für den Button zum Einträge-Speichern
+     * 
+     * @return Button zum Einträge-Speichern
+     */
     public JButton getSaveButton() {
         return saveButton;
     }
 
+    /**
+     * Getter-Methode für den Button zum Einträge-Speichern und Schließen
+     * 
+     * @return Button zum Einträge-Speichern und Schließen
+     */
     public JButton getSaveAndCloseButton() {
         return saveAndCloseButton;
     }
 
+    /**
+     * Getter-Methode für das Label zur möglichen Anzeige eines Fehlers
+     * 
+     * @return Label zur möglichen Anzeige eines Fehlers
+     */
     public JLabel getPossibleErrorMessageLabel() {
         return possibleErrorMessageLabel;
     }
 
+    /**
+     * Getter-Methode für das Panel für die persönlichen Informationen
+     * 
+     * @return Panel für die persönlichen Informationen
+     */
     public JPanel getPersonalInfoPanel() {
         return personalInfoPanel;
     }
 
+    /**
+     * Getter-Methode für das Panel für den inhaltlichen Teil
+     * 
+     * @return Panel für den inhaltlichen Teil
+     */
     public JPanel getContentPanel() {
         return contentPanel;
     }
 
+    /**
+     * Getter-Methode für das Panel für die drei Beendigungsbuttons
+     * 
+     * @return Panel für die drei Beendigungsbuttons
+     */
     public JPanel getRsscPanel() {
         return rsscPanel;
     }
 
+    /**
+     * Getter-Methode für das Panel für den "Passwort ändern"-Teil
+     * 
+     * @return Panel für den "Passwort ändern"-Teil
+     */
     public JPanel getChangePswdPanel() {
         return rsscPanel;
     }
+
 }

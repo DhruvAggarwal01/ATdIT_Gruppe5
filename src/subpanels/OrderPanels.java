@@ -83,20 +83,25 @@ public class OrderPanels extends JPanel {
             labelID.add(labelID2);
 
             this.add(labelID);
-
         }
-
         this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5),
                 BorderFactory.createRaisedBevelBorder()));
-
     }
 
-    // tbd
-
+    /**
+     * Setter-Methode für den Auftragsquelle-Namen
+     * 
+     * @param source Auftragsquelle-Name
+     */
     public static String setOrderSource(String source) {
         return sourceOrder = source;
     }
 
+    /**
+     * Getter-Methode für den Auftragsquelle-Namen
+     * 
+     * @return Auftragsquelle-Name
+     */
     public static String getOrderSource() {
         return sourceOrder;
     }
