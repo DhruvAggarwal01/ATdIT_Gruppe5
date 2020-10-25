@@ -18,7 +18,7 @@ public class Dashboard extends JPanel {
      */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Library/images/ProductionPanel.png");
+        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("group5/src/main/resources/images/ProductionPanel.png");
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         g.drawImage(backgroundImage, 0, 0, size.width / 100 * 80, size.height / 100 * 80, this);
     }

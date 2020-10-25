@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import atdit1.group5.panels.EditOrder;
-import usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 
 public class OrderAmountInputVerifier extends InputVerifier {
 

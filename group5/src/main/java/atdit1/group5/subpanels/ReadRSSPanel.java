@@ -46,7 +46,7 @@ public class ReadRSSPanel extends JPanel {
 
             private static final long serialVersionUID = -1968962839234170862L;
 
-            Image weatherStatusImage = new ImageIcon("Library/images/emptyTransparent.png").getImage();
+            Image weatherStatusImage = new ImageIcon("group5/src/main/resources/images/emptyTransparent.png").getImage();
             {
                 setOpaque(false);
             }

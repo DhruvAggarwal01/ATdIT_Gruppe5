@@ -15,7 +15,7 @@ import atdit1.group5.exceptions.InternalException;
 public class DBUsersInserterTest {
 
     public void executeDBUsersInserter() throws DatabaseConnectException, InternalException {
-        DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx", new User());
+        DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("group5/src/main/resources/databases/DefaultUSERS.xlsx", new User());
         dbUsersInserter.applyChangedGenericToRow("personnel_id", LogInCredentialsChecker.sessionUser.getPersonnel_id(),
                 new User());
     }
@@ -26,7 +26,7 @@ public class DBUsersInserterTest {
         LogInCredentialsChecker.sessionUser.setPersonnel_id(1);
         LogInCredentialsChecker.sessionUser.setRole_id(2);
         executeDBUsersInserter();
-        DBGenericExtractor<User> dbUsersExtractor = new DBGenericExtractor<User>("databases/DefaultUSERS.xlsx",
+        DBGenericExtractor<User> dbUsersExtractor = new DBGenericExtractor<User>("group5/src/main/resources/databases/DefaultUSERS.xlsx",
                 new User());
         Row row = dbUsersExtractor.gensWorkbook.getSheetAt(0).getRow(1);
         int actualRole_id = (int) row.getCell(5).getNumericCellValue();

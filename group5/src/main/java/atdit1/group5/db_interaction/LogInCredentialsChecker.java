@@ -38,7 +38,7 @@ public class LogInCredentialsChecker {
         this.username = username;
         this.password = password;
         try {
-            dbUsersExtractor = new DBGenericExtractor<User>("databases/DefaultUSERS.xlsx", new User());
+            dbUsersExtractor = new DBGenericExtractor<User>("group5/src/main/resources/databases/DefaultUSERS.xlsx", new User());
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),

@@ -102,7 +102,7 @@ public class WeatherPanel extends JPanel {
         weatherForecastArea = new JTextArea() {
             private static final long serialVersionUID = 1L;
 
-            Image weatherStatusImage = new ImageIcon("Library/images/OpenWeatherMapLogo.png").getImage();
+            Image weatherStatusImage = new ImageIcon("group5/src/main/resources/images/OpenWeatherMapLogo.png").getImage();
             {
                 setOpaque(false);
             }

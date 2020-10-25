@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 
 public class OrderDateVerifier extends InputVerifier {
 

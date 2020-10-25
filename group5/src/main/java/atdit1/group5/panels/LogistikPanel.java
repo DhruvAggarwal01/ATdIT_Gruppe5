@@ -11,7 +11,7 @@ import atdit1.group5.mainclasses.NavItemPanelChooser;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
 import atdit1.group5.db_interaction.OrdersSorter;
-import src.main.resources.usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**

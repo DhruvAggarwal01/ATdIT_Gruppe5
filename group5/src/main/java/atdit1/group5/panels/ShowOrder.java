@@ -13,7 +13,7 @@ import atdit1.group5.mainclasses.MainPanel;
 import atdit1.group5.mainclasses.NavItemPanelChooser;
 import atdit1.group5.mainclasses.Styles;
 
-import usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**

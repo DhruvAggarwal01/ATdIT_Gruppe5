@@ -46,7 +46,7 @@ public class LoginCancelForgottenListener implements ActionListener {
             if (loginButtonPanelView.authenticate()) {
                 AppRunner.getLoginFrame().dispose();
                 LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
-                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("databases/DefaultUSERS.xlsx",
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("group5/src/main/resources/databases/DefaultUSERS.xlsx",
                         new User());
                 try {
                     dbUsersInserter.applyChangedGenericToRow("personnel_id",

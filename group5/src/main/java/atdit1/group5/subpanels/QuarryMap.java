@@ -58,7 +58,7 @@ public class QuarryMap extends JPanel {
      */
     private void getImage() throws InternalException {
         try {
-            img = ImageIO.read(new File("Library/images/Steinbruch1.jpg"));
+            img = ImageIO.read(new File("group5/src/main/resources/images/Steinbruch1.jpg"));
         } catch (IOException e) {
             throw new InternalException();
         }

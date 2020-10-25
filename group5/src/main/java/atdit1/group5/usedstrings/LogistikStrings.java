@@ -4,7 +4,7 @@ public class LogistikStrings {
 
     /* ----------------------- General Logistik Strings --------------------------- */
 
-    private static final String ordersDatabaseString = "databases/DefaultCONTRACTS.xlsx";
+    private static final String ordersDatabaseString = "group5/src/main/resources/databases/DefaultCONTRACTS.xlsx";
     private static final String logisticsString = "Logistik";
     private static final String displayAllString = "DisplayAll";
     private static final String editOrderString = "EditOrder";

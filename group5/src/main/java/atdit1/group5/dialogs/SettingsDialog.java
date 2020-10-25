@@ -32,9 +32,9 @@ public class SettingsDialog extends AbstractUsermenuDialog {
     private JLabel titleStyleSettingsLabel;
 
     private JLabel themeToggleSettingLabel;
-    public final ImageIcon nightModeOFFIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOff.png").getImage()
+    public final ImageIcon nightModeOFFIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/nightModeOff.png").getImage()
             .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-    public final ImageIcon nightModeONIcon = new ImageIcon(new ImageIcon("Library/images/nightModeOn.png").getImage()
+    public final ImageIcon nightModeONIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/nightModeOn.png").getImage()
             .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
     private static JToggleButton themeToggleButton;
 
@@ -100,9 +100,9 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         functionalitySettingsPanel.add(timeoutTimeLabel);
         functionalitySettingsPanel.add(timeoutTimeSpinner);
 
-        ImageIcon closeIcon = new ImageIcon(new ImageIcon("Library/images/closeIcon.png").getImage()
+        ImageIcon closeIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/closeIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon applyAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
+        ImageIcon applyAndCloseIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
         cPanel = new JPanel(new GridLayout(1, 3, 140, 140));

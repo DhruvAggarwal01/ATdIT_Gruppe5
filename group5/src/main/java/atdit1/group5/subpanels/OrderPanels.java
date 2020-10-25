@@ -9,7 +9,7 @@ import atdit1.group5.listener.HoverColorChangeListener;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
 import atdit1.group5.mainclasses.Styles;
-import usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**

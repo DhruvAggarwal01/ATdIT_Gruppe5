@@ -21,7 +21,7 @@ import atdit1.group5.subpanels.ColorChooser;
 import atdit1.group5.subpanels.OrderPanels;
 import atdit1.group5.verifiers.OrderAmountInputVerifier;
 import atdit1.group5.verifiers.OrderStringVerifier;
-import resources.usedstrings.LogistikStrings;
+import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 import atdit1.group5.exceptions.InternalException;
 

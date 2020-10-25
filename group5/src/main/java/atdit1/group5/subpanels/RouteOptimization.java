@@ -21,7 +21,7 @@ public class RouteOptimization extends JPanel {
      */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("Library/images/Wegoptimierung.jpg");
+        Image backgroundImage = Toolkit.getDefaultToolkit().getImage("group5/src/main/resources/images/Wegoptimierung.jpg");
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         g.drawImage(backgroundImage, 0, 0, size.width / 100 * 80, size.height / 100 * 80, this);
     }
