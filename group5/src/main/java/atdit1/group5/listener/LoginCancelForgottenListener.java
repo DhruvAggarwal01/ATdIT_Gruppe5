@@ -9,7 +9,7 @@ import atdit1.group5.db_interaction.User;
 import atdit1.group5.exceptions.DatabaseConnectException;
 import atdit1.group5.exceptions.InternalException;
 import atdit1.group5.mainclasses.ActualApp;
-import atdit1.group5.mainclasses.AppRunner;
+import atdit1.group5.AppRunner;
 import atdit1.group5.mainclasses.LoginButtonPanel;
 
 /**
@@ -46,8 +46,8 @@ public class LoginCancelForgottenListener implements ActionListener {
             if (loginButtonPanelView.authenticate()) {
                 AppRunner.getLoginFrame().dispose();
                 LogInCredentialsChecker.sessionUser.setIsLoggedIn(true);
-                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>("group5/src/main/resources/databases/DefaultUSERS.xlsx",
-                        new User());
+                DBGenericInserter<User> dbUsersInserter = new DBGenericInserter<User>(
+                        "group5/src/main/resources/databases/DefaultUSERS.xlsx", new User());
                 try {
                     dbUsersInserter.applyChangedGenericToRow("personnel_id",
                             LogInCredentialsChecker.sessionUser.getPersonnel_id(), LogInCredentialsChecker.sessionUser);

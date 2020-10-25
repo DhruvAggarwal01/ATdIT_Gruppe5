@@ -1,7 +1,11 @@
-package atdit1.group5.mainclasses;
+package atdit1.group5;
 
 import java.awt.*;
 import javax.swing.*;
+
+import atdit1.group5.mainclasses.BackgroundImagePanel;
+import atdit1.group5.mainclasses.LoginButtonPanel;
+import atdit1.group5.mainclasses.MainPanel;
 
 /**
  * startet einen LoginScreen und wenn der User einen richtigen Benutzernamen und
