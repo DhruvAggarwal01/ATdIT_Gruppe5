@@ -5,10 +5,11 @@ import javax.swing.*;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import atdit1.group5.usedstrings.LogistikStrings;
+import java.util.ResourceBundle;
 
 public class OrderDateVerifier extends InputVerifier {
+
+    private ResourceBundle text;
 
     public long calculateTimeDiffrence() {
         final Calendar cal_1 = new GregorianCalendar();
@@ -28,15 +29,16 @@ public class OrderDateVerifier extends InputVerifier {
 
     @Override
     public boolean verify(final JComponent input) {
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
         final JTextField intInput = (JTextField) input;
-        final String text = intInput.getText();
+        final String inputtext = intInput.getText();
         int num;
 
         try {
-            num = Integer.parseInt(text);
+            num = Integer.parseInt(inputtext);
         } catch (final NumberFormatException e) {
             intInput.setBackground(Color.RED);
-            intInput.setText(LogistikStrings.getInvalidNameErrorMessae());
+            intInput.setText(text.getString("invalidNameErrorMessae"));
             return false;
         }
         if (num <= MAX && num >= MIN) {

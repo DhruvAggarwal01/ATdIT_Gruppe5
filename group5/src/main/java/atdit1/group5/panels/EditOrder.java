@@ -5,12 +5,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.Iterator;
 
 import atdit1.group5.mainclasses.MainPanel;
 import atdit1.group5.mainclasses.NavItemPanelChooser;
-import atdit1.group5.mainclasses.Styles;
+import atdit1.group5.styles.Styles;
 import atdit1.group5.db_interaction.CalculateOrder;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.DBOrderInserter;
@@ -33,7 +34,10 @@ import atdit1.group5.exceptions.InternalException;
  */
 public class EditOrder extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2284832758920933892L;
+
+    private final ResourceBundle text;
+
     private JPanel editPanel;
 
     private JLabel dummyLabel1;
@@ -82,6 +86,9 @@ public class EditOrder extends JPanel {
      */
     public EditOrder(final Boolean create2) {
         this.create = create2;
+
+        this.text = ResourceBundle.getBundle("i18n/logistik_panels/LogistikStrings");
+
         if (create != true) {
             currentOrder = new Order();
             this.orderSource = OrderPanels.getOrderSource();
@@ -94,8 +101,7 @@ public class EditOrder extends JPanel {
         Set<Order> rowCurrentOrder;
         if (this.orderSource != null) {
             try {
-                dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(),
-                        new Order());
+                dbOrderExtractor = new DBGenericExtractor<Order>(text.getString("ordersDatabaseString"), new Order());
                 rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
                 final Iterator<Order> it = rowCurrentOrder.iterator();
                 currentOrder = it.next();
@@ -163,28 +169,28 @@ public class EditOrder extends JPanel {
      */
     public void setDisplayedValue(final Order currentOrder) {
 
-        dummyLabel1 = new JLabel(LogistikStrings.getEmptyString());
-        dummyLabel2 = new JLabel(LogistikStrings.getEmptyString());
+        dummyLabel1 = new JLabel("");
+        dummyLabel2 = new JLabel("");
 
         orderHeaderLabel = new JLabel("Order Header");
         orderHeaderLabel.setFont(Styles.ORDER_INFO);
         orderStatusLabel = new JLabel("" + currentOrder.getOrder_id());
         orderStatusLabel.setFont(Styles.ORDER_INFO);
 
-        firmLabel = new JLabel(LogistikStrings.getFirmString());
+        firmLabel = new JLabel(text.getString("firmString"));
         firmLabel.setFont(Styles.ORDER_INFO);
         firmField = new JTextField(currentOrder.getFirm());
         firmField.setInputVerifier(new OrderStringVerifier());
         firmField.addMouseListener(new ResetInputFieldListener());
 
-        stoneTypeLabel = new JLabel(LogistikStrings.getStoneTypeString());
+        stoneTypeLabel = new JLabel(text.getString("stoneTypeString"));
         stoneTypeLabel.setFont(Styles.ORDER_INFO);
         stoneSelection = new JComboBox<String>();
-        stoneSelection.addItem(LogistikStrings.getStoneTypeOneString());
-        stoneSelection.addItem(LogistikStrings.getStoneTypeTwoSring());
-        stoneSelection.addItem(LogistikStrings.getStoneTypeThreeString());
-        stoneSelection.addItem(LogistikStrings.getStoneTypeFourString());
-        stoneSelection.addItem(LogistikStrings.getStoneTypeFiveString());
+        stoneSelection.addItem(text.getString("stoneTypeOneString"));
+        stoneSelection.addItem(text.getString("stoneTypeTwoSring"));
+        stoneSelection.addItem(text.getString("stoneTypeThreeString"));
+        stoneSelection.addItem(text.getString("stoneTypeFourString"));
+        stoneSelection.addItem(text.getString("stoneTypeFiveString"));
 
         amountLabel = new JLabel("Menge (in Tonnen):");
         amountLabel.setFont(Styles.ORDER_INFO);
@@ -192,31 +198,31 @@ public class EditOrder extends JPanel {
         amountField.setInputVerifier(new OrderAmountInputVerifier());
         amountField.addMouseListener(new ResetInputFieldListener());
 
-        dueDateLabel = new JLabel(LogistikStrings.getDueDateString());
+        dueDateLabel = new JLabel(text.getString("dueDateString"));
         dueDateLabel.setFont(Styles.ORDER_INFO);
         dueDateField = new JTextField("" + currentOrder.getDue_date());
 
         priceLabel = new JLabel(LogistikStrings.getPriceString());
         priceLabel.setFont(Styles.ORDER_INFO);
-        priceAmountLabel = new JLabel(LogistikStrings.getPriceDescription());
+        priceAmountLabel = new JLabel(text.getString("priceDescription"));
         priceAmountLabel.setFont(Styles.ORDER_INFO);
 
-        phaseLabel = new JLabel(LogistikStrings.getPhaseString());
+        phaseLabel = new JLabel(text.getString("phaseString"));
         phaseLabel.setFont(Styles.ORDER_INFO);
         phaseSelection = new JComboBox<String>();
-        phaseSelection.addItem(LogistikStrings.getPhasePlanningString());
-        phaseSelection.addItem(LogistikStrings.getPhaseBombingString());
-        phaseSelection.addItem(LogistikStrings.getPhaseTransportString());
-        phaseSelection.addItem(LogistikStrings.getPhaseDeliveredSttring());
+        phaseSelection.addItem(text.getString("phasePlanningString"));
+        phaseSelection.addItem(text.getString("phaseBombingString"));
+        phaseSelection.addItem(text.getString("phaseTransportString"));
+        phaseSelection.addItem(text.getString("phaseDeliveredSttring"));
 
-        doneLabel = new JLabel(LogistikStrings.getOrderDoneText());
+        doneLabel = new JLabel(text.getString("orderDoneText"));
         doneLabel.setFont(Styles.ORDER_INFO);
-        doneBox = new JCheckBox(LogistikStrings.getOrderDoneText());
+        doneBox = new JCheckBox(text.getString("orderDoneText"));
 
-        backButton = new JButton(LogistikStrings.getBackString());
+        backButton = new JButton(text.getString("backString"));
         backButton.addActionListener(new BackToOrderOverviewListener());
 
-        saveButton = new JButton(LogistikStrings.getSaveString());
+        saveButton = new JButton(text.getString("saveString"));
         if (create) {
             saveButton.setEnabled(false);
         }
@@ -227,12 +233,11 @@ public class EditOrder extends JPanel {
                 saveEditedOrder();
                 if (create != true) {
                     MainPanel.getNavPane().setComponentAt(6,
-                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "ShowOrder", null));
+                            new NavItemPanelChooser(text.getString("logisticsString"), "ShowOrder", null));
                 } else {
                     MainPanel.getNavPane().setComponentAt(6,
-                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                            new NavItemPanelChooser(text.getString("logisticsString"), null, null));
                 }
-
             }
         });
     }
@@ -257,8 +262,7 @@ public class EditOrder extends JPanel {
     public void saveEditedOrder() {
         setOrder();
         try {
-            DBOrderInserter dbOrdersInserter = new DBOrderInserter(LogistikStrings.getOrdersDatabaseString(),
-                    new Order());
+            DBOrderInserter dbOrdersInserter = new DBOrderInserter(text.getString("ordersDatabaseString"), new Order());
             if (create == true) {
                 dbOrdersInserter.addNewOrder();
             } else {

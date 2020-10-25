@@ -3,7 +3,7 @@ package atdit1.group5.exceptions;
 import java.awt.*;
 import javax.swing.*;
 
-import atdit1.group5.mainclasses.Styles;
+import atdit1.group5.styles.Styles;
 
 /**
  * baut eine abstrakte Custom-Exception für die Steinbruch-Anwendung auf.

@@ -27,7 +27,10 @@ import atdit1.group5.exceptions.DatabaseConnectException;
  */
 public class LogistikPanel extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -3153446847438152606L;
+
+    private final ResourceBundle text;
+
     private Integer maxOrderID;
     private Set<Order> onTimeOrders;
     private Set<Order> atRiskOrders;
@@ -50,8 +53,9 @@ public class LogistikPanel extends JPanel {
      * @param DisplayAllOrders
      */
     public LogistikPanel(Boolean DisplayAllOrders) {
+        this.text = ResourceBundle.getBundle("i18n/logistik_panels/LogistikStrings");
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>(text.getString("ordersDatabaseString"), new Order());
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
@@ -74,8 +78,10 @@ public class LogistikPanel extends JPanel {
 
         createOrder = new JButton(LogistikStrings.getCreateOrderText());
         searchButton = new JButton(LogistikStrings.getSearchOrderText());
+        searchButton = new JButton(text.getString("searchOrderText"));
 
         doneOrdersBox = new JCheckBox(LogistikStrings.getDisplayAllText());
+        doneOrdersBox = new JCheckBox(text.getString("displayAllText"));
 
         doneOrdersBox.addActionListener(new ActionListener() {
 
@@ -84,14 +90,14 @@ public class LogistikPanel extends JPanel {
                 Boolean displayAll = doneOrdersBox.isSelected();
                 if (displayAll) {
 
-                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(
-                            LogistikStrings.getLogisticsString(), LogistikStrings.getDisplayAllString(), null));
+                    MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(text.getString("logisticsString"),
+                            text.getString("displayAllString"), null));
                     MainPanel.getNavPane().setSelectedIndex(6);
                     doneOrdersBox.setSelected(true);
                 } else if (!displayAll) {
 
                     MainPanel.getNavPane().setComponentAt(6,
-                            new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                            new NavItemPanelChooser(text.getString("logisticsString"), null, null));
                     MainPanel.getNavPane().setSelectedIndex(6);
                 }
             }
@@ -119,21 +125,21 @@ public class LogistikPanel extends JPanel {
     public void setOrderPanels(Boolean displayAll) {
 
         if (displayAll) {
-            this.onTimeOrders = OrdersSorter.getAllOrders(LogistikStrings.getOnTimeString());
-            this.atRiskOrders = OrdersSorter.getAllOrders(LogistikStrings.getAtRiskString());
-            this.overdueOrders = OrdersSorter.getAllOrders(LogistikStrings.getOverdueString());
+            this.onTimeOrders = OrdersSorter.getAllOrders(text.getString("onTimeString"));
+            this.atRiskOrders = OrdersSorter.getAllOrders(text.getString("atRiskString"));
+            this.overdueOrders = OrdersSorter.getAllOrders(text.getString("overdueString"));
         } else {
-            this.onTimeOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOnTimeString());
-            this.atRiskOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getAtRiskString());
-            this.overdueOrders = OrdersSorter.getUnfinishedOrders(LogistikStrings.getOverdueString());
+            this.onTimeOrders = OrdersSorter.getUnfinishedOrders(text.getString("onTimeString"));
+            this.atRiskOrders = OrdersSorter.getUnfinishedOrders(text.getString("atRiskString"));
+            this.overdueOrders = OrdersSorter.getUnfinishedOrders(text.getString("overdueString"));
         }
 
-        onTimePanel = new OrderPanels(onTimeOrders, LogistikStrings.getOnTimeText(),
-                LogistikStrings.getOnTimeDescription(), 188, 234, 174);
-        atRiskPanel = new OrderPanels(atRiskOrders, LogistikStrings.getAtRiskText(),
-                LogistikStrings.getAtRiskDescription(), 245, 220, 163);
-        overduePanel = new OrderPanels(overdueOrders, LogistikStrings.getOverdueText(),
-                LogistikStrings.getOverdueDescription(), 252, 130, 136);
+        onTimePanel = new OrderPanels(onTimeOrders, text.getString("onTimeText"), text.getString("onTimeDescription"),
+                188, 234, 174);
+        atRiskPanel = new OrderPanels(atRiskOrders, text.getString("atRiskText"), text.getString("atRiskDescription"),
+                245, 220, 163);
+        overduePanel = new OrderPanels(overdueOrders, text.getString("overdueText"),
+                text.getString("overdueDescription"), 252, 130, 136);
     }
 
     /**
@@ -147,7 +153,7 @@ public class LogistikPanel extends JPanel {
                 EditOrder.currentOrder = new Order();
                 EditOrder.currentOrder.setOrder_id(maxOrderID);
                 MainPanel.getNavPane().setComponentAt(6,
-                        new NavItemPanelChooser(LogistikStrings.getLogisticsString(), "CreateOrder", null));
+                        new NavItemPanelChooser(text.getString("logisticsString"), "CreateOrder", null));
             }
         });
     }

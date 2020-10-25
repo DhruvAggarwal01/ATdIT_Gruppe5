@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import atdit1.group5.listener.TimerListener;
-import atdit1.group5.mainclasses.Styles;
+import atdit1.group5.styles.Styles;
 
 /**
  * baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern (Ausschnitten)

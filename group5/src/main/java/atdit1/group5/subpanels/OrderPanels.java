@@ -8,8 +8,7 @@ import java.util.*;
 import atdit1.group5.listener.HoverColorChangeListener;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
-import atdit1.group5.mainclasses.Styles;
-import atdit1.group5.usedstrings.LogistikStrings;
+import atdit1.group5.styles.Styles;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**
@@ -21,6 +20,8 @@ import atdit1.group5.exceptions.DatabaseConnectException;
 public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
+
+    private ResourceBundle text;
 
     Order currentOrder = new Order();
     DBGenericExtractor<Order> dbOrderExtractor;
@@ -38,10 +39,9 @@ public class OrderPanels extends JPanel {
      */
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
-
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), currentOrder);
-
+            dbOrderExtractor = new DBGenericExtractor<Order>((text.getString("ordersDatabaseString")), currentOrder);
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),

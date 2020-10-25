@@ -2,7 +2,7 @@ package atdit1.group5.panels;
 
 import javax.swing.JTabbedPane;
 
-import atdit1.group5.mainclasses.Styles;
+import atdit1.group5.styles.Styles;
 import atdit1.group5.subpanels.*;
 
 /**

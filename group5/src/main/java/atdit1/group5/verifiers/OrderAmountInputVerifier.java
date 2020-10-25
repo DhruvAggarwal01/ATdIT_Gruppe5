@@ -2,11 +2,13 @@ package atdit1.group5.verifiers;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.panels.EditOrder;
-import atdit1.group5.usedstrings.LogistikStrings;
 
 public class OrderAmountInputVerifier extends InputVerifier {
+
+    private ResourceBundle text;
 
     final int MIN = 0;
     final int MAX = 1000;
@@ -14,13 +16,14 @@ public class OrderAmountInputVerifier extends InputVerifier {
     @Override
     public boolean verify(final JComponent input) {
         final JTextField intInput = (JTextField) input;
-        final String text = intInput.getText();
+        final String inputtext = intInput.getText();
         int num;
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
         try {
-            num = Integer.parseInt(text);
+            num = Integer.parseInt(inputtext);
         } catch (final NumberFormatException e) {
             intInput.setBackground(Color.RED);
-            intInput.setText(LogistikStrings.getOnlyNumbersErrorMessage());
+            intInput.setText(text.getString("onlyNumbersErrorMessage"));
             EditOrder.setValidAmount(false);
             EditOrder.checkOrderValidity();
             return false;
@@ -32,7 +35,7 @@ public class OrderAmountInputVerifier extends InputVerifier {
             return true;
         }
         intInput.setBackground(Color.RED);
-        intInput.setText(LogistikStrings.getWrongAmountErrorMessage());
+        intInput.setText(text.getString("wrongAmountErrorMessage"));
         EditOrder.setValidAmount(false);
         EditOrder.checkOrderValidity();
         return false;

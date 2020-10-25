@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import atdit1.group5.exceptions.NavItemNotFoundException;
 import atdit1.group5.panels.*;
+import atdit1.group5.styles.Styles;
 
 /**
  * nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.

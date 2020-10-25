@@ -10,7 +10,7 @@ import atdit1.group5.exceptions.URLException;
 import atdit1.group5.listener.HyperlinkMouseAdapter;
 import atdit1.group5.mainclasses.MainPanel;
 import atdit1.group5.mainclasses.NavItemPanelChooser;
-import atdit1.group5.mainclasses.Styles;
+import atdit1.group5.styles.Styles;
 
 /**
  * baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigt.

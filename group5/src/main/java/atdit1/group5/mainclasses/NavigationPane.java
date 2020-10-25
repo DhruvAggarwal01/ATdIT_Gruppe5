@@ -2,6 +2,8 @@ package atdit1.group5.mainclasses;
 
 import javax.swing.*;
 
+import atdit1.group5.styles.Styles;
+
 /**
  * enthält die Tabs der Applikation. Dabei werden über die Klasse
  * <code>NavItemPanelChooser</code> die jeweilig anzuzeigenden Panels

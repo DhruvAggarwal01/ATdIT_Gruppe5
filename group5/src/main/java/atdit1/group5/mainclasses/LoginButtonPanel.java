@@ -9,6 +9,7 @@ import atdit1.group5.exceptions.LoginException;
 import atdit1.group5.exceptions.InternalException;
 import atdit1.group5.listener.LoginCancelForgottenListener;
 import atdit1.group5.listener.LoginKeyListener;
+import atdit1.group5.styles.Styles;
 
 /**
  * erzeugt ein Panel mit den nötigen mit den nötigen Swing/AWT-Komponenten für

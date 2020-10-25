@@ -5,15 +5,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.Set;
 import java.util.Iterator;
+import java.util.ResourceBundle;
 
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
 import atdit1.group5.subpanels.OrderPanels;
 import atdit1.group5.mainclasses.MainPanel;
 import atdit1.group5.mainclasses.NavItemPanelChooser;
-import atdit1.group5.mainclasses.Styles;
-
-import atdit1.group5.usedstrings.LogistikStrings;
+import atdit1.group5.styles.Styles;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**
@@ -24,7 +23,9 @@ import atdit1.group5.exceptions.DatabaseConnectException;
  */
 public class ShowOrder extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -4853364104784636995L;
+
+    private ResourceBundle text;
 
     String orderSource;
     Order currentOrder = new Order();
@@ -32,6 +33,19 @@ public class ShowOrder extends JPanel {
 
     private DBGenericExtractor<Order> dbOrderExtractor;
     Set<Order> rowCurrentOrder;
+
+    /**
+     * Konstruktor für das ShowOrder Panel
+     */
+    public ShowOrder() {
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.setLayout(new BorderLayout());
+
+        getCurrentOrder();
+        createShowshowOrderPanel();
+
+        this.add(showOrderPanel, BorderLayout.CENTER);
+    }
 
     /**
      * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
@@ -65,17 +79,16 @@ public class ShowOrder extends JPanel {
         int i = Integer.parseInt(this.orderSource.replaceAll("\\D", ""));
 
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), currentOrder);
+            dbOrderExtractor = new DBGenericExtractor<Order>(text.getString("ordersDatabaseString"), currentOrder);
             rowCurrentOrder = dbOrderExtractor.getFilteredDBRowsToSet("order_id", i);
+
             final Iterator<Order> it = rowCurrentOrder.iterator();
             currentOrder = it.next();
-
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     /**
@@ -95,52 +108,51 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(orderHeader);
         showOrderPanel.add(orderStatus);
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getFirmString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("firmString"))).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.getFirm())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getStoneTypeString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("stoneTypeString"))).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.getStone_type())).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getAmountString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getAmount() + " " + LogistikStrings.getTonString()))
+        showOrderPanel.add(new JLabel(text.getString("amountString"))).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getAmount() + text.getString("tonString")))
                 .setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getPriceString())).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getPrice() + LogistikStrings.getEuroSign()))
-                .setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("priceString"))).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getPrice() + text.getString("euroSign"))).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getDueDateString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("dueDateString"))).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(" " + currentOrder.getDue_date())).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getPhaseString())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("phaseString"))).setFont(Styles.ORDER_INFO);
         showOrderPanel.add(new JLabel(currentOrder.getPhase())).setFont(Styles.ORDER_INFO);
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneText())).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(text.getString("orderDoneText"))).setFont(Styles.ORDER_INFO);
         if (currentOrder.getIsDone()) {
-            showOrderPanel.add(new JLabel(LogistikStrings.getOrderDoneDescription())).setFont(Styles.ORDER_INFO);
+            showOrderPanel.add(new JLabel(text.getString("orderDoneDescription"))).setFont(Styles.ORDER_INFO);
         } else {
-            showOrderPanel.add(new JLabel(LogistikStrings.getOrderNotDoneDescription())).setFont(Styles.ORDER_INFO);
+            showOrderPanel.add(new JLabel(text.getString("orderNotDoneDescription"))).setFont(Styles.ORDER_INFO);
         }
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
-        JButton backButton = new JButton(LogistikStrings.getBackString());
+        JButton backButton = new JButton(text.getString("backString"));
         showOrderPanel.add(backButton);
-        JButton editButton = new JButton(LogistikStrings.getEditOrderText());
+        JButton editButton = new JButton(text.getString("editOrderText"));
         showOrderPanel.add(editButton);
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainPanel.getNavPane().setComponentAt(6,
-                        new NavItemPanelChooser(LogistikStrings.getLogisticsString(), null, null));
+                        new NavItemPanelChooser(text.getString("logisticsString"), null, null));
                 MainPanel.getNavPane().setSelectedIndex(6);
             }
         });
@@ -148,24 +160,13 @@ public class ShowOrder extends JPanel {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(LogistikStrings.getLogisticsString(),
-                        LogistikStrings.getEditOrderString(), null));
+                MainPanel.getNavPane().setComponentAt(6, new NavItemPanelChooser(text.getString("logisticsString"),
+                        text.getString("editOrderString"), null));
             }
         });
 
-        showOrderPanel.add(new JLabel(LogistikStrings.getEmptyString()));
-        showOrderPanel.add(new JLabel(LogistikStrings.getEmptyString()));
-
-    }
-
-    /**
-     * Konstruktor für das ShowOrder Panel
-     */
-    public ShowOrder() {
-        this.setLayout(new BorderLayout());
-        getCurrentOrder();
-        createShowshowOrderPanel();
-        this.add(showOrderPanel, BorderLayout.CENTER);
+        showOrderPanel.add(new JLabel(""));
+        showOrderPanel.add(new JLabel(""));
     }
 
 }
