@@ -7,8 +7,8 @@ import db_interaction.LogInCredentialsChecker;
 import main.HeaderPanel;
 
 /**
- * Diese Klasse dient dem Anzeigen eines Welcome-Elements als Menüpunkt, während
- * der Benutzer die Maus auf dem User-Icon platziert hat.
+ * dient dem Anzeigen eines Welcome-Elements als Menüpunkt, während der Benutzer
+ * die Maus auf dem User-Icon platziert hat.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -18,8 +18,8 @@ public class UserIconMouseAdapter extends MouseAdapter {
     private final HeaderPanel headerPanelView;
 
     /**
-     * Konstruktor, der eine Referenz auf die Instanz des <code>HeaderPanel</code>
-     * mithilfe des Parameters herstellt, um damit weiterzuarbeiten.
+     * stellt eine Referenz auf die Instanz des <code>HeaderPanel</code> mithilfe
+     * des Parameters her, um damit weiterzuarbeiten.
      * 
      * @param headerPanelView Instanz von <code>HeaderPanel</code>
      */
@@ -28,8 +28,8 @@ public class UserIconMouseAdapter extends MouseAdapter {
     }
 
     /**
-     * Diese Methode setzt den ersten Menüpunkt mit einer Welcome-Nachricht, wenn
-     * der Benutzer mit der Maus die Komponente "betritt".
+     * setzt den ersten Menüpunkt mit einer Welcome-Nachricht, wenn der Benutzer mit
+     * der Maus die Komponente "betritt".
      * 
      * @param e eingetretenes Event
      */
@@ -43,8 +43,8 @@ public class UserIconMouseAdapter extends MouseAdapter {
     }
 
     /**
-     * Diese Methode entfernt den ersten Menüpunkt, wenn der Benutzer mit der Maus
-     * die Komponente "verlässt".
+     * entfernt den ersten Menüpunkt, wenn der Benutzer mit der Maus die Komponente
+     * "verlässt".
      * 
      * @param e eingetretenes Event
      */
@@ -52,4 +52,5 @@ public class UserIconMouseAdapter extends MouseAdapter {
     public void mouseExited(MouseEvent e) {
         headerPanelView.getUserIconButton().remove(headerPanelView.getWelcomeItem());
     }
+
 }

@@ -9,9 +9,8 @@ import db_interaction.LogInCredentialsChecker;
 import listener.ResetSaveCloseListener;
 
 /**
- * Diese Klasse baut ein Dialogfenster auf, das dem Benutzer die
- * Interaktionsfläche bietet, um relevante Nutzerdaten anzupassen oder auch nur
- * anzusehen.
+ * baut ein Dialogfenster auf, das dem Benutzer die Interaktionsfläche bietet,
+ * um relevante Nutzerdaten anzupassen oder auch nur anzusehen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -59,6 +58,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     private JButton saveAndCloseButton;
 
     /**
+     * {@inheritDoc}
      * 
      * @param owner
      * @param title
@@ -73,7 +73,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public void contentSettingsSet() {
@@ -160,8 +160,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         // Action buttons
         ImageIcon resetEntriesIcon = new ImageIcon(new ImageIcon("Library/images/resetEntriesIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon saveIcon = new ImageIcon(new ImageIcon("Library/images/saveIcon.png").getImage().getScaledInstance(20,
-                20, Image.SCALE_SMOOTH));
+        ImageIcon saveIcon = new ImageIcon(
+                new ImageIcon("Library/images/saveIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
         ImageIcon saveAndCloseIcon = new ImageIcon(new ImageIcon("Library/images/saveAndCloseIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
@@ -192,7 +192,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * 
+     * besetzt die Defaullt-Eingabetexte auf die, aktuell in der Datenbank
+     * verzeichneten, Daten ein.
      */
     public void setInitDBUsersData() {
         forenameTextField.setText(LogInCredentialsChecker.sessionUser.getForename());
@@ -204,7 +205,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * 
+     * speichert die Eingaben, wenn Änderungsvalidität gegeben ist. Sonst wird eine
+     * Fehlermeldung angezeigt.
      */
     public void saveEntriesOfTextFields() {
         if (isPswdChangeValid()) {
@@ -230,7 +232,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * 
+     * prüft, ob eine angeforderte Passwortänderung valide ist.
      */
     public boolean isPswdChangeValid() {
         String currentPswd = new String(currentPswdField.getPassword());
@@ -241,6 +243,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         }
         return currentPswd.equals(LogInCredentialsChecker.sessionUser.getPassword()) && newPswd.equals(confirmPswd);
     }
+
+    // tbd
 
     public JButton getResetEntriesButton() {
         return resetEntriesButton;

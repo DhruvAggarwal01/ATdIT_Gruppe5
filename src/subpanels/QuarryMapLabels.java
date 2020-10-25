@@ -4,8 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Klasse die ein JPanel für die Notizen in der QuarryMap mit den nötigen
- * Swing/AWT-Komponenten erzeugt.
+ * erzeugt ein JPanel für die Notizen in der QuarryMap mit den nötigen
+ * Swing/AWT-Komponenten.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -17,8 +17,8 @@ public class QuarryMapLabels extends JPanel {
     private JLabel text1;
 
     /**
-     * Konstruktor, der Layout setzt, die Swing/AWT-Komponenten initialisiert und
-     * zum Panel dazufügt.
+     * setzt das Layout, der Swing/AWT-Komponenten initialisiert und diese zum Panel
+     * dazufügt.
      */
     public QuarryMapLabels() {
         this.setLayout(new BorderLayout());
@@ -56,4 +56,5 @@ public class QuarryMapLabels extends JPanel {
     public JLabel getText1() {
         return this.text1;
     }
+
 }

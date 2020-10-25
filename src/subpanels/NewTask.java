@@ -8,12 +8,16 @@ import listener.ToDoPanelButtonListener;
 import panels.ToDoPanel;
 
 /**
- * Diese Klasse legt fest wie neue Aufgaben angelegt werden.
+ * legt fest wie neue Aufgaben angelegt werden.
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
-
 public class NewTask extends JDialog {
+
+    private static final long serialVersionUID = -8885029101653367966L;
+
     // zu JDialog wechseln
-    private static final long serialVersionUID = 1L;
     private TaskButton taskButton;
     private JPanel panel;
     private JLabel name, description, date, time, priority;
@@ -25,6 +29,12 @@ public class NewTask extends JDialog {
 
     String[] prioritäten = new String[] { "none", "low", "moderate", "high", "very high" };
 
+    /**
+     * tbd
+     * 
+     * @param toDoPanel
+     * @param li
+     */
     public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener li) {
         this.toDoPanel = toDoPanel;
         this.taskButton = null;
@@ -33,6 +43,13 @@ public class NewTask extends JDialog {
         addComponentsToPanel(li);
     }
 
+    /**
+     * tbd
+     * 
+     * @param toDoPanel
+     * @param li
+     * @param taskButton
+     */
     public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener li, TaskButton taskButton) {
         this.toDoPanel = toDoPanel;
         this.taskButton = taskButton;
@@ -48,6 +65,9 @@ public class NewTask extends JDialog {
         addComponentsToPanel(li);
     }
 
+    /**
+     * tbd
+     */
     public void initializePanel() {
         panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2, 50, 15));
@@ -64,9 +84,13 @@ public class NewTask extends JDialog {
         timeSet = new JTextField();
 
         prioritySet = new JComboBox<String>(prioritäten);
-
     }
 
+    /**
+     * tbd
+     * 
+     * @param li
+     */
     public void addComponentsToPanel(ToDoPanelButtonListener li) {
         panel.add(name);
         panel.add(nameText);
@@ -92,6 +116,8 @@ public class NewTask extends JDialog {
         setTitle("Neue Aufgabe anlegen");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
+
+    // tbd
 
     public JTextField getNameText() {
         return this.nameText;

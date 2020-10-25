@@ -7,7 +7,7 @@ import exceptions.DatabaseConnectException;
 import usedstrings.LogistikStrings;
 
 /**
- * Diese Klasse tbd
+ * tbd
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -27,6 +27,7 @@ public class OrdersSorter {
     }
 
     /**
+     * tbd
      * 
      * @param status
      * @return Set<Order> gefiltert nach status
@@ -48,6 +49,7 @@ public class OrdersSorter {
     }
 
     /**
+     * tbd
      * 
      * @param status
      * @return Set<Order> gefiltert nach status

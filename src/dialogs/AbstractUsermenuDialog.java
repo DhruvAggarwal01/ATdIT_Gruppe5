@@ -3,7 +3,8 @@ package dialogs;
 import javax.swing.*;
 
 /**
- * 
+ * baut ein abstraktes Dialogfenster für das Userprofil in der
+ * Steinbruch-Anwendung auf.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -15,7 +16,7 @@ abstract class AbstractUsermenuDialog extends JDialog {
     private JFrame owner;
 
     /**
-     * Konstruktor
+     * {@inheritDoc}
      * 
      * @param owner
      * @param title
@@ -29,7 +30,7 @@ abstract class AbstractUsermenuDialog extends JDialog {
     }
 
     /**
-     * 
+     * stellt Dialogfenster ein.
      */
     public void dialogSettingsSet() {
         this.setSize((int) (owner.getWidth() * 0.8), (int) (owner.getHeight() * 0.8));
@@ -38,7 +39,7 @@ abstract class AbstractUsermenuDialog extends JDialog {
     }
 
     /**
-     * 
+     * stellt Dialoginhalt ein.
      */
     abstract void contentSettingsSet();
 

@@ -13,7 +13,7 @@ import main.NavItemPanelChooser;
 import main.Styles;
 
 /**
- * Diese Klasse baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigt.
+ * baut ein Panel auf, das Nachrichten aus einem RSS-Feed anzeigt.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -25,8 +25,7 @@ public class ReadRSSPanel extends JPanel {
     JTextArea newsFeedTextField;
 
     /**
-     * Konstruktor, der das Panel UI-seitig einstellt und den ausgelesenen RSS Feed
-     * anzeigt.
+     * stellt das Panel UI-seitig ein und den ausgelesenen RSS-Feed anzeigt.
      * 
      * @param newsTitle Nachrichten-Panel-Titel
      * @param rssUrl    URL zum RSS-Nachrichtenfeed
@@ -83,8 +82,8 @@ public class ReadRSSPanel extends JPanel {
     }
 
     /**
-     * Diese Methode liest einen RSS Feed aus der URL <code>rssUrl</code> aus und
-     * gibt diesen als String zurück.
+     * liest einen RSS Feed aus der URL <code>rssUrl</code> aus und gibt diesen als
+     * String zurück.
      * 
      * @param rssUrl URL des RSS Feed
      * @return gelesener RSS Feed als String
@@ -119,8 +118,8 @@ public class ReadRSSPanel extends JPanel {
     class MouseClickListener extends MouseAdapter {
 
         /**
-         * Diese Methode setzt das angezeigte Panel auf ReportingPanel beim Klicken auf
-         * eine Swing/AWT-Komponente.
+         * setzt das angezeigte Panel auf ReportingPanel beim Klicken auf eine
+         * Swing/AWT-Komponente.
          * 
          * @param e eingetretenes Event
          */
@@ -130,4 +129,5 @@ public class ReadRSSPanel extends JPanel {
         }
 
     }
+
 }

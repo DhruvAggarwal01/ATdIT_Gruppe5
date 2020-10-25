@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Klasse, die einen LoginScreen startet und wenn der User einen richtigen
- * Benutzernamen und Passwort eingibt, den LoginScreen schließt und die
- * eigentliche Applikation <code>ActualApp</code> startet:
+ * startet einen LoginScreen und wenn der User einen richtigen Benutzernamen und
+ * Passwort eingibt, schließt sie den LoginScreen und startet die eigentliche
+ * Applikation <code>ActualApp</code>.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -16,7 +16,7 @@ public class AppRunner {
     public static JFrame loginFrame;
 
     /**
-     * Diese main-Methode ist die ausführende Methode für die gesamte Anwendung.
+     * führt die gesamte Anwendung aus und ist damit der Startpunkt.
      * 
      * @param args obligatorischer Eingabeparameter
      */
@@ -33,9 +33,8 @@ public class AppRunner {
     }
 
     /**
-     * Diese Methode erzeugt im Frame ein Login-Panel mit den nötigen
-     * Swing/AWT-Komponenten und sorgt dafür, dass diese richtig ausgerichtet
-     * werden.
+     * erzeugt im Frame ein Login-Panel mit den nötigen Swing/AWT-Komponenten und
+     * sorgt dafür, dass diese richtig ausgerichtet werden.
      * 
      * @return Panel, das das Login-UI enthält
      */
@@ -45,8 +44,7 @@ public class AppRunner {
         JPanel structurePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         structurePanel.setOpaque(false); // entscheidet, ob das Button-Panel durchsichtig sein soll
 
-        LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(structurePanel.isOpaque(),
-                new GridLayout(6, 2, 5, 5));
+        LoginButtonPanel buttonOnTopPanel = new LoginButtonPanel(structurePanel.isOpaque(), new GridLayout(6, 2, 5, 5));
 
         structurePanel.add(buttonOnTopPanel);
         mainPanel.add(structurePanel, BorderLayout.CENTER);
@@ -62,4 +60,5 @@ public class AppRunner {
     public static JFrame getLoginFrame() {
         return loginFrame;
     }
+
 }

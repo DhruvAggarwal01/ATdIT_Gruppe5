@@ -1,25 +1,37 @@
 package subpanels;
 
-
 import javax.swing.JButton;
 
-
+/**
+ * tbd
+ * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
+ */
 public class TaskButton extends JButton {
-    //private int id;
+
+    private static final long serialVersionUID = -4637132117972382295L;
+
+    // private int id;
     private String name;
     private String date;
     private String description;
     private String time;
     private String priority;
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
-    public TaskButton( String name,String description, String date, String time, String priority) {
+    /**
+     * tbd
+     * 
+     * @param name
+     * @param description
+     * @param date
+     * @param time
+     * @param priority
+     */
+    public TaskButton(String name, String description, String date, String time, String priority) {
         this.setText(name);
-        //this.setBackground(createColour());
-        //this.id = id;
+        // this.setBackground(createColour());
+        // this.id = id;
         this.name = name;
         this.date = date;
         this.description = description;
@@ -27,16 +39,17 @@ public class TaskButton extends JButton {
         this.priority = priority;
     }
 
-    /* public int getId() {
-        return this.id;
-    } */
+    /*
+     * public int getId() { return this.id; }
+     */
 
-   /*  public Color createColour(){
-        float red = Math.random();
-        float green = Math.random();
-        float blue = Math.random();
-        return (new Color(red, green, blue));
-    } */
+    /*
+     * public Color createColour(){ float red = Math.random(); float green =
+     * Math.random(); float blue = Math.random(); return (new Color(red, green,
+     * blue)); }
+     */
+
+    // tbd
 
     public String getName() {
         return this.name;
@@ -78,4 +91,5 @@ public class TaskButton extends JButton {
     public void setPriority(String priority) {
         this.priority = priority;
     }
+
 }

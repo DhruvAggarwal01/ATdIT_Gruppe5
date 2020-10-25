@@ -3,7 +3,7 @@ package db_interaction;
 import java.util.Objects;
 
 /**
- * Diese Klasse tbd
+ * dient dem Aufbau eines Benutzernamens und im Besonderen seiner Attribute.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -22,6 +22,9 @@ public class User {
     public int role_id = 1;
     public boolean isLoggedIn = false;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return "{" + "personnel_id: " + personnel_id + " ; username: " + username + " ; forename: " + forename
@@ -33,9 +36,11 @@ public class User {
     /* -------------- Overriding zum möglichen Vergleich zweier User ------------ */
     /**
      * {@inheritDoc}
+     * 
+     * @param obj
      */
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }

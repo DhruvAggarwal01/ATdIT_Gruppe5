@@ -15,13 +15,12 @@ import usedstrings.LogistikStrings;
 import exceptions.DatabaseConnectException;
 
 /**
- * Diese Klasse baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem
- * Status geordnet aufzeigt (und bietet die Möglichkeit diese zu filtern und
- * einen neuen Auftrag anzulegen - tbd)
+ * baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem Status
+ * geordnet aufzeigt (und bietet die Möglichkeit diese zu filtern und einen
+ * neuen Auftrag anzulegen - tbd)
  * 
  * implementiert die Methoden: createLogisticsPanel, setOrderPanels,
  * getUnfinishedOrders,initCreateOrder, getMaxOrderID
- * 
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -64,7 +63,7 @@ public class LogistikPanel extends JPanel {
     }
 
     /**
-     * bestimmt den Aufbau des LogistikPanels
+     * bestimmt den Aufbau des Logistik-Panels.
      */
     public void createLogisticsPanel() {
 
@@ -114,6 +113,8 @@ public class LogistikPanel extends JPanel {
     /**
      * holt alle nicht fertigen Orders in Kategorien sortiert & Konstuiert je
      * Kategorie ein OrderPanel
+     * 
+     * @param displayAll tbd
      */
     public void setOrderPanels(Boolean displayAll) {
 
@@ -152,7 +153,7 @@ public class LogistikPanel extends JPanel {
     }
 
     /**
-     * Berechnet den int Wer der ersten OrderId ist die noch nicht in Verwendung
+     * berechnet den int Wer der ersten OrderId ist die noch nicht in Verwendung
      * ist.
      * 
      * @return maxOrderId

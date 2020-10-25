@@ -3,7 +3,6 @@ package subpanels;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.util.*;
 
 import listener.HoverColorChangeListener;
@@ -14,16 +13,29 @@ import usedstrings.LogistikStrings;
 import exceptions.DatabaseConnectException;
 
 /**
+ * tbd
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
+
     Order currentOrder = new Order();
     DBGenericExtractor<Order> dbOrderExtractor;
     static String sourceOrder;
 
+    /**
+     * tbd
+     * 
+     * @param orders
+     * @param Title
+     * @param ToolTip
+     * @param rgbRed
+     * @param rgbGreen
+     * @param rgbBlue
+     */
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
 
@@ -78,6 +90,8 @@ public class OrderPanels extends JPanel {
                 BorderFactory.createRaisedBevelBorder()));
 
     }
+
+    // tbd
 
     public static String setOrderSource(String source) {
         return sourceOrder = source;

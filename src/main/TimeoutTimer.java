@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
- * Diese Klasse dient zur Verwaltung des TimeoutTimers der Applikation.
+ * dient zur Verwaltung des TimeoutTimers der Applikation.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -15,7 +15,7 @@ public class TimeoutTimer extends Timer {
     private static int timeoutDelay;
 
     /**
-     * Konstruktor, der über den super-Konstruktor delay und ActionListener setzt
+     * setzt über den super-Konstruktor delay und ActionListener.
      * 
      * @param delay zu wartende Zeit bis Timeout
      */

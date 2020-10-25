@@ -4,25 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/** Diese Klasse bildet die To-Do-Verwaltung der Steinbruch Software ab
- * @author  Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas Lahr
+/**
+ * bildet die To-Do-Verwaltung der Steinbruch Software ab.
  * 
+ * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
+ *         Lahr
  */
 
 public class ToDoPanel extends JFrame {
 
+    private static final long serialVersionUID = -2490912819402618727L;
+
     private Container c;
     public JPanel aufgabenListe;
     public JButton neueAufgabe;
-    public JButton aufgabeBearbeiten; 
+    public JButton aufgabeBearbeiten;
 
-    /** Konstruktor bietet ein <code>JPanel</code>, welches alle aktiven To-Do-ELemente in Form von <code>JCheckBox</code>en fassen soll
-     * und die Buttons <code>Neue Aufgabe</code> und <code>Aufgabe bearbeiten</code>, welche ein neues
-     * To-Do-Element erstellen oder ein bestehendes bearbeiten
-     * Die drei Aufgaben dienen Demonstrationszwecken
+    /**
+     * bietet ein <code>JPanel</code>, welches alle aktiven To-Do-Elemente in Form
+     * von <code>JCheckBox</code>en fassen soll und die Buttons
+     * <code>Neue Aufgabe</code> und <code>Aufgabe bearbeiten</code>, welche ein
+     * neues To-Do-Element erstellen oder ein bestehendes bearbeiten. Die drei
+     * Aufgaben dienen Demonstrationszwecken.
      */
-
-    public ToDoPanel(){
+    public ToDoPanel() {
         c = getContentPane();
         neueAufgabe = new JButton("Neue Aufgabe");
         aufgabeBearbeiten = new JButton("Aufgabe bearbeiten");
@@ -43,17 +48,23 @@ public class ToDoPanel extends JFrame {
 
     }
 
-    class ButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            //ToDoElement newElement = new ToDoElement();
+    /**
+     * tbd
+     */
+    class ButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            // ToDoElement newElement = new ToDoElement();
         }
     }
 
-    class ListenerAufgabeBearbeiten implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            //Selbes Fenster wie bei "Neue Aufgabe" geht auf, aber bisherigen Werte sind schon darin enthalten
-            
+    /**
+     * tbd
+     */
+    class ListenerAufgabeBearbeiten implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            // Selbes Fenster wie bei "Neue Aufgabe" geht auf, aber bisherigen Werte sind
+            // schon darin enthalten
         }
     }
-    
+
 }

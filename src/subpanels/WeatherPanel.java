@@ -15,7 +15,7 @@ import listener.HyperlinkMouseAdapter;
 import main.Styles;
 
 /**
- * Diese Klasse richtet ein Panel ein, das die aktuellen Wetterdaten aus der
+ * richtet ein Panel ein, das die aktuellen Wetterdaten aus der
  * OpenWeatherMap-API extrahiert und anzeigt.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -30,8 +30,8 @@ public class WeatherPanel extends JPanel {
     private JLabel weatherForecastTitleLabel;
 
     /**
-     * Konstruktor, der das Panel UI-seitig einstellt und die relevanten,
-     * ausgewählten Wettervorhersagedaten über einem Hintergrundbild anzeigt.
+     * stellt das Panel UI-seitig ein und die relevanten, ausgewählten
+     * Wettervorhersagedaten über einem Hintergrundbild anzeigt.
      * 
      * @param weatherForecastTitle Wettervorhersage-Panel-Titel
      */
@@ -74,7 +74,7 @@ public class WeatherPanel extends JPanel {
     }
 
     /**
-     * Diese Methode stellt Design und Listener für den Panel-Titel ein.
+     * stellt Design und Listener für den Panel-Titel ein.
      * 
      * @param urlAddress URL der Homepage der Wettervorhersage
      */
@@ -91,8 +91,7 @@ public class WeatherPanel extends JPanel {
     }
 
     /**
-     * Diese Methode zeigt die Wettervorhersage strukturiert im erzeugten TextArea
-     * an.
+     * zeigt die Wettervorhersage strukturiert im erzeugten TextArea an.
      * 
      * @param wholeMap gemappte JSON-Wettervorhersage
      */
@@ -124,8 +123,7 @@ public class WeatherPanel extends JPanel {
     }
 
     /**
-     * Diese Methode liest eine JSON-File aus und wandelt sie zur weiteren Nutzung
-     * in eine Map um.
+     * liest eine JSON-File aus und wandelt sie zur weiteren Nutzung in eine Map um.
      * 
      * @param jsonKey Key, nach dem die JSON gefiltert werden soll
      * @return umgewandelte JSON als Map

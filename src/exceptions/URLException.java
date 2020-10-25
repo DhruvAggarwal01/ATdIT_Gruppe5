@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * Diese Klasse tbd
+ * ist eine Beschreibung, für Exceptions, die bei dem Aufruf von URLs auftreten.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -13,7 +13,11 @@ public class URLException extends AbstractCustomException {
     private String exceptionMessage;
 
     /**
+     * setzt je nach gewählter ID, die zugehörige Exception-Nachricht mit der URL,
+     * durch die diese Exception überhaupt geworfen wurde.
      * 
+     * @param urlString  URL, bei der die Excpetion geworfen wurde
+     * @param urlErrorId Theme-Error-ID
      */
     public URLException(String urlString, int urlErrorId) {
         switch (urlErrorId) {
@@ -31,8 +35,9 @@ public class URLException extends AbstractCustomException {
     }
 
     /**
+     * {@inheritDoc}
      * 
-     * @return
+     * @return Nachricht-Nachricht
      */
     @Override
     public String getExceptionMessage() {

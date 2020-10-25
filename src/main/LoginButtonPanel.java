@@ -11,8 +11,8 @@ import listener.LoginCancelForgottenListener;
 import listener.LoginKeyListener;
 
 /**
- * Diese Klasse erzeugt ein Panel mit den nötigen mit den nötigen
- * Swing/AWT-Komponenten für den Login Prozess.
+ * erzeugt ein Panel mit den nötigen mit den nötigen Swing/AWT-Komponenten für
+ * den Login Prozess.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -29,8 +29,8 @@ public class LoginButtonPanel extends JPanel {
     private JButton loginButton, cancelButton, pswdForgottenButton;
 
     /**
-     * Konstruktor, der das LoginButtonPanel erzeugt, die nötigen
-     * Swing/AWT-Komponenten initiiert und zum JFrame dazufügt.
+     * erzeugt das LoginButtonPanel, das die nötigen Swing/AWT-Komponenten initiiert
+     * und zum JFrame dazufügt.
      * 
      * @param opaque gewährleistet, dass das Panel durchsichtig ist
      * @param layout setzt das richtige Layout des Panels
@@ -44,8 +44,8 @@ public class LoginButtonPanel extends JPanel {
     }
 
     /**
-     * Diese Methode initialisiert die Swing/AWT-Komponenten und fügt die nötigen
-     * Listener den Komponenten hinzu.
+     * initialisiert die Swing/AWT-Komponenten und fügt die nötigen Listener den
+     * Komponenten hinzu.
      */
     public void init() {
         KeyListener lKeyListener = new LoginKeyListener(this);
@@ -70,7 +70,7 @@ public class LoginButtonPanel extends JPanel {
     }
 
     /**
-     * Diese Methode fügt die initialisierten Komponenten dem Panel hinzu.
+     * fügt die initialisierten Komponenten dem Panel hinzu.
      */
     public void addComponents() {
         add(new JLabel(""));
@@ -88,6 +88,9 @@ public class LoginButtonPanel extends JPanel {
         add(possibleErrorMessageLabel);
     }
 
+    /**
+     * tbd
+     */
     public boolean authenticate() {
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
@@ -161,4 +164,5 @@ public class LoginButtonPanel extends JPanel {
     public JButton getPswdForgottenButton() {
         return this.pswdForgottenButton;
     }
+
 }

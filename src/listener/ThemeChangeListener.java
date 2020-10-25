@@ -8,8 +8,8 @@ import exceptions.ThemeChangeException;
 import main.ActualApp;
 
 /**
- * Diese Klasse setzt den Nachtmodus-Theme, wenn der Benutzer dies z.B. per
- * JToggleButton einstellt.
+ * setzt den Nachtmodus-Theme, wenn der Benutzer dies z.B. per JToggleButton
+ * einstellt.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -19,9 +19,8 @@ public class ThemeChangeListener implements ChangeListener {
     private final SettingsDialog settingsDialogView;
 
     /**
-     * Konstruktor, der eine Referenz auf die Instanz des
-     * <code>SettingsDialog</code> mithilfe des Parameters herstellt, um damit
-     * weiterzuarbeiten.
+     * stellt eine Referenz auf die Instanz des <code>SettingsDialog</code> mithilfe
+     * des Parameters her, um damit weiterzuarbeiten.
      * 
      * @param settingsDialogView Instanz von <code>SettingsDialog</code>
      */
@@ -30,7 +29,7 @@ public class ThemeChangeListener implements ChangeListener {
     }
 
     /**
-     * Diese Klasse schaltet auf "Knopfdruck" einen Nachtmodus ein bzw. aus.
+     * schaltet auf "Knopfdruck" einen Nachtmodus ein bzw. aus.
      * 
      * @param e eingetretenes Event
      */

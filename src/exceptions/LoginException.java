@@ -1,7 +1,8 @@
 package exceptions;
 
 /**
- * Diese Klasse tbd
+ * ist eine Beschreibung, für Exceptions, die im Zusammenhang mit dem
+ * Login-Prozess auftreten.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -13,7 +14,9 @@ public class LoginException extends AbstractCustomException {
     private String exceptionMessage;
 
     /**
-     * Konstruktor
+     * setzt je nach gewählter ID, die zugehörige Exception-Nachricht.
+     * 
+     * @param loginErrorId Login-Error-ID
      */
     public LoginException(int loginErrorId) {
         switch (loginErrorId) {
@@ -29,7 +32,9 @@ public class LoginException extends AbstractCustomException {
     }
 
     /**
+     * {@inheritDoc}
      * 
+     * @return Nachricht-Nachricht
      */
     public String getExceptionMessage() {
         return exceptionMessage;

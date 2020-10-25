@@ -34,7 +34,7 @@ public class LabelListener extends KeyAdapter {
     }
 
     /**
-     * Diese Methode ist zuständig dafür, wenn die Taste N gedrückt wird, dass dann:
+     * ist zuständig dafür, wenn die Taste N gedrückt wird, dass dann:
      * 1: die Koordinaten von der Mouse gespeichert werden und mit diesen
      * Koordinaten ein Rechteck erzeugt werden. Diese Rechtecke sollen in einer
      * Liste gespeichert werden, welche die Klasse <code>QuarryMap</code> enthält.

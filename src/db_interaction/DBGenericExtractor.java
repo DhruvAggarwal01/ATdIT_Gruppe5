@@ -12,9 +12,9 @@ import exceptions.DatabaseConnectException;
 import exceptions.InternalException;
 
 /**
- * Diese Klasse stellt mehrere Filterfunktionen bereit, die das Auslesen der
- * Daten aus der Contracts-Datenbank nach bestimmten Kriterien (nach OrderID,
- * status, etc.) ermöglichen.
+ * stellt mehrere Filterfunktionen bereit, die das Auslesen der Daten aus der
+ * Contracts-Datenbank nach bestimmten Kriterien (nach OrderID, status, etc.)
+ * ermöglichen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -27,10 +27,9 @@ public class DBGenericExtractor<T> {
     private Object object;
 
     /**
-     * Diser Konstruktor instanziiert <code>gensWorkbook</code> mit dem passenden
-     * Excel-Workbook.
+     * instanziiert <code>gensWorkbook</code> mit dem passenden Excel-Workbook.
      * 
-     * @param excelFileName Name der Excel-Datei
+     * @param excelFileName Name der Excel-Datei (bzw. Pfad dazu)
      * @throws DatabaseConnectException
      */
     public DBGenericExtractor(String excelFileName, T genericObject) throws DatabaseConnectException {
@@ -44,7 +43,7 @@ public class DBGenericExtractor<T> {
     }
 
     /**
-     * Diese Methode filtert die Tupel heraus, für die das Kriterium zutrifft
+     * filtert die Tupel heraus, für die das Kriterium zutrifft
      * 
      * @param columnName  Spaltenname im Excel
      * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
@@ -74,8 +73,7 @@ public class DBGenericExtractor<T> {
     }
 
     /**
-     * Diese Methode filtert die Indizes der Tupel heraus, für die das
-     * Filterkriterium zutrifft
+     * filtert die Indizes der Tupel heraus, für die das Filterkriterium zutrifft
      * 
      * @param columnName  Spaltenname im Excel
      * @param filterValue Wert/Objekt, nach dem in der Spalte gefiltert werden soll
@@ -98,8 +96,8 @@ public class DBGenericExtractor<T> {
     }
 
     /**
-     * Diese Methode überprüft, ob ein Wert/Objekt in der entsprechenden Excel-Zelle
-     * enthalten ist.
+     * überprüft, ob ein Wert/Objekt in der entsprechenden Excel-Zelle enthalten
+     * ist.
      * 
      * @param rowIndex    Zeilenindex im Excel
      * @param columnName  Spaltenname im Excel
@@ -130,7 +128,7 @@ public class DBGenericExtractor<T> {
     }
 
     /**
-     * Diese Methode wandelt eine Excel-Zeile in ein Order-Objekt um
+     * wandelt eine Excel-Zeile in ein Order-Objekt um
      * 
      * @param toBeConvertedRow in Order-Objekt umzuwandelnde Zeile
      * @return entsprechende Zeile zur Excel-Zeile
@@ -177,8 +175,7 @@ public class DBGenericExtractor<T> {
     }
 
     /**
-     * Diese Methode gibt den Excel-Spaltenindex zum mitgegebenen Excel-Spaltennamen
-     * zurück.
+     * gibt den Excel-Spaltenindex zum mitgegebenen Excel-Spaltennamen zurück.
      * 
      * @param columnName Spaltenname im Excel
      * @return Excel-Spaltenindex zum mitgegebenen Excel-Spaltennamen

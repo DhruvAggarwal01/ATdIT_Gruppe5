@@ -6,8 +6,8 @@ import dialogs.SettingsDialog;
 import main.ActualApp;
 
 /**
- * Diese Klasse setzt die Zeit bis es zum Timeout der App kommt und ob diese
- * Einstellung gespeichert werden soll oder nicht.
+ * setzt die Zeit bis es zum Timeout der App kommt und ob diese Einstellung
+ * gespeichert werden soll oder nicht.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -17,9 +17,8 @@ public class TimeoutAndCloseListener implements ActionListener {
     private final SettingsDialog settingsDialogView;
 
     /**
-     * Konstruktor, der eine Referenz auf die Instanz des
-     * <code>SettingsDialog</code> mithilfe des Parameters herstellt, um damit
-     * weiterzuarbeiten.
+     * stellt eine Referenz auf die Instanz des <code>SettingsDialog</code> mithilfe
+     * des Parameters her, um damit weiterzuarbeiten.
      * 
      * @param settingsDialogView Instanz von <code>SettingsDialog</code>
      */
@@ -43,4 +42,5 @@ public class TimeoutAndCloseListener implements ActionListener {
             settingsDialogView.dispose();
         }
     }
+
 }

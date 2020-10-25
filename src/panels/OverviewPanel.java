@@ -1,6 +1,6 @@
 package panels;
 
-
+import java.awt.*;
 import javax.swing.*;
 
 import exceptions.URLException;
@@ -8,12 +8,9 @@ import subpanels.DiashowPanel;
 import subpanels.ReadRSSPanel;
 import subpanels.WeatherPanel;
 
-import java.awt.*;
-
 /**
- * Diese Klasse baut ein Panel auf, das, im Sinne eines Dashboards, mehrere
- * Subpanels anzeigt und damit einen visuellen Überblick über generelle Themen
- * verschafft.
+ * baut ein Panel auf, das, im Sinne eines Dashboards, mehrere Subpanels anzeigt
+ * und damit einen visuellen Überblick über generelle Themen verschafft.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -25,7 +22,7 @@ public class OverviewPanel extends JPanel {
     private JPanel smallPanels, newsPanel, weatherPanel, diashow;
 
     /**
-     * Konstruktor, der die Subpanels erzeugt und hinzufügt.
+     * erzeugt und fügt die Subpanels hinzu.
      */
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
@@ -94,4 +91,5 @@ public class OverviewPanel extends JPanel {
     public JPanel getSmallPanels() {
         return smallPanels;
     }
+
 }

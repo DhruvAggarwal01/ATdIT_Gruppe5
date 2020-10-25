@@ -11,7 +11,7 @@ import listener.ThemeChangeListener;
 import listener.TimeoutAndCloseListener;
 
 /**
- * Diese Klasse baut ein Dialog-Fenster auf, das dem Benutzer die Möglichkeit
+ * baut ein Dialog-Fenster auf, das dem Benutzer die Möglichkeit
  * bietet, verschiedene App-Einstellungen vorzunehmen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -55,7 +55,7 @@ public class SettingsDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * Diese Methode setzt aus verschiedenen Swing/AWT-Komponenten ein passendes UI
+     * setzt aus verschiedenen Swing/AWT-Komponenten ein passendes UI
      * zusammen.
      */
     @Override
