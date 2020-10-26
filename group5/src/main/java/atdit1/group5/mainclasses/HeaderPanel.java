@@ -7,7 +7,7 @@ import javax.swing.*;
 import atdit1.group5.listener.LogoIconMouseAdapter;
 import atdit1.group5.listener.ProfileMenuItemListener;
 import atdit1.group5.listener.UserIconMouseAdapter;
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 
 /**
  * baut den Header der Anwendung auf, welcher über den gesamten Ausführzeitraum

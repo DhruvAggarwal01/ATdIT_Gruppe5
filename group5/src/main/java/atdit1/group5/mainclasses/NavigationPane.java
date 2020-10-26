@@ -2,7 +2,7 @@ package atdit1.group5.mainclasses;
 
 import javax.swing.*;
 
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 
 /**
  * enthält die Tabs der Applikation. Dabei werden über die Klasse

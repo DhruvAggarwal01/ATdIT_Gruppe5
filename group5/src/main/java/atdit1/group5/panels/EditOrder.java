@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 import atdit1.group5.mainclasses.MainPanel;
 import atdit1.group5.mainclasses.NavItemPanelChooser;
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 import atdit1.group5.db_interaction.CalculateOrder;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.DBOrderInserter;

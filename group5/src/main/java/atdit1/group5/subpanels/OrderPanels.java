@@ -8,7 +8,7 @@ import java.util.*;
 import atdit1.group5.listener.HoverColorChangeListener;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**

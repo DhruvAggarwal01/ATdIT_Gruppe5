@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
 import atdit1.group5.mainclasses.ActualApp;
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 import atdit1.group5.listener.ThemeChangeListener;
 import atdit1.group5.listener.TimeoutAndCloseListener;
 

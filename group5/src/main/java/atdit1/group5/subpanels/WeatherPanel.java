@@ -12,7 +12,7 @@ import com.google.gson.reflect.*;
 
 import atdit1.group5.exceptions.URLException;
 import atdit1.group5.listener.HyperlinkMouseAdapter;
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 
 /**
  * richtet ein Panel ein, das die aktuellen Wetterdaten aus der

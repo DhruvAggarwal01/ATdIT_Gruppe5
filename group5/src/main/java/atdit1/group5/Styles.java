@@ -1,4 +1,4 @@
-package atdit1.group5.styles;
+package atdit1.group5;
 
 import java.awt.*;
 

@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import atdit1.group5.styles.Styles;
+import atdit1.group5.Styles;
 import atdit1.group5.db_interaction.LogInCredentialsChecker;
 import atdit1.group5.listener.ResetSaveCloseListener;
 
