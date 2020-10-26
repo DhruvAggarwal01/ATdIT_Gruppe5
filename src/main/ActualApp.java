@@ -3,6 +3,10 @@ package main;
 import java.awt.*;
 import javax.swing.*;
 
+import db_interaction.LogOffExecutor;
+import exceptions.DatabaseConnectException;
+import exceptions.InternalException;
+
 /**
  * dient zum Aufbau der eigentlichen Anwendungsapplikation.
  * 
@@ -26,8 +30,8 @@ public class ActualApp {
     }
 
     /**
-     * startet den Timer für den Timeout der Applikation erneut mit
-     * seinem eingestellten initialen Delay.
+     * startet den Timer für den Timeout der Applikation erneut mit seinem
+     * eingestellten initialen Delay.
      * 
      * @param delay zu wartende Zeit bis Timeout
      */
@@ -48,6 +52,24 @@ public class ActualApp {
         appWindow.setVisible(true);
         appWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startTimeoutTimer(timeoutDelay);
+
+        appWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                LogOffExecutor logOffExecutor = new LogOffExecutor();
+                try {
+                    logOffExecutor.logOffAndDispose();
+                } catch (DatabaseConnectException dce) {
+                    JPanel exceptionPanel = dce.getExceptionPanel();
+                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (InternalException noube) {
+                    JPanel exceptionPanel = noube.getExceptionPanel();
+                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     /**
