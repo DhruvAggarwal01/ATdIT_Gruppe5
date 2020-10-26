@@ -1,7 +1,8 @@
 package exceptions;
 
 /**
- * Diese Klasse tbd
+ * ist eine Beschreibung, für Exceptions, die im Zusammenhang mit dem Aufbau der
+ * Navigationselemente auftreten.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -13,7 +14,7 @@ public class NavItemNotFoundException extends AbstractCustomException {
     private String navItemName01, navItemName02, navItemName03;
 
     /**
-     * Konstruktor
+     * initialisiert die Namen der 3-Ebenen-Navigationselemente.
      * 
      * @param navItemName01
      * @param navItemName02
@@ -26,7 +27,9 @@ public class NavItemNotFoundException extends AbstractCustomException {
     }
 
     /**
+     * {@inheritDoc}
      * 
+     * @return Exception-Nachricht
      */
     @Override
     public String getExceptionMessage() {

@@ -16,6 +16,12 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
     private String excelFileName;
     private Order genericObject;
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @param excelFileName Name der Excel-Datei (bzw. Pfad dazu)
+     * @param genericObject Objekt zum aktuell noch generischen Objekt
+     */
     public DBOrderInserter(String excelFileName, Order genericObject) {
         super(excelFileName, genericObject);
         this.excelFileName = excelFileName;
@@ -23,7 +29,7 @@ public class DBOrderInserter extends DBGenericInserter<Order> {
     }
 
     /**
-     * Diese Methode ist für das Hinzufügen eines neuen Auftrags zuständig.
+     * ist für das Hinzufügen eines neuen Auftrags zuständig.
      * 
      * @throws DatabaseConnectException
      * @throws InternalException

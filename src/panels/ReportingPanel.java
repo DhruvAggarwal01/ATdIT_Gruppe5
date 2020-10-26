@@ -7,8 +7,8 @@ import javax.swing.*;
 import listener.LogoIconMouseAdapter;
 
 /**
- * Diese Klasse dient der Demo eines Panels 2. Ebene (s.
- * <code>NavItemPanelChooser</code>) anhand des Reporting-Panels.
+ * dient der Demo eines Panels 2. Ebene (s. <code>NavItemPanelChooser</code>)
+ * anhand des Reporting-Panels.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -21,8 +21,8 @@ public class ReportingPanel extends JPanel {
     private JLabel mockLabel;
 
     /**
-     * Konstruktor, der ein einfaches Label zentral im Panel platziert und ein
-     * Button, welches eine Zurück-Taste darstellt.
+     * platziert ein einfaches Label zentral im Panel und stellt ein Button, welches
+     * eine Zurück-Taste dar.
      */
     public ReportingPanel() {
         this.setLayout(new BorderLayout());
@@ -46,15 +46,31 @@ public class ReportingPanel extends JPanel {
         this.add(mockLabel, BorderLayout.CENTER);
     }
 
+    /**
+     * Getter-Methode für das Panel für die Reporting-Header-Zeile
+     * 
+     * @return Panel für die Reporting-Header-Zeile
+     */
     public JPanel getReportingHeaderRowPanel() {
         return reportingHeaderRowPanel;
     }
 
+    /**
+     * Getter-Methode für den Zurück-Button
+     * 
+     * @return Zurück-Button
+     */
     public JButton getBackButton() {
         return backButton;
     }
 
+    /**
+     * Getter-Methode für das Pseudolabel
+     * 
+     * @return Pseudolabel
+     */
     public JLabel getMockLabel() {
         return mockLabel;
     }
+
 }

@@ -3,7 +3,7 @@ package main;
 import java.awt.*;
 
 /**
- * Diese Klasse bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
+ * bietet einen zentralen Zugriffspunkt für diverse, einsetzbaren
  * Style-Komponenten (z.B. Fonts, Farben, ...).
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -88,4 +88,17 @@ public class Styles {
    * Einsatzmöglichkeit: Font für Fehlermeldungen
    */
   public final static Font ERROR_STACKTRACE_FONT = new Font("Calibri", Font.PLAIN, 12);
+
+  /**
+   * gibt ein Font-Objekt zurück, um in der Klasse Systemressourcen einzusparen.
+   * 
+   * @param name  Font-Name
+   * @param style Font-Style
+   * @param size  Font-Größe
+   * @return Font-Objekt
+   */
+  public static Font getAWTConservedFont(String name, int style, int size) {
+    return new Font(name, style, size);
+  }
+
 }

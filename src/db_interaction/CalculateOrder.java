@@ -3,11 +3,19 @@ package db_interaction;
 import java.util.Date;
 
 /**
+ * dient der Berechnung des Auftragspreises.
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class CalculateOrder {
 
+    /**
+     * berechnet den Preis zum aktuellen Aufrag und gibt diesen schließlich zurück.
+     * 
+     * @param currentOrder aktueller Auftrag
+     * @return berechneten Auftragspreis
+     */
     public static int calculatePrice(Order currentOrder) {
         int price = 0;
         int amount = currentOrder.getAmount();
@@ -34,6 +42,12 @@ public class CalculateOrder {
         return price;
     }
 
+    /**
+     * gibt den passenden Status zum aktuellen Auftrag zurück.
+     * 
+     * @param currentOrder aktueller Auftrag
+     * @return passender Auftragsstatus
+     */
     public static String calculateStatus(Order currentOrder) {
         String status = "";
         String phase = currentOrder.getPhase();

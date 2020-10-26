@@ -11,8 +11,8 @@ import exceptions.DatabaseConnectException;
 import exceptions.InternalException;
 
 /**
- * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf ein
- * Reset Entries-/Save- oder Close-Button.
+ * dient der Ausführung jeweiliger Aktionen beim Klicken auf ein Reset
+ * Entries-/Save- oder Close-Button.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

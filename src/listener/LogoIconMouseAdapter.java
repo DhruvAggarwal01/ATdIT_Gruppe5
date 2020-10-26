@@ -6,7 +6,7 @@ import main.MainPanel;
 import main.NavItemPanelChooser;
 
 /**
- * Diese Klasse dient dem Handling von Aktionen, die zum Zurückgehen auf das
+ * dient dem Handling von Aktionen, die zum Zurückgehen auf das
  * Overview-Panel führen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -15,7 +15,7 @@ import main.NavItemPanelChooser;
 public class LogoIconMouseAdapter extends MouseAdapter implements ActionListener {
 
     /**
-     * Diese Methode setzt das geöffnete Panel auf OverviewPanel.
+     * setzt das geöffnete Panel auf OverviewPanel.
      * 
      * @param e eingetretenes Event
      */
@@ -26,7 +26,7 @@ public class LogoIconMouseAdapter extends MouseAdapter implements ActionListener
     }
 
     /**
-     * Diese Methode setzt das geöffnete Panel auf OverviewPanel.
+     * setzt das geöffnete Panel auf OverviewPanel.
      * 
      * @param e eingetretenes Event
      */

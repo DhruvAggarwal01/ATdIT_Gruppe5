@@ -5,6 +5,9 @@ import java.awt.event.*;
 import main.LoginButtonPanel;
 
 /**
+ * stellt die Funktionalität in Form eines Listeners zur Verfügung, um einen
+ * Tastendruck im Login-Screen zu verarbeiten.
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
@@ -24,15 +27,14 @@ public class LoginKeyListener implements KeyListener {
     }
 
     /**
-     * 
+     * wird hier nicht genutzt, muss jedoch verpflichtend implementiert werden.
      */
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -42,11 +44,10 @@ public class LoginKeyListener implements KeyListener {
     }
 
     /**
-     * 
+     * wird hier nicht genutzt, muss jedoch verpflichtend implementiert werden.
      */
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
 }

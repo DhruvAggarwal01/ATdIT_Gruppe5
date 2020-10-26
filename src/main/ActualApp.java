@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Diese Klasse dient zum Aufbau der eigentlichen Anwendungsapplikation.
+ * dient zum Aufbau der eigentlichen Anwendungsapplikation.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -16,7 +16,7 @@ public class ActualApp {
     private static JFrame appWindow;
 
     /**
-     * Diese Methode startet den Timer für den Timeout der Applikation.
+     * startet den Timer für den Timeout der Applikation.
      * 
      * @param delay zu wartende Zeit bis Timeout
      */
@@ -26,7 +26,7 @@ public class ActualApp {
     }
 
     /**
-     * Diese Methode startet den Timer für den Timeout der Applikation erneut mit
+     * startet den Timer für den Timeout der Applikation erneut mit
      * seinem eingestellten initialen Delay.
      * 
      * @param delay zu wartende Zeit bis Timeout
@@ -37,7 +37,7 @@ public class ActualApp {
     }
 
     /**
-     * Diese Methode führt die Applikation aus. Dabei wird ein Hauptframe erzeugt.
+     * führt die Applikation aus. Dabei wird ein Hauptframe erzeugt.
      */
     public static void startApp() {
         appWindow = new MainPanel();

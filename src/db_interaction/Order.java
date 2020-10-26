@@ -3,7 +3,7 @@ package db_interaction;
 import java.util.Objects;
 
 /**
- * Diese Klasse tbd
+ * dient dem Aufbau eines Auftrags und im Besonderen seiner Attribute.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -21,7 +21,9 @@ public class Order {
     private String status = "onTime";
     private int rowcount = 1;
 
-    /* ------------ Overriding zum möglichen Vergleich von Aufträgen ------------ */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return "{" + "order_id: " + order_id + " ; firm: " + firm + " ; stone_type: " + stone_type + " ; due_date: "
@@ -29,13 +31,22 @@ public class Order {
                 + isDone + " ; status: " + status + "}";
     }
 
+    /* ------------ Overriding zum möglichen Vergleich von Aufträgen ------------ */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(order_id);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @param obj
+     */
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }

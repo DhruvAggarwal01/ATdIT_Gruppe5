@@ -6,7 +6,7 @@ import main.Styles;
 import subpanels.*;
 
 /**
- * Klasse, die die Navigationsleiste im Feld Produktion darstellt.
+ * stellt die Navigationsleiste im Feld Produktion dar.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -16,8 +16,8 @@ public class NavigationPaneProduction extends JTabbedPane {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Konsturktor, der die Navigationsleitse erzeugt. Dabei gibt es 4 Tabs:
-     * Dashboard, QuarryMap, Wgeoptimierung und Leerlaufintervalle
+     * erzeugt die Navigationsleiste. Dabei gibt es 4 Tabs: Dashboard, QuarryMap,
+     * Wgeoptimierung und Leerlaufintervalle
      * 
      * @param tabPlacement    die Platzierung der Tabs relativ zum Inhalt
      * @param tabLayoutPolicy die Richtlinie zum Festlegen von Registerkarten, wenn

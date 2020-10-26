@@ -9,8 +9,8 @@ import listener.ProfileMenuItemListener;
 import listener.UserIconMouseAdapter;
 
 /**
- * Diese Klasse baut den Header der Anwendung auf, welcher über den gesamten
- * Ausführzeitraum zu sehen ist.
+ * baut den Header der Anwendung auf, welcher über den gesamten Ausführzeitraum
+ * zu sehen ist.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -35,8 +35,8 @@ public class HeaderPanel extends JPanel {
     public JPanel userIconWithMenuInJPanel;
 
     /**
-     * Konstruktor, der zuständig für den Aufbau des Headers zuständig ist. Der
-     * Header setzt sich aus Anwendungsicon, -titel und User-Icon zusammen.
+     * ist zuständig für den Aufbau des Headers zuständig. Der Header setzt sich aus
+     * Anwendungsicon, -titel und User-Icon zusammen.
      * 
      * @param headerTitle Applikationstitel
      */
@@ -54,9 +54,8 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode nimmt die initialen Voreinstellungen, wie
-     * <code>setLayout</code>, <code>setBorder</code>, vor und stellt die benötigten
-     * Subpanels bereit.
+     * nimmt die initialen Voreinstellungen, wie <code>setLayout</code>,
+     * <code>setBorder</code>, vor und stellt die benötigten Subpanels bereit.
      */
     public void initSetUp() {
         this.setLayout(new GridLayout(1, 3, 0, 0));
@@ -71,9 +70,9 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode passt das Icon an, verbessert die UX mittels Cursor-Anpassung
-     * und Interaktion mit einem Benutzer und gibt das Icon, gewrappt durch ein
-     * JLabel, wieder zurück.
+     * passt das Icon an, verbessert die UX mittels Cursor-Anpassung und Interaktion
+     * mit einem Benutzer und gibt das Icon, gewrappt durch ein JLabel, wieder
+     * zurück.
      * 
      * @param filename Pfad zum Logo-Icon
      * @return angepasstes Logo-Icon
@@ -88,9 +87,8 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode nimmt einen gewünschten Titel entgegen, welcher mit einem Font
-     * versehen und schließlich, gewrappt durch ein JLabel, wieder zurückgegeben
-     * wird.
+     * nimmt einen gewünschten Titel entgegen, welcher mit einem Font versehen und
+     * schließlich, gewrappt durch ein JLabel, wieder zurückgegeben wird.
      * 
      * @param headerTitle Header-Titel
      * @return Label für Titel
@@ -103,8 +101,8 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode baut ein User-Menü mit den nötigen Menü-Items auf und setzt als
-     * "Menüheader" ein User-Icon.
+     * baut ein User-Menü mit den nötigen Menü-Items auf und setzt als "Menüheader"
+     * ein User-Icon.
      * 
      * @param userIconFile Pfad zum User-Icon
      * @return User-Icon-Menü innerhalb einer JMenuBar
@@ -121,10 +119,10 @@ public class HeaderPanel extends JPanel {
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
         ImageIcon settingsIcon = new ImageIcon(new ImageIcon("Library/images/settingsIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon helpIcon = new ImageIcon(new ImageIcon("Library/images/helpIcon.png").getImage().getScaledInstance(20,
-                20, Image.SCALE_SMOOTH));
-        ImageIcon aboutIcon = new ImageIcon(new ImageIcon("Library/images/aboutIcon.png").getImage()
-                .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon helpIcon = new ImageIcon(
+                new ImageIcon("Library/images/helpIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon aboutIcon = new ImageIcon(
+                new ImageIcon("Library/images/aboutIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
         ActionListener pmiListener = new ProfileMenuItemListener(this);
         normItem1 = new JMenuItem("Ihr Profil", profileIcon);
@@ -153,9 +151,9 @@ public class HeaderPanel extends JPanel {
     }
 
     /**
-     * Diese Methode setzt die Größe eines Bildes <code>filename</code> auf
-     * <code>width</code> x <code>height</code>. Danach wird das Bild in ein JLabel
-     * gegeben, um dieses wiederum z.B. zur Ausgabe nutzen zu können.
+     * setzt die Größe eines Bildes <code>filename</code> auf <code>width</code> x
+     * <code>height</code>. Danach wird das Bild in ein JLabel gegeben, um dieses
+     * wiederum z.B. zur Ausgabe nutzen zu können.
      * 
      * @param filename Pfad zum Bild
      * @param width    einzustellende Breite des Bildes
@@ -251,4 +249,5 @@ public class HeaderPanel extends JPanel {
     public JMenuItem getLogOffItem() {
         return logOffItem;
     }
+
 }

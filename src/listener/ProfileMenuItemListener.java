@@ -13,8 +13,8 @@ import main.ActualApp;
 import main.HeaderPanel;
 
 /**
- * Diese Klasse dient der Ausführung jeweiliger Aktionen beim Klicken auf eines
- * der Menüpunkte.
+ * dient der Ausführung jeweiliger Aktionen beim Klicken auf eines der
+ * Menüpunkte.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -24,8 +24,8 @@ public class ProfileMenuItemListener implements ActionListener {
     private final HeaderPanel headerPanelView;
 
     /**
-     * Konstruktor, der eine Referenz auf die Instanz des <code>HeaderPanel</code>
-     * mithilfe des Parameters herstellt, um damit weiterzuarbeiten.
+     * stellt eine Referenz auf die Instanz des <code>HeaderPanel</code> mithilfe
+     * des Parameters her, um damit weiterzuarbeiten.
      * 
      * @param headerPanelView Instanz von <code>HeaderPanel</code>
      */
@@ -34,7 +34,7 @@ public class ProfileMenuItemListener implements ActionListener {
     }
 
     /**
-     * Diese Methode führt je nach gewähltem Menüpunkt eine zugehörige Aktion aus.
+     * führt je nach gewähltem Menüpunkt eine zugehörige Aktion aus.
      * 
      * @param e eingetretenes Event
      */
@@ -79,4 +79,5 @@ public class ProfileMenuItemListener implements ActionListener {
             }
         }
     }
+
 }

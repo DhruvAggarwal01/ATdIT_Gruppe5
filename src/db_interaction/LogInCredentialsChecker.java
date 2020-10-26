@@ -10,10 +10,9 @@ import exceptions.LoginException;
 import exceptions.InternalException;
 
 /**
- * Diese Klasse überprüft die Eingabe im Welcome-Screen
- * {@link src.WelcomeScreen} und extrahiert bei erfolgreichen LogIn-Eingaben die
- * zugehörigen User-Daten aus der Excel-Datenbank in eine SessionUser-Instanz.
- * +Ausloggen
+ * überprüft die Eingabe im Welcome-Screen {@link src.WelcomeScreen} und
+ * extrahiert bei erfolgreichen LogIn-Eingaben die zugehörigen User-Daten aus
+ * der Excel-Datenbank in eine SessionUser-Instanz. +Ausloggen
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -30,10 +29,10 @@ public class LogInCredentialsChecker {
     private String username, password;
 
     /**
-     * tbd
+     * instanziiert den Datenbank-Extraktor mit dem passenden Extraktor-Objekt.
      * 
-     * @param username
-     * @param password
+     * @param username Benutzername
+     * @param password Passwort
      */
     public LogInCredentialsChecker(String username, String password) {
         this.username = username;
@@ -48,7 +47,7 @@ public class LogInCredentialsChecker {
     }
 
     /**
-     * tbd
+     * Setter-Methode für die statische SessionUser-Instanz.
      * 
      * @throws LoginException
      * @throws InternalException
@@ -62,9 +61,9 @@ public class LogInCredentialsChecker {
     }
 
     /**
-     * tbd
+     * gibt den einzuloggenden Benutzer zurück.
      * 
-     * @return
+     * @return einzuloggender Benutzer
      * @throws LoginException
      * @throws InternalException
      * @throws IllegalAccessException
@@ -80,9 +79,11 @@ public class LogInCredentialsChecker {
     }
 
     /**
-     * tbd
+     * prüft, ob Nutzername und Passwort zueinander passen. Dabei darf ein
+     * Benutzername-Passwort-Paar nur einmal in der Datenbank existieren.
      * 
-     * @return
+     * @return <true>, wenn Nutzername und Passwort einmalig zueinander passen und
+     *         vice versa
      * @throws IllegalAccessException
      */
     public boolean isCredentialsMatching() throws IllegalAccessException {

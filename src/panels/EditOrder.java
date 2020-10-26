@@ -26,7 +26,7 @@ import exceptions.DatabaseConnectException;
 import exceptions.InternalException;
 
 /**
- * JPanel um das bearbeiten/anlegen eines Auftrags zu ermöglichen
+ * JPanel, um das bearbeiten/anlegen eines Auftrags zu ermöglichen
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -75,14 +75,6 @@ public class EditOrder extends JPanel {
     Boolean create2;
     public static Order currentOrder;
 
-    public static void setValidFirmName(final boolean isValid) {
-        validFirmName = isValid;
-    }
-
-    public static void setValidAmount(final boolean isValid) {
-        validAmount = isValid;
-    }
-
     /**
      * 
      * @param create2 Gibt an ob man das EditPanel aufruft um einen Auftrag
@@ -123,7 +115,7 @@ public class EditOrder extends JPanel {
     }
 
     /**
-     * Fügt alle Elemente dem edit Panel hinzu
+     * fügt alle Elemente dem edit-Panel hinzu.
      * 
      * @return editPanel
      */
@@ -165,7 +157,7 @@ public class EditOrder extends JPanel {
     }
 
     /**
-     * Füllt die EingabeWerte mit den Werten der Bestellung die bearbeitet werden
+     * füllt die EingabeWerte mit den Werten der Bestellung, die bearbeitet werden.
      * 
      * @param currentOrder aktuelle Bestellung die bearbeitet wird
      */
@@ -245,6 +237,9 @@ public class EditOrder extends JPanel {
         });
     }
 
+    /**
+     * tbd
+     */
     public static void checkOrderValidity() {
 
         if (validFirmName && validAmount) {
@@ -281,6 +276,27 @@ public class EditOrder extends JPanel {
         }
     }
 
+    /**
+     * tbd
+     * 
+     * @param isValid
+     */
+    public static void setValidFirmName(final boolean isValid) {
+        validFirmName = isValid;
+    }
+
+    /**
+     * tbd
+     * 
+     * @param isValid
+     */
+    public static void setValidAmount(final boolean isValid) {
+        validAmount = isValid;
+    }
+
+    /**
+     * 
+     */
     public void setOrder() {
         currentOrder.setFirm(firmField.getText());
         currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());

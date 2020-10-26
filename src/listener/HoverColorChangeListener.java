@@ -9,12 +9,16 @@ import main.NavItemPanelChooser;
 import subpanels.OrderPanels;
 
 /**
+ * stellt die Funktionalität in Form eines Listeners zur Verfügung, um beim
+ * Hovern über ein Objekt eine leichte Farbveränderung zu erwirken.
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class HoverColorChangeListener extends MouseAdapter {
 
     /**
+     * tbd
      * 
      * @param a
      */
@@ -28,6 +32,7 @@ public class HoverColorChangeListener extends MouseAdapter {
     };
 
     /**
+     * tbd
      * 
      * @param a
      */
@@ -41,7 +46,7 @@ public class HoverColorChangeListener extends MouseAdapter {
     };
 
     /**
-     * Diese Methode
+     * {@inheritDoc}
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -54,7 +59,7 @@ public class HoverColorChangeListener extends MouseAdapter {
     }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -62,7 +67,7 @@ public class HoverColorChangeListener extends MouseAdapter {
     }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public void mouseExited(MouseEvent e) {

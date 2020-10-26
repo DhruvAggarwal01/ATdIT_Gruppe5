@@ -1,7 +1,8 @@
 package exceptions;
 
 /**
- * Diese Klasse tbd
+ * ist eine Beschreibung, für Exceptions, die bei dem Einstellen des
+ * Anwendungsthemes auftreten.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -13,8 +14,9 @@ public class ThemeChangeException extends AbstractCustomException {
     private String exceptionMessage;
 
     /**
+     * setzt je nach gewählter ID, die zugehörige Exception-Nachricht.
      * 
-     * @param themeErrorId
+     * @param themeErrorId Theme-Error-ID
      */
     public ThemeChangeException(int themeErrorId) {
         switch (themeErrorId) {
@@ -27,7 +29,9 @@ public class ThemeChangeException extends AbstractCustomException {
     }
 
     /**
+     * {@inheritDoc}
      * 
+     * @return Nachricht-Nachricht
      */
     @Override
     public String getExceptionMessage() {

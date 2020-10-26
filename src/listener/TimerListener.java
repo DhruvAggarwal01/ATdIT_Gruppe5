@@ -6,8 +6,8 @@ import javax.swing.ImageIcon;
 import subpanels.DiashowPanel;
 
 /**
- * Diese Klasse dient der Implementierung einer Diashow, indem mehrere Bilder
- * durchlaufen werden.
+ * dient der Implementierung einer Diashow, indem mehrere Bilder durchlaufen
+ * werden.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -27,8 +27,8 @@ public class TimerListener implements ActionListener {
     }
 
     /**
-     * Diese Methode springt bei jedem Aufruf zum nächsten Bild-Array-Element und
-     * bei Erreichen des Endes wieder mit dem ersten Bild fortfährt.
+     * springt bei jedem Aufruf zum nächsten Bild-Array-Element und bei Erreichen
+     * des Endes wieder mit dem ersten Bild fortfährt.
      * 
      * @param e eingetretenes Event
      */
@@ -39,4 +39,5 @@ public class TimerListener implements ActionListener {
         diashowPanelView.getDiashowLabel().setIcon(tempDiashowImages[diashowPanelView.getCounter()]);
         diashowPanelView.setCounter(diashowPanelView.getCounter() + 1);
     }
+
 }

@@ -8,8 +8,8 @@ import listener.TimerListener;
 import main.Styles;
 
 /**
- * Diese Klasse baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern
- * (Ausschnitten) als "Sneak-Peeks" durchlaufen zu lassen.
+ * baut ein Panel auf, das es ermöglicht eine Auswahl an Bildern (Ausschnitten)
+ * als "Sneak-Peeks" durchlaufen zu lassen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -25,8 +25,7 @@ public class DiashowPanel extends JPanel {
     private Timer timer;
 
     /**
-     * Konstruktor, der die Einstellungen des UI und eigentlichen
-     * Diashow-Funktionalität aufbaut.
+     * baut die Einstellungen des UI und eigentlichen Diashow-Funktionalität auf.
      * 
      * @param diashowTitle Diashow-Titel
      */

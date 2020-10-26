@@ -3,7 +3,7 @@ package main;
 import javax.swing.*;
 
 /**
- * Diese Klasse enthält die Tabs der Applikation. Dabei werden über die Klasse
+ * enthält die Tabs der Applikation. Dabei werden über die Klasse
  * <code>NavItemPanelChooser</code> die jeweilig anzuzeigenden Panels
  * aufgerufen.
  * 

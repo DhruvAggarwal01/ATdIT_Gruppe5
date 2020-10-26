@@ -13,7 +13,7 @@ import exceptions.InternalException;
 import listener.ZoomMouseListener;
 
 /**
- * Klasse, die ein "zoomable Panel" erzeugt An diesem GitHub stark orientiert:
+ * ereugt ein "zoomable Panel" und ist an diesem GitHub stark orientiert:
  * https://github.com/Thanasis1101/Zoomable-Java-Panel
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -36,7 +36,7 @@ public class QuarryMap extends JPanel {
     private Point startPoint;
 
     /**
-     * Konstruktor, der das Panel erzeugt und die Listener dazufügt.
+     * erzeugt das Panel und fügt die Listener dazu.
      * 
      * @throws InternalException
      */
@@ -52,8 +52,7 @@ public class QuarryMap extends JPanel {
     }
 
     /**
-     * Methode, die das Bild, was den Steinbruch von oben zeigen soll, aus der
-     * Library holt.
+     * holt das Bild, was den Steinbruch von oben zeigen soll, aus der Library.
      * 
      * @throws InternalException
      */
@@ -66,8 +65,8 @@ public class QuarryMap extends JPanel {
     }
 
     /**
-     * Methode, die die paint-Methode überschreibt, um zu gewährleisten, dass das
-     * Bild immer an die richtige Stelle geschrieben wird.
+     * überschreibt die paint-Methode, um zu gewährleisten, dass das Bild immer an
+     * die richtige Stelle geschrieben wird.
      */
     @Override
     public void paint(Graphics g) {
@@ -113,9 +112,9 @@ public class QuarryMap extends JPanel {
     }
 
     /**
-     * Diese Methode sollte verantwortlich sein um Rechtecke in dem Bild vom
-     * Steinbruch zeichnen zu können und somit die Standorte markieren zu können!
-     * Diese Funktionalität ist jedoch noch nicht fertig implementiert!
+     * sollte verantwortlich sein um Rechtecke in dem Bild vom Steinbruch zeichnen
+     * zu können und somit die Standorte markieren zu können! Diese Funktionalität
+     * ist jedoch noch nicht fertig implementiert!
      * 
      * @param g2
      */
@@ -204,4 +203,5 @@ public class QuarryMap extends JPanel {
     public ArrayList<Rectangle> getList() {
         return this.liste;
     }
+
 }

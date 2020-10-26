@@ -16,7 +16,7 @@ public class ZoomMouseListener extends MouseAdapter {
     private final QuarryMap view;
 
     /**
-     * Konstruktor, der den Listener erzeugt und die Variable initialisiert.
+     * erzeugt den Listener und initialisiert die Variable.
      * 
      * @param view die QuarryMap vom Steinbruch.
      */

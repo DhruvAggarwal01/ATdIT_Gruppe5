@@ -6,13 +6,15 @@ import javax.swing.*;
 import db_interaction.Order;
 
 /**
+ * tbd
+ * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
  */
 public class ColorChooser {
 
     /**
-     * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an
+     * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an.
      * 
      * @param currentOrder Auftrag für den das EditPanel geöffnet wurde
      * @param orderPanel   Panel, dessen Hintergrundfarbe geändert werden soll

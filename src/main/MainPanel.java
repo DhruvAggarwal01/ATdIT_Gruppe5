@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Diese Klasse leitet den Aufbau der Anwendung ein.
+ * leitet den Aufbau der Anwendung ein.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -87,4 +87,5 @@ public class MainPanel extends JFrame {
     public static void setHeaderPanel(HeaderPanel headerPanelSet) {
         headerPanel = headerPanelSet;
     }
+
 }

@@ -4,8 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Diese Klasse erzeugt ein Panel für das Feld Produktion in der
- * Navigationsleiste
+ * erzeugt ein Panel für das Feld Produktion in der Navigationsleiste
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -16,8 +15,8 @@ public class ProduktionPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Konstruktor, der das Layout richtig setzt, die Navigationsleiste
-     * <code>navPane</code> des Panels erzeugt und diese zum Panel dazufügt.
+     * setzt das Layout richtig, erzeugt die Navigationsleiste <code>navPane</code>
+     * des Panels und fügt diese zum Panel hinzu.
      */
     public ProduktionPanel() {
         super();

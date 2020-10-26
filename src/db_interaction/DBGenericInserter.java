@@ -10,7 +10,7 @@ import exceptions.DatabaseConnectException;
 import exceptions.InternalException;
 
 /**
- * Diese Klasse ist zum Einlesen der Daten aus der Applikation da und verändert
+ * ist zum Einlesen der Daten aus der Applikation da und verändert
  * dementsprechend die betroffenen Felder in der Contracts-Datenbank.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
@@ -24,10 +24,11 @@ public class DBGenericInserter<T> {
     Set<Integer> rowIndexesContainingGeneric_Id;
 
     /**
-     * tbd
+     * instanziiert Objektattribute jeweils mit Excel-Dateipfad und dazugehörigen
+     * Objekt zum aktuell noch generischen Objekt.
      * 
-     * @param excelFileName
-     * @param genericObject
+     * @param excelFileName Name der Excel-Datei (bzw. Pfad dazu)
+     * @param genericObject Objekt zum aktuell noch generischen Objekt
      */
     public DBGenericInserter(String excelFileName, T genericObject) {
         this.excelFileName = excelFileName;
@@ -35,7 +36,7 @@ public class DBGenericInserter<T> {
     }
 
     /**
-     * Diese Methode ändert die jeweilig, geänderten Einträge in der Datenbank.
+     * ändert die jeweilig, geänderten Einträge in der Datenbank.
      * 
      * @param columnName    Spaltenname im Excel
      * @param filterValue   Wert, nach dem in der Spalte gefiltert werden soll

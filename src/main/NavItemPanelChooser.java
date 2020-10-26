@@ -9,7 +9,7 @@ import exceptions.NavItemNotFoundException;
 import panels.*;
 
 /**
- * Diese Klasse nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
+ * nimmt je nach ausgewähltem Tab ein anderes Panel als Tab an.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -21,8 +21,7 @@ public class NavItemPanelChooser extends JPanel {
     private String navItemName01, navItemName02, navItemName03, panelExplorerTitle;
 
     /**
-     * Konstruktor, der zum zugehörigen NavigationItem einen passenden JPanel
-     * einsetzt
+     * setzt zum zugehörigen NavigationItem einen passenden JPanel ein.
      * 
      * @param navItemName01 Navigationsitem auf Ebene 1
      * @param navItemName02 Navigationsitem auf Ebene 2
@@ -72,13 +71,12 @@ public class NavItemPanelChooser extends JPanel {
                 }
             }
         }
-
         return (navItemName01 + isNext1 + navItemName02 + isNext2 + navItemName03);
     }
 
     /**
-     * Diese Methode ist dafür zuständig aus den verschiedenen Panels je nach
-     * Nutzerwunsch den Richtigen auszuwählen und selbst anzunehmen.
+     * ist dafür zuständig aus den verschiedenen Panels je nach Nutzerwunsch den
+     * Richtigen auszuwählen und selbst anzunehmen.
      * 
      * @param navItemName01 Navigationsitem auf Ebene 1
      * @param navItemName02 Navigationsitem auf Ebene 2
