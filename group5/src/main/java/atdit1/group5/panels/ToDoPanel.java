@@ -17,7 +17,7 @@ public class ToDoPanel extends JPanel {
 
     private JPanel taskList;
     private JPanel buttonPanel;
-    private JButton newTask;
+    private JButton newTaskButton;
 
     /**
      * bietet ein <code>JPanel</code>, welches alle aktiven To-Do-ELemente in Form
@@ -31,11 +31,12 @@ public class ToDoPanel extends JPanel {
         taskList = new JPanel(new GridLayout(0, 1, 10, 10));
         buttonPanel = new JPanel();
 
-        newTask = new JButton("Neue Aufgabe");
-        buttonPanel.add(newTask);
+        newTaskButton = new JButton("Neue Aufgabe");
+        newTaskButton.setPreferredSize(new Dimension(300, 100));
+        buttonPanel.add(newTaskButton);
 
         ToDoPanelButtonListener listenerNewTask = new ToDoPanelButtonListener(this);
-        newTask.addActionListener(listenerNewTask);
+        newTaskButton.addActionListener(listenerNewTask);
 
         this.add(taskList, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);

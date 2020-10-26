@@ -3,11 +3,12 @@ package atdit1.group5.listener;
 import java.awt.event.*;
 
 import atdit1.group5.panels.ToDoPanel;
-import atdit1.group5.subpanels.NewTask;
+import atdit1.group5.dialogs.NewTask;
 import atdit1.group5.subpanels.TaskButton;
 
 /**
- * tbd
+ * implementiert das Interface ActionListener und stellt ein Listener für die
+ * Buttons vom ToDoPanel dar.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -17,7 +18,7 @@ public class ToDoPanelButtonListener implements ActionListener {
     private ToDoPanel panel;
 
     /**
-     * tbd
+     * erzeugt den Listener und initialisiert dessen Werte.
      * 
      * @param panel
      */
@@ -26,7 +27,10 @@ public class ToDoPanelButtonListener implements ActionListener {
     }
 
     /**
-     * {@inheritDoc}
+     * Invoked when an action occurs. Wenn der Button "neue Aufgabe" gedrückt wird,
+     * wird eine noch nicht existierende Aufgabe erzeugt durch NewTask(panel, this).
+     * Wenn auf eine bereits existierende Aufgabe gedrückt wird, wird auch der
+     * bereits existierende TaskButton mitgegeben.
      */
     public void actionPerformed(ActionEvent e) {
 
@@ -39,4 +43,5 @@ public class ToDoPanelButtonListener implements ActionListener {
         }
 
     }
+
 }

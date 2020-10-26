@@ -1,9 +1,11 @@
 package atdit1.group5.subpanels;
 
 import javax.swing.JButton;
+import java.util.Random;
+import java.awt.Color;
 
 /**
- * tbd
+ * Klasse, die die Buttons mit den Aufgaben für das ToDo-Panel darstellt.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -12,7 +14,6 @@ public class TaskButton extends JButton {
 
     private static final long serialVersionUID = -4637132117972382295L;
 
-    // private int id;
     private String name;
     private String date;
     private String description;
@@ -20,18 +21,17 @@ public class TaskButton extends JButton {
     private String priority;
 
     /**
-     * tbd
+     * erzeugt einen TaskButton und initialisiert dessen Variablen.
      * 
-     * @param name
-     * @param description
-     * @param date
-     * @param time
-     * @param priority
+     * @param name        Name der Aufgabe
+     * @param description Beschreibung der Aufgabe
+     * @param date        Datum der Aufgabe
+     * @param time        Zeit der Aufgabe
+     * @param priority    Priorität der Aufgabe
      */
     public TaskButton(String name, String description, String date, String time, String priority) {
-        this.setText(name);
-        // this.setBackground(createColour());
-        // this.id = id;
+        this.setText(name + "   Priorität: " + priority);
+        this.setBackground(createColour());
         this.name = name;
         this.date = date;
         this.description = description;
@@ -39,15 +39,18 @@ public class TaskButton extends JButton {
         this.priority = priority;
     }
 
-    /*
-     * public int getId() { return this.id; }
+    /**
+     * erzeugt eine zufällige Color für den Hintergrund der TaskButtons. Diese Color
+     * soll jedoch hell sein, wodurch man die Schrift auf dem Button noch lesen
+     * kann.
+     * 
+     * @return Color: die zufällige Farbe für den Hintergrund des TaskButton
      */
-
-    /*
-     * public Color createColour(){ float red = Math.random(); float green =
-     * Math.random(); float blue = Math.random(); return (new Color(red, green,
-     * blue)); }
-     */
+    public Color createColour() {
+        Random r = new Random();
+        int rgb = Color.HSBtoRGB(r.nextFloat(), r.nextFloat(), 0.5f + r.nextFloat() / 2f);
+        return (new Color(rgb));
+    }
 
     /**
      * Getter-Methode für den ToDo-Namen

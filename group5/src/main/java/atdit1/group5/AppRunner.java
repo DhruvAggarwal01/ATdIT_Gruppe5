@@ -3,9 +3,6 @@ package atdit1.group5;
 import java.awt.*;
 import javax.swing.*;
 
-import atdit1.group5.db_interaction.LogOffExecutor;
-import atdit1.group5.exceptions.DatabaseConnectException;
-import atdit1.group5.exceptions.InternalException;
 import atdit1.group5.mainclasses.BackgroundImagePanel;
 import atdit1.group5.mainclasses.LoginButtonPanel;
 import atdit1.group5.mainclasses.MainPanel;
@@ -20,7 +17,7 @@ import atdit1.group5.mainclasses.MainPanel;
  */
 public class AppRunner {
 
-    public static JFrame loginFrame;
+    private static JFrame loginFrame;
 
     /**
      * führt die gesamte Anwendung aus und ist damit der Startpunkt.
@@ -34,25 +31,6 @@ public class AppRunner {
         loginFrame.setResizable(false);
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        loginFrame.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                LogOffExecutor logOffExecutor = new LogOffExecutor();
-                try {
-                    logOffExecutor.logOffAndDispose();
-                } catch (DatabaseConnectException dce) {
-                    JPanel exceptionPanel = dce.getExceptionPanel();
-                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
-                            JOptionPane.ERROR_MESSAGE);
-                } catch (InternalException noube) {
-                    JPanel exceptionPanel = noube.getExceptionPanel();
-                    JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + noube.getClass(),
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
         loginFrame.add(createMainPanel());
         loginFrame.setVisible(true);
     }

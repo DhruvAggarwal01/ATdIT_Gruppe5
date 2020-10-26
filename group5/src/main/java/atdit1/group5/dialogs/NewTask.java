@@ -1,4 +1,4 @@
-package atdit1.group5.subpanels;
+package atdit1.group5.dialogs;
 
 import java.awt.*;
 import javax.swing.*;
@@ -6,6 +6,7 @@ import javax.swing.*;
 import atdit1.group5.listener.NewTaskListener;
 import atdit1.group5.listener.ToDoPanelButtonListener;
 import atdit1.group5.panels.ToDoPanel;
+import atdit1.group5.subpanels.TaskButton;
 
 /**
  * legt fest wie neue Aufgaben angelegt werden.
@@ -17,44 +18,48 @@ public class NewTask extends JDialog {
 
     private static final long serialVersionUID = -8885029101653367966L;
 
-    // zu JDialog wechseln
     private TaskButton taskButton;
     private JPanel panel;
     private JLabel name, description, date, time, priority;
     private JTextField nameText, dateSet, timeSet;
     private JTextArea descriptionText;
     private JComboBox<String> prioritySet;
-    private JButton addTaskButton;
+    private JButton addAndUpdateButton;
     private ToDoPanel toDoPanel;
 
     String[] prioritäten = new String[] { "none", "low", "moderate", "high", "very high" };
 
     /**
-     * tbd
+     * wird aufgerufen, wenn man eine neue Aufgabe anlegen möchte. Dabei existiert
+     * diese Aufgabe vorher noch nicht. Dieser Konstruktor erzeugt dann den nötigen
+     * JDialog, um eine Aufgabe anzulegen.
      * 
-     * @param toDoPanel
-     * @param li
+     * @param toDoPanel         Referenz zum ToDoPanel
+     * @param toDoPanellistener
      */
-    public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener li) {
+    public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener toDoPanellistener) {
         this.toDoPanel = toDoPanel;
         this.taskButton = null;
         initializePanel();
-        addTaskButton = new JButton("Aufgabe hinzufuegen");
-        addComponentsToPanel(li);
+        addAndUpdateButton = new JButton("Aufgabe hinzufuegen");
+        setTitle("Neue Aufgabe anlegen");
+        addComponentsToPanel(toDoPanellistener);
     }
 
     /**
-     * tbd
+     * wird aufgerufen, wenn eine Task schon existiert und somit in den JDialog
+     * Werte übergeben werden von der bereits existierenden Task
      * 
-     * @param toDoPanel
-     * @param li
-     * @param taskButton
+     * @param toDoPanel         Referenz zum toDoPanel
+     * @param toDoPanellistener Listener von den Buttons vom toDoPanel
+     * @param taskButton        übergebener TaskButton, der die bereits existierende
+     *                          Aufgabe enthält
      */
-    public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener li, TaskButton taskButton) {
+    public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener toDoPanellistener, TaskButton taskButton) {
         this.toDoPanel = toDoPanel;
         this.taskButton = taskButton;
         initializePanel();
-        addTaskButton = new JButton("Aufgabe aktualisieren");
+        addAndUpdateButton = new JButton("Aufgabe aktualisieren");
 
         nameText.setText(taskButton.getName());
         descriptionText.setText(taskButton.getDescription());
@@ -62,11 +67,12 @@ public class NewTask extends JDialog {
         timeSet.setText(taskButton.getTime());
         prioritySet.setSelectedItem(taskButton.getPriority());
 
-        addComponentsToPanel(li);
+        setTitle("Aufgabe aktualisieren");
+        addComponentsToPanel(toDoPanellistener);
     }
 
     /**
-     * tbd
+     * initialisiert die nötigen Swing-/AWT-Komponenten vom JDialog
      */
     public void initializePanel() {
         panel = new JPanel();
@@ -87,11 +93,11 @@ public class NewTask extends JDialog {
     }
 
     /**
-     * tbd
+     * Diese Methode fügt die nötigen Swing/AWT-Komponenten dem Panel hinzu.
      * 
-     * @param li
+     * @param toDoPanellistener
      */
-    public void addComponentsToPanel(ToDoPanelButtonListener li) {
+    public void addComponentsToPanel(ToDoPanelButtonListener toDoPanellistener) {
         panel.add(name);
         panel.add(nameText);
         panel.add(description);
@@ -102,19 +108,15 @@ public class NewTask extends JDialog {
         panel.add(timeSet);
         panel.add(priority);
         panel.add(prioritySet);
-        panel.add(addTaskButton);
+        panel.add(addAndUpdateButton);
 
-        // nameText.getText(), descriptionText.getText(),
-        // dateSet.getText(), timeSet.getText(),
-        // prioritySet.getSelectedItem().toString()
-        NewTaskListener listenerAddTask = new NewTaskListener(this, li, toDoPanel, taskButton);
-        addTaskButton.addActionListener(listenerAddTask);
+        NewTaskListener listenerAddTask = new NewTaskListener(this, toDoPanellistener, toDoPanel, taskButton);
+        addAndUpdateButton.addActionListener(listenerAddTask);
 
         add(panel);
         setSize(500, 700);
         setVisible(true);
-        setTitle("Neue Aufgabe anlegen");
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
     }
 
     /**
