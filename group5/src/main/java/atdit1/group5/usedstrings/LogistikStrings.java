@@ -2,7 +2,9 @@ package atdit1.group5.usedstrings;
 
 public class LogistikStrings {
 
-    /* ----------------------- General Logistik Strings --------------------------- */
+    /*
+     * ----------------------- General Logistik Strings ---------------------------
+     */
 
     private static final String ordersDatabaseString = "group5/src/main/resources/databases/DefaultCONTRACTS.xlsx";
     private static final String logisticsString = "Logistik";
@@ -25,7 +27,9 @@ public class LogistikStrings {
     private static final String atRiskDescription = "These Ordes are at Risk of delivering on Time!";
     private static final String overdueDescription = "These Ordes are overdue!";
 
-    /* ----------------------- Edit/Show Order Strings ---------------------------*/
+    /*
+     * ----------------------- Edit/Show Order Strings ---------------------------
+     */
 
     private static final String firmString = "Firma:";
     private static final String stoneTypeString = "Steinart";
@@ -59,9 +63,10 @@ public class LogistikStrings {
     private static final String wrongAmountErrorMessage = "Amount cannot be more than 1000t";
     private static final String invalidNameErrorMessae = "Field must only contain characters from the Alphabet";
 
-
-
-    /* ----------------------- Getter Methoden für General Logistik Strings--------------------------- */
+    /*
+     * ----------------------- Getter Methoden für General Logistik
+     * Strings---------------------------
+     */
 
     public static String getOrdersDatabaseString() {
         return ordersDatabaseString;
@@ -83,7 +88,10 @@ public class LogistikStrings {
         return emptyString;
     }
 
-    /* ----------------------- Getter Methoden für Order Panels Strings --------------------------- */
+    /*
+     * ----------------------- Getter Methoden für Order Panels Strings
+     * ---------------------------
+     */
 
     public static String getDisplayAllText() {
         return displayAllText;
@@ -92,10 +100,10 @@ public class LogistikStrings {
     public static String getCreateOrderText() {
         return createOrderText;
     }
+
     public static String getSearchOrderText() {
         return searchOrderText;
     }
-
 
     public static String getOnTimeString() {
         return onTimeString;
@@ -133,9 +141,10 @@ public class LogistikStrings {
         return overdueDescription;
     }
 
-
-    /* ----------------------- Getter Methoden fürEdit/Show Order Strings --------------------------- */
-
+    /*
+     * ----------------------- Getter Methoden fürEdit/Show Order Strings
+     * ---------------------------
+     */
 
     public static String getSaveString() {
         return saveString;
@@ -233,9 +242,10 @@ public class LogistikStrings {
         return stoneTypeFiveString;
     }
 
-
-
-    /* ----------------------- Getter Methoden für Logistik Verifier Strings --------------------------- */
+    /*
+     * ----------------------- Getter Methoden für Logistik Verifier Strings
+     * ---------------------------
+     */
 
     public static String getOnlyNumbersErrorMessage() {
         return onlyNumbersErrorMessage;
@@ -248,9 +258,5 @@ public class LogistikStrings {
     public static String getInvalidNameErrorMessae() {
         return invalidNameErrorMessae;
     }
-
-
-
-
 
 }

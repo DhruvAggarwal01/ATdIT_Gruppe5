@@ -47,7 +47,8 @@ public class HeaderPanel extends JPanel {
         logoAndHeaderTitle.add(logoAdder("group5/src/main/resources/images/dashboardlogo.png"));
         logoAndHeaderTitle.add(headerTitleAdder(headerTitle));
 
-        userIconWithMenuInJPanel.add(userSymbolAdder("group5/src/main/resources/images/userIcon.png"), BorderLayout.EAST);
+        userIconWithMenuInJPanel.add(userSymbolAdder("group5/src/main/resources/images/userIcon.png"),
+                BorderLayout.EAST);
 
         this.add(new JLabel());
         this.add(logoAndHeaderTitle);
@@ -116,14 +117,14 @@ public class HeaderPanel extends JPanel {
         MouseAdapter uiMouseAdapter = new UserIconMouseAdapter(this);
         userIconButton.addMouseListener(uiMouseAdapter);
 
-        ImageIcon profileIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/profileIcon.png").getImage()
+        ImageIcon profileIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/profileIcon.png")
+                .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon settingsIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/settingsIcon.png")
+                .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon helpIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/helpIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon settingsIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/settingsIcon.png").getImage()
+        ImageIcon aboutIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/aboutIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon helpIcon = new ImageIcon(
-                new ImageIcon("group5/src/main/resources/images/helpIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon aboutIcon = new ImageIcon(
-                new ImageIcon("group5/src/main/resources/images/aboutIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
         ActionListener pmiListener = new ProfileMenuItemListener(this);
         normItem1 = new JMenuItem("Ihr Profil", profileIcon);

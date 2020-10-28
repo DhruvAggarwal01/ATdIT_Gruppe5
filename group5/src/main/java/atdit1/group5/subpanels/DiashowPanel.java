@@ -42,8 +42,8 @@ public class DiashowPanel extends JPanel {
         diashowTitleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
         for (int i = 0; i < images.length; i++) {
-            images[i] = new ImageIcon(new ImageIcon("group5/src/main/resources/images/DiashowPic" + (i + 1) + ".jpg").getImage()
-                    .getScaledInstance(500, 120, Image.SCALE_SMOOTH));
+            images[i] = new ImageIcon(new ImageIcon("group5/src/main/resources/images/DiashowPic" + (i + 1) + ".jpg")
+                    .getImage().getScaledInstance(500, 120, Image.SCALE_SMOOTH));
         }
 
         diashowLabel = new JLabel(images[0]);
