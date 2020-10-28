@@ -101,6 +101,15 @@
             <artifactId>xmlbeans</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.vaadin/vaadin-bom -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-bom</artifactId>
+            <version>17.0.7</version>
+            <type>pom</type>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
