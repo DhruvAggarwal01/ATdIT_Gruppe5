@@ -18,14 +18,6 @@
 
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/com.vaadin/vaadin-bom -->
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-bom</artifactId>
-            <version>17.0.7</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
         
         <dependency>
             <groupId>javax</groupId>
@@ -112,6 +104,15 @@
             <version>3.1.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.vaadin/vaadin/17.0.7 -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-bom</artifactId>
+            <version>17.0.7</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        
 
     </dependencies>
     <build>
