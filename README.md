@@ -6,7 +6,7 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 
 ## Ordnerstruktur
 
-&#x1F4D8; **Library** beinhaltet folgendende Ordner und Dateien:
+&#x1F4D8; **Library** beinhaltet folgende Ordner und Dateien:
 
 - **diagrams** &rarr; ER-Diagramme, Klassendiagramm (UML), Persona und Use-Case-Diagramm, Grafik zum Durchlauf der Klassen
 - **documentation** &rarr; Wissenschaftliche Ausarbeitung, Storyline-Dokument (Probleme, Lessons Learned), Quellensammlung, Info zu Setter für Order-ID und User-ID
