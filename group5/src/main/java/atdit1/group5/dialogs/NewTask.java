@@ -2,7 +2,7 @@ package atdit1.group5.dialogs;
 
 import java.awt.*;
 import javax.swing.*;
-
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import atdit1.group5.listener.NewTaskListener;
 import atdit1.group5.listener.ToDoPanelButtonListener;
 import atdit1.group5.panels.ToDoPanel;
@@ -26,6 +26,7 @@ public class NewTask extends JDialog {
     private JComboBox<String> prioritySet;
     private JButton addAndUpdateButton;
     private ToDoPanel toDoPanel;
+    private DateTimePicker dateTimePicker;
 
     String[] prioritäten = new String[] { "none", "low", "moderate", "high", "very high" };
 
@@ -88,6 +89,9 @@ public class NewTask extends JDialog {
         descriptionText = new JTextArea();
         dateSet = new JTextField();
         timeSet = new JTextField();
+        dateTimePicker = new DateTimePicker();
+        dateTimePicker.setDatePlaceholder("Date");
+        dateTimePicker.setTimePlaceholder("Time");
 
         prioritySet = new JComboBox<String>(prioritäten);
     }
