@@ -34,12 +34,11 @@ public class LabelListener extends KeyAdapter {
     }
 
     /**
-     * ist zuständig dafür, wenn die Taste N gedrückt wird, dass dann:
-     * 1: die Koordinaten von der Mouse gespeichert werden und mit diesen
-     * Koordinaten ein Rechteck erzeugt werden. Diese Rechtecke sollen in einer
-     * Liste gespeichert werden, welche die Klasse <code>QuarryMap</code> enthält.
-     * 2: eine JTextArea erzeugt wird und diese dem richtigen Panel hinzugefügt
-     * werden.
+     * ist zuständig dafür, wenn die Taste N gedrückt wird, dass dann: 1: die
+     * Koordinaten von der Mouse gespeichert werden und mit diesen Koordinaten ein
+     * Rechteck erzeugt werden. Diese Rechtecke sollen in einer Liste gespeichert
+     * werden, welche die Klasse <code>QuarryMap</code> enthält. 2: eine JTextArea
+     * erzeugt wird und diese dem richtigen Panel hinzugefügt werden.
      */
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_N) {

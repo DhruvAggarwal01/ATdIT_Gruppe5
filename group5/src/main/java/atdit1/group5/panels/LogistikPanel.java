@@ -17,7 +17,7 @@ import atdit1.group5.exceptions.DatabaseConnectException;
 /**
  * baut ein Panel auf, welches alle unfertigen Aufträge nach ihrem Status
  * geordnet aufzeigt (und bietet die Möglichkeit diese zu filtern und einen
- * neuen Auftrag anzulegen - tbd)
+ * neuen Auftrag anzulegen)
  * 
  * implementiert die Methoden: createLogisticsPanel, setOrderPanels,
  * getUnfinishedOrders,initCreateOrder, getMaxOrderID
@@ -120,7 +120,7 @@ public class LogistikPanel extends JPanel {
      * holt alle nicht fertigen Orders in Kategorien sortiert & Konstuiert je
      * Kategorie ein OrderPanel
      * 
-     * @param displayAll tbd
+     * @param displayAll Wahrheitswert, ob alle Aufträge angezeigt werden sollen
      */
     public void setOrderPanels(Boolean displayAll) {
 

@@ -12,7 +12,7 @@ import atdit1.group5.Styles;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**
- * tbd
+ * baut ein Panel für die Aufträge der Datenbankanbindung auf
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -28,7 +28,7 @@ public class OrderPanels extends JPanel {
     static String sourceOrder;
 
     /**
-     * tbd
+     * extrahiert Auftragsdaten
      * 
      * @param orders
      * @param Title

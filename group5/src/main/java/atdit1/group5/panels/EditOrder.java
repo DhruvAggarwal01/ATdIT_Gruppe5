@@ -243,7 +243,7 @@ public class EditOrder extends JPanel {
     }
 
     /**
-     * tbd
+     * prüft die Auftragsvalidität
      */
     public static void checkOrderValidity() {
 
@@ -257,7 +257,7 @@ public class EditOrder extends JPanel {
 
     /**
      * speichert die geändert Werte des aktuellen Auftrags Methode um einen neuen
-     * Auftrag anzulegen tbd Methode für InputValidation tbd
+     * Auftrag anzulegen Methode für InputValidation
      */
     public void saveEditedOrder() {
         setOrder();
@@ -280,27 +280,17 @@ public class EditOrder extends JPanel {
         }
     }
 
-    /**
-     * tbd
-     * 
-     * @param isValid
-     */
+    
     public static void setValidFirmName(final boolean isValid) {
         validFirmName = isValid;
     }
 
-    /**
-     * tbd
-     * 
-     * @param isValid
-     */
+   
     public static void setValidAmount(final boolean isValid) {
         validAmount = isValid;
     }
 
-    /**
-     * 
-     */
+    
     public void setOrder() {
         currentOrder.setFirm(firmField.getText());
         currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());

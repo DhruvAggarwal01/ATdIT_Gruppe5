@@ -7,7 +7,7 @@ import atdit1.group5.exceptions.DatabaseConnectException;
 import atdit1.group5.usedstrings.LogistikStrings;
 
 /**
- * tbd
+ * zeigt unfertige und fertige Aufträge an
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -27,7 +27,7 @@ public class OrdersSorter {
     }
 
     /**
-     * tbd
+     * gibt unfertige Aufträge in einem Set zurück
      * 
      * @param status
      * @return Set<Order> gefiltert nach status
@@ -49,7 +49,7 @@ public class OrdersSorter {
     }
 
     /**
-     * tbd
+     * gibt alle Aufträge in einem Set zurück
      * 
      * @param status
      * @return Set<Order> gefiltert nach status

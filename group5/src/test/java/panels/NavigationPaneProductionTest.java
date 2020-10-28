@@ -16,10 +16,4 @@ public class NavigationPaneProductionTest {
         Assert.assertEquals(4, navigationPaneProductionTest.getTabCount());
     }
 
-    //TBD: gets the tab title at the index position
-   // @Test
-    //public void testGetTabAtIndex() {
-    //   System.out.println(navigationPaneProductionTest.getTitleAt(1));
-   // }
-
 }

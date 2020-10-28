@@ -31,8 +31,8 @@ public abstract class AbstractCustomException extends Exception {
     public JPanel getExceptionPanel() {
         JPanel exceptionPanel = new JPanel(new BorderLayout());
 
-        ImageIcon errorMsgIcon = new ImageIcon(
-                new ImageIcon("group5/src/main/resources/images/errorIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon errorMsgIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/errorIcon.png")
+                .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
         String errorStackTrace = "";
         StackTraceElement[] stack = this.getStackTrace();
         for (StackTraceElement line : stack) {

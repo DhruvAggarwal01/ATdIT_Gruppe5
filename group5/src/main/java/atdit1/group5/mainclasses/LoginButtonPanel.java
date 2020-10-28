@@ -90,7 +90,10 @@ public class LoginButtonPanel extends JPanel {
     }
 
     /**
-     * tbd
+     * überprüft die Korrektheit der Eingaben des Benutzernames und des Passwortes.
+     * 
+     * 
+     * @return Bei richtiger Eingabe wird true zurückgegeben, sonst false
      */
     public boolean authenticate() {
         String username = usernameField.getText();

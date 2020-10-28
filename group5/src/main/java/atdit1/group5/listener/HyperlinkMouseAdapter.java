@@ -8,8 +8,8 @@ import javax.swing.*;
 import atdit1.group5.exceptions.URLException;
 
 /**
- * dient der Weiterleitung zu einer bestimmten URL beim Klicken auf
- * eine Swing/AWT-Komponente.
+ * dient der Weiterleitung zu einer bestimmten URL beim Klicken auf eine
+ * Swing/AWT-Komponente.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -28,8 +28,7 @@ public class HyperlinkMouseAdapter extends MouseAdapter {
     }
 
     /**
-     * öffnet beim Klicken auf eine Swing/AWT-Komponente im Browser
-     * die URL.
+     * öffnet beim Klicken auf eine Swing/AWT-Komponente im Browser die URL.
      * 
      * @param e eingetretenes Event
      */

@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * tbd
+ * erklärt in kurzer Form die Bedienung des ProduktionPanels
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

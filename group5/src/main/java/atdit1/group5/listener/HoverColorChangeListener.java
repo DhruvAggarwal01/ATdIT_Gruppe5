@@ -18,7 +18,7 @@ import atdit1.group5.subpanels.OrderPanels;
 public class HoverColorChangeListener extends MouseAdapter {
 
     /**
-     * tbd
+     * ändert die Farbe beim Hovern
      * 
      * @param a
      */
@@ -32,7 +32,7 @@ public class HoverColorChangeListener extends MouseAdapter {
     };
 
     /**
-     * tbd
+     * ändert die Farbe auf Ursprungsfarbe
      * 
      * @param a
      */

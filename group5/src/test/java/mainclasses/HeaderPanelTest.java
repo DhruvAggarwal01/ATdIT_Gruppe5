@@ -39,7 +39,6 @@ public class HeaderPanelTest {
                 MainPanel.getHeaderPanel().userIconWithMenuInJPanel.isShowing());
     }
 
-    // TBD: Checks if the mouseListener is implemented correctly
     @Test
     public void testGoToOverviewOnClick() throws AWTException {
         MainPanel.getNavPane().setSelectedIndex(2); // (int) (Math.random() *

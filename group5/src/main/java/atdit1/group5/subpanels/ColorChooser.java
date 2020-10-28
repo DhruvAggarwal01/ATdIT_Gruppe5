@@ -6,7 +6,7 @@ import javax.swing.*;
 import atdit1.group5.db_interaction.Order;
 
 /**
- * tbd
+ * passt den Hintergrund des EditOrder Panels dem Status der Bestellung an.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr

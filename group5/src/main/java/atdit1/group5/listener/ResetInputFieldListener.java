@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * tbd
+ * setzt die Fehlermeldungen für die Eingabefelder des LogistikPanels
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
