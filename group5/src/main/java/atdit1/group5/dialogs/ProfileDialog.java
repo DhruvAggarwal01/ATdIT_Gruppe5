@@ -17,7 +17,7 @@ import atdit1.group5.listener.ResetSaveCloseListener;
  */
 public class ProfileDialog extends AbstractUsermenuDialog {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8158863932892908105L;
 
     private String profileDialogTitle;
 
@@ -158,12 +158,14 @@ public class ProfileDialog extends AbstractUsermenuDialog {
 
         rsscPanel = new JPanel(new GridLayout(1, 3, 140, 140));
         // Action buttons
-        ImageIcon resetEntriesIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/resetEntriesIcon.png").getImage()
+        ImageIcon resetEntriesIcon = new ImageIcon(
+                new ImageIcon("group5/src/main/resources/images/resetEntriesIcon.png").getImage().getScaledInstance(20,
+                        20, Image.SCALE_SMOOTH));
+        ImageIcon saveIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/saveIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon saveIcon = new ImageIcon(
-                new ImageIcon("group5/src/main/resources/images/saveIcon.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon saveAndCloseIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/saveAndCloseIcon.png").getImage()
-                .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon saveAndCloseIcon = new ImageIcon(
+                new ImageIcon("group5/src/main/resources/images/saveAndCloseIcon.png").getImage().getScaledInstance(20,
+                        20, Image.SCALE_SMOOTH));
 
         ActionListener rsscListener = new ResetSaveCloseListener(this);
         resetEntriesButton = new JButton("Reset Entries", resetEntriesIcon);
@@ -224,8 +226,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
             possibleErrorMessageLabel.setText(errorMessage);
         } else {
             errorMessage = "Ihre Eingaben sind fehlerhaft. Bitte überprüfen Sie diese und versuchen Sie es erneut";
-            ImageIcon errorMsgIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/errorIcon.png").getImage()
-                    .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+            ImageIcon errorMsgIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/errorIcon.png")
+                    .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
             possibleErrorMessageLabel.setIcon(errorMsgIcon);
             possibleErrorMessageLabel.setText(errorMessage);
         }

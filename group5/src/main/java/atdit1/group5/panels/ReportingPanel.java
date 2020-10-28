@@ -16,6 +16,7 @@ import atdit1.group5.listener.LogoIconMouseAdapter;
 public class ReportingPanel extends JPanel {
 
     private static final long serialVersionUID = -8379965032225222069L;
+
     private JPanel reportingHeaderRowPanel;
     private JButton backButton;
     private JLabel mockLabel;

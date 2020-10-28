@@ -10,17 +10,17 @@ import java.util.Objects;
  */
 public class User {
 
-    public int personnel_id = 0;
-    public String username = "";
-    public String forename = "";
-    public String surname = "";
-    public String street_nr = "";
-    public int zip = 00000;
-    public String city = "";
-    public String email = "..._...@....";
-    public String password = "**********";
-    public int role_id = 1;
-    public boolean isLoggedIn = false;
+    private int personnel_id = 0;
+    private String username = "";
+    private String forename = "";
+    private String surname = "";
+    private String street_nr = "";
+    private int zip = 00000;
+    private String city = "";
+    private String email = "..._...@....";
+    private String password = "**********";
+    private int role_id = 1;
+    private boolean isLoggedIn = false;
 
     /**
      * {@inheritDoc}

@@ -15,7 +15,7 @@ import atdit1.group5.exceptions.InternalException;
  */
 public class ActualApp {
 
-    public static TimeoutTimer timeoutTimer;
+    private static TimeoutTimer timeoutTimer;
     private static int timeoutDelay = 3600000;
     private static JFrame appWindow;
 

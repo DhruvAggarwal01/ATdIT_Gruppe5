@@ -11,8 +11,8 @@ import atdit1.group5.listener.ThemeChangeListener;
 import atdit1.group5.listener.TimeoutAndCloseListener;
 
 /**
- * baut ein Dialog-Fenster auf, das dem Benutzer die Möglichkeit
- * bietet, verschiedene App-Einstellungen vorzunehmen.
+ * baut ein Dialog-Fenster auf, das dem Benutzer die Möglichkeit bietet,
+ * verschiedene App-Einstellungen vorzunehmen.
  * 
  * @author Sophie Orth, Monica Alessi, Dhruv Aggarwal, Maik Fichtenkamm, Lucas
  *         Lahr
@@ -32,10 +32,12 @@ public class SettingsDialog extends AbstractUsermenuDialog {
     private JLabel titleStyleSettingsLabel;
 
     private JLabel themeToggleSettingLabel;
-    public final ImageIcon nightModeOFFIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/nightModeOff.png").getImage()
-            .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-    public final ImageIcon nightModeONIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/nightModeOn.png").getImage()
-            .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+    public final ImageIcon nightModeOFFIcon = new ImageIcon(
+            new ImageIcon("group5/src/main/resources/images/nightModeOff.png").getImage().getScaledInstance(20, 20,
+                    Image.SCALE_SMOOTH));
+    public final ImageIcon nightModeONIcon = new ImageIcon(
+            new ImageIcon("group5/src/main/resources/images/nightModeOn.png").getImage().getScaledInstance(20, 20,
+                    Image.SCALE_SMOOTH));
     private static JToggleButton themeToggleButton;
 
     private JLabel titleFunctionalitySettingsLabel;
@@ -55,8 +57,7 @@ public class SettingsDialog extends AbstractUsermenuDialog {
     }
 
     /**
-     * setzt aus verschiedenen Swing/AWT-Komponenten ein passendes UI
-     * zusammen.
+     * setzt aus verschiedenen Swing/AWT-Komponenten ein passendes UI zusammen.
      */
     @Override
     public void contentSettingsSet() {
@@ -93,8 +94,8 @@ public class SettingsDialog extends AbstractUsermenuDialog {
 
         timeoutTimeLabel = new JLabel("Zeit bis zum Timeout (in min):");
         timeoutTimeLabel.setFont(Styles.PROFILE_LVL3_FONT);
-        timeoutSpinnerModel = new SpinnerNumberModel(ActualApp.timeoutTimer.getInitialDelay() / 60000, 60000 / 60000,
-                7200000 / 60000, 1);
+        timeoutSpinnerModel = new SpinnerNumberModel(ActualApp.getTimeoutTimer().getInitialDelay() / 60000,
+                60000 / 60000, 7200000 / 60000, 1);
         timeoutTimeSpinner = new JSpinner(timeoutSpinnerModel);
 
         functionalitySettingsPanel.add(timeoutTimeLabel);
@@ -102,8 +103,9 @@ public class SettingsDialog extends AbstractUsermenuDialog {
 
         ImageIcon closeIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/closeIcon.png").getImage()
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon applyAndCloseIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/saveAndCloseIcon.png").getImage()
-                .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon applyAndCloseIcon = new ImageIcon(
+                new ImageIcon("group5/src/main/resources/images/saveAndCloseIcon.png").getImage().getScaledInstance(20,
+                        20, Image.SCALE_SMOOTH));
 
         cPanel = new JPanel(new GridLayout(1, 3, 140, 140));
         ActionListener tacListener = new TimeoutAndCloseListener(this);

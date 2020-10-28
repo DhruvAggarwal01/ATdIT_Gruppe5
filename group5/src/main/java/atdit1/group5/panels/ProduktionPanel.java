@@ -11,8 +11,9 @@ import javax.swing.*;
  */
 public class ProduktionPanel extends JPanel {
 
+    private static final long serialVersionUID = 5952492588040978408L;
+
     private NavigationPaneProduction navPane;
-    private static final long serialVersionUID = 1L;
 
     /**
      * setzt das Layout richtig, erzeugt die Navigationsleiste <code>navPane</code>

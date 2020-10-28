@@ -17,7 +17,7 @@ import atdit1.group5.subpanels.WeatherPanel;
  */
 public class OverviewPanel extends JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5616023884647257894L;
 
     private JPanel smallPanels, newsPanel, weatherPanel, diashow;
 

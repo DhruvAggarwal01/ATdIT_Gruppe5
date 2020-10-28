@@ -13,7 +13,7 @@ import atdit1.group5.subpanels.*;
  */
 public class NavigationPaneProduction extends JTabbedPane {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 6025004272718022771L;
 
     /**
      * erzeugt die Navigationsleiste. Dabei gibt es 4 Tabs: Dashboard, QuarryMap,

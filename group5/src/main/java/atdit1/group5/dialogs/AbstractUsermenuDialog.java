@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 abstract class AbstractUsermenuDialog extends JDialog {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 7821224991476388869L;
 
     private JFrame owner;
 

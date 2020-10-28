@@ -100,9 +100,11 @@ public class WeatherPanel extends JPanel {
         Map<String, Object> windMap = jsonToMap(wholeMap.get("wind").toString());
 
         weatherForecastArea = new JTextArea() {
-            private static final long serialVersionUID = 1L;
 
-            Image weatherStatusImage = new ImageIcon("group5/src/main/resources/images/OpenWeatherMapLogo.png").getImage();
+            private static final long serialVersionUID = 2041623386356436152L;
+
+            Image weatherStatusImage = new ImageIcon("group5/src/main/resources/images/OpenWeatherMapLogo.png")
+                    .getImage();
             {
                 setOpaque(false);
             }
