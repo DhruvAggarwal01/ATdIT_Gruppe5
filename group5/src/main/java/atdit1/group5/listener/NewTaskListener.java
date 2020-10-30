@@ -50,15 +50,13 @@ public class NewTaskListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (b == null) {
             TaskButton b = new TaskButton(dialog.getNameText().getText(), dialog.getDescriptionText().getText(),
-                    dialog.getDateSet().getText(), dialog.getTimeSet().getText(),
-                    dialog.getPrioritySet().getSelectedItem().toString());
+                    dialog.getDateTimePicker(), dialog.getPrioritySet().getSelectedItem().toString());
             b.addActionListener(toDoPanelListener);
             toDoPanel.getTaskList().add(b);
             toDoPanel.getTaskList().revalidate();
         } else {
             b.setDescription(dialog.getDescriptionText().getText());
-            b.setDate(dialog.getDateSet().getText());
-            b.setTime(dialog.getTimeSet().getText());
+            b.setDateTimePicker(dialog.getDateTimePicker());
             b.setPriority(dialog.getPrioritySet().getSelectedItem().toString());
             b.setName(dialog.getNameText().getText());
         }

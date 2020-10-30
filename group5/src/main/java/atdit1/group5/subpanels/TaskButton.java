@@ -1,6 +1,9 @@
 package atdit1.group5.subpanels;
 
 import javax.swing.JButton;
+
+import com.github.lgooddatepicker.components.DateTimePicker;
+
 import java.util.Random;
 import java.awt.Color;
 
@@ -15,9 +18,8 @@ public class TaskButton extends JButton {
     private static final long serialVersionUID = -4637132117972382295L;
 
     private String name;
-    private String date;
+    private DateTimePicker dateTimePicker;
     private String description;
-    private String time;
     private String priority;
 
     /**
@@ -29,13 +31,12 @@ public class TaskButton extends JButton {
      * @param time        Zeit der Aufgabe
      * @param priority    Priorität der Aufgabe
      */
-    public TaskButton(String name, String description, String date, String time, String priority) {
+    public TaskButton(String name, String description, DateTimePicker dateTimePicker, String priority) {
         this.setText(name + "   Priorität: " + priority);
         this.setBackground(createColour());
         this.name = name;
-        this.date = date;
+        this.dateTimePicker = dateTimePicker;
         this.description = description;
-        this.time = time;
         this.priority = priority;
     }
 
@@ -76,8 +77,8 @@ public class TaskButton extends JButton {
      * 
      * @return Da-Button
      */
-    public String getDate() {
-        return this.date;
+    public DateTimePicker getDateTimePicker() {
+        return this.dateTimePicker;
     }
 
     /**
@@ -85,8 +86,8 @@ public class TaskButton extends JButton {
      * 
      * @param date Datum
      */
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateTimePicker(DateTimePicker dateTimePicker) {
+        this.dateTimePicker = dateTimePicker;
     }
 
     /**
@@ -112,18 +113,6 @@ public class TaskButton extends JButton {
      * 
      * @return Zeit
      */
-    public String getTime() {
-        return this.time;
-    }
-
-    /**
-     * Setter-Methode für die Zeit
-     * 
-     * @param time Zeit
-     */
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     /**
      * Getter-Methode für die Priorität

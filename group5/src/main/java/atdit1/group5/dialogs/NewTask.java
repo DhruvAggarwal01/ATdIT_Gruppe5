@@ -1,14 +1,22 @@
 package atdit1.group5.dialogs;
 
-
 import java.awt.*;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+
 import javax.swing.*;
-import com.vaadin.flow.component.datetimepicker.DateTimePicker;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.DateTimePicker;
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
+import com.github.lgooddatepicker.components.TimePickerSettings.TimeArea;
+
 import atdit1.group5.listener.NewTaskListener;
 import atdit1.group5.listener.ToDoPanelButtonListener;
 import atdit1.group5.panels.ToDoPanel;
 import atdit1.group5.subpanels.TaskButton;
-
 
 /**
  * legt fest wie neue Aufgaben angelegt werden.
@@ -22,8 +30,8 @@ public class NewTask extends JDialog {
 
     private TaskButton taskButton;
     private JPanel panel;
-    private JLabel name, description, date, time, priority;
-    private JTextField nameText, dateSet, timeSet;
+    private JLabel name, description, date, priority;
+    private JTextField nameText;
     private JTextArea descriptionText;
     private JComboBox<String> prioritySet;
     private JButton addAndUpdateButton;
@@ -66,8 +74,7 @@ public class NewTask extends JDialog {
 
         nameText.setText(taskButton.getName());
         descriptionText.setText(taskButton.getDescription());
-        dateSet.setText(taskButton.getDate());
-        timeSet.setText(taskButton.getTime());
+        dateTimePicker = taskButton.getDateTimePicker();
         prioritySet.setSelectedItem(taskButton.getPriority());
 
         setTitle("Aufgabe aktualisieren");
@@ -83,17 +90,18 @@ public class NewTask extends JDialog {
 
         name = new JLabel("Name:");
         description = new JLabel("Beschreibung:");
-        date = new JLabel("Datum:");
-        time = new JLabel("Uhrzeit:");
+        date = new JLabel("Datum und Uhrzeit:");
         priority = new JLabel("Priorität:");
 
         nameText = new JTextField();
         descriptionText = new JTextArea();
-        dateSet = new JTextField();
-        timeSet = new JTextField();
-        dateTimePicker = new DateTimePicker();
-        dateTimePicker.setDatePlaceholder("Date");
-        dateTimePicker.setTimePlaceholder("Time");
+
+        DatePickerSettings dateSettings = new DatePickerSettings();
+
+        TimePickerSettings timeSettings = new TimePickerSettings();
+        timeSettings.setColor(TimeArea.TimePickerTextValidTime, Color.blue);
+        timeSettings.initialTime = LocalTime.now();
+        dateTimePicker = new DateTimePicker(dateSettings, timeSettings);
 
         prioritySet = new JComboBox<String>(prioritäten);
     }
@@ -109,9 +117,7 @@ public class NewTask extends JDialog {
         panel.add(description);
         panel.add(descriptionText);
         panel.add(date);
-        panel.add(dateSet);
-        panel.add(time);
-        panel.add(timeSet);
+        panel.add(dateTimePicker);
         panel.add(priority);
         panel.add(prioritySet);
         panel.add(addAndUpdateButton);
@@ -120,7 +126,7 @@ public class NewTask extends JDialog {
         addAndUpdateButton.addActionListener(listenerAddTask);
 
         add(panel);
-        setSize(500, 700);
+        setSize(700, 700);
         setVisible(true);
         setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
     }
@@ -148,8 +154,8 @@ public class NewTask extends JDialog {
      * 
      * @return Datum-Textfeld
      */
-    public JTextField getDateSet() {
-        return this.dateSet;
+    public DateTimePicker getDateTimePicker() {
+        return this.dateTimePicker;
     }
 
     /**
@@ -157,8 +163,8 @@ public class NewTask extends JDialog {
      * 
      * @param dateSet Datum-Textfeld
      */
-    public void setDateSet(JTextField dateSet) {
-        this.dateSet = dateSet;
+    public void setDateSet(DateTimePicker dateTimePicker) {
+        this.dateTimePicker = dateTimePicker;
     }
 
     /**
@@ -166,18 +172,6 @@ public class NewTask extends JDialog {
      * 
      * @return Zeit-Textfeld
      */
-    public JTextField getTimeSet() {
-        return this.timeSet;
-    }
-
-    /**
-     * Setter-Methode für den Zeit-Textfeld
-     * 
-     * @param timeSet Zeit-Textfeld
-     */
-    public void setTimeSet(JTextField timeSet) {
-        this.timeSet = timeSet;
-    }
 
     /**
      * Getter-Methode für den Beschreibung-Textfeld
