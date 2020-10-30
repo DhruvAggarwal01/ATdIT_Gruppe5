@@ -74,7 +74,6 @@ public class EditOrder extends JPanel {
     String orderSource;
     private static boolean validFirmName;
     private static boolean validAmount;
-    private boolean validDate;
     Boolean create;
     Boolean create2;
     public static Order currentOrder;
@@ -280,17 +279,14 @@ public class EditOrder extends JPanel {
         }
     }
 
-    
     public static void setValidFirmName(final boolean isValid) {
         validFirmName = isValid;
     }
 
-   
     public static void setValidAmount(final boolean isValid) {
         validAmount = isValid;
     }
 
-    
     public void setOrder() {
         currentOrder.setFirm(firmField.getText());
         currentOrder.setStone_type(stoneSelection.getSelectedItem().toString());
