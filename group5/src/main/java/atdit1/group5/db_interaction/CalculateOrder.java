@@ -1,7 +1,5 @@
 package atdit1.group5.db_interaction;
 
-import java.util.Date;
-
 /**
  * dient der Berechnung des Auftragspreises.
  * 
@@ -50,9 +48,6 @@ public class CalculateOrder {
      */
     public static String calculateStatus(Order currentOrder) {
         String status = "";
-        String phase = currentOrder.getPhase();
-        int due_date = currentOrder.getDue_date();
-        Date actualDate = new Date();
         switch (currentOrder.getPhase()) {
             case "Planung":
                 break;
