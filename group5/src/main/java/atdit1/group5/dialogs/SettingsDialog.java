@@ -2,6 +2,7 @@ package atdit1.group5.dialogs;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
@@ -20,6 +21,7 @@ import atdit1.group5.listener.TimeoutAndCloseListener;
 public class SettingsDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = 5756321453884339110L;
+    private ResourceBundle text;
 
     private String settingsDialogTitle;
 
@@ -61,6 +63,7 @@ public class SettingsDialog extends AbstractUsermenuDialog {
      */
     @Override
     public void contentSettingsSet() {
+        this.text = ResourceBundle.getBundle(("i18n/settingsDialogStrings"));
         contentPanel = new JPanel(new GridLayout(6, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(settingsDialogTitle)));
@@ -70,18 +73,18 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         functionalitySettingsPanel = new JPanel(new GridLayout(1, 2));
 
         // Main title: Einstellungen
-        settingsTitleLabel = new JLabel("EINSTELLUNGEN");
+        settingsTitleLabel = new JLabel(text.getString("settingsString"));
         settingsTitleLabel.setFont(Styles.PROFILE_LVL1_FONT);
 
         // Sub title: Style-Einstellungen
-        titleStyleSettingsLabel = new JLabel("Style-Einstellungen");
+        titleStyleSettingsLabel = new JLabel(text.getString("styleSettings"));
         titleStyleSettingsLabel.setFont(Styles.PROFILE_LVL2_FONT);
 
-        themeToggleSettingLabel = new JLabel("Nachtmodus");
+        themeToggleSettingLabel = new JLabel(text.getString("nightmodeString"));
         themeToggleSettingLabel.setFont(Styles.PROFILE_LVL3_FONT);
 
         ChangeListener tcListener = new ThemeChangeListener(this);
-        themeToggleButton = new JToggleButton("Off", nightModeOFFIcon, false);
+        themeToggleButton = new JToggleButton((text.getString("OffString")), nightModeOFFIcon, false);
         themeToggleButton.setFont(Styles.PROFILE_LVL3_FONT);
         themeToggleButton.addChangeListener(tcListener);
 
@@ -89,10 +92,10 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         styleSettingsPanel.add(themeToggleButton);
 
         // Sub title: Funktionalität-Einstellungen
-        titleFunctionalitySettingsLabel = new JLabel("Funktionalität-Einstellungen");
+        titleFunctionalitySettingsLabel = new JLabel(text.getString("functionalSettingsStrings"));
         titleFunctionalitySettingsLabel.setFont(Styles.PROFILE_LVL2_FONT);
 
-        timeoutTimeLabel = new JLabel("Zeit bis zum Timeout (in min):");
+        timeoutTimeLabel = new JLabel(text.getString("timeUntilTimeoutText"));
         timeoutTimeLabel.setFont(Styles.PROFILE_LVL3_FONT);
         timeoutSpinnerModel = new SpinnerNumberModel(ActualApp.getTimeoutTimer().getInitialDelay() / 60000,
                 60000 / 60000, 7200000 / 60000, 1);
@@ -109,10 +112,10 @@ public class SettingsDialog extends AbstractUsermenuDialog {
 
         cPanel = new JPanel(new GridLayout(1, 3, 140, 140));
         ActionListener tacListener = new TimeoutAndCloseListener(this);
-        closeButton = new JButton("Close", closeIcon);
+        closeButton = new JButton((text.getString("closeString")), closeIcon);
         closeButton.setFont(Styles.RSSC_BUTTON_FONT);
         closeButton.addActionListener(tacListener);
-        applyAndCloseButton = new JButton("Apply Timeout & Close", applyAndCloseIcon);
+        applyAndCloseButton = new JButton((text.getString("saveTimeouText")), applyAndCloseIcon);
         applyAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
         applyAndCloseButton.addActionListener(tacListener);
 

@@ -1,5 +1,6 @@
 package atdit1.group5.exceptions;
 
+import java.util.ResourceBundle;
 /**
  * beschreibt eine Exception, die geworfen werden kann, wenn ein Fehler bei der
  * Datenbank-Verbindung aufgetreten ist.
@@ -10,7 +11,7 @@ package atdit1.group5.exceptions;
 public class DatabaseConnectException extends AbstractCustomException {
 
     private static final long serialVersionUID = -6345279862809551814L;
-
+    private ResourceBundle text;
     private String exceptionMessage;
 
     /**
@@ -19,15 +20,16 @@ public class DatabaseConnectException extends AbstractCustomException {
      * @param dbConnectErrorId Id des Datenbankverbindungsfehlers
      */
     public DatabaseConnectException(int dbConnectErrorId) {
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         switch (dbConnectErrorId) {
             case 0:
-                exceptionMessage = "Es konnte keine Verbindung zur angegebenen Datenbank hergestellt werden. Prüfen Sie, ob der angegebene Pfad korrekt ist. Wenden Sie sich ansonsten an Ihren Administrator.";
+                exceptionMessage = text.getString("databaseNotFound_message");
                 break;
             case 1:
-                exceptionMessage = "In die angegebene Datenbank konnten keine aktualisierten Daten gespeichert werden. Prüfen Sie, ob der angegebene Pfad korrekt ist. Wenden Sie sich ansonsten an Ihren Administrator.";
+                exceptionMessage = text.getString("databaseUnableToUpdate_message");
                 break;
             case 2:
-                exceptionMessage = "Sie haben keine Berechtigung, um auf die angegebene Datenbank zuzugreifen. Wenden Sie sich für weitere Informationen an Ihren Administrator.";
+                exceptionMessage = text.getString("databaseNotAuthorized_message");
                 break;
             default:
                 break;

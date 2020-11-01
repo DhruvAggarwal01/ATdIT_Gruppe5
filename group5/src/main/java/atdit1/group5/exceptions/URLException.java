@@ -1,5 +1,6 @@
 package atdit1.group5.exceptions;
 
+import java.util.ResourceBundle;
 /**
  * ist eine Beschreibung, für Exceptions, die bei dem Aufruf von URLs auftreten.
  * 
@@ -9,7 +10,7 @@ package atdit1.group5.exceptions;
 public class URLException extends AbstractCustomException {
 
     private static final long serialVersionUID = -1726043633397881928L;
-
+    private ResourceBundle text;
     private String exceptionMessage;
 
     /**
@@ -20,14 +21,15 @@ public class URLException extends AbstractCustomException {
      * @param urlErrorId Theme-Error-ID
      */
     public URLException(String urlString, int urlErrorId) {
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         switch (urlErrorId) {
             case 0:
                 exceptionMessage = "URL '" + urlString
-                        + "' konnte nicht gefunden werden. Bitte überprüfen Sie auf etwaige Internetverbindungsprobleme.";
+                        +  text.getString("URLnotFound_message");
                 break;
             case 1:
                 exceptionMessage = "URL '" + urlString
-                        + "' konnte nicht geöffnet werden. Bitte überprüfen Sie auf etwaige Probleme mit Ihrer Internet- und/oder Browser-Verbindung.";
+                        + text.getString("URLunableToOpen_message");
                 break;
             default:
                 break;

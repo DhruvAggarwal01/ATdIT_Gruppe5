@@ -1,5 +1,7 @@
 package atdit1.group5.exceptions;
 
+import java.util.ResourceBundle;
+
 /**
  * ist eine Beschreibung, für Exceptions, die im Zusammenhang mit dem
  * Login-Prozess auftreten.
@@ -10,7 +12,7 @@ package atdit1.group5.exceptions;
 public class LoginException extends AbstractCustomException {
 
     private static final long serialVersionUID = -7778912288639592607L;
-
+    private ResourceBundle text;
     private String exceptionMessage;
 
     /**
@@ -21,10 +23,10 @@ public class LoginException extends AbstractCustomException {
     public LoginException(int loginErrorId) {
         switch (loginErrorId) {
             case 0:
-                exceptionMessage = "Login ist nicht möglich.";
+                exceptionMessage = text.getString("LoginNotPossible_message");
                 break;
             case 1:
-                exceptionMessage = "Der Benutzername und/oder das Kennwort ist ungültig";
+                exceptionMessage = text.getString("loginNotValid_message");
                 break;
             default:
                 break;

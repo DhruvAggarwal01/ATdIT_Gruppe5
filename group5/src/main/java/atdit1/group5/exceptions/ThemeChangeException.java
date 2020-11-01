@@ -1,5 +1,6 @@
 package atdit1.group5.exceptions;
 
+import java.util.ResourceBundle;
 /**
  * ist eine Beschreibung, für Exceptions, die bei dem Einstellen des
  * Anwendungsthemes auftreten.
@@ -10,7 +11,7 @@ package atdit1.group5.exceptions;
 public class ThemeChangeException extends AbstractCustomException {
 
     private static final long serialVersionUID = 8451070767710884336L;
-
+    private ResourceBundle text;
     private String exceptionMessage;
 
     /**
@@ -19,9 +20,10 @@ public class ThemeChangeException extends AbstractCustomException {
      * @param themeErrorId Theme-Error-ID
      */
     public ThemeChangeException(int themeErrorId) {
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/exceptionStrings"));
         switch (themeErrorId) {
             case 0:
-                exceptionMessage = "Nachtmodus lässt sich aktuell nicht de-/aktivieren. Bitte kontaktieren Sie Ihren Administrator für weitere Informationen.";
+                exceptionMessage = text.getString("themeChangeUnavailable_message");
                 break;
             default:
                 break;

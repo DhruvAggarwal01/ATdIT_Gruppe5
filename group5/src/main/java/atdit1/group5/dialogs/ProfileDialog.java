@@ -2,6 +2,7 @@ package atdit1.group5.dialogs;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import javax.swing.*;
 
 import atdit1.group5.Styles;
@@ -18,7 +19,8 @@ import atdit1.group5.listener.ResetSaveCloseListener;
 public class ProfileDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = -8158863932892908105L;
-
+    private ResourceBundle text;
+    
     private String profileDialogTitle;
 
     private JPanel contentPanel;
@@ -77,6 +79,8 @@ public class ProfileDialog extends AbstractUsermenuDialog {
      */
     @Override
     public void contentSettingsSet() {
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
+
         contentPanel = new JPanel(new GridLayout(7, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),
                 BorderFactory.createTitledBorder(profileDialogTitle)));
@@ -86,34 +90,34 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         changePswdPanel = new JPanel(new GridLayout(3, 2));
 
         // Main title: Profile Information
-        profileInfoTitleLabel = new JLabel("PROFIL INFORMATIONEN");
+        profileInfoTitleLabel = new JLabel(text.getString("profilInformationString"));
         profileInfoTitleLabel.setFont(Styles.PROFILE_LVL1_FONT);
 
         // Sub title: Personal Information
-        titlePersonalInfoLabel = new JLabel("Persönliche Daten");
+        titlePersonalInfoLabel = new JLabel(text.getString("personalDataString"));
         titlePersonalInfoLabel.setFont(Styles.PROFILE_LVL2_FONT);
 
-        forenameLabel = new JLabel("Vorname");
+        forenameLabel = new JLabel(text.getString("firstNameString"));
         forenameLabel.setFont(Styles.PROFILE_LVL3_FONT);
         forenameTextField = new JTextField();
         forenameTextField.setFont(Styles.PROFILE_LVL3_FONT);
-        surnameLabel = new JLabel("Nachname");
+        surnameLabel = new JLabel(text.getString("lastNameString"));
         surnameLabel.setFont(Styles.PROFILE_LVL3_FONT);
         surnameTextField = new JTextField();
         surnameTextField.setFont(Styles.PROFILE_LVL3_FONT);
-        streetAndIdLabel = new JLabel("Straße Nr.");
+        streetAndIdLabel = new JLabel(text.getString("streetString"));
         streetAndIdLabel.setFont(Styles.PROFILE_LVL3_FONT);
         streetAndIdTextField = new JTextField();
         streetAndIdTextField.setFont(Styles.PROFILE_LVL3_FONT);
-        zipLabel = new JLabel("PLZ");
+        zipLabel = new JLabel(text.getString("zipString"));
         zipLabel.setFont(Styles.PROFILE_LVL3_FONT);
         zipTextField = new JTextField();
         zipTextField.setFont(Styles.PROFILE_LVL3_FONT);
-        cityLabel = new JLabel("Stadt");
+        cityLabel = new JLabel(text.getString("CityString"));
         cityLabel.setFont(Styles.PROFILE_LVL3_FONT);
         cityTextField = new JTextField();
         cityTextField.setFont(Styles.PROFILE_LVL3_FONT);
-        emailLabel = new JLabel("E-Mail");
+        emailLabel = new JLabel(text.getString("eMailString"));
         emailLabel.setFont(Styles.PROFILE_LVL3_FONT);
         emailTextField = new JTextField();
         emailTextField.setFont(Styles.PROFILE_LVL3_FONT);
@@ -132,16 +136,16 @@ public class ProfileDialog extends AbstractUsermenuDialog {
         personalInfoPanel.add(emailTextField);
 
         // Sub title: Change Password
-        titleChangePswdLabel = new JLabel("Passwort ändern");
+        titleChangePswdLabel = new JLabel(text.getString("changePasswortText"));
         titleChangePswdLabel.setFont(Styles.PROFILE_LVL2_FONT);
 
-        currentPswdLabel = new JLabel("Aktuelles Passwort");
+        currentPswdLabel = new JLabel(text.getString("currentPasswortText"));
         currentPswdLabel.setFont(Styles.PROFILE_LVL3_FONT);
         currentPswdField = new JPasswordField();
-        newPswdLabel = new JLabel("Neues Passwort");
+        newPswdLabel = new JLabel(text.getString("newPasswortText"));
         newPswdLabel.setFont(Styles.PROFILE_LVL3_FONT);
         newPswdField = new JPasswordField();
-        confirmPswdLabel = new JLabel("Neues Passwort wiederholen");
+        confirmPswdLabel = new JLabel(text.getString("newPasswortAgainText"));
         confirmPswdLabel.setFont(Styles.PROFILE_LVL3_FONT);
         confirmPswdField = new JPasswordField();
 
@@ -168,13 +172,13 @@ public class ProfileDialog extends AbstractUsermenuDialog {
                         20, Image.SCALE_SMOOTH));
 
         ActionListener rsscListener = new ResetSaveCloseListener(this);
-        resetEntriesButton = new JButton("Reset Entries", resetEntriesIcon);
+        resetEntriesButton = new JButton((text.getString("resetEntriesText")) , resetEntriesIcon);
         resetEntriesButton.setFont(Styles.RSSC_BUTTON_FONT);
         resetEntriesButton.addActionListener(rsscListener);
-        saveButton = new JButton("Save", saveIcon);
+        saveButton = new JButton((text.getString("saveString")), saveIcon);
         saveButton.setFont(Styles.RSSC_BUTTON_FONT);
         saveButton.addActionListener(rsscListener);
-        saveAndCloseButton = new JButton("Save & Close", saveAndCloseIcon);
+        saveAndCloseButton = new JButton((text.getString("saveAndCloseString")), saveAndCloseIcon);
         saveAndCloseButton.setFont(Styles.RSSC_BUTTON_FONT);
         saveAndCloseButton.addActionListener(rsscListener);
 
@@ -225,7 +229,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
             possibleErrorMessageLabel.setIcon(null);
             possibleErrorMessageLabel.setText(errorMessage);
         } else {
-            errorMessage = "Ihre Eingaben sind fehlerhaft. Bitte überprüfen Sie diese und versuchen Sie es erneut";
+            errorMessage = text.getString("wrongCredentialsMessage");
             ImageIcon errorMsgIcon = new ImageIcon(new ImageIcon("group5/src/main/resources/images/errorIcon.png")
                     .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
             possibleErrorMessageLabel.setIcon(errorMsgIcon);

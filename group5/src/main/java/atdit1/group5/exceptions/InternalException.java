@@ -1,5 +1,7 @@
 package atdit1.group5.exceptions;
 
+import java.util.ResourceBundle;
+
 /**
  * ist eine Beschreibung für Exceptions, die auf jedenfall vom Administrator
  * behandelt werden müssen. Der Benutzer erhält nur die Anweisung den Fehler an
@@ -11,7 +13,7 @@ package atdit1.group5.exceptions;
 public class InternalException extends AbstractCustomException {
 
     private static final long serialVersionUID = -7708693454111868203L;
-
+    private ResourceBundle text;
     /**
      * {@inheritDoc}
      * 
@@ -19,7 +21,8 @@ public class InternalException extends AbstractCustomException {
      */
     @Override
     public String getExceptionMessage() {
-        return "Es ist ein interner Fehler aufgetreten. Bitte geben Sie diesen an Ihren Administrator weiter.";
+        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/exceptionStrings"));
+        return  text.getString("ThemeChangeUnavailable_message");
     }
 
 }

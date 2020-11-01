@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
@@ -27,6 +28,7 @@ import atdit1.group5.subpanels.TaskButton;
 public class NewTask extends JDialog {
 
     private static final long serialVersionUID = -8885029101653367966L;
+    private ResourceBundle text;
 
     private TaskButton taskButton;
     private JPanel panel;
@@ -49,11 +51,12 @@ public class NewTask extends JDialog {
      * @param toDoPanellistener
      */
     public NewTask(ToDoPanel toDoPanel, ToDoPanelButtonListener toDoPanellistener) {
+        this.text = ResourceBundle.getBundle(("i18n/dialogStrings"));
         this.toDoPanel = toDoPanel;
         this.taskButton = null;
         initializePanel();
-        addAndUpdateButton = new JButton("Aufgabe hinzufuegen");
-        setTitle("Neue Aufgabe anlegen");
+        addAndUpdateButton = new JButton(text.getString("addTaskString"));
+        setTitle(text.getString("addTaskText"));
         addComponentsToPanel(toDoPanellistener);
     }
 
@@ -70,14 +73,14 @@ public class NewTask extends JDialog {
         this.toDoPanel = toDoPanel;
         this.taskButton = taskButton;
         initializePanel();
-        addAndUpdateButton = new JButton("Aufgabe aktualisieren");
+        addAndUpdateButton = new JButton( text.getString("updateTaskString"));
 
         nameText.setText(taskButton.getName());
         descriptionText.setText(taskButton.getDescription());
         dateTimePicker = taskButton.getDateTimePicker();
         prioritySet.setSelectedItem(taskButton.getPriority());
 
-        setTitle("Aufgabe aktualisieren");
+        setTitle(text.getString("updateTaskString"));
         addComponentsToPanel(toDoPanellistener);
     }
 
@@ -88,10 +91,10 @@ public class NewTask extends JDialog {
         panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2, 50, 15));
 
-        name = new JLabel("Name:");
-        description = new JLabel("Beschreibung:");
-        date = new JLabel("Datum und Uhrzeit:");
-        priority = new JLabel("Priorität:");
+        name = new JLabel(text.getString("nameString") + ":");
+        description = new JLabel(text.getString("descriptionString") + ":");
+        date = new JLabel(text.getString("dateTimeString") + ":");
+        priority = new JLabel(text.getString("priorityString") + ":");
 
         nameText = new JTextField();
         descriptionText = new JTextArea();
