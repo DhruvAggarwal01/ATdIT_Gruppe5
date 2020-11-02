@@ -1,6 +1,7 @@
 package atdit1.group5.exceptions;
 
 import java.util.ResourceBundle;
+
 /**
  * ist eine Beschreibung, für Exceptions, die im Zusammenhang mit dem Aufbau der
  * Navigationselemente auftreten.
@@ -13,6 +14,7 @@ public class NavItemNotFoundException extends AbstractCustomException {
     private static final long serialVersionUID = -7710856467785990920L;
     private String navItemName01, navItemName02, navItemName03;
     private ResourceBundle text;
+
     /**
      * initialisiert die Namen der 3-Ebenen-Navigationselemente.
      * 
@@ -34,8 +36,8 @@ public class NavItemNotFoundException extends AbstractCustomException {
      */
     @Override
     public String getExceptionMessage() {
-        return text.getString("notFoudStartmessage") + " { " + navItemName01 + " / " + navItemName02 + " / " + navItemName03
-                + "} " +   text.getString("notFoudEnd_message");
+        return text.getString("notFoudStartmessage") + " { " + navItemName01 + " / " + navItemName02 + " / "
+                + navItemName03 + "} " + text.getString("notFoudEnd_message");
     }
 
 }

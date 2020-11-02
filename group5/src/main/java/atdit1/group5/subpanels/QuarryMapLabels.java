@@ -3,6 +3,7 @@ package atdit1.group5.subpanels;
 import java.awt.*;
 import javax.swing.*;
 import java.util.ResourceBundle;
+
 /**
  * erzeugt ein JPanel für die Notizen in der QuarryMap mit den nötigen
  * Swing/AWT-Komponenten.

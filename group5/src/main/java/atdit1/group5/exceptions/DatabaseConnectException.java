@@ -1,6 +1,7 @@
 package atdit1.group5.exceptions;
 
 import java.util.ResourceBundle;
+
 /**
  * beschreibt eine Exception, die geworfen werden kann, wenn ein Fehler bei der
  * Datenbank-Verbindung aufgetreten ist.

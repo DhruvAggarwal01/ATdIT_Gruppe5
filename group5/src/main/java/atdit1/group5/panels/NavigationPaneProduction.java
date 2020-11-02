@@ -16,6 +16,7 @@ public class NavigationPaneProduction extends JTabbedPane {
 
     private static final long serialVersionUID = 6025004272718022771L;
     private ResourceBundle text;
+
     /**
      * erzeugt die Navigationsleiste. Dabei gibt es 4 Tabs: Dashboard, QuarryMap,
      * Wgeoptimierung und Leerlaufintervalle

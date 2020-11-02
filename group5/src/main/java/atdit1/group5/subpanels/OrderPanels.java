@@ -70,7 +70,8 @@ public class OrderPanels extends JPanel {
 
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
-            final JLabel labelID2 = new JLabel(text.getString("orderNumberString")+ " " + currentOrder.getOrder_id() + " " + text.getString("firmString") + " " + currentOrder.getFirm());
+            final JLabel labelID2 = new JLabel(text.getString("orderNumberString") + " " + currentOrder.getOrder_id()
+                    + " " + text.getString("firmString") + " " + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 

@@ -1,6 +1,7 @@
 package atdit1.group5.exceptions;
 
 import java.util.ResourceBundle;
+
 /**
  * ist eine Beschreibung, für Exceptions, die bei dem Aufruf von URLs auftreten.
  * 
@@ -24,12 +25,10 @@ public class URLException extends AbstractCustomException {
         this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         switch (urlErrorId) {
             case 0:
-                exceptionMessage = "URL '" + urlString
-                        +  text.getString("URLnotFound_message");
+                exceptionMessage = "URL '" + urlString + text.getString("URLnotFound_message");
                 break;
             case 1:
-                exceptionMessage = "URL '" + urlString
-                        + text.getString("URLunableToOpen_message");
+                exceptionMessage = "URL '" + urlString + text.getString("URLunableToOpen_message");
                 break;
             default:
                 break;

@@ -24,6 +24,7 @@ public class LoginCancelForgottenListener implements ActionListener {
 
     private final LoginButtonPanel loginButtonPanelView;
     private ResourceBundle text;
+
     /**
      * stellt eine Referenz auf die Instanz des <code>LoginButtonPanel</code>
      * mithilfe des Parameters her, um damit weiterzuarbeiten.
@@ -74,8 +75,7 @@ public class LoginCancelForgottenListener implements ActionListener {
             loginButtonPanelView.getPasswordField().setText("");
         }
         if (e.getSource() == loginButtonPanelView.getPswdForgottenButton()) {
-            loginButtonPanelView.getPossibleErrorMessageLabel()
-                    .setText(text.getString("goToAdminText"));
+            loginButtonPanelView.getPossibleErrorMessageLabel().setText(text.getString("goToAdminText"));
         }
     }
 

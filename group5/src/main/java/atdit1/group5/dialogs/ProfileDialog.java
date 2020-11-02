@@ -20,7 +20,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
 
     private static final long serialVersionUID = -8158863932892908105L;
     private ResourceBundle text;
-    
+
     private String profileDialogTitle;
 
     private JPanel contentPanel;
@@ -172,7 +172,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
                         20, Image.SCALE_SMOOTH));
 
         ActionListener rsscListener = new ResetSaveCloseListener(this);
-        resetEntriesButton = new JButton((text.getString("resetEntriesText")) , resetEntriesIcon);
+        resetEntriesButton = new JButton((text.getString("resetEntriesText")), resetEntriesIcon);
         resetEntriesButton.setFont(Styles.RSSC_BUTTON_FONT);
         resetEntriesButton.addActionListener(rsscListener);
         saveButton = new JButton((text.getString("saveString")), saveIcon);

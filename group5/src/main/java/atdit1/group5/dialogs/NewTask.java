@@ -1,16 +1,13 @@
 package atdit1.group5.dialogs;
 
 import java.awt.*;
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import javax.swing.*;
 import java.util.ResourceBundle;
 
-import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.DateTimePicker;
-import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings.TimeArea;
 
@@ -73,7 +70,7 @@ public class NewTask extends JDialog {
         this.toDoPanel = toDoPanel;
         this.taskButton = taskButton;
         initializePanel();
-        addAndUpdateButton = new JButton( text.getString("updateTaskString"));
+        addAndUpdateButton = new JButton(text.getString("updateTaskString"));
 
         nameText.setText(taskButton.getName());
         descriptionText.setText(taskButton.getDescription());

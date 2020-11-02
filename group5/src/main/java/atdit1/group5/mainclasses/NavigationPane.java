@@ -17,6 +17,7 @@ public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
     private ResourceBundle text;
+
     /**
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
      * wirft, wenn aus unerklärlichen Gründen die Rechte unbekannt sind.
@@ -33,7 +34,7 @@ public class NavigationPane extends JTabbedPane {
         this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
         this.addTab(text.getString("overviewString"), new NavItemPanelChooser("Overview", null, null));
-        this.addTab( text.getString("todosString") + "'s", new NavItemPanelChooser("ToDo's", null, null));
+        this.addTab(text.getString("todosString") + "'s", new NavItemPanelChooser("ToDo's", null, null));
         this.addTab(text.getString("productionString"), new NavItemPanelChooser("Produktion", null, null));
         this.addTab(text.getString("operatingResourcesString"), new NavItemPanelChooser("Betriebsmittel", null, null));
         this.addTab(text.getString("hrString"), new NavItemPanelChooser("HR", null, null));

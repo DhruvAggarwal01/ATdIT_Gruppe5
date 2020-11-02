@@ -1,6 +1,7 @@
 package atdit1.group5.exceptions;
 
 import java.util.ResourceBundle;
+
 /**
  * ist eine Beschreibung, für Exceptions, die bei dem Einstellen des
  * Anwendungsthemes auftreten.

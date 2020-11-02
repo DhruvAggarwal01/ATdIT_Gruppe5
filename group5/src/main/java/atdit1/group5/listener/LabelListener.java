@@ -22,6 +22,7 @@ public class LabelListener extends KeyAdapter {
     private QuarryMap view;
     private JPanel panel;
     private ResourceBundle text;
+
     /**
      * Konstruktor, der den Listener erzeugt und die Variablen initialisiert
      * 

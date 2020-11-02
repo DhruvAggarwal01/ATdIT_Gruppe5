@@ -36,7 +36,7 @@ public class TaskButton extends JButton {
     public TaskButton(String name, String description, DateTimePicker dateTimePicker, String priority) {
         this.text = ResourceBundle.getBundle(("i18n/todoStrings"));
 
-        this.setText(name +  text.getString("priorityString") + priority);
+        this.setText(name + text.getString("priorityString") + priority);
         this.setBackground(createColour());
         this.name = name;
         this.dateTimePicker = dateTimePicker;

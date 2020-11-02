@@ -122,7 +122,7 @@ public class ShowOrder extends JPanel {
                 .setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(text.getString("priceString"))).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getPrice() +  " €")).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getPrice() + " €")).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));

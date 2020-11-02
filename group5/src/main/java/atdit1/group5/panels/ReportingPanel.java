@@ -27,7 +27,7 @@ public class ReportingPanel extends JPanel {
      * platziert ein einfaches Label zentral im Panel und stellt ein Button, welches
      * eine Zurück-Taste dar.
      */
-    public ReportingPanel() {        
+    public ReportingPanel() {
         this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
         this.setLayout(new BorderLayout());
 
