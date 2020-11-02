@@ -10,6 +10,7 @@ GitHub Repository für Gruppe 5 (Aktuelle Themen der IT 1)
 
 - **diagrams** &rarr; ER-Diagramme, Klassendiagramm (UML), Persona und Use-Case-Diagramm, Grafik zum Durchlauf der Klassen
 - **documentation** &rarr; Wissenschaftliche Ausarbeitung, Storyline-Dokument (Probleme, Lessons Learned), Quellensammlung, Info zu Setter für Order-ID und User-ID
+- **presentation** &rarr; Projektpräsentation der Gruppe zum 04.11.2020
 - **prototype** &rarr; Prototyp der Anwendung
 
 &#x1F4D8; **group5** : Maven-Projektordner und beinhaltet gegliedert in folgende Subordner den Quellcode und konfiguratorische Dateien (_pom.xml_, _.classpath_ u.ä. hier nicht aufgelistet):
