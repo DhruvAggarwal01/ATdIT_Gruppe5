@@ -11,7 +11,6 @@ import atdit1.group5.mainclasses.NavItemPanelChooser;
 import atdit1.group5.db_interaction.DBGenericExtractor;
 import atdit1.group5.db_interaction.Order;
 import atdit1.group5.db_interaction.OrdersSorter;
-import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 
 /**
@@ -53,7 +52,7 @@ public class LogistikPanel extends JPanel {
      * @param DisplayAllOrders
      */
     public LogistikPanel(Boolean DisplayAllOrders) {
-        this.text = ResourceBundle.getBundle("i18n/logistik_panels/LogistikStrings");
+        this.text = ResourceBundle.getBundle("i18n/logistikStrings");
         try {
             dbOrderExtractor = new DBGenericExtractor<Order>(text.getString("ordersDatabaseString"), new Order());
         } catch (DatabaseConnectException dce) {
@@ -76,11 +75,10 @@ public class LogistikPanel extends JPanel {
         buttonPanel = new JPanel(new GridLayout(1, 3, 300, 300));
         orderPanel = new JPanel(new GridLayout(1, 3, 10, 10));
 
-        createOrder = new JButton(LogistikStrings.getCreateOrderText());
-        searchButton = new JButton(LogistikStrings.getSearchOrderText());
+        createOrder = new JButton(text.getString("createOrderText"));
+
         searchButton = new JButton(text.getString("searchOrderText"));
 
-        doneOrdersBox = new JCheckBox(LogistikStrings.getDisplayAllText());
         doneOrdersBox = new JCheckBox(text.getString("displayAllText"));
 
         doneOrdersBox.addActionListener(new ActionListener() {

@@ -12,7 +12,7 @@ public class OrderStringVerifier extends InputVerifier {
 
     @Override
     public boolean verify(final JComponent input) {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         final JTextField firmInput = (JTextField) input;
         final String firmName = firmInput.getText();
         final char[] chars = firmName.toCharArray();

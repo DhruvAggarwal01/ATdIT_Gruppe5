@@ -4,7 +4,7 @@ import java.util.*;
 import javax.swing.*;
 
 import atdit1.group5.exceptions.DatabaseConnectException;
-import atdit1.group5.usedstrings.LogistikStrings;
+
 
 /**
  * zeigt unfertige und fertige Aufträge an
@@ -15,10 +15,11 @@ import atdit1.group5.usedstrings.LogistikStrings;
 public class OrdersSorter {
 
     static DBGenericExtractor<Order> dbOrderExtractor;
-
+ 
+    
     public OrdersSorter() {
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>("group5/src/main/resources/databases/DefaultCONTRACTS.xlsx", new Order());
         } catch (DatabaseConnectException dce) {
             JPanel exceptionPanel = dce.getExceptionPanel();
             JOptionPane.showMessageDialog(new JFrame(), exceptionPanel, "Error: " + dce.getClass(),
@@ -36,7 +37,7 @@ public class OrdersSorter {
         Set<Order> specificStatusOrders = new HashSet<Order>();
         Set<Order> unfinishedOrders = new HashSet<Order>();
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>("group5/src/main/resources/databases/DefaultCONTRACTS.xlsx", new Order());
             unfinishedOrders = dbOrderExtractor.getFilteredDBRowsToSet("done", false);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
             unfinishedOrders.retainAll(specificStatusOrders);
@@ -58,7 +59,7 @@ public class OrdersSorter {
         Set<Order> specificStatusOrders = new HashSet<Order>();
         Set<Order> allOrders = new HashSet<Order>();
         try {
-            dbOrderExtractor = new DBGenericExtractor<Order>(LogistikStrings.getOrdersDatabaseString(), new Order());
+            dbOrderExtractor = new DBGenericExtractor<Order>("group5/src/main/resources/databases/DefaultCONTRACTS.xlsx", new Order());
             allOrders = dbOrderExtractor.getFilteredDBRowsToSet("rowcount", 1);
             specificStatusOrders = dbOrderExtractor.getFilteredDBRowsToSet("status", status);
             allOrders.retainAll(specificStatusOrders);

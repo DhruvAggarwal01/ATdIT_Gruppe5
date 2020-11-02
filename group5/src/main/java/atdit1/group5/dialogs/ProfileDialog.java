@@ -79,7 +79,7 @@ public class ProfileDialog extends AbstractUsermenuDialog {
      */
     @Override
     public void contentSettingsSet() {
-        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/profileDialogStrings"));
 
         contentPanel = new JPanel(new GridLayout(7, 1));
         contentPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedSoftBevelBorder(),

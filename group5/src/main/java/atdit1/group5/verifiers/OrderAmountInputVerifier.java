@@ -18,7 +18,7 @@ public class OrderAmountInputVerifier extends InputVerifier {
         final JTextField intInput = (JTextField) input;
         final String inputtext = intInput.getText();
         int num;
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         try {
             num = Integer.parseInt(inputtext);
         } catch (final NumberFormatException e) {

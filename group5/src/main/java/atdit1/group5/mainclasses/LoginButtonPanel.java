@@ -51,7 +51,7 @@ public class LoginButtonPanel extends JPanel {
      * Komponenten hinzu.
      */
     public void init() {
-        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/loginStrings"));
 
         KeyListener lKeyListener = new LoginKeyListener(this);
         usernameLabel = new JLabel(text.getString("usernameString"));

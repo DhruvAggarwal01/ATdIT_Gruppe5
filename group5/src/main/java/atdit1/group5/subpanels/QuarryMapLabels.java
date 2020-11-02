@@ -22,7 +22,7 @@ public class QuarryMapLabels extends JPanel {
      * dazufügt.
      */
     public QuarryMapLabels() {
-        this.text = ResourceBundle.getBundle(("i18n/locationStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/productionStrings"));
         this.setLayout(new BorderLayout());
         panelLabels = new JPanel(new GridLayout(1, 1));
         text1 = new JLabel(text.getString("createLocationText"));

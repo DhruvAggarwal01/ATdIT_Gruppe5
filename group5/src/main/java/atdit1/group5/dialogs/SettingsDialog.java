@@ -92,7 +92,7 @@ public class SettingsDialog extends AbstractUsermenuDialog {
         styleSettingsPanel.add(themeToggleButton);
 
         // Sub title: Funktionalität-Einstellungen
-        titleFunctionalitySettingsLabel = new JLabel(text.getString("functionalSettingsStrings"));
+        titleFunctionalitySettingsLabel = new JLabel(text.getString("functionalSettingsString"));
         titleFunctionalitySettingsLabel.setFont(Styles.PROFILE_LVL2_FONT);
 
         timeoutTimeLabel = new JLabel(text.getString("timeUntilTimeoutText"));

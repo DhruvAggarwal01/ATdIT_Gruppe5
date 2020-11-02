@@ -20,7 +20,7 @@ public class ThemeChangeException extends AbstractCustomException {
      * @param themeErrorId Theme-Error-ID
      */
     public ThemeChangeException(int themeErrorId) {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/exceptionStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         switch (themeErrorId) {
             case 0:
                 exceptionMessage = text.getString("themeChangeUnavailable_message");

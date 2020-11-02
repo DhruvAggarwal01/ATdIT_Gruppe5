@@ -21,6 +21,7 @@ public class LoginException extends AbstractCustomException {
      * @param loginErrorId Login-Error-ID
      */
     public LoginException(int loginErrorId) {
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         switch (loginErrorId) {
             case 0:
                 exceptionMessage = text.getString("LoginNotPossible_message");

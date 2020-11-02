@@ -26,7 +26,7 @@ public class NavigationPaneProduction extends JTabbedPane {
      */
     public NavigationPaneProduction(int tabPlacement, int tabLayoutPolicy) {
         super(tabPlacement, tabLayoutPolicy);
-        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/productionStrings"));
 
         this.setFont(Styles.NAVPANE_FONT);
         this.setBackground(Styles.SURROUNDING_PANEL_COLOR);

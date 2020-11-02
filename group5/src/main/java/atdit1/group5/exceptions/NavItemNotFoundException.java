@@ -21,7 +21,7 @@ public class NavItemNotFoundException extends AbstractCustomException {
      * @param navItemName03
      */
     public NavItemNotFoundException(String navItemName01, String navItemName02, String navItemName03) {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         this.navItemName01 = navItemName01;
         this.navItemName02 = navItemName02;
         this.navItemName03 = navItemName03;

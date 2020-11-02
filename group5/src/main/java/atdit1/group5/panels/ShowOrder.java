@@ -38,7 +38,7 @@ public class ShowOrder extends JPanel {
      * Konstruktor für das ShowOrder Panel
      */
     public ShowOrder() {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         this.setLayout(new BorderLayout());
 
         getCurrentOrder();
@@ -118,11 +118,11 @@ public class ShowOrder extends JPanel {
         showOrderPanel.add(new JLabel(currentOrder.getStone_type())).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(text.getString("amountString"))).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getAmount() + text.getString("tonString")))
+        showOrderPanel.add(new JLabel(currentOrder.getAmount() + " " + text.getString("tonString")))
                 .setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JLabel(text.getString("priceString"))).setFont(Styles.ORDER_INFO);
-        showOrderPanel.add(new JLabel(currentOrder.getPrice() + text.getString("euroSign"))).setFont(Styles.ORDER_INFO);
+        showOrderPanel.add(new JLabel(currentOrder.getPrice() +  " €")).setFont(Styles.ORDER_INFO);
 
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));
         showOrderPanel.add(new JSeparator(JSeparator.HORIZONTAL));

@@ -22,7 +22,6 @@ import atdit1.group5.subpanels.ColorChooser;
 import atdit1.group5.subpanels.OrderPanels;
 import atdit1.group5.verifiers.OrderAmountInputVerifier;
 import atdit1.group5.verifiers.OrderStringVerifier;
-import atdit1.group5.usedstrings.LogistikStrings;
 import atdit1.group5.exceptions.DatabaseConnectException;
 import atdit1.group5.exceptions.InternalException;
 
@@ -86,7 +85,7 @@ public class EditOrder extends JPanel {
     public EditOrder(final Boolean create2) {
         this.create = create2;
 
-        this.text = ResourceBundle.getBundle("i18n/logistik_panels/LogistikStrings");
+        this.text = ResourceBundle.getBundle("i18n/logistikStrings");
 
         if (create != true) {
             currentOrder = new Order();
@@ -201,7 +200,7 @@ public class EditOrder extends JPanel {
         dueDateLabel.setFont(Styles.ORDER_INFO);
         dueDateField = new JTextField("" + currentOrder.getDue_date());
 
-        priceLabel = new JLabel(LogistikStrings.getPriceString());
+        priceLabel = new JLabel(text.getString("priceString"));
         priceLabel.setFont(Styles.ORDER_INFO);
         priceAmountLabel = new JLabel(text.getString("priceDescription"));
         priceAmountLabel.setFont(Styles.ORDER_INFO);

@@ -29,7 +29,7 @@ public class LabelListener extends KeyAdapter {
      * @param view            das Panel mit der QuarryMap vom Steinbruch
      */
     public LabelListener(QuarryMapLabels quarryMapLabels, QuarryMap view) {
-        this.text = ResourceBundle.getBundle(("i18n/locationStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/productionStrings"));
 
         this.view = view;
         panel = quarryMapLabels.getPanel();

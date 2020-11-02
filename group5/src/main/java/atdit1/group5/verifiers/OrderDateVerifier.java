@@ -29,7 +29,7 @@ public class OrderDateVerifier extends InputVerifier {
 
     @Override
     public boolean verify(final JComponent input) {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         final JTextField intInput = (JTextField) input;
         final String inputtext = intInput.getText();
         int num;

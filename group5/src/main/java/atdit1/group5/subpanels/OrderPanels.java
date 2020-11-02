@@ -39,7 +39,7 @@ public class OrderPanels extends JPanel {
      */
     public OrderPanels(final Set<Order> orders, final String Title, final String ToolTip, final Integer rgbRed,
             final Integer rgbGreen, final Integer rgbBlue) {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/LogistikStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/logistikStrings"));
         try {
             dbOrderExtractor = new DBGenericExtractor<Order>((text.getString("ordersDatabaseString")), currentOrder);
         } catch (DatabaseConnectException dce) {
@@ -70,7 +70,7 @@ public class OrderPanels extends JPanel {
 
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
-            final JLabel labelID2 = new JLabel(text.getString("orderNumberString") + currentOrder.getOrder_id() + text.getString("firmString")  + currentOrder.getFirm());
+            final JLabel labelID2 = new JLabel(text.getString("orderNumberString")+ " " + currentOrder.getOrder_id() + " " + text.getString("firmString") + " " + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 

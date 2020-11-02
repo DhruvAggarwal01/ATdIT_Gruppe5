@@ -21,7 +21,7 @@ public class InternalException extends AbstractCustomException {
      */
     @Override
     public String getExceptionMessage() {
-        this.text = ResourceBundle.getBundle(("i18n/logistik_panels/exceptionStrings"));
+        this.text = ResourceBundle.getBundle(("i18n/exceptionStrings"));
         return  text.getString("ThemeChangeUnavailable_message");
     }
 
