@@ -1,6 +1,7 @@
 package atdit1.group5.mainclasses;
 
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.Styles;
 
@@ -15,7 +16,7 @@ import atdit1.group5.Styles;
 public class NavigationPane extends JTabbedPane {
 
     private static final long serialVersionUID = -449442123377295399L;
-
+    private ResourceBundle text;
     /**
      * Konstruktor, der die Tableiste (NavigationPane) aufbaut und eine Exception
      * wirft, wenn aus unerklärlichen Gründen die Rechte unbekannt sind.
@@ -26,17 +27,18 @@ public class NavigationPane extends JTabbedPane {
      */
     public NavigationPane(int tabPlacement, int tabLayoutPolicy) {
         super(tabPlacement, tabLayoutPolicy);
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
 
         this.setFont(Styles.NAVPANE_FONT);
         this.setBackground(Styles.SURROUNDING_PANEL_COLOR);
 
-        this.addTab("Overview", new NavItemPanelChooser("Overview", null, null));
-        this.addTab("ToDo's", new NavItemPanelChooser("ToDo's", null, null));
-        this.addTab("Produktion", new NavItemPanelChooser("Produktion", null, null));
-        this.addTab("Betriebsmittel", new NavItemPanelChooser("Betriebsmittel", null, null));
-        this.addTab("HR", new NavItemPanelChooser("HR", null, null));
-        this.addTab("Genehmigungen", new NavItemPanelChooser("Genehmigungen", null, null));
-        this.addTab("Logistik", new NavItemPanelChooser("Logistik", null, null));
+        this.addTab(text.getString("overviewString"), new NavItemPanelChooser("Overview", null, null));
+        this.addTab( text.getString("todosString") + "'s", new NavItemPanelChooser("ToDo's", null, null));
+        this.addTab(text.getString("productionString"), new NavItemPanelChooser("Produktion", null, null));
+        this.addTab(text.getString("operatingResourcesString"), new NavItemPanelChooser("Betriebsmittel", null, null));
+        this.addTab(text.getString("hrString"), new NavItemPanelChooser("HR", null, null));
+        this.addTab(text.getString("permitsString"), new NavItemPanelChooser("Genehmigungen", null, null));
+        this.addTab(text.getString("logisticString"), new NavItemPanelChooser("Logistik", null, null));
         // this.addTab("ErrorTab", new NavItemPanelChooser("Error", null, null));
     }
 

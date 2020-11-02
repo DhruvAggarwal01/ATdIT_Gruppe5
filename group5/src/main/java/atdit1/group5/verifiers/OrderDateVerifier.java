@@ -18,7 +18,7 @@ public class OrderDateVerifier extends InputVerifier {
         cal_2.set(1998, Calendar.APRIL, 2, 0, 0, 0); // zweiter Zeitpunkt
         final long time = cal_2.getTime().getTime() - cal_1.getTime().getTime(); // Differenz in ms
         final long days = Math.round((double) time / (24. * 60. * 60. * 1000.)); // Differenz in Tagen
-        System.out.println("Zeit-Differenz in Tagen: " + days);
+       // System.out.println("Zeit-Differenz in Tagen: " + days);
 
         final long dayDiffrence = days;
         return dayDiffrence;
