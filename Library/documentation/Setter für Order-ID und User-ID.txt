@@ -1,0 +1,1 @@
+Alle Setter-Methoden in Order.java und User.java werden gebraucht, da alle Attribute 'private' sind und beim Anlegen eines neuen Auftrags (Order) oder eines neuen Nutzers (User) darauffolgende IDs vergeben werden müssen.
