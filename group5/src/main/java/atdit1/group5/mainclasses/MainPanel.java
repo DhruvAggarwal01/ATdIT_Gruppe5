@@ -2,7 +2,7 @@ package atdit1.group5.mainclasses;
 
 import java.awt.*;
 import javax.swing.*;
-
+import java.util.ResourceBundle;
 /**
  * leitet den Aufbau der Anwendung ein.
  * 
@@ -12,8 +12,9 @@ import javax.swing.*;
 public class MainPanel extends JFrame {
 
     private static final long serialVersionUID = -8417942669407317542L;
-
-    private static String appTitle = "Steinbruch ALBERSWEILER";
+    private ResourceBundle text;
+    
+    private static String appTitle ;
     private static NavigationPane navPane;
     private static HeaderPanel headerPanel;
     private Container c;
@@ -24,9 +25,11 @@ public class MainPanel extends JFrame {
      * Panel-Feld zusammen.
      */
     public MainPanel() {
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
+
         c = getContentPane();
         c.setLayout(new BorderLayout());
-
+        appTitle  = text.getString("appTitleString");
         headerPanel = new HeaderPanel("<html><p>" + appTitle + "</p></html>");
         navPane = new NavigationPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
 

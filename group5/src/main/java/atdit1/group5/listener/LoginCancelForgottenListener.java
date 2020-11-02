@@ -2,6 +2,7 @@ package atdit1.group5.listener;
 
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.db_interaction.DBGenericInserter;
 import atdit1.group5.db_interaction.LogInCredentialsChecker;
@@ -22,7 +23,7 @@ import atdit1.group5.mainclasses.LoginButtonPanel;
 public class LoginCancelForgottenListener implements ActionListener {
 
     private final LoginButtonPanel loginButtonPanelView;
-
+    private ResourceBundle text;
     /**
      * stellt eine Referenz auf die Instanz des <code>LoginButtonPanel</code>
      * mithilfe des Parameters her, um damit weiterzuarbeiten.
@@ -40,6 +41,8 @@ public class LoginCancelForgottenListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.text = ResourceBundle.getBundle(("i18n/loginStrings"));
+
         if (e.getSource() == loginButtonPanelView.getLoginButton()) {
             loginButtonPanelView.getUsernameField()
                     .setText(loginButtonPanelView.getUsernameField().getText().replace(" ", "")); // delete whitespaces
@@ -72,7 +75,7 @@ public class LoginCancelForgottenListener implements ActionListener {
         }
         if (e.getSource() == loginButtonPanelView.getPswdForgottenButton()) {
             loginButtonPanelView.getPossibleErrorMessageLabel()
-                    .setText("Bitte wenden Sie sich an Ihren Administrator.");
+                    .setText(text.getString("goToAdminText"));
         }
     }
 

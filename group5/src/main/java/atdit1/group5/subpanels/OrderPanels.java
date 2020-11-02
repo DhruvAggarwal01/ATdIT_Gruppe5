@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.listener.HoverColorChangeListener;
 import atdit1.group5.db_interaction.DBGenericExtractor;
@@ -20,7 +21,6 @@ import atdit1.group5.exceptions.DatabaseConnectException;
 public class OrderPanels extends JPanel {
 
     private static final long serialVersionUID = -7427825579667861982L;
-
     private ResourceBundle text;
 
     Order currentOrder = new Order();
@@ -70,8 +70,7 @@ public class OrderPanels extends JPanel {
 
             final JPanel labelID = new JPanel();
             // String name = Order.order_id + "-" + Order.firm; // auslagern
-            final JLabel labelID2 = new JLabel(
-                    "Auftragsnummer: " + currentOrder.getOrder_id() + "  Firma: " + currentOrder.getFirm());
+            final JLabel labelID2 = new JLabel(text.getString("orderNumberString") + currentOrder.getOrder_id() + text.getString("firmString")  + currentOrder.getFirm());
 
             final HoverColorChangeListener mouseCL = new HoverColorChangeListener();
 

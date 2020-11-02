@@ -3,6 +3,7 @@ package atdit1.group5.mainclasses;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.db_interaction.LogInCredentialsChecker;
 import atdit1.group5.exceptions.LoginException;
@@ -21,6 +22,7 @@ import atdit1.group5.Styles;
 public class LoginButtonPanel extends JPanel {
 
     private static final long serialVersionUID = 40424705904401071L;
+    private ResourceBundle text;
 
     private JLabel usernameLabel;
     private JTextField usernameField;
@@ -49,20 +51,22 @@ public class LoginButtonPanel extends JPanel {
      * Komponenten hinzu.
      */
     public void init() {
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
+
         KeyListener lKeyListener = new LoginKeyListener(this);
-        usernameLabel = new JLabel("Username:");
+        usernameLabel = new JLabel(text.getString("usernameString"));
         usernameField = new JTextField();
         usernameField.addKeyListener(lKeyListener);
-        passwordLabel = new JLabel("Password:");
+        passwordLabel = new JLabel(text.getString("passwordString"));
         passwordField = new JPasswordField();
         passwordField.addKeyListener(lKeyListener);
 
         ActionListener lcfListener = new LoginCancelForgottenListener(this);
-        loginButton = new JButton("Login");
+        loginButton = new JButton(text.getString("loginString"));
         loginButton.addActionListener(lcfListener);
-        cancelButton = new JButton("Cancel");
+        cancelButton = new JButton(text.getString("cancelString"));
         cancelButton.addActionListener(lcfListener);
-        pswdForgottenButton = new JButton("Forgot your password?");
+        pswdForgottenButton = new JButton(text.getString("forgotPasswordText"));
         pswdForgottenButton.addActionListener(lcfListener);
 
         possibleErrorMessageLabel = new JLabel(

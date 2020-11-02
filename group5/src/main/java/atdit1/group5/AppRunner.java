@@ -18,7 +18,6 @@ import atdit1.group5.mainclasses.MainPanel;
 public class AppRunner {
 
     private static JFrame loginFrame;
-
     /**
      * führt die gesamte Anwendung aus und ist damit der Startpunkt.
      * 

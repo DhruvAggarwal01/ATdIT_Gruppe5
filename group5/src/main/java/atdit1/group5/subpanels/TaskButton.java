@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import com.github.lgooddatepicker.components.DateTimePicker;
 
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.awt.Color;
 
 /**
@@ -16,6 +17,7 @@ import java.awt.Color;
 public class TaskButton extends JButton {
 
     private static final long serialVersionUID = -4637132117972382295L;
+    private ResourceBundle text;
 
     private String name;
     private DateTimePicker dateTimePicker;
@@ -32,7 +34,9 @@ public class TaskButton extends JButton {
      * @param priority    Priorität der Aufgabe
      */
     public TaskButton(String name, String description, DateTimePicker dateTimePicker, String priority) {
-        this.setText(name + "   Priorität: " + priority);
+        this.text = ResourceBundle.getBundle(("i18n/todoStrings"));
+
+        this.setText(name +  text.getString("priorityString") + priority);
         this.setBackground(createColour());
         this.name = name;
         this.dateTimePicker = dateTimePicker;

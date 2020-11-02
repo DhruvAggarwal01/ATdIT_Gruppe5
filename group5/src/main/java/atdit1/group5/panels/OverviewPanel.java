@@ -2,6 +2,7 @@ package atdit1.group5.panels;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.exceptions.URLException;
 import atdit1.group5.subpanels.DiashowPanel;
@@ -18,6 +19,7 @@ import atdit1.group5.subpanels.WeatherPanel;
 public class OverviewPanel extends JPanel {
 
     private static final long serialVersionUID = 5616023884647257894L;
+    private ResourceBundle text;
 
     private JPanel smallPanels, newsPanel, weatherPanel, diashow;
 
@@ -26,12 +28,12 @@ public class OverviewPanel extends JPanel {
      */
     public OverviewPanel() {
         this.setLayout(new BorderLayout());
-
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
         smallPanels = new JPanel(new GridLayout(1, 2, 30, 30));
 
         // Abfangen etwaiger Abruffehler (falsche URL/ schlechte Internetverbindung)
         try {
-            newsPanel = new ReadRSSPanel("Neueste Beiträge aus Albersweiler auf Wochenblatt Reporter",
+            newsPanel = new ReadRSSPanel(text.getString("newsText"),
                     "https://www.wochenblatt-reporter.de/albersweiler/rss");
             smallPanels.add(newsPanel);
         } catch (URLException ue) {
@@ -41,7 +43,7 @@ public class OverviewPanel extends JPanel {
             smallPanels.add(exceptionPanel);
         }
         try {
-            weatherPanel = new WeatherPanel("Heutige Wetterdaten aus Albersweiler");
+            weatherPanel = new WeatherPanel(text.getString("weatherText"));
             smallPanels.add(weatherPanel);
         } catch (URLException ue) {
             JPanel exceptionPanel = ue.getExceptionPanel();
@@ -50,7 +52,7 @@ public class OverviewPanel extends JPanel {
             smallPanels.add(exceptionPanel);
         }
 
-        diashow = new DiashowPanel("Impressionen vom Steinbruch");
+        diashow = new DiashowPanel(text.getString("diashowText"));
 
         this.add(smallPanels, BorderLayout.NORTH);
         this.add(diashow, BorderLayout.CENTER);

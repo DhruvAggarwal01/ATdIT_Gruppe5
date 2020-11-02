@@ -3,6 +3,7 @@ package atdit1.group5.mainclasses;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.listener.LogoIconMouseAdapter;
 import atdit1.group5.listener.ProfileMenuItemListener;
@@ -19,6 +20,7 @@ import atdit1.group5.Styles;
 public class HeaderPanel extends JPanel {
 
     private static final long serialVersionUID = 5730113640200437491L;
+    private ResourceBundle text;
 
     public JPanel logoAndHeaderTitle;
     public JLabel logoIconInJLabel;
@@ -42,6 +44,7 @@ public class HeaderPanel extends JPanel {
      * @param headerTitle Applikationstitel
      */
     public HeaderPanel(String headerTitle) {
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
         initSetUp();
 
         logoAndHeaderTitle.add(logoAdder("group5/src/main/resources/images/dashboardlogo.png"));
@@ -127,15 +130,15 @@ public class HeaderPanel extends JPanel {
                 .getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
         ActionListener pmiListener = new ProfileMenuItemListener(this);
-        normItem1 = new JMenuItem("Ihr Profil", profileIcon);
+        normItem1 = new JMenuItem(text.getString("profileString"), profileIcon);
         normItem1.addActionListener(pmiListener);
-        normItem2 = new JMenuItem("Ihre Einstellungen", settingsIcon);
+        normItem2 = new JMenuItem(text.getString("settingsString"), settingsIcon);
         normItem2.addActionListener(pmiListener);
         JMenuItem separatorItem = new JMenuItem("--------------------------");
         separatorItem.setEnabled(false);
-        normItem3 = new JMenuItem("Hilfe", helpIcon);
-        normItem4 = new JMenuItem("Über...", aboutIcon);
-        logOffItem = new JMenuItem("Ausloggen und Beenden...");
+        normItem3 = new JMenuItem(text.getString("helpString"), helpIcon);
+        normItem4 = new JMenuItem(text.getString("aboutString"), aboutIcon);
+        logOffItem = new JMenuItem(text.getString("logoutAndCloseString"));
         logOffItem.addActionListener(pmiListener);
 
         userIconButton.add(normItem1);

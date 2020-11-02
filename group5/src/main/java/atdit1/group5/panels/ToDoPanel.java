@@ -2,6 +2,7 @@ package atdit1.group5.panels;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.listener.ToDoPanelButtonListener;
 
@@ -14,7 +15,7 @@ import atdit1.group5.listener.ToDoPanelButtonListener;
 public class ToDoPanel extends JPanel {
 
     private static final long serialVersionUID = -1436022192721531424L;
-
+    private ResourceBundle text;
     private JPanel taskList;
     private JPanel buttonPanel;
     private JButton newTaskButton;
@@ -27,11 +28,12 @@ public class ToDoPanel extends JPanel {
      */
     public ToDoPanel() {
         this.setLayout(new BorderLayout());
+        this.text = ResourceBundle.getBundle(("i18n/todoStrings"));
 
         taskList = new JPanel(new GridLayout(0, 1, 10, 10));
         buttonPanel = new JPanel();
 
-        newTaskButton = new JButton("Neue Aufgabe");
+        newTaskButton = new JButton(text.getString("newTaskString"));
         newTaskButton.setPreferredSize(new Dimension(300, 100));
         buttonPanel.add(newTaskButton);
 

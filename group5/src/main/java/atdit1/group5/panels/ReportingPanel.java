@@ -3,6 +3,7 @@ package atdit1.group5.panels;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.listener.LogoIconMouseAdapter;
 
@@ -16,6 +17,7 @@ import atdit1.group5.listener.LogoIconMouseAdapter;
 public class ReportingPanel extends JPanel {
 
     private static final long serialVersionUID = -8379965032225222069L;
+    private ResourceBundle text;
 
     private JPanel reportingHeaderRowPanel;
     private JButton backButton;
@@ -25,15 +27,16 @@ public class ReportingPanel extends JPanel {
      * platziert ein einfaches Label zentral im Panel und stellt ein Button, welches
      * eine Zurück-Taste dar.
      */
-    public ReportingPanel() {
+    public ReportingPanel() {        
+        this.text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
         this.setLayout(new BorderLayout());
 
         reportingHeaderRowPanel = new JPanel(new GridLayout(1, 7, 30, 30));
-        backButton = new JButton("Zurück");
+        backButton = new JButton(text.getString("backString"));
         ActionListener limaListener = new LogoIconMouseAdapter();
         backButton.addActionListener(limaListener);
 
-        mockLabel = new JLabel("REPORTING-Panel (siehe Prototyp)", SwingUtilities.CENTER);
+        mockLabel = new JLabel(text.getString("reportingText"), SwingUtilities.CENTER);
 
         reportingHeaderRowPanel.add(new JLabel(""));
         reportingHeaderRowPanel.add(new JLabel(""));
