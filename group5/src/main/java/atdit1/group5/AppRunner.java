@@ -2,10 +2,10 @@ package atdit1.group5;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 import atdit1.group5.mainclasses.BackgroundImagePanel;
 import atdit1.group5.mainclasses.LoginButtonPanel;
-import atdit1.group5.mainclasses.MainPanel;
 
 /**
  * startet einen LoginScreen und wenn der User einen richtigen Benutzernamen und
@@ -19,6 +19,8 @@ public class AppRunner {
 
     private static JFrame loginFrame;
 
+    private static ResourceBundle text = ResourceBundle.getBundle(("i18n/mainAppStrings"));
+
     /**
      * führt die gesamte Anwendung aus und ist damit der Startpunkt.
      * 
@@ -26,7 +28,7 @@ public class AppRunner {
      */
     public static void main(String[] args) {
         loginFrame = new JFrame();
-        loginFrame.setTitle("App: " + MainPanel.getAppTitle());
+        loginFrame.setTitle("App: " + text.getString("appTitleString"));
         loginFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         loginFrame.setResizable(false);
         loginFrame.setLocationRelativeTo(null);
